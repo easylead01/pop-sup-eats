@@ -39,7 +39,7 @@ const CategoryNav = () => {
   };
 
   return (
-    <nav className="lg:hidden sticky top-16 md:top-20 z-30 bg-background border-b border-border">
+    <nav className="hidden sticky top-16 md:top-20 z-30 bg-background border-b border-border">
       <div className="container mx-auto px-4">
         <div
           ref={scrollRef}
