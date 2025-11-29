@@ -62,13 +62,13 @@ const ProductPopup = () => {
         className={`
           hidden md:flex
           absolute right-0 top-0 h-full w-1/2 bg-card shadow-popup
-          flex-col transition-transform duration-300 ease-out
+          flex-col transition-transform duration-300 ease-out overflow-y-auto
           ${isClosing ? 'translate-x-full' : 'animate-slide-in-right'}
         `}
         {...swipeHandlers}
       >
         {/* Image */}
-        <div className="relative aspect-square bg-secondary/20 flex-shrink-0">
+        <div className="relative h-[45vh] min-h-[280px] max-h-[400px] bg-secondary/20 flex-shrink-0">
           <img
             src={getProductImage(selectedProduct.image)}
             alt={selectedProduct.name}
