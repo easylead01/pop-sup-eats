@@ -7,9 +7,18 @@ import sushiSet from '@/assets/sushi-set.png';
 import wokNoodles from '@/assets/wok-noodles.png';
 import soupMiso from '@/assets/soup-miso.png';
 import pizzaPepperoni from '@/assets/pizza-pepperoni.png';
+import pizzaMargherita from '@/assets/pizza-margherita.png';
+import pizzaFourCheese from '@/assets/pizza-four-cheese.png';
 import gyoza from '@/assets/gyoza.png';
 import mochi from '@/assets/mochi.png';
 import pokeBowl from '@/assets/poke-bowl.png';
+import pokeTuna from '@/assets/poke-tuna.png';
+import saladChuka from '@/assets/salad-chuka.png';
+import edamame from '@/assets/edamame.png';
+import springRolls from '@/assets/spring-rolls.png';
+import sauceSoy from '@/assets/sauce-soy.png';
+import sauceSpicyMayo from '@/assets/sauce-spicy-mayo.png';
+import sauceUnagi from '@/assets/sauce-unagi.png';
 
 // Category images
 import catRolls from '@/assets/cat-rolls.png';
@@ -35,9 +44,18 @@ export const productImages: Record<string, string> = {
   'wok-noodles': wokNoodles,
   'soup-miso': soupMiso,
   'pizza-pepperoni': pizzaPepperoni,
+  'pizza-margherita': pizzaMargherita,
+  'pizza-four-cheese': pizzaFourCheese,
   'gyoza': gyoza,
   'mochi': mochi,
   'poke-bowl': pokeBowl,
+  'poke-tuna': pokeTuna,
+  'salad-chuka': saladChuka,
+  'edamame': edamame,
+  'spring-rolls': springRolls,
+  'sauce-soy': sauceSoy,
+  'sauce-spicy-mayo': sauceSpicyMayo,
+  'sauce-unagi': sauceUnagi,
 };
 
 export const categoryImages: Record<string, string> = {
