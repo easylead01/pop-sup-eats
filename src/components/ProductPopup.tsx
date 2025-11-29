@@ -61,7 +61,7 @@ const ProductPopup = () => {
       <div 
         className={`
           hidden md:flex
-          absolute right-0 top-0 h-full w-full max-w-[480px] bg-card shadow-popup
+          absolute right-0 top-0 h-full w-1/2 bg-card shadow-popup
           flex-col transition-transform duration-300 ease-out
           ${isClosing ? 'translate-x-full' : 'animate-slide-in-right'}
         `}
