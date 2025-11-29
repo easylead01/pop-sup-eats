@@ -61,14 +61,14 @@ const ProductPopup = () => {
       <div 
         className={`
           hidden md:flex
-          absolute right-0 top-0 h-full w-1/2 bg-card shadow-popup
+          absolute right-0 top-0 h-screen w-1/2 bg-card shadow-popup
           flex-col transition-transform duration-300 ease-out
           ${isClosing ? 'translate-x-full' : 'animate-slide-in-right'}
         `}
         {...swipeHandlers}
       >
-        {/* Image */}
-        <div className="relative flex-1 bg-secondary/20">
+        {/* Image - takes 55% of screen height */}
+        <div className="relative h-[55vh] bg-secondary/20 flex-shrink-0">
           <img
             src={getProductImage(selectedProduct.image)}
             alt={selectedProduct.name}
@@ -102,8 +102,8 @@ const ProductPopup = () => {
           </div>
         </div>
 
-        {/* Content */}
-        <div className="p-6 flex flex-col flex-shrink-0">
+        {/* Content - fills remaining 45% */}
+        <div className="flex-1 p-6 flex flex-col overflow-y-auto">
           <h2 className="text-2xl font-bold mb-2">
             {selectedProduct.name}
           </h2>
