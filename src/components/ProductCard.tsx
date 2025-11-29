@@ -19,7 +19,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         <img
           src={getProductImage(product.image)}
           alt={product.name}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
         
         {/* Badges */}
@@ -48,7 +48,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
             {product.pieces && `${product.pieces} / `}{product.weight}
           </span>
           
-          <button className="price-badge">
+          <button className="price-badge group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all">
             {product.price} ₽
           </button>
         </div>

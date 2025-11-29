@@ -1,32 +1,52 @@
+import { useState } from 'react';
 import { X, Minus, Plus, Trash2, ShoppingBag } from 'lucide-react';
 import { useCartStore } from '@/store/cartStore';
+import { useUIStore } from '@/store/uiStore';
 import { getProductImage } from '@/lib/images';
-import { toast } from '@/hooks/use-toast';
+import { useSwipeClose } from '@/hooks/useSwipeClose';
 
 const CartPopup = () => {
   const { items, isOpen, setIsOpen, updateQuantity, removeItem, getTotalPrice, clearCart } = useCartStore();
+  const { openCheckoutWithAuthCheck } = useUIStore();
+  const [isClosing, setIsClosing] = useState(false);
   const totalPrice = getTotalPrice();
+
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setIsOpen(false);
+      setIsClosing(false);
+    }, 200);
+  };
+
+  const swipeHandlers = useSwipeClose({
+    direction: 'right',
+    threshold: 80,
+    onClose: handleClose,
+  });
 
   if (!isOpen) return null;
 
   const handleCheckout = () => {
-    toast({
-      title: 'Переходим к оформлению',
-      description: `Сумма заказа: ${totalPrice} ₽`,
-    });
     setIsOpen(false);
+    openCheckoutWithAuthCheck();
   };
 
   return (
     <div className="fixed inset-0 z-50 flex justify-end">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-foreground/40 animate-fade-in"
-        onClick={() => setIsOpen(false)}
+        className={`absolute inset-0 bg-foreground/40 transition-opacity duration-200 ${isClosing ? 'opacity-0' : 'animate-fade-in'}`}
+        onClick={handleClose}
       />
 
       {/* Panel */}
-      <div className="relative w-full max-w-md bg-card h-full flex flex-col animate-slide-in-right shadow-popup">
+      <div 
+        className={`relative w-full max-w-md bg-card h-full flex flex-col shadow-popup transition-transform duration-200 ${
+          isClosing ? 'translate-x-full' : 'animate-slide-in-right'
+        }`}
+        {...swipeHandlers}
+      >
         {/* Header */}
         <div className="p-4 border-b border-border flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -34,8 +54,8 @@ const CartPopup = () => {
             <h2 className="text-xl font-bold">Корзина</h2>
           </div>
           <button
-            onClick={() => setIsOpen(false)}
-            className="p-2 hover:bg-muted rounded-full transition-colors"
+            onClick={handleClose}
+            className="p-2 hover:bg-muted rounded-full transition-all hover:scale-105 active:scale-95"
           >
             <X className="w-6 h-6" />
           </button>
@@ -53,10 +73,11 @@ const CartPopup = () => {
             </div>
           ) : (
             <div className="p-4 space-y-4">
-              {items.map((item) => (
+              {items.map((item, index) => (
                 <div
                   key={item.product.id}
-                  className="flex gap-4 p-3 bg-muted/50 rounded-2xl"
+                  className="flex gap-4 p-3 bg-muted/50 rounded-2xl animate-fade-in"
+                  style={{ animationDelay: `${index * 50}ms` }}
                 >
                   {/* Image */}
                   <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
@@ -81,7 +102,7 @@ const CartPopup = () => {
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
-                          className="w-7 h-7 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors"
+                          className="w-7 h-7 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-all hover:scale-105 active:scale-95"
                         >
                           <Minus className="w-3 h-3" />
                         </button>
@@ -90,7 +111,7 @@ const CartPopup = () => {
                         </span>
                         <button
                           onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
-                          className="w-7 h-7 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-colors"
+                          className="w-7 h-7 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-all hover:scale-105 active:scale-95"
                         >
                           <Plus className="w-3 h-3" />
                         </button>
@@ -106,7 +127,7 @@ const CartPopup = () => {
                   {/* Delete */}
                   <button
                     onClick={() => removeItem(item.product.id)}
-                    className="p-2 text-muted-foreground hover:text-destructive transition-colors self-start"
+                    className="p-2 text-muted-foreground hover:text-destructive transition-all self-start hover:scale-105 active:scale-95"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
@@ -136,7 +157,7 @@ const CartPopup = () => {
             {/* Checkout Button */}
             <button
               onClick={handleCheckout}
-              className="w-full bg-foreground text-background py-4 rounded-full font-semibold text-lg hover:bg-foreground/90 transition-colors"
+              className="w-full bg-foreground text-background py-4 rounded-full font-semibold text-lg hover:bg-foreground/90 transition-all hover:scale-[1.01] active:scale-[0.99]"
             >
               Перейти к оформлению
             </button>
