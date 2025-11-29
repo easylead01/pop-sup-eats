@@ -39,7 +39,7 @@ const CategorySidebar = () => {
 
   return (
     <aside className="hidden lg:block w-1/4 flex-shrink-0">
-      <div className="sticky top-24 p-4">
+      <div className="sticky top-24 pl-5 pr-4 py-4">
         <nav className="flex flex-col gap-2">
           {categories.map((category) => (
             <button
