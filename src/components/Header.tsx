@@ -22,7 +22,7 @@ const Header = () => {
             >
               <Menu className="w-6 h-6" />
             </button>
-            <img src={logo} alt="OKIAHABA" className="h-8 md:h-10" />
+            <img src={logo} alt="OKIAHABA" className="h-16 md:h-20" />
           </div>
 
           {/* Desktop Navigation */}
