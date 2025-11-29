@@ -62,13 +62,13 @@ const ProductPopup = () => {
         className={`
           hidden md:flex
           absolute right-0 top-0 h-full w-1/2 bg-card shadow-popup
-          flex-col transition-transform duration-300 ease-out overflow-y-auto
+          flex-col transition-transform duration-300 ease-out
           ${isClosing ? 'translate-x-full' : 'animate-slide-in-right'}
         `}
         {...swipeHandlers}
       >
         {/* Image */}
-        <div className="relative h-[45vh] min-h-[280px] max-h-[400px] bg-secondary/20 flex-shrink-0">
+        <div className="relative flex-1 bg-secondary/20">
           <img
             src={getProductImage(selectedProduct.image)}
             alt={selectedProduct.name}
@@ -103,48 +103,46 @@ const ProductPopup = () => {
         </div>
 
         {/* Content */}
-        <div className="flex-1 p-6 flex flex-col overflow-y-auto">
-          <div className="flex-1">
-            <h2 className="text-2xl font-bold mb-2">
-              {selectedProduct.name}
-            </h2>
-            
-            <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
-              {selectedProduct.pieces && <span>{selectedProduct.pieces}</span>}
-              <span>{selectedProduct.weight}</span>
-              {selectedProduct.calories && (
-                <span className="flex items-center gap-1">
-                  {selectedProduct.calories} ккал
-                  <AlertCircle className="w-3.5 h-3.5" />
-                </span>
-              )}
-            </div>
-
-            <p className="text-muted-foreground mb-6">
-              {selectedProduct.description}
-            </p>
-
-            {/* Ingredients */}
-            <div className="mb-4">
-              <h3 className="font-semibold mb-2">Состав</h3>
-              <p className="text-muted-foreground text-sm">
-                {selectedProduct.ingredients.join(', ')}
-              </p>
-            </div>
-
-            {/* Allergens */}
-            {selectedProduct.allergens.length > 0 && (
-              <div className="mb-6">
-                <h3 className="font-semibold mb-2 flex items-center gap-2">
-                  Аллергены
-                  <AlertCircle className="w-4 h-4 text-primary" />
-                </h3>
-                <p className="text-muted-foreground text-sm">
-                  {selectedProduct.allergens.join(', ')}
-                </p>
-              </div>
+        <div className="p-6 flex flex-col flex-shrink-0">
+          <h2 className="text-2xl font-bold mb-2">
+            {selectedProduct.name}
+          </h2>
+          
+          <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
+            {selectedProduct.pieces && <span>{selectedProduct.pieces}</span>}
+            <span>{selectedProduct.weight}</span>
+            {selectedProduct.calories && (
+              <span className="flex items-center gap-1">
+                {selectedProduct.calories} ккал
+                <AlertCircle className="w-3.5 h-3.5" />
+              </span>
             )}
           </div>
+
+          <p className="text-muted-foreground mb-4 text-sm">
+            {selectedProduct.description}
+          </p>
+
+          {/* Ingredients */}
+          <div className="mb-3">
+            <h3 className="font-semibold mb-1">Состав</h3>
+            <p className="text-muted-foreground text-sm">
+              {selectedProduct.ingredients.join(', ')}
+            </p>
+          </div>
+
+          {/* Allergens */}
+          {selectedProduct.allergens.length > 0 && (
+            <div className="mb-4">
+              <h3 className="font-semibold mb-1 flex items-center gap-2">
+                Аллергены
+                <AlertCircle className="w-4 h-4 text-primary" />
+              </h3>
+              <p className="text-muted-foreground text-sm">
+                {selectedProduct.allergens.join(', ')}
+              </p>
+            </div>
+          )}
 
           {/* Footer */}
           <div className="flex items-center gap-4 pt-4 border-t border-border">
