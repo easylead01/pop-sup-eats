@@ -19,10 +19,15 @@ const Header = () => {
   const totalItems = getTotalItems();
   return <header className="sticky top-0 z-40 bg-card/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4">
-        <div className="items-center justify-between h-16 md:h-20 my-[23px] py-[42px] px-0 mx-0 flex flex-row gap-0">
-          {/* Logo */}
-          <div className="flex items-center gap-2">
-            <button onClick={() => setMenuOpen(true)} className="lg:hidden p-2 hover:bg-muted rounded-full transition-colors">
+        <div className="items-center justify-between h-16 md:h-20 my-[23px] py-[42px] px-0 mx-0 flex flex-row gap-0 relative">
+          {/* Menu button - left on mobile/tablet */}
+          <button onClick={() => setMenuOpen(true)} className="xl:hidden p-2 hover:bg-muted rounded-full transition-colors absolute left-0">
+            <Menu className="w-6 h-6" />
+          </button>
+          
+          {/* Logo - centered on mobile/tablet, left on desktop */}
+          <div className="flex items-center gap-2 xl:relative absolute left-1/2 -translate-x-1/2 xl:left-0 xl:translate-x-0">
+            <button onClick={() => setMenuOpen(true)} className="hidden xl:block p-2 hover:bg-muted rounded-full transition-colors">
               <Menu className="w-6 h-6" />
             </button>
             <img alt="OKIAHABA" className="h-16 md:h-20" src="/lovable-uploads/0107a67c-2673-415a-a89e-a28b89381bfd.png" />
