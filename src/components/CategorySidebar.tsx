@@ -33,7 +33,7 @@ const CategorySidebar = () => {
   return <aside className="hidden lg:block w-1/4 flex-shrink-0">
       <div className="sticky top-24 py-6">
         <nav className="flex flex-col gap-2">
-          {categories.map(category => <button key={category.id} onClick={() => scrollToCategory(category.id)} className={`flex items-center gap-3 pl-2 pr-3 py-3 rounded-xl transition-all text-left ${activeCategory === category.id ? 'bg-primary/10 text-primary' : 'hover:bg-muted text-foreground/70 hover:text-foreground'}`}>
+          {categories.map(category => <button key={category.id} onClick={() => scrollToCategory(category.id)} className={`flex items-center gap-3 pl-0 pr-3 py-3 rounded-xl transition-all text-left ${activeCategory === category.id ? 'bg-primary/10 text-primary' : 'hover:bg-muted text-foreground/70 hover:text-foreground'}`}>
               {/* Image */}
               <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
                 <img src={getCategoryImage(category.image)} alt={category.name} className="w-full h-full object-cover" />
