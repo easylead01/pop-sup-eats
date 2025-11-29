@@ -223,6 +223,19 @@ export const products: Product[] = [
     ingredients: ['тесто', 'томатный соус', 'моцарелла', 'базилик'],
     allergens: ['глютен', 'молоко'],
   },
+  {
+    id: '26',
+    name: 'Пицца Четыре сыра',
+    description: 'Моцарелла, горгонзола, пармезан и дорблю — сырное наслаждение',
+    price: 620,
+    weight: '420 г',
+    calories: 780,
+    category: 'pizza',
+    image: 'pizza-pepperoni',
+    ingredients: ['тесто', 'моцарелла', 'горгонзола', 'пармезан', 'дорблю'],
+    allergens: ['глютен', 'молоко'],
+    isNew: true,
+  },
   // Салаты
   {
     id: '18',
@@ -249,6 +262,18 @@ export const products: Product[] = [
     ingredients: ['рис', 'тунец', 'манго', 'авокадо', 'соус спайси'],
     allergens: ['рыба'],
     isNew: true,
+  },
+  {
+    id: '31',
+    name: 'Салат Чука',
+    description: 'Морские водоросли с ореховым соусом и кунжутом',
+    price: 320,
+    weight: '180 г',
+    calories: 150,
+    category: 'salads',
+    image: 'poke-bowl',
+    ingredients: ['водоросли чука', 'ореховый соус', 'кунжут'],
+    allergens: ['орехи', 'кунжут'],
   },
   // WOK
   {
@@ -312,6 +337,19 @@ export const products: Product[] = [
     ingredients: ['рисовая бумага', 'овощи', 'вермишель'],
     allergens: [],
   },
+  {
+    id: '32',
+    name: 'Гёдза с курицей',
+    description: 'Японские пельмени с сочной куриной начинкой',
+    price: 350,
+    weight: '200 г',
+    pieces: '6 шт',
+    category: 'snacks',
+    image: 'gyoza',
+    ingredients: ['тесто', 'курица', 'капуста', 'имбирь'],
+    allergens: ['глютен'],
+    isHit: true,
+  },
   // Соусы
   {
     id: '22',
@@ -334,6 +372,17 @@ export const products: Product[] = [
     image: 'soup-miso',
     ingredients: ['майонез', 'соус чили', 'специи'],
     allergens: ['яйца'],
+  },
+  {
+    id: '33',
+    name: 'Соус Унаги',
+    description: 'Сладкий соус для угря и роллов',
+    price: 60,
+    weight: '50 мл',
+    category: 'sauces',
+    image: 'soup-miso',
+    ingredients: ['соевый соус', 'мирин', 'сахар'],
+    allergens: ['соя'],
   },
 ];
 
