@@ -4,6 +4,7 @@ import promo3 from '@/assets/promo-3.png';
 import promo4 from '@/assets/promo-4.png';
 import promo5 from '@/assets/promo-5.png';
 import promo6 from '@/assets/promo-6.png';
+import promo7 from '@/assets/promo-7.png';
 
 export interface Promo {
   id: string;
@@ -48,5 +49,11 @@ export const promos: Promo[] = [
     title: 'Попробуй новинки',
     gradient: 'from-amber-500 to-orange-600',
     image: promo6,
+  },
+  {
+    id: '7',
+    title: 'Happy Hour 18:00–21:00',
+    gradient: 'from-teal-500 to-emerald-500',
+    image: promo7,
   },
 ];
