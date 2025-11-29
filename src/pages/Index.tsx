@@ -6,6 +6,7 @@ import MenuPopup from '@/components/MenuPopup';
 import ProductPopup from '@/components/ProductPopup';
 import CartPopup from '@/components/CartPopup';
 import AuthPopup from '@/components/AuthPopup';
+import CheckoutSheet from '@/components/CheckoutSheet';
 import { categories, getProductsByCategory } from '@/data/products';
 
 const Index = () => {
@@ -49,11 +50,12 @@ const Index = () => {
         </div>
       </footer>
 
-      {/* Popups */}
+      {/* All Popups & Overlays */}
       <MenuPopup />
       <ProductPopup />
       <CartPopup />
       <AuthPopup />
+      <CheckoutSheet />
     </div>
   );
 };

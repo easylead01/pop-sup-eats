@@ -180,33 +180,27 @@
 @keyframes slideInRight {
   from {
     transform: translateX(100%);
-    opacity: 0;
   }
   to {
     transform: translateX(0);
-    opacity: 1;
   }
 }
 
 @keyframes slideInLeft {
   from {
     transform: translateX(-100%);
-    opacity: 0;
   }
   to {
     transform: translateX(0);
-    opacity: 1;
   }
 }
 
 @keyframes slideInUp {
   from {
     transform: translateY(100%);
-    opacity: 0;
   }
   to {
     transform: translateY(0);
-    opacity: 1;
   }
 }
 
@@ -230,22 +224,46 @@
   }
 }
 
+@keyframes shimmer {
+  from {
+    background-position: -200% 0;
+  }
+  to {
+    background-position: 200% 0;
+  }
+}
+
 .animate-slide-in-right {
-  animation: slideInRight 0.3s ease-out;
+  animation: slideInRight 0.3s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 .animate-slide-in-left {
-  animation: slideInLeft 0.3s ease-out;
+  animation: slideInLeft 0.3s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 .animate-slide-in-up {
-  animation: slideInUp 0.3s ease-out;
+  animation: slideInUp 0.35s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.2s ease-out;
+  animation: fadeIn 0.2s ease-out forwards;
 }
 
 .animate-scale-in {
-  animation: scaleIn 0.2s ease-out;
+  animation: scaleIn 0.25s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* Touch feedback */
+@media (hover: none) {
+  .product-card:active {
+    transform: scale(0.98);
+  }
+  
+  .category-card:active {
+    transform: scale(0.95);
+  }
+  
+  .shorts-card:active {
+    transform: scale(0.97);
+  }
 }

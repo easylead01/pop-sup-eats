@@ -3,11 +3,27 @@ import { X, Phone, ArrowLeft } from 'lucide-react';
 import { useUIStore } from '@/store/uiStore';
 import { toast } from '@/hooks/use-toast';
 import { Input } from '@/components/ui/input';
+import { useSwipeClose } from '@/hooks/useSwipeClose';
 
 const AuthPopup = () => {
-  const { isAuthOpen, setAuthOpen, authStep, setAuthStep, setIsLoggedIn, phoneNumber, setPhoneNumber } = useUIStore();
+  const { isAuthOpen, setAuthOpen, authStep, setAuthStep, setIsLoggedIn, phoneNumber, setPhoneNumber, setCheckoutOpen } = useUIStore();
   const [code, setCode] = useState('');
   const [loading, setLoading] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
+
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setAuthOpen(false);
+      setIsClosing(false);
+    }, 200);
+  };
+
+  const swipeHandlers = useSwipeClose({
+    direction: 'down',
+    threshold: 80,
+    onClose: handleClose,
+  });
 
   if (!isAuthOpen) return null;
 
@@ -22,13 +38,12 @@ const AuthPopup = () => {
     }
     
     setLoading(true);
-    // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1000));
     setLoading(false);
     setAuthStep('code');
     toast({
       title: 'Код отправлен',
-      description: `На номер ${phoneNumber}`,
+      description: `На номер +7${phoneNumber}`,
     });
   };
 
@@ -43,7 +58,6 @@ const AuthPopup = () => {
     }
 
     setLoading(true);
-    // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1000));
     setLoading(false);
     setIsLoggedIn(true);
@@ -53,6 +67,11 @@ const AuthPopup = () => {
       description: 'Вы успешно вошли в аккаунт',
     });
     setCode('');
+    
+    // Open checkout after successful auth
+    setTimeout(() => {
+      setCheckoutOpen(true);
+    }, 300);
   };
 
   const handleBack = () => {
@@ -61,21 +80,33 @@ const AuthPopup = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-50 flex items-end md:items-center justify-center p-0 md:p-4">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-foreground/50 animate-fade-in"
-        onClick={() => setAuthOpen(false)}
+        className={`absolute inset-0 bg-foreground/50 transition-opacity duration-200 ${isClosing ? 'opacity-0' : 'animate-fade-in'}`}
+        onClick={handleClose}
       />
 
       {/* Modal */}
-      <div className="relative bg-card rounded-3xl w-full max-w-md p-6 md:p-8 animate-scale-in shadow-popup">
+      <div 
+        className={`relative bg-card w-full md:max-w-md rounded-t-3xl md:rounded-3xl p-6 md:p-8 shadow-popup transition-all duration-200 ${
+          isClosing 
+            ? 'translate-y-full md:translate-y-0 md:scale-95 md:opacity-0' 
+            : 'animate-slide-in-up md:animate-scale-in'
+        }`}
+        {...swipeHandlers}
+      >
+        {/* Drag Handle (mobile) */}
+        <div className="md:hidden flex justify-center -mt-3 mb-3">
+          <div className="w-10 h-1 bg-muted-foreground/30 rounded-full" />
+        </div>
+
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           {authStep === 'code' ? (
             <button
               onClick={handleBack}
-              className="p-2 hover:bg-muted rounded-full transition-colors -ml-2"
+              className="p-2 hover:bg-muted rounded-full transition-all -ml-2 hover:scale-105 active:scale-95"
             >
               <ArrowLeft className="w-5 h-5" />
             </button>
@@ -84,8 +115,8 @@ const AuthPopup = () => {
           )}
           
           <button
-            onClick={() => setAuthOpen(false)}
-            className="p-2 hover:bg-muted rounded-full transition-colors -mr-2"
+            onClick={handleClose}
+            className="p-2 hover:bg-muted rounded-full transition-all -mr-2 hover:scale-105 active:scale-95"
           >
             <X className="w-5 h-5" />
           </button>
@@ -104,7 +135,7 @@ const AuthPopup = () => {
           <p className="text-muted-foreground">
             {authStep === 'phone'
               ? 'Введите номер телефона для входа'
-              : `Код отправлен на ${phoneNumber}`
+              : `Код отправлен на +7${phoneNumber}`
             }
           </p>
         </div>
@@ -121,14 +152,14 @@ const AuthPopup = () => {
                 placeholder="900 000 00 00"
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value.replace(/\D/g, '').slice(0, 10))}
-                className="pl-12 h-14 text-lg rounded-2xl"
+                className="pl-12 h-14 text-lg"
               />
             </div>
             
             <button
               onClick={handleSendCode}
               disabled={loading}
-              className="w-full bg-foreground text-background py-4 rounded-full font-semibold text-lg hover:bg-foreground/90 transition-colors disabled:opacity-50"
+              className="w-full bg-foreground text-background py-4 rounded-full font-semibold text-lg hover:bg-foreground/90 transition-all disabled:opacity-50 hover:scale-[1.01] active:scale-[0.99]"
             >
               {loading ? 'Отправка...' : 'Получить код'}
             </button>
@@ -140,21 +171,21 @@ const AuthPopup = () => {
               placeholder="Код из SMS"
               value={code}
               onChange={(e) => setCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
-              className="h-14 text-lg text-center tracking-widest rounded-2xl"
+              className="h-14 text-lg text-center tracking-widest"
               maxLength={6}
             />
             
             <button
               onClick={handleVerifyCode}
               disabled={loading}
-              className="w-full bg-foreground text-background py-4 rounded-full font-semibold text-lg hover:bg-foreground/90 transition-colors disabled:opacity-50"
+              className="w-full bg-foreground text-background py-4 rounded-full font-semibold text-lg hover:bg-foreground/90 transition-all disabled:opacity-50 hover:scale-[1.01] active:scale-[0.99]"
             >
               {loading ? 'Проверка...' : 'Войти'}
             </button>
 
             <button
               onClick={handleSendCode}
-              className="w-full text-sm text-primary hover:underline"
+              className="w-full text-sm text-primary hover:underline transition-colors"
             >
               Отправить код повторно
             </button>
