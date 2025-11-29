@@ -35,10 +35,7 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-6">
-            <button onClick={() => setMenuOpen(true)} className="font-medium hover:text-primary transition-colors mx-[8px] my-0 px-[6px] py-0 flex-row flex items-center justify-center gap-[9px] text-2xl">
-              <Menu className="w-5 h-5" />
-              Меню
-            </button>
+            
             
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <MapPin className="w-4 h-4 text-primary rounded" />
