@@ -61,7 +61,7 @@ const CategoryNav = () => {
               </span>
               
               {/* Image */}
-              <div className={`w-20 h-20 md:w-24 md:h-24 transition-transform ${
+              <div className={`w-20 h-20 md:w-24 md:h-24 rounded-[20px] overflow-hidden transition-transform ${
                 activeCategory === category.id
                   ? 'scale-110'
                   : 'group-hover:scale-105'
@@ -69,7 +69,7 @@ const CategoryNav = () => {
                 <img
                   src={getCategoryImage(category.image)}
                   alt={category.name}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover"
                 />
               </div>
             </button>
