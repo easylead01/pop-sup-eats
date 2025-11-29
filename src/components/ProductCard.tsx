@@ -33,7 +33,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         {/* Quick Add Button */}
         <button
           onClick={handleAddToCart}
-          className="absolute bottom-3 right-3 w-10 h-10 bg-primary text-primary-foreground rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-110 active:scale-95 shadow-lg"
+          className="absolute bottom-3 right-3 w-10 h-10 bg-background text-foreground rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-110 active:scale-95 shadow-lg border border-border"
         >
           <Plus className="w-5 h-5" />
         </button>
