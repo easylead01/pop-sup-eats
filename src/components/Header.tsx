@@ -1,4 +1,5 @@
-import { MapPin, Search, SlidersHorizontal, Menu, ShoppingBag, User } from 'lucide-react';
+import { MapPin, Search, SlidersHorizontal, Menu, ShoppingBag, User, Settings } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useCartStore } from '@/store/cartStore';
 import { useUIStore } from '@/store/uiStore';
 import { Button } from '@/components/ui/button';
@@ -51,9 +52,9 @@ const Header = () => {
 
           {/* Right Section */}
           <div className="flex items-center gap-2 md:gap-3">
-            <button className="hidden md:flex p-2.5 hover:bg-muted rounded-full transition-colors">
-              <SlidersHorizontal className="w-5 h-5" />
-            </button>
+            <Link to="/admin" className="hidden md:flex p-2.5 hover:bg-muted rounded-full transition-colors" title="Управление изображениями">
+              <Settings className="w-5 h-5" />
+            </Link>
             
             <button className="p-2.5 hover:bg-muted rounded-full transition-colors">
               <Search className="w-5 h-5" />

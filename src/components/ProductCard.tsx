@@ -3,6 +3,7 @@ import { Product } from '@/data/products';
 import { getProductImage } from '@/lib/images';
 import { useUIStore } from '@/store/uiStore';
 import { useCartStore } from '@/store/cartStore';
+import { useProductImageContext } from '@/components/ProductImageProvider';
 
 interface ProductCardProps {
   product: Product;
@@ -11,6 +12,9 @@ interface ProductCardProps {
 const ProductCard = ({ product }: ProductCardProps) => {
   const { setSelectedProduct } = useUIStore();
   const { addItem } = useCartStore();
+  const { customImages } = useProductImageContext();
+
+  const imageUrl = customImages[product.image] || getProductImage(product.image);
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -25,7 +29,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       {/* Image */}
       <div className="relative aspect-square overflow-hidden bg-secondary/30">
         <img
-          src={getProductImage(product.image)}
+          src={imageUrl}
           alt={product.name}
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
