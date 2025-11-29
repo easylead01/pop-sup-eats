@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import { categories } from '@/data/products';
+import { getCategoryImage } from '@/lib/images';
 
 const CategoryNav = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -48,14 +49,31 @@ const CategoryNav = () => {
             <button
               key={category.id}
               onClick={() => scrollToCategory(category.id)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-full whitespace-nowrap text-sm font-medium transition-all ${
+              className={`relative flex-shrink-0 h-10 px-4 rounded-full overflow-hidden transition-all ${
                 activeCategory === category.id
-                  ? 'bg-primary text-primary-foreground'
-                  : 'bg-muted hover:bg-muted/80 text-foreground'
+                  ? 'ring-2 ring-primary ring-offset-1'
+                  : 'hover:ring-1 hover:ring-border'
               }`}
             >
-              <span>{category.icon}</span>
-              <span>{category.name}</span>
+              {/* Background Image */}
+              <div className="absolute inset-0">
+                <img
+                  src={getCategoryImage(category.image)}
+                  alt=""
+                  className="w-full h-full object-cover"
+                />
+                {/* Overlay */}
+                <div className={`absolute inset-0 ${
+                  activeCategory === category.id
+                    ? 'bg-primary/80'
+                    : 'bg-foreground/60 hover:bg-foreground/50'
+                } transition-colors`} />
+              </div>
+              
+              {/* Text */}
+              <span className="relative z-10 text-sm font-medium text-white whitespace-nowrap">
+                {category.name}
+              </span>
             </button>
           ))}
         </div>
