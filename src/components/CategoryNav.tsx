@@ -49,9 +49,9 @@ const CategoryNav = () => {
             <button
               key={category.id}
               onClick={() => scrollToCategory(category.id)}
-              className={`relative flex-shrink-0 h-10 px-4 rounded-full overflow-hidden transition-all ${
+              className={`relative flex-shrink-0 h-14 px-6 rounded-[20px] overflow-hidden transition-all ${
                 activeCategory === category.id
-                  ? 'ring-2 ring-primary ring-offset-1'
+                  ? 'ring-2 ring-primary ring-offset-2'
                   : 'hover:ring-1 hover:ring-border'
               }`}
             >
@@ -71,7 +71,7 @@ const CategoryNav = () => {
               </div>
               
               {/* Text */}
-              <span className="relative z-10 text-sm font-medium text-white whitespace-nowrap">
+              <span className="relative z-10 text-base font-medium text-white whitespace-nowrap">
                 {category.name}
               </span>
             </button>
