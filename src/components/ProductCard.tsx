@@ -31,7 +31,11 @@ const ProductCard = ({ product }: ProductCardProps) => {
         <img
           src={imageUrl}
           alt={product.name}
-          className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105 p-2"
+          className={`w-full h-full transition-transform duration-300 group-hover:scale-105 ${
+            product.category === 'rolls' || product.category === 'sushi' 
+              ? 'object-contain p-2' 
+              : 'object-cover'
+          }`}
         />
         
         {/* Quick Add Button */}
