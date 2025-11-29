@@ -6,13 +6,19 @@ import { getProductImage } from '@/lib/images';
 import { useSwipeClose } from '@/hooks/useSwipeClose';
 import { toast } from '@/hooks/use-toast';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useProductImageContext } from '@/components/ProductImageProvider';
 
 const ProductPopup = () => {
   const { selectedProduct, setSelectedProduct } = useUIStore();
   const { addItem } = useCartStore();
+  const { customImages } = useProductImageContext();
   const [quantity, setQuantity] = useState(1);
   const [isClosing, setIsClosing] = useState(false);
   const isMobile = useIsMobile();
+  
+  const imageUrl = selectedProduct 
+    ? (customImages[selectedProduct.image] || getProductImage(selectedProduct.image))
+    : '';
 
   const handleClose = () => {
     setIsClosing(true);
@@ -70,7 +76,7 @@ const ProductPopup = () => {
         {/* Image - takes 55% of screen height */}
         <div className="relative h-[55vh] bg-secondary/20 flex-shrink-0">
           <img
-            src={getProductImage(selectedProduct.image)}
+            src={imageUrl}
             alt={selectedProduct.name}
             className="w-full h-full object-cover"
           />
@@ -193,7 +199,7 @@ const ProductPopup = () => {
           {/* Image */}
           <div className="relative aspect-square bg-secondary/20 flex-shrink-0">
             <img
-              src={getProductImage(selectedProduct.image)}
+              src={imageUrl}
               alt={selectedProduct.name}
               className="w-full h-full object-cover"
             />

@@ -4,6 +4,8 @@ import { useCartStore } from '@/store/cartStore';
 import { useUIStore } from '@/store/uiStore';
 import { getProductImage } from '@/lib/images';
 import { useSwipeClose } from '@/hooks/useSwipeClose';
+import { useProductImageContext } from '@/components/ProductImageProvider';
+
 const CartPopup = () => {
   const {
     items,
@@ -17,8 +19,13 @@ const CartPopup = () => {
   const {
     openCheckoutWithAuthCheck
   } = useUIStore();
+  const { customImages } = useProductImageContext();
   const [isClosing, setIsClosing] = useState(false);
   const totalPrice = getTotalPrice();
+  
+  const getImageUrl = (imageKey: string) => {
+    return customImages[imageKey] || getProductImage(imageKey);
+  };
   const handleClose = () => {
     setIsClosing(true);
     setTimeout(() => {
@@ -67,7 +74,7 @@ const CartPopup = () => {
           }}>
                   {/* Image */}
                   <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
-                    <img src={getProductImage(item.product.image)} alt={item.product.name} className="w-full h-full object-cover" />
+                    <img src={getImageUrl(item.product.image)} alt={item.product.name} className="w-full h-full object-cover" />
                   </div>
 
                   {/* Info */}
