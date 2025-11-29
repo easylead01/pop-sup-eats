@@ -145,7 +145,7 @@ const ProductPopup = () => {
           )}
 
           {/* Footer */}
-          <div className="flex items-center gap-4 pt-4 border-t border-border">
+          <div className="flex items-center gap-4 pt-4 pb-8 border-t border-border mt-auto">
             {/* Quantity */}
             <div className="flex items-center gap-3">
               <button
