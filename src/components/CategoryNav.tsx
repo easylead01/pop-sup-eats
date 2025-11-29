@@ -49,11 +49,7 @@ const CategoryNav = () => {
             <button
               key={category.id}
               onClick={() => scrollToCategory(category.id)}
-              className={`relative flex-shrink-0 h-14 px-6 rounded-[10px] overflow-hidden transition-all ${
-                activeCategory === category.id
-                  ? 'ring-2 ring-primary ring-offset-2'
-                  : 'hover:ring-1 hover:ring-border'
-              }`}
+              className="relative flex-shrink-0 h-14 px-6 rounded-[10px] overflow-hidden transition-all"
             >
               {/* Background Image */}
               <div className="absolute inset-0">
