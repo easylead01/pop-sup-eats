@@ -2,6 +2,7 @@ import { MapPin, Search, SlidersHorizontal, Menu, ShoppingBag, User } from 'luci
 import { useCartStore } from '@/store/cartStore';
 import { useUIStore } from '@/store/uiStore';
 import { Button } from '@/components/ui/button';
+import logo from '@/assets/logo.png';
 
 const Header = () => {
   const { setIsOpen: setCartOpen, getTotalPrice, getTotalItems } = useCartStore();
@@ -21,10 +22,7 @@ const Header = () => {
             >
               <Menu className="w-6 h-6" />
             </button>
-            <span className="text-2xl md:text-3xl font-extrabold">
-              <span className="text-primary">SUSHI</span>
-              <span className="text-foreground">BOX</span>
-            </span>
+            <img src={logo} alt="OKIAHABA" className="h-8 md:h-10" />
           </div>
 
           {/* Desktop Navigation */}

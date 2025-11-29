@@ -33,11 +33,8 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
             {/* Logo & Description */}
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">
-                  S
-                </div>
-                <span className="text-xl font-extrabold text-white">SUSHIBOX</span>
+              <div className="mb-4">
+                <img src="/logo.png" alt="OKIAHABA" className="h-10" />
               </div>
               <p className="text-gray-400 text-sm">
                 Доставка вкусных роллов, суши и пиццы по Москве
@@ -78,7 +75,7 @@ const Index = () => {
           {/* Copyright */}
           <div className="border-t border-gray-600 pt-6">
             <p className="text-center text-gray-400 text-sm">
-              © 2025 SUSHIBOX. Все права защищены.
+              © 2025 OKIAHABA. Все права защищены.
             </p>
           </div>
         </div>
