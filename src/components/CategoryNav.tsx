@@ -43,7 +43,7 @@ const CategoryNav = () => {
       <div className="container mx-auto px-4">
         <div
           ref={scrollRef}
-          className="flex gap-6 md:gap-8 overflow-x-auto scrollbar-hide py-4 -mx-4 px-4"
+          className="flex justify-center gap-6 md:gap-8 overflow-x-auto scrollbar-hide py-4 -mx-4 px-4"
         >
           {categories.map((category) => (
             <button
