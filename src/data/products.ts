@@ -18,21 +18,22 @@ export interface Category {
   id: string;
   name: string;
   icon: string;
+  image: string;
 }
 
 export const categories: Category[] = [
-  { id: 'rolls', name: 'Роллы', icon: '🍣' },
-  { id: 'sets', name: 'Сеты', icon: '🍱' },
-  { id: 'sushi', name: 'Суши', icon: '🥢' },
-  { id: 'pizza', name: 'Пицца', icon: '🍕' },
-  { id: 'hot', name: 'Горячие блюда', icon: '🍲' },
-  { id: 'salads', name: 'Салаты', icon: '🥗' },
-  { id: 'wok', name: 'Лапша / WOK', icon: '🍜' },
-  { id: 'drinks', name: 'Напитки', icon: '🥤' },
-  { id: 'snacks', name: 'Закуски', icon: '🥟' },
-  { id: 'soups', name: 'Супы', icon: '🥣' },
-  { id: 'desserts', name: 'Десерты', icon: '🍰' },
-  { id: 'sauces', name: 'Соусы', icon: '🫙' },
+  { id: 'rolls', name: 'Роллы', icon: '🍣', image: 'cat-rolls' },
+  { id: 'sets', name: 'Сеты', icon: '🍱', image: 'cat-sets' },
+  { id: 'sushi', name: 'Суши', icon: '🥢', image: 'cat-sushi' },
+  { id: 'pizza', name: 'Пицца', icon: '🍕', image: 'cat-pizza' },
+  { id: 'hot', name: 'Горячие блюда', icon: '🍲', image: 'cat-hot' },
+  { id: 'salads', name: 'Салаты', icon: '🥗', image: 'cat-salads' },
+  { id: 'wok', name: 'Лапша / WOK', icon: '🍜', image: 'cat-wok' },
+  { id: 'drinks', name: 'Напитки', icon: '🥤', image: 'cat-drinks' },
+  { id: 'snacks', name: 'Закуски', icon: '🥟', image: 'cat-snacks' },
+  { id: 'soups', name: 'Супы', icon: '🥣', image: 'cat-soups' },
+  { id: 'desserts', name: 'Десерты', icon: '🍰', image: 'cat-desserts' },
+  { id: 'sauces', name: 'Соусы', icon: '🫙', image: 'cat-sauces' },
 ];
 
 export const products: Product[] = [
