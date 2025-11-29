@@ -7,26 +7,47 @@ import rollAtlantic from '@/assets/roll-atlantic.png';
 import sushiSalmon from '@/assets/sushi-salmon.png';
 import sushiTuna from '@/assets/sushi-tuna.png';
 import sushiEel from '@/assets/sushi-eel.png';
+import sushiShrimp from '@/assets/sushi-shrimp.png';
+import sushiOctopus from '@/assets/sushi-octopus.png';
+import sushiTamago from '@/assets/sushi-tamago.png';
 import sushiSet from '@/assets/sushi-set.png';
 import sushiSetDuo from '@/assets/sushi-set-duo.png';
 import sushiSetClassic from '@/assets/sushi-set-classic.png';
+import sushiSetParty from '@/assets/sushi-set-party.png';
+import sushiSetSampler from '@/assets/sushi-set-sampler.png';
+import sushiSetMini from '@/assets/sushi-set-mini.png';
 import wokNoodles from '@/assets/wok-noodles.png';
 import wokShrimp from '@/assets/wok-shrimp.png';
 import wokBeef from '@/assets/wok-beef.png';
+import wokTofu from '@/assets/wok-tofu.png';
+import wokPadThai from '@/assets/wok-pad-thai.png';
+import wokSingapore from '@/assets/wok-singapore.png';
 import soupMiso from '@/assets/soup-miso.png';
 import pizzaPepperoni from '@/assets/pizza-pepperoni.png';
 import pizzaMargherita from '@/assets/pizza-margherita.png';
 import pizzaFourCheese from '@/assets/pizza-four-cheese.png';
+import pizzaHawaiian from '@/assets/pizza-hawaiian.png';
+import pizzaBbq from '@/assets/pizza-bbq.png';
+import pizzaMushroom from '@/assets/pizza-mushroom.png';
 import gyoza from '@/assets/gyoza.png';
 import mochi from '@/assets/mochi.png';
 import pokeBowl from '@/assets/poke-bowl.png';
 import pokeTuna from '@/assets/poke-tuna.png';
+import pokeShrimp from '@/assets/poke-shrimp.png';
 import saladChuka from '@/assets/salad-chuka.png';
+import saladChicken from '@/assets/salad-chicken.png';
+import saladGlassNoodle from '@/assets/salad-glass-noodle.png';
 import edamame from '@/assets/edamame.png';
 import springRolls from '@/assets/spring-rolls.png';
+import tempura from '@/assets/tempura.png';
+import takoyaki from '@/assets/takoyaki.png';
+import karaage from '@/assets/karaage.png';
 import sauceSoy from '@/assets/sauce-soy.png';
 import sauceSpicyMayo from '@/assets/sauce-spicy-mayo.png';
 import sauceUnagi from '@/assets/sauce-unagi.png';
+import sauceTeriyaki from '@/assets/sauce-teriyaki.png';
+import sauceWasabi from '@/assets/sauce-wasabi.png';
+import sauceGinger from '@/assets/sauce-ginger.png';
 
 // Category images
 import catRolls from '@/assets/cat-rolls.png';
@@ -52,26 +73,47 @@ export const productImages: Record<string, string> = {
   'sushi-salmon': sushiSalmon,
   'sushi-tuna': sushiTuna,
   'sushi-eel': sushiEel,
+  'sushi-shrimp': sushiShrimp,
+  'sushi-octopus': sushiOctopus,
+  'sushi-tamago': sushiTamago,
   'sushi-set': sushiSet,
   'sushi-set-duo': sushiSetDuo,
   'sushi-set-classic': sushiSetClassic,
+  'sushi-set-party': sushiSetParty,
+  'sushi-set-sampler': sushiSetSampler,
+  'sushi-set-mini': sushiSetMini,
   'wok-noodles': wokNoodles,
   'wok-shrimp': wokShrimp,
   'wok-beef': wokBeef,
+  'wok-tofu': wokTofu,
+  'wok-pad-thai': wokPadThai,
+  'wok-singapore': wokSingapore,
   'soup-miso': soupMiso,
   'pizza-pepperoni': pizzaPepperoni,
   'pizza-margherita': pizzaMargherita,
   'pizza-four-cheese': pizzaFourCheese,
+  'pizza-hawaiian': pizzaHawaiian,
+  'pizza-bbq': pizzaBbq,
+  'pizza-mushroom': pizzaMushroom,
   'gyoza': gyoza,
   'mochi': mochi,
   'poke-bowl': pokeBowl,
   'poke-tuna': pokeTuna,
+  'poke-shrimp': pokeShrimp,
   'salad-chuka': saladChuka,
+  'salad-chicken': saladChicken,
+  'salad-glass-noodle': saladGlassNoodle,
   'edamame': edamame,
   'spring-rolls': springRolls,
+  'tempura': tempura,
+  'takoyaki': takoyaki,
+  'karaage': karaage,
   'sauce-soy': sauceSoy,
   'sauce-spicy-mayo': sauceSpicyMayo,
   'sauce-unagi': sauceUnagi,
+  'sauce-teriyaki': sauceTeriyaki,
+  'sauce-wasabi': sauceWasabi,
+  'sauce-ginger': sauceGinger,
 };
 
 export const categoryImages: Record<string, string> = {
