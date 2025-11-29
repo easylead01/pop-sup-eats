@@ -1,6 +1,7 @@
 import Header from '@/components/Header';
 import ShortsCarousel from '@/components/ShortsCarousel';
 import CategoryNav from '@/components/CategoryNav';
+import CategorySidebar from '@/components/CategorySidebar';
 import CategorySection from '@/components/CategorySection';
 import MenuPopup from '@/components/MenuPopup';
 import ProductPopup from '@/components/ProductPopup';
@@ -16,16 +17,23 @@ const Index = () => {
       <ShortsCarousel />
       <CategoryNav />
       
-      <main className="pb-20">
-        {categories.map((category) => (
-          <CategorySection
-            key={category.id}
-            id={category.id}
-            name={category.name}
-            products={getProductsByCategory(category.id)}
-          />
-        ))}
-      </main>
+      {/* Main content with sidebar */}
+      <div className="container mx-auto px-4 flex">
+        {/* Sidebar menu - desktop only */}
+        <CategorySidebar />
+        
+        {/* Products */}
+        <main className="flex-1 pb-20">
+          {categories.map((category) => (
+            <CategorySection
+              key={category.id}
+              id={category.id}
+              name={category.name}
+              products={getProductsByCategory(category.id)}
+            />
+          ))}
+        </main>
+      </div>
 
       {/* Footer */}
       <footer className="bg-[#2B2D33] py-12">

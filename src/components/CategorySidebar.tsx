@@ -1,9 +1,8 @@
-import { useRef, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { categories } from '@/data/products';
 import { getCategoryImage } from '@/lib/images';
 
-const CategoryNav = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
+const CategorySidebar = () => {
   const [activeCategory, setActiveCategory] = useState('rolls');
 
   useEffect(() => {
@@ -39,45 +38,38 @@ const CategoryNav = () => {
   };
 
   return (
-    <nav className="lg:hidden sticky top-16 md:top-20 z-30 bg-background border-b border-border">
-      <div className="container mx-auto px-4">
-        <div
-          ref={scrollRef}
-          className="flex justify-center gap-6 md:gap-8 overflow-x-auto scrollbar-hide py-4 -mx-4 px-4"
-        >
+    <aside className="hidden lg:block w-1/4 flex-shrink-0">
+      <div className="sticky top-24 p-4">
+        <nav className="flex flex-col gap-2">
           {categories.map((category) => (
             <button
               key={category.id}
               onClick={() => scrollToCategory(category.id)}
-              className="flex flex-col items-center gap-2 flex-shrink-0 group"
+              className={`flex items-center gap-3 p-3 rounded-xl transition-all text-left ${
+                activeCategory === category.id
+                  ? 'bg-primary/10 text-primary'
+                  : 'hover:bg-muted text-foreground/70 hover:text-foreground'
+              }`}
             >
-              {/* Text */}
-              <span className={`text-sm font-medium whitespace-nowrap transition-colors ${
-                activeCategory === category.id
-                  ? 'text-primary'
-                  : 'text-foreground/70 group-hover:text-foreground'
-              }`}>
-                {category.name}
-              </span>
-              
               {/* Image */}
-              <div className={`w-16 h-10 md:w-20 md:h-12 rounded-xl overflow-hidden transition-transform ${
-                activeCategory === category.id
-                  ? 'scale-110'
-                  : 'group-hover:scale-105'
-              }`}>
+              <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
                 <img
                   src={getCategoryImage(category.image)}
                   alt={category.name}
                   className="w-full h-full object-cover"
                 />
               </div>
+              
+              {/* Text */}
+              <span className="text-sm font-medium">
+                {category.name}
+              </span>
             </button>
           ))}
-        </div>
+        </nav>
       </div>
-    </nav>
+    </aside>
   );
 };
 
-export default CategoryNav;
+export default CategorySidebar;
