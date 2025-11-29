@@ -39,37 +39,39 @@ const CategoryNav = () => {
   };
 
   return (
-    <nav className="sticky top-16 md:top-20 z-30 bg-card/95 backdrop-blur-sm border-b border-border">
+    <nav className="sticky top-16 md:top-20 z-30 bg-background border-b border-border">
       <div className="container mx-auto px-4">
         <div
           ref={scrollRef}
-          className="flex gap-2 overflow-x-auto scrollbar-hide py-3 -mx-4 px-4"
+          className="flex gap-6 md:gap-8 overflow-x-auto scrollbar-hide py-4 -mx-4 px-4"
         >
           {categories.map((category) => (
             <button
               key={category.id}
               onClick={() => scrollToCategory(category.id)}
-              className="relative flex-shrink-0 h-14 px-6 rounded-[10px] overflow-hidden transition-all"
+              className="flex flex-col items-center gap-2 flex-shrink-0 group"
             >
-              {/* Background Image */}
-              <div className="absolute inset-0">
-                <img
-                  src={getCategoryImage(category.image)}
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
-                {/* Overlay */}
-              <div className={`absolute inset-0 ${
-                  activeCategory === category.id
-                    ? 'bg-primary/60'
-                    : 'bg-foreground/20 hover:bg-foreground/30'
-                } transition-colors`} />
-              </div>
-              
               {/* Text */}
-              <span className="relative z-10 text-base font-medium text-white whitespace-nowrap">
+              <span className={`text-sm font-medium whitespace-nowrap transition-colors ${
+                activeCategory === category.id
+                  ? 'text-primary'
+                  : 'text-foreground/70 group-hover:text-foreground'
+              }`}>
                 {category.name}
               </span>
+              
+              {/* Image */}
+              <div className={`w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden transition-all ${
+                activeCategory === category.id
+                  ? 'ring-2 ring-primary'
+                  : 'group-hover:scale-105'
+              }`}>
+                <img
+                  src={getCategoryImage(category.image)}
+                  alt={category.name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </button>
           ))}
         </div>
