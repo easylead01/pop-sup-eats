@@ -1,6 +1,8 @@
+import { Plus } from 'lucide-react';
 import { Product } from '@/data/products';
 import { getProductImage } from '@/lib/images';
 import { useUIStore } from '@/store/uiStore';
+import { useCartStore } from '@/store/cartStore';
 
 interface ProductCardProps {
   product: Product;
@@ -8,6 +10,12 @@ interface ProductCardProps {
 
 const ProductCard = ({ product }: ProductCardProps) => {
   const { setSelectedProduct } = useUIStore();
+  const { addItem } = useCartStore();
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    addItem(product);
+  };
 
   return (
     <div
@@ -21,6 +29,14 @@ const ProductCard = ({ product }: ProductCardProps) => {
           alt={product.name}
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
+        
+        {/* Quick Add Button */}
+        <button
+          onClick={handleAddToCart}
+          className="absolute bottom-3 right-3 w-10 h-10 bg-primary text-primary-foreground rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-110 active:scale-95 shadow-lg"
+        >
+          <Plus className="w-5 h-5" />
+        </button>
         
         {/* Badges */}
         <div className="absolute top-3 left-3 flex flex-col gap-2">
