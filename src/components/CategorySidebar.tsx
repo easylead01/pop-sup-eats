@@ -33,14 +33,14 @@ const CategorySidebar = () => {
   return <aside className="hidden xl:block w-48 flex-shrink-0">
       <div className="sticky top-24 py-6">
         <nav className="flex flex-col gap-2">
-          {categories.map(category => <button key={category.id} onClick={() => scrollToCategory(category.id)} className={`flex items-center gap-3 pl-0 pr-3 py-3 rounded-xl transition-all text-left ${activeCategory === category.id ? 'bg-primary/10 text-primary' : 'hover:bg-muted text-foreground/70 hover:text-foreground'}`}>
+          {categories.map(category => <button key={category.id} onClick={() => scrollToCategory(category.id)} className={`flex items-center gap-3 pl-0 pr-3 py-3 rounded-xl transition-all duration-200 text-left group ${activeCategory === category.id ? 'text-primary' : 'text-foreground/70 hover:text-foreground'}`}>
               {/* Image */}
-              <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
+              <div className={`w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 transition-transform duration-200 ${activeCategory === category.id ? 'scale-110' : 'group-hover:scale-105'}`}>
                 <img src={getCategoryImage(category.image)} alt={category.name} className="w-full h-full object-cover" />
               </div>
               
               {/* Text */}
-              <span className="text-sm font-medium">
+              <span className={`text-sm font-medium transition-transform duration-200 ${activeCategory === category.id ? 'scale-105 font-semibold' : 'group-hover:scale-105'}`}>
                 {category.name}
               </span>
             </button>)}
