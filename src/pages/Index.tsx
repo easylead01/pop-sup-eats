@@ -8,6 +8,7 @@ import ProductPopup from '@/components/ProductPopup';
 import CartPopup from '@/components/CartPopup';
 import AuthPopup from '@/components/AuthPopup';
 import CheckoutSheet from '@/components/CheckoutSheet';
+import FloatingCartButton from '@/components/FloatingCartButton';
 import { categories, getProductsByCategory } from '@/data/products';
 
 const Index = () => {
@@ -88,6 +89,9 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      {/* Floating Cart Button - Mobile only */}
+      <FloatingCartButton />
 
       {/* All Popups & Overlays */}
       <MenuPopup />

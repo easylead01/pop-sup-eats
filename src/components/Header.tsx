@@ -52,21 +52,21 @@ const Header = () => {
 
           {/* Right Section */}
           <div className="flex items-center gap-2 md:gap-3">
-            <Link to="/admin" className="hidden md:flex p-2.5 hover:bg-muted rounded-full transition-colors" title="Управление изображениями">
+            <Link to="/admin" className="hidden xl:flex p-2.5 hover:bg-muted rounded-full transition-colors" title="Управление изображениями">
               <Settings className="w-5 h-5" />
             </Link>
             
-            <button className="p-2.5 hover:bg-muted rounded-full transition-colors">
+            <button className="hidden xl:flex p-2.5 hover:bg-muted rounded-full transition-colors">
               <Search className="w-5 h-5" />
             </button>
             
-            <Button variant="ghost" size="sm" onClick={() => setAuthOpen(true)} className="hidden md:flex items-center gap-2 rounded-full px-4">
+            <Button variant="ghost" size="sm" onClick={() => setAuthOpen(true)} className="hidden xl:flex items-center gap-2 rounded-full px-4">
               <User className="w-4 h-4" />
               {isLoggedIn ? 'Профиль' : 'Войти'}
             </Button>
 
-            {/* Cart Button */}
-            <button onClick={() => setCartOpen(true)} className="flex items-center gap-2 bg-foreground text-background px-4 py-2.5 rounded-full font-semibold text-sm hover:bg-foreground/90 transition-colors">
+            {/* Cart Button - Desktop only */}
+            <button onClick={() => setCartOpen(true)} className="hidden xl:flex items-center gap-2 bg-foreground text-background px-4 py-2.5 rounded-full font-semibold text-sm hover:bg-foreground/90 transition-colors">
               <ShoppingBag className="w-5 h-5" />
               <span>{totalItems > 0 ? `${totalPrice} ₽` : '0 ₽'}</span>
             </button>
