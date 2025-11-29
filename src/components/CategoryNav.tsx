@@ -66,7 +66,7 @@ const CategoryNav = () => {
                 <div className={`absolute inset-0 ${
                   activeCategory === category.id
                     ? 'bg-primary/80'
-                    : 'bg-foreground/60 hover:bg-foreground/50'
+                    : 'bg-foreground/20 hover:bg-foreground/30'
                 } transition-colors`} />
               </div>
               
