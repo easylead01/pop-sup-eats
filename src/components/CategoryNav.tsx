@@ -59,9 +59,9 @@ const CategoryNav = () => {
                   className="w-full h-full object-cover"
                 />
                 {/* Overlay */}
-                <div className={`absolute inset-0 ${
+              <div className={`absolute inset-0 ${
                   activeCategory === category.id
-                    ? 'bg-primary/80'
+                    ? 'bg-primary/60'
                     : 'bg-foreground/20 hover:bg-foreground/30'
                 } transition-colors`} />
               </div>
