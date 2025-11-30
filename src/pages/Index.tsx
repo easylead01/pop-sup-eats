@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
 import ShortsCarousel from '@/components/ShortsCarousel';
+import logo from '@/assets/logo.png';
 import CategoryNav from '@/components/CategoryNav';
 import CategorySidebar from '@/components/CategorySidebar';
 import CategorySection from '@/components/CategorySection';
@@ -43,7 +44,7 @@ const Index = () => {
             {/* Logo & Description */}
             <div>
               <div className="mb-4">
-                <img src="/logo.png" alt="OKIAHABA" className="h-10" />
+                <img src={logo} alt="OKIAHABA" className="h-10" />
               </div>
               <p className="text-gray-400 text-sm">
                 Доставка вкусных роллов, суши и пиццы по Москве
