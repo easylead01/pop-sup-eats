@@ -13,12 +13,18 @@ export const useProductImages = () => {
   return useQuery({
     queryKey: ['product-images'],
     queryFn: async () => {
+      console.log("Skipping Supabase fetch on GitHub Pages");
+      return [] as ProductImage[];
+      
+      /* 
+      // Original code commented out for GitHub Pages deployment without env vars
       const { data, error } = await supabase
         .from('product_images')
         .select('*');
       
       if (error) throw error;
       return data as ProductImage[];
+      */
     },
   });
 };
