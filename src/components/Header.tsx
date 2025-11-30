@@ -30,7 +30,7 @@ const Header = () => {
             <button onClick={() => setMenuOpen(true)} className="hidden xl:block p-2 hover:bg-muted rounded-full transition-colors">
               <Menu className="w-6 h-6" />
             </button>
-            <img alt="OKIAHABA" className="h-16 md:h-20" src="/lovable-uploads/0107a67c-2673-415a-a89e-a28b89381bfd.png" />
+            <img alt="OKIAHABA" className="h-16 md:h-20" src={logo} />
           </div>
 
           {/* Desktop Navigation */}
