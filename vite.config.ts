@@ -4,7 +4,7 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "/pop-sup-eats/",
+  base: mode === 'production' ? "/pop-sup-eats/" : "/",
   server: {
     host: "::",
     port: 8080,
