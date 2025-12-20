@@ -1,0 +1,160 @@
+[
+  {
+    "id": "165",
+    "name": "Картофель фри",
+    "description": "Картофель",
+    "price": 250,
+    "imageUrl": "/files/images/cache/Goods/Good165/7678b4f03a-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/goracie-zakuski-kartofel-fri",
+    "weight": "230 гр",
+    "ingredients": [
+      "Картофель"
+    ]
+  },
+  {
+    "id": "168",
+    "name": "Луковые кольца в кляре",
+    "description": "Кляр, Луковые кольца",
+    "price": 280,
+    "imageUrl": "/files/images/cache/Goods/Good168/a66cfabb56-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/lukovye-kolca-v-klare",
+    "weight": "180 гр",
+    "ingredients": [
+      "Кляр",
+      "Луковые кольца"
+    ]
+  },
+  {
+    "id": "267",
+    "name": "Картофель по деревенски",
+    "description": "Картофель",
+    "price": 290,
+    "imageUrl": "/files/images/cache/Goods/Good267/24504a7814-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/goracie-zakuski-kartofel-po-derevenski",
+    "weight": "230 гр",
+    "pieces": "1 шт",
+    "ingredients": [
+      "Картофель"
+    ]
+  },
+  {
+    "id": "357",
+    "name": "Стрипсы",
+    "description": "Курица, сухари",
+    "price": 300,
+    "imageUrl": "/files/images/cache/Goods/Good357/97b351504e-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/goracie-zakuski-stripsy",
+    "weight": "",
+    "pieces": "5 шт",
+    "ingredients": [
+      "Курица",
+      "сухари"
+    ]
+  },
+  {
+    "id": "169",
+    "name": "Наггетсы в хрустящей панировке",
+    "description": "Курица, Панировка",
+    "price": 310,
+    "imageUrl": "/files/images/cache/Goods/Good169/6c7875bb73-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/goracie-zakuski-naggetsy-v-hrustasej-panirovke",
+    "weight": "",
+    "pieces": "10 шт",
+    "ingredients": [
+      "Курица",
+      "Панировка"
+    ]
+  },
+  {
+    "id": "346",
+    "name": "Сырные палочки",
+    "description": "Панировка, Сыр",
+    "price": 290,
+    "imageUrl": "/files/images/cache/Goods/Good346/657c906cf7-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/goracie-zakuski-syrnye-palocki",
+    "weight": "",
+    "pieces": "7 шт",
+    "oldPrice": 320,
+    "economy": 30,
+    "ingredients": [
+      "Панировка",
+      "Сыр"
+    ]
+  },
+  {
+    "id": "166",
+    "name": "Кольца кальмара в кляре",
+    "description": "Кляр, Кольца кальмара",
+    "price": 350,
+    "imageUrl": "/files/images/cache/Goods/Good166/29dc33a2bb-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/goracie-zakuski-kolca-kalmara-v-klare",
+    "weight": "180 гр",
+    "ingredients": [
+      "Кляр",
+      "Кольца кальмара"
+    ]
+  },
+  {
+    "id": "274",
+    "name": "Крылья ( в меру острые)",
+    "description": "Куриные крылья",
+    "price": 390,
+    "imageUrl": "/files/images/cache/Goods/Good274/deae3d04dd-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/goracie-zakuski-kryla",
+    "weight": "",
+    "pieces": "6 шт",
+    "oldPrice": 410,
+    "economy": 20,
+    "ingredients": [
+      "Куриные крылья"
+    ]
+  },
+  {
+    "id": "167",
+    "name": "Креветки в кляре",
+    "description": "Тигровые креветки , Кляр",
+    "price": 500,
+    "imageUrl": "/files/images/cache/Goods/Good167/ddacdd6f5f-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/goracie-zakuski-krevetki-v-klare",
+    "weight": "",
+    "pieces": "6 шт",
+    "ingredients": [
+      "Тигровые креветки",
+      "Кляр"
+    ]
+  },
+  {
+    "id": "275",
+    "name": "Мидии запеченные с сыром",
+    "description": "Кунжут, Сыр, мидии",
+    "price": 490,
+    "imageUrl": "/files/images/cache/Goods/Good275/36a286dd6f-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/goracie-zakuski-midii-zapecennye",
+    "weight": "",
+    "pieces": "5 шт",
+    "oldPrice": 540,
+    "economy": 50,
+    "ingredients": [
+      "Кунжут",
+      "Сыр",
+      "мидии"
+    ]
+  },
+  {
+    "id": "326",
+    "name": "Мидии запеченные острые",
+    "description": "Кунжут, Спайси соус, мидии",
+    "price": 490,
+    "imageUrl": "/files/images/cache/Goods/Good326/7a6091dae9-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/goracie-zakuski-midii-zapecennye-ostrye",
+    "weight": "",
+    "pieces": "5 шт",
+    "oldPrice": 540,
+    "economy": 50,
+    "ingredients": [
+      "Кунжут",
+      "Спайси соус",
+      "мидии"
+    ]
+  }
+]

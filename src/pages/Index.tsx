@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import ShortsCarousel from '@/components/ShortsCarousel';
 import logo from '@/assets/logo.png';
@@ -11,8 +12,16 @@ import AuthPopup from '@/components/AuthPopup';
 import CheckoutSheet from '@/components/CheckoutSheet';
 import FloatingCartButton from '@/components/FloatingCartButton';
 import { categories, getProductsByCategory } from '@/data/products';
+import { ChevronUp } from 'lucide-react';
 
 const Index = () => {
+  const [showTop, setShowTop] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setShowTop(window.scrollY > 300);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -100,6 +109,20 @@ const Index = () => {
       <CartPopup />
       <AuthPopup />
       <CheckoutSheet />
+      
+      {/* Scroll To Top */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        className={`fixed z-50 rounded-full bg-black text-white flex items-center justify-center shadow-lg transition-opacity duration-200 
+          ${showTop ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}
+          w-11 h-11 md:w-11 md:h-11 xl:w-12 xl:h-12
+          bottom-6 right-6 md:bottom-6 md:right-6 xl:bottom-8 xl:right-8
+        `}
+        aria-label="Наверх"
+        title="Наверх"
+      >
+        <ChevronUp className="w-5 h-5 md:w-5 md:h-5 xl:w-6 xl:h-6" />
+      </button>
     </div>
   );
 };

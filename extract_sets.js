@@ -8,9 +8,11 @@ const inputPath = argInput ? path.resolve(argInput) : (fs.existsSync(mhtmlPath) 
 const basename = path.basename(inputPath);
 const isSushi = /суши|sushi/i.test(basename);
 const isPizza = /пицца|pizza/i.test(basename);
+const isSnacks = /закус|snack/i.test(basename);
 const jsonPath = path.resolve(
   isSushi ? 'src/data/sushi.catalog.json' :
   isPizza ? 'src/data/pizza.catalog.json' :
+  isSnacks ? 'src/data/snacks.catalog.json' :
   'src/data/sets.catalog.json'
 );
 
@@ -92,4 +94,4 @@ for (let i = 1; i < chunks.length; i++) {
 }
 
 fs.writeFileSync(jsonPath, JSON.stringify(items, null, 2), 'utf-8');
-console.log(`Extracted ${items.length} ${isSushi ? 'sushi' : (isPizza ? 'pizza' : 'sets')} from ${path.basename(sourcePath)} to ${jsonPath}`);
+console.log(`Extracted ${items.length} ${isSushi ? 'sushi' : (isPizza ? 'pizza' : (isSnacks ? 'snacks' : 'sets'))} from ${path.basename(sourcePath)} to ${jsonPath}`);

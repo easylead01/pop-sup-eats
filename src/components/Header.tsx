@@ -30,7 +30,9 @@ const Header = () => {
             <button onClick={() => setMenuOpen(true)} className="hidden xl:block p-2 hover:bg-muted rounded-full transition-colors">
               <Menu className="w-6 h-6" />
             </button>
-            <img alt="OKIAHABA" className="h-16 md:h-20" src={logo} />
+            <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+              <img alt="OKIAHABA" className="h-16 md:h-20 cursor-pointer" src={logo} />
+            </Link>
           </div>
 
           {/* Desktop Navigation */}

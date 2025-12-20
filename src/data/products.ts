@@ -1,6 +1,7 @@
 import setsCatalog from '@/data/sets.catalog.json';
 import sushiCatalog from '@/data/sushi.catalog.json';
 import pizzaCatalog from '@/data/pizza.catalog.json';
+import snacksCatalog from '@/data/snacks.catalog.json';
 type SetItem = {
   id: string | number;
   name: string;
@@ -2373,251 +2374,242 @@ export const products: Product[] = [
     ]
   },
   {
-    "id": "18",
-    "name": "Поке с лососем",
-    "description": "Свежий поке боул с лососем, авокадо и эдамаме",
-    "price": 590,
-    "weight": "320 г",
-    "calories": 420,
-    "category": "salads",
-    "image": "poke-bowl",
-    "ingredients": [
-      "рис",
-      "лосось",
-      "авокадо",
-      "эдамаме",
-      "огурец",
-      "соус"
-    ],
-    "allergens": [
-      "рыба",
-      "соя"
-    ],
-    "isHit": true
-  },
-  {
-    "id": "28",
-    "name": "Поке с тунцом",
-    "description": "Яркий поке с тунцом и манго",
-    "price": 620,
-    "weight": "310 г",
-    "calories": 390,
-    "category": "salads",
-    "image": "poke-tuna",
-    "ingredients": [
-      "рис",
-      "тунец",
-      "манго",
-      "авокадо",
-      "соус спайси"
-    ],
-    "allergens": [
-      "рыба"
-    ],
-    "isNew": true
-  },
-  {
-    "id": "31",
-    "name": "Салат Чука",
-    "description": "Морские водоросли с ореховым соусом и кунжутом",
-    "price": 320,
-    "weight": "180 г",
-    "calories": 150,
-    "category": "salads",
-    "image": "salad-chuka",
-    "ingredients": [
-      "водоросли чука",
-      "ореховый соус",
-      "кунжут"
-    ],
-    "allergens": [
-      "орехи",
-      "кунжут"
-    ]
-  },
-  {
-    "id": "43",
-    "name": "Поке с креветками",
-    "description": "Сочные креветки с рисом и овощами",
-    "price": 640,
-    "weight": "330 г",
-    "calories": 400,
-    "category": "salads",
-    "image": "poke-shrimp",
-    "ingredients": [
-      "рис",
-      "креветки",
-      "авокадо",
-      "огурец",
-      "соус понзу"
-    ],
-    "allergens": [
-      "ракообразные",
-      "соя"
-    ]
-  },
-  {
-    "id": "44",
-    "name": "Салат с курицей",
-    "description": "Тёплый салат с курицей гриль и овощами",
-    "price": 450,
-    "weight": "280 г",
-    "calories": 350,
-    "category": "salads",
-    "image": "salad-chicken",
-    "ingredients": [
-      "курица",
-      "перец",
-      "помидоры",
-      "зелень",
-      "соус"
-    ],
-    "allergens": []
-  },
-  {
-    "id": "45",
-    "name": "Фунчоза с овощами",
-    "description": "Лёгкий салат из стеклянной лапши с овощами",
-    "price": 380,
-    "weight": "220 г",
-    "calories": 200,
-    "category": "salads",
-    "image": "salad-glass-noodle",
-    "ingredients": [
-      "фунчоза",
-      "морковь",
-      "огурец",
-      "перец",
-      "соус"
-    ],
-    "allergens": [
-      "соя"
-    ]
-  },
-  {
-    "id": "13",
-    "name": "WOK с курицей и овощами",
-    "description": "Хрустящие овощи и нежная курица в азиатском соусе",
-    "price": 420,
-    "weight": "350 г",
-    "calories": 450,
+    "id": "333",
+    "name": "Лапша WOK Лапша рисовая с курицей",
+    "description": "Курица, Кунжут, Лапша рисовая, Овощной микс, Соус кисло сладкий",
+    "price": 440,
+    "weight": "450 гр",
     "category": "wok",
-    "image": "wok-noodles",
+    "image": "/files/images/cache/Goods/Good333/0f0e28f891-1_328.jpg",
     "ingredients": [
-      "лапша удон",
-      "курица",
-      "перец",
-      "морковь",
-      "соус терияки"
+      "Курица",
+      "Кунжут",
+      "Лапша рисовая",
+      "Овощной микс",
+      "Соус кисло сладкий"
     ],
-    "allergens": [
-      "глютен",
-      "соя"
-    ]
+    "allergens": [],
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/lapsa-wok-lapsa-risovaa-s-kuricej",
+    "oldPrice": 490,
+    "economy": 50
   },
   {
-    "id": "14",
-    "name": "WOK с креветками",
-    "description": "Королевские креветки с рисовой лапшой",
-    "price": 550,
-    "weight": "320 г",
-    "calories": 380,
+    "id": "334",
+    "name": "Лапша WOK Лапша гречневая с курицей",
+    "description": "Курица, Кунжут, Соевый соус, Овощной микс, Лапша гречневая",
+    "price": 440,
+    "weight": "450 гр",
     "category": "wok",
-    "image": "wok-shrimp",
+    "image": "/files/images/cache/Goods/Good334/ba48c20a44-1_328.jpg",
     "ingredients": [
-      "рисовая лапша",
-      "креветки",
-      "овощи",
-      "соус"
+      "Курица",
+      "Кунжут",
+      "Соевый соус",
+      "Овощной микс",
+      "Лапша гречневая"
     ],
-    "allergens": [
-      "ракообразные",
-      "соя"
-    ],
-    "isHit": true
+    "allergens": [],
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/lapsa-wok-lapsa-vok-grecnevaa"
   },
   {
-    "id": "15",
-    "name": "WOK с говядиной",
-    "description": "Сочная говядина с яичной лапшой",
-    "price": 490,
-    "weight": "340 г",
-    "calories": 520,
+    "id": "335",
+    "name": "Лапша WOK Лапша рисовая с морепродуктами",
+    "description": "Кунжут, Лапша рисовая, Овощной микс, Морепродукты, Соус Терияки",
+    "price": 440,
+    "weight": "450 гр",
     "category": "wok",
-    "image": "wok-beef",
+    "image": "/files/images/cache/Goods/Good335/37b28ccb3f-1_328.jpg",
     "ingredients": [
-      "яичная лапша",
-      "говядина",
-      "овощи",
-      "соус терияки"
+      "Кунжут",
+      "Лапша рисовая",
+      "Овощной микс",
+      "Морепродукты",
+      "Соус Терияки"
     ],
-    "allergens": [
-      "глютен",
-      "соя",
-      "яйца"
-    ]
+    "allergens": [],
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/lapsa-wok-lapsa-risovaa",
+    "oldPrice": 490,
+    "economy": 50
   },
   {
-    "id": "46",
-    "name": "WOK с тофу",
-    "description": "Веганский вок с хрустящим тофу и овощами",
-    "price": 390,
-    "weight": "320 г",
-    "calories": 320,
+    "id": "336",
+    "name": "Лапша WOK Лапша рисовая со свининой",
+    "description": "Кунжут, Лапша рисовая, Овощной микс, Свинина, Соус Кимчи",
+    "price": 440,
+    "weight": "450 гр",
     "category": "wok",
-    "image": "wok-tofu",
+    "image": "/files/images/cache/Goods/Good336/472b99a551-1_328.jpg",
     "ingredients": [
-      "рисовая лапша",
-      "тофу",
-      "овощи",
-      "соус терияки"
+      "Кунжут",
+      "Лапша рисовая",
+      "Овощной микс",
+      "Свинина",
+      "Соус Кимчи"
     ],
-    "allergens": [
-      "соя",
-      "глютен"
-    ],
-    "isNew": true
+    "allergens": [],
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/lapsa-wok-lapsa-risovaa-so-svininoj",
+    "oldPrice": 490,
+    "economy": 50
   },
   {
-    "id": "47",
-    "name": "Пад Тай",
-    "description": "Классическая тайская лапша с арахисом",
-    "price": 480,
-    "weight": "330 г",
-    "calories": 480,
+    "id": "337",
+    "name": "Лапша WOK Лапша гречневая со свининой",
+    "description": "Кунжут, Овощной микс, Соус Терияки, Свинина, Лапша гречневая",
+    "price": 440,
+    "weight": "450 гр",
     "category": "wok",
-    "image": "wok-pad-thai",
+    "image": "/files/images/cache/Goods/Good337/08012bc9ce-1_328.jpg",
     "ingredients": [
-      "рисовая лапша",
-      "яйцо",
-      "арахис",
-      "ростки",
-      "лайм"
+      "Кунжут",
+      "Овощной микс",
+      "Соус Терияки",
+      "Свинина",
+      "Лапша гречневая"
     ],
-    "allergens": [
-      "орехи",
-      "яйца"
-    ]
+    "allergens": [],
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/lapsa-wok-lapsa-grecnevaa-so-svininoj",
+    "oldPrice": 490,
+    "economy": 50
   },
   {
-    "id": "48",
-    "name": "Сингапурская лапша",
-    "description": "Острая карри-лапша с овощами и курицей",
-    "price": 460,
-    "weight": "340 г",
-    "calories": 440,
+    "id": "338",
+    "name": "Лапша WOK Лапша пшеничная с курицей",
+    "description": "Курица, Кунжут, Овощной микс, Соус Терияки, Лапша пшеничная",
+    "price": 440,
+    "weight": "450 гр",
     "category": "wok",
-    "image": "wok-singapore",
+    "image": "/files/images/cache/Goods/Good338/67d560ebfc-1_328.jpg",
     "ingredients": [
-      "рисовая лапша",
-      "курица",
-      "карри",
-      "овощи"
+      "Курица",
+      "Кунжут",
+      "Овощной микс",
+      "Соус Терияки",
+      "Лапша пшеничная"
     ],
-    "allergens": [
-      "глютен",
-      "соя"
-    ]
+    "allergens": [],
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/lapsa-wok-lapsa-psenicnaa-s-kuricej",
+    "oldPrice": 490,
+    "economy": 50
+  },
+  {
+    "id": "339",
+    "name": "Лапша WOK Лапша пшеничная со свининой",
+    "description": "Кунжут, Овощной микс, Соус Терияки, Свинина, Лапша пшеничная",
+    "price": 440,
+    "weight": "450 гр",
+    "category": "wok",
+    "image": "/files/images/cache/Goods/Good339/a14af5d85a-1_328.jpg",
+    "ingredients": [
+      "Кунжут",
+      "Овощной микс",
+      "Соус Терияки",
+      "Свинина",
+      "Лапша пшеничная"
+    ],
+    "allergens": [],
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/lapsa-wok-lapsa-psenicnaa-so-svininoj",
+    "oldPrice": 490,
+    "economy": 50
+  },
+  {
+    "id": "340",
+    "name": "Лапша WOK Лапша яичная с курицей",
+    "description": "Курица, Кунжут, Овощной микс, Соус кисло сладкий, Лапша яичная",
+    "price": 440,
+    "weight": "450 гр",
+    "category": "wok",
+    "image": "/files/images/cache/Goods/Good340/4cd5fa4a70-1_328.jpg",
+    "ingredients": [
+      "Курица",
+      "Кунжут",
+      "Овощной микс",
+      "Соус кисло сладкий",
+      "Лапша яичная"
+    ],
+    "allergens": [],
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/lapsa-wok-lapsa-aicnaa-s-kuricej",
+    "oldPrice": 490,
+    "economy": 50
+  },
+  {
+    "id": "341",
+    "name": "Лапша WOK Лапша яичная со свининой",
+    "description": "Кунжут, Овощной микс, Свинина, Лапша яичная, Соус Кимчи",
+    "price": 440,
+    "weight": "450 гр",
+    "category": "wok",
+    "image": "/files/images/cache/Goods/Good341/af041b42e5-1_328.jpg",
+    "ingredients": [
+      "Кунжут",
+      "Овощной микс",
+      "Свинина",
+      "Лапша яичная",
+      "Соус Кимчи"
+    ],
+    "allergens": [],
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/lapsa-wok-lapsa-aicnaa-so-svininoj",
+    "oldPrice": 490,
+    "economy": 50
+  },
+  {
+    "id": "342",
+    "name": "Лапша WOK Рис Тяхан с курицей",
+    "description": "Рис, Курица, Кунжут, Овощной микс, Соус Терияки",
+    "price": 440,
+    "weight": "450 гр",
+    "category": "wok",
+    "image": "/files/images/cache/Goods/Good342/206630114b-1_328.jpg",
+    "ingredients": [
+      "Рис",
+      "Курица",
+      "Кунжут",
+      "Овощной микс",
+      "Соус Терияки"
+    ],
+    "allergens": [],
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/lapsa-wok-ris-tahan",
+    "oldPrice": 490,
+    "economy": 50
+  },
+  {
+    "id": "343",
+    "name": "Лапша WOK Рис Тяхан с морепродуктами",
+    "description": "Рис, Кунжут, Овощной микс, Морепродукты, Соус Терияки",
+    "price": 440,
+    "weight": "450 гр",
+    "category": "wok",
+    "image": "/files/images/cache/Goods/Good343/5c5de6f6a0-1_328.jpg",
+    "ingredients": [
+      "Рис",
+      "Кунжут",
+      "Овощной микс",
+      "Морепродукты",
+      "Соус Терияки"
+    ],
+    "allergens": [],
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/lapsa-wok-ris-tahan-more",
+    "oldPrice": 490,
+    "economy": 50
+  },
+  {
+    "id": "344",
+    "name": "Лапша WOK Рис Тяхан со свининой",
+    "description": "Рис, Кунжут, Овощной микс, Соус Терияки, Свинина",
+    "price": 440,
+    "weight": "450 гр",
+    "category": "wok",
+    "image": "/files/images/cache/Goods/Good344/d5d50e8580-1_328.jpg",
+    "ingredients": [
+      "Рис",
+      "Кунжут",
+      "Овощной микс",
+      "Соус Терияки",
+      "Свинина"
+    ],
+    "allergens": [],
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/lapsa-wok-ris-tahan-svinina",
+    "oldPrice": 490,
+    "economy": 50
   },
   {
     "id": "29",
@@ -2830,6 +2822,78 @@ export const products: Product[] = [
       "соль"
     ],
     "allergens": []
+  },
+  {
+    "id": "10",
+    "name": "Чука салат",
+    "description": "Кунжут, Чука салат, Ореховый соус",
+    "price": 250,
+    "weight": "100 гр",
+    "category": "salads",
+    "image": "/files/images/cache/Goods/Good10/c954796bde-1_328.jpg",
+    "ingredients": [
+      "Кунжут",
+      "Чука салат",
+      "Ореховый соус"
+    ],
+    "allergens": [],
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/salaty-cuka-salat",
+    "isNew": true
+  },
+  {
+    "id": "248",
+    "name": "Салат Цезарь с курицей",
+    "description": "Курица, Помидор, Лист салата, сухари, соус",
+    "price": 400,
+    "weight": "",
+    "category": "salads",
+    "image": "/files/images/cache/Goods/Good248/5eca6cca94-1_328.png",
+    "ingredients": [
+      "Курица",
+      "Помидор",
+      "Лист салата",
+      "сухари",
+      "соус"
+    ],
+    "allergens": [],
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/salaty-i-napitki-salat-cezar-s-kuricej"
+  },
+  {
+    "id": "249",
+    "name": "Цезарь с лососем",
+    "description": "Лосось, Помидор, Лист салата, сухари, соус",
+    "price": 440,
+    "weight": "",
+    "category": "salads",
+    "image": "/files/images/cache/Goods/Good249/349411a3c0-1_328.png",
+    "ingredients": [
+      "Лосось",
+      "Помидор",
+      "Лист салата",
+      "сухари",
+      "соус"
+    ],
+    "allergens": [],
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/salaty-i-napitki-cezar-s-lososem"
+  },
+  {
+    "id": "263",
+    "name": "Салат Цезарь с креветкой",
+    "description": "Креветка, Помидор, Лист салата, сухари, соус",
+    "price": 500,
+    "weight": "",
+    "category": "salads",
+    "image": "/files/images/cache/Goods/Good263/62cca5940c-1_328.jpg",
+    "ingredients": [
+      "Креветка",
+      "Помидор",
+      "Лист салата",
+      "сухари",
+      "соус"
+    ],
+    "allergens": [],
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/salaty-i-napitki-salat-cezar-skrevetkoj",
+    "isNew": true
   }
 ];
 
@@ -2915,10 +2979,43 @@ export const pizzaProducts: Product[] = pizzaRaw.map((item) => ({
   economy: typeof item.economy === 'number' ? item.economy : undefined,
 }));
 
+type SnackItem = {
+  id: string | number;
+  name: string;
+  description: string;
+  price: number;
+  imageUrl: string;
+  productUrl: string;
+  weight?: string;
+  calories?: number;
+  pieces?: string;
+  ingredients?: string[];
+  oldPrice?: number;
+  economy?: number;
+};
+const snacksRaw = snacksCatalog as unknown as SnackItem[];
+export const snacksProducts: Product[] = snacksRaw.map((item) => ({
+  id: String(item.id),
+  name: String(item.name || ''),
+  description: String(item.description || ''),
+  price: Number(item.price || 0),
+  weight: String(item.weight || ''),
+  category: 'snacks',
+  image: String(item.imageUrl || ''),
+  ingredients: Array.isArray(item.ingredients) ? item.ingredients : (String(item.description || '').split(',').map(s => s.trim()).filter(Boolean)),
+  allergens: [],
+  pieces: item.pieces ? String(item.pieces) : undefined,
+  calories: typeof item.calories === 'number' ? item.calories : undefined,
+  productUrl: String(item.productUrl || ''),
+  oldPrice: typeof item.oldPrice === 'number' ? item.oldPrice : undefined,
+  economy: typeof item.economy === 'number' ? item.economy : undefined,
+}));
+
 export const getProductsByCategory = (categoryId: string) => {
   if (categoryId === 'sets') return setsProducts;
   if (categoryId === 'sushi') return sushiProducts;
   if (categoryId === 'pizza') return pizzaProducts;
+  if (categoryId === 'snacks') return snacksProducts;
   return products.filter((product) => product.category === categoryId);
 };
 
@@ -2927,6 +3024,7 @@ export const getProduct = (id: string) => {
     products.find((product) => product.id === id) ||
     setsProducts.find((p) => p.id === id) ||
     sushiProducts.find((p) => p.id === id) ||
-    pizzaProducts.find((p) => p.id === id)
+    pizzaProducts.find((p) => p.id === id) ||
+    snacksProducts.find((p) => p.id === id)
   );
 };

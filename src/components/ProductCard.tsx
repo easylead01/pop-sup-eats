@@ -20,6 +20,30 @@ const ProductCard = ({ product }: ProductCardProps) => {
   const isSpicy = /остр|спайси|чили|паприк/i.test(lower);
   const isBaked = /запеч|печен/i.test(lower);
   const isTempura = /темпур|жарен|горяч/i.test(lower);
+  const isContainCategory =
+    product.category === 'rolls' ||
+    product.category === 'sushi' ||
+    product.category === 'sets' ||
+    product.category === 'wok' ||
+    product.category === 'pizza' ||
+    product.category === 'snacks' ||
+    product.category === 'salads' ||
+    product.category === 'sauces';
+  const paddingClass =
+    product.category === 'pizza' || product.category === 'snacks' ? 'p-4' : 'p-2';
+  const isTyahan =
+    product.category === 'wok' &&
+    ((product.productUrl && /ris-?tahan/i.test(product.productUrl)) ||
+      /т[яа]хан/i.test(product.name) ||
+      ['342', '343', '344'].includes(product.id));
+  const finalPadding =
+    isTyahan ? 'p-4' : paddingClass;
+  const scaleClass =
+    product.category === 'pizza' || product.category === 'snacks'
+      ? 'scale-[0.8]'
+      : isTyahan
+      ? 'scale-[0.7]'
+      : '';
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -37,19 +61,17 @@ const ProductCard = ({ product }: ProductCardProps) => {
           src={imageUrl}
           alt={product.name}
           className={`w-full h-full transition-transform duration-300 group-hover:scale-105 ${
-            product.category === 'rolls' || product.category === 'sushi' || product.category === 'sets'
-              ? 'object-contain p-2' 
-              : 'object-cover'
-          }`}
+            isContainCategory ? `object-contain ${finalPadding}` : 'object-cover'
+          } ${scaleClass}`}
         />
         
         <button
           onClick={handleAddToCart}
-          className="absolute bottom-3 right-3 w-10 h-10 bg-background text-foreground rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-110 active:scale-95 shadow-lg border border-border group-hover:bg-primary group-hover:text-white group-hover:border-primary"
+          className="hidden lg:flex absolute bottom-3 right-3 w-10 h-10 bg-black text-white rounded-full items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-110 active:scale-95 shadow-lg border border-transparent"
         >
           <Plus className="w-5 h-5" />
         </button>
-        <div className="absolute top-3 left-3 flex flex-col gap-2">
+        <div className="absolute top-3 left-3 flex flex-col gap-2 hidden md:flex">
           {product.isNew && (
             <span className="px-2.5 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-full">
               NEW
@@ -88,6 +110,39 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
       {/* Content */}
       <div className="p-4">
+        <div className="md:hidden flex flex-wrap gap-2 mb-2">
+          {product.isNew && (
+            <span className="px-2.5 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-full">
+              NEW
+            </span>
+          )}
+          {product.isHit && (
+            <span className="px-2.5 py-1 bg-foreground text-background text-xs font-semibold rounded-full">
+              HIT
+            </span>
+          )}
+          {isSpicy && (
+            <span className="px-2 py-1 bg-red-500 text-white text-xs font-semibold rounded-full flex items-center gap-1">
+              <Flame className="w-4 h-4" /> Острый
+            </span>
+          )}
+          {isBaked && (
+            <span className="px-2 py-1 bg-yellow-500 text-white text-xs font-semibold rounded-full flex items-center gap-1">
+              <ChefHat className="w-4 h-4" /> запеченый
+            </span>
+          )}
+          {isTempura && (
+            <span className="px-2 py-1 bg-orange-500 text-white text-xs font-semibold rounded-full flex items-center gap-1">
+              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3 11h3" />
+                <path d="M18 11h3" />
+                <path d="M6 11c2 5 10 5 12 0" />
+                <path d="M5 15h14" />
+              </svg>
+              Темпура
+            </span>
+          )}
+        </div>
         <h3 className="font-semibold text-foreground mb-1 line-clamp-2 group-hover:text-primary transition-colors">
           {product.name}
         </h3>

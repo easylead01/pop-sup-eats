@@ -98,11 +98,11 @@ const ProductPopup = () => {
         {...swipeHandlers}
       >
         {/* Image - takes 55% of screen height */}
-        <div className="relative h-[55vh] bg-secondary/20 flex-shrink-0">
+        <div className="relative h-[calc(65vh-10px)] bg-secondary/20 flex-shrink-0">
           <img
             src={imageUrl}
             alt={selectedProduct.name}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain p-2 md:p-4"
           />
           
           {/* Close & Favorite */}
@@ -133,7 +133,7 @@ const ProductPopup = () => {
         </div>
 
         {/* Content - fills remaining 45% */}
-        <div className="flex-1 p-6 flex flex-col overflow-y-auto">
+        <div className="flex-1 pt-2 px-6 pb-6 flex flex-col overflow-y-auto">
           <h2 className="text-2xl font-bold mb-2">
             {selectedProduct.name}
           </h2>
@@ -240,11 +240,11 @@ const ProductPopup = () => {
 
         <div className="flex flex-col max-h-[95vh] overflow-hidden">
           {/* Image */}
-          <div className="relative aspect-square bg-secondary/20 flex-shrink-0">
+          <div className="relative h-[calc(60vh-10px)] bg-secondary/20 flex-shrink-0">
             <img
               src={imageUrl}
               alt={selectedProduct.name}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain p-2"
             />
             
           {/* Close & Favorite */}
@@ -275,7 +275,7 @@ const ProductPopup = () => {
           </div>
 
           {/* Content */}
-          <div className="p-6 flex flex-col overflow-y-auto">
+          <div className="pt-2 px-6 pb-6 flex flex-col overflow-y-auto">
             <h2 className="text-xl font-bold mb-2">
               {selectedProduct.name}
             </h2>
