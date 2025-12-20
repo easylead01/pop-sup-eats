@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Upload, Trash2, ArrowLeft, Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { products, categories } from '@/data/products';
-import { getProductImage } from '@/lib/images';
+import { getProductImageForProduct } from '@/lib/images';
 import { useProductImages, useUploadProductImage, useDeleteProductImage } from '@/hooks/useProductImages';
 import { toast } from 'sonner';
 
@@ -95,9 +95,9 @@ const Admin = () => {
               <div key={product.id} className="bg-card rounded-xl border border-border overflow-hidden">
                 <div className="relative aspect-square bg-secondary/30">
                   <img
-                    src={getImageUrl(product.image)}
+                    src={getProductImageForProduct(product)}
                     alt={product.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain p-2"
                   />
                   {hasCustomImage(product.image) && (
                     <div className="absolute top-2 right-2 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">

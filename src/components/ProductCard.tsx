@@ -1,6 +1,6 @@
-import { Plus } from 'lucide-react';
+import { Plus, Flame, ChefHat } from 'lucide-react';
 import { Product } from '@/data/products';
-import { getProductImage } from '@/lib/images';
+import { getProductImageForProduct } from '@/lib/images';
 import { useUIStore } from '@/store/uiStore';
 import { useCartStore } from '@/store/cartStore';
 import { useProductImageContext } from '@/components/ProductImageProvider';
@@ -14,7 +14,12 @@ const ProductCard = ({ product }: ProductCardProps) => {
   const { addItem } = useCartStore();
   const { customImages } = useProductImageContext();
 
-  const imageUrl = customImages[product.image] || getProductImage(product.image);
+  const imageUrl = customImages[product.image] || getProductImageForProduct(product);
+
+  const lower = `${product.name} ${product.description} ${product.ingredients.join(' ')}`.toLowerCase();
+  const isSpicy = /остр|спайси|чили|паприк/i.test(lower);
+  const isBaked = /запеч|печен/i.test(lower);
+  const isTempura = /темпур|жарен|горяч/i.test(lower);
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -32,21 +37,18 @@ const ProductCard = ({ product }: ProductCardProps) => {
           src={imageUrl}
           alt={product.name}
           className={`w-full h-full transition-transform duration-300 group-hover:scale-105 ${
-            product.category === 'rolls' || product.category === 'sushi' 
+            product.category === 'rolls' || product.category === 'sushi' || product.category === 'sets'
               ? 'object-contain p-2' 
               : 'object-cover'
           }`}
         />
         
-        {/* Quick Add Button */}
         <button
           onClick={handleAddToCart}
-          className="absolute bottom-3 right-3 w-10 h-10 bg-background text-foreground rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-110 active:scale-95 shadow-lg border border-border"
+          className="absolute bottom-3 right-3 w-10 h-10 bg-background text-foreground rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-110 active:scale-95 shadow-lg border border-border group-hover:bg-primary group-hover:text-white group-hover:border-primary"
         >
           <Plus className="w-5 h-5" />
         </button>
-        
-        {/* Badges */}
         <div className="absolute top-3 left-3 flex flex-col gap-2">
           {product.isNew && (
             <span className="px-2.5 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-full">
@@ -58,6 +60,29 @@ const ProductCard = ({ product }: ProductCardProps) => {
               HIT
             </span>
           )}
+          <div className="flex flex-wrap gap-2">
+            {isSpicy && (
+              <span className="px-2 py-1 bg-red-500 text-white text-xs font-semibold rounded-full flex items-center gap-1">
+                <Flame className="w-4 h-4" /> Острый
+              </span>
+            )}
+            {isBaked && (
+              <span className="px-2 py-1 bg-yellow-500 text-white text-xs font-semibold rounded-full flex items-center gap-1">
+                <ChefHat className="w-4 h-4" /> запеченый
+              </span>
+            )}
+            {isTempura && (
+              <span className="px-2 py-1 bg-orange-500 text-white text-xs font-semibold rounded-full flex items-center gap-1">
+                <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 11h3" />
+                  <path d="M18 11h3" />
+                  <path d="M6 11c2 5 10 5 12 0" />
+                  <path d="M5 15h14" />
+                </svg>
+                Темпура
+              </span>
+            )}
+          </div>
         </div>
       </div>
 

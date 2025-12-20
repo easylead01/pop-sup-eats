@@ -1,0 +1,1759 @@
+[
+  {
+    "id": "98",
+    "name": "Ролл Огурец",
+    "description": "Рис, Нори, Огурец, Кунжут",
+    "price": 110,
+    "imageUrl": "/Роллы-все_files/4f9626b346-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-ogurec",
+    "weight": "115 гр",
+    "pieces": "6 шт",
+    "calories": 112,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Кунжут"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "111",
+    "name": "Ролл Такуан",
+    "description": "Рис, Нори, Маринованная редька",
+    "price": 120,
+    "imageUrl": "/Роллы-все_files/836a2867b1-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-takuan",
+    "weight": "110 гр",
+    "pieces": "6 шт",
+    "calories": 98,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Маринованная редька"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "87",
+    "name": "Ролл Краб",
+    "description": "Рис, Нори, Имитация краба",
+    "price": 150,
+    "imageUrl": "/Роллы-все_files/1d63db59f9-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-krab",
+    "weight": "110 гр",
+    "pieces": "6 шт",
+    "calories": 113,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Имитация краба"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "188",
+    "name": "Ролл Копченая курица",
+    "description": "Рис, Нори, Спайси соус, Копченая курица",
+    "price": 160,
+    "imageUrl": "/Роллы-все_files/dca5ea4c65-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-kopcenaa-kurica",
+    "weight": "115 гр",
+    "pieces": "6 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Спайси соус",
+      "Копченая курица"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "266",
+    "name": "ролл Копченая курица",
+    "description": "Рис, Нори, Спайси, Копченая курица",
+    "price": 160,
+    "imageUrl": "/Роллы-все_files/635f9b23c9-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-roll-kopcenaa-kurica",
+    "weight": "110 гр",
+    "pieces": "6 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Спайси",
+      "Копченая курица"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "108",
+    "name": "Ролл Сыр",
+    "description": "Рис, Нори, Сыр Буко",
+    "price": 170,
+    "imageUrl": "/Роллы-все_files/e8c91b556d-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-syr",
+    "weight": "110 гр",
+    "pieces": "6 шт",
+    "calories": 145,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Сыр Буко"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "120",
+    "name": "Ролл Чука",
+    "description": "Рис, Нори, Чука салат",
+    "price": 200,
+    "imageUrl": "/Роллы-все_files/9109fe48d3-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-cuka",
+    "weight": "115 гр",
+    "pieces": "6 шт",
+    "calories": 117,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Чука салат"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "124",
+    "name": "Ролл Эсколар",
+    "description": "Рис, Нори, Масляная рыба",
+    "price": 200,
+    "imageUrl": "/Роллы-все_files/b5af013c8a-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-eskolar",
+    "weight": "110 гр",
+    "pieces": "6 шт",
+    "calories": 137,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Масляная рыба"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "88",
+    "name": "Ролл Красная Тобико",
+    "description": "Рис, Нори, Тобико красная",
+    "price": 220,
+    "imageUrl": "/Роллы-все_files/8a8560c161-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-krasnaa-tobiko",
+    "weight": "110 гр",
+    "pieces": "6 шт",
+    "calories": 105,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Тобико красная"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "89",
+    "name": "Ролл Креветка",
+    "description": "Рис, Нори, Креветка",
+    "price": 220,
+    "imageUrl": "/Роллы-все_files/ed85a7c0cc-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-krevetka",
+    "weight": "110 гр",
+    "pieces": "6 шт",
+    "calories": 115,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Креветка"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "90",
+    "name": "Ролл Лосось",
+    "description": "Рис, Нори, Лосось",
+    "price": 220,
+    "imageUrl": "/Роллы-все_files/0ccfc9b689-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-losos",
+    "weight": "110 гр",
+    "pieces": "6 шт",
+    "calories": 115,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Лосось"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "100",
+    "name": "Ролл Острые с креветкой",
+    "description": "Рис, Нори, Креветка, Спайси соус",
+    "price": 250,
+    "imageUrl": "/Роллы-все_files/a3e0d7d0ec-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-ostrye-s-krevetkoj",
+    "weight": "110 гр",
+    "pieces": "6 шт",
+    "calories": 115,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Креветка",
+      "Спайси соус"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "109",
+    "name": "Ролл Сыр + Лосось",
+    "description": "Рис, Нори, Сыр Буко, Лосось",
+    "price": 250,
+    "imageUrl": "/Роллы-все_files/fc40cbc5d6-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-syr-losos",
+    "weight": "110 гр",
+    "pieces": "6 шт",
+    "calories": 152,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Сыр Буко",
+      "Лосось"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "186",
+    "name": "Ролл Острые с лососем",
+    "description": "Рис, Нори, Лосось, Спайси соус",
+    "price": 250,
+    "imageUrl": "/Роллы-все_files/991bece293-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-ostrye-s-lososem",
+    "weight": "110 гр",
+    "pieces": "6 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Лосось",
+      "Спайси соус"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "187",
+    "name": "Ролл Острые с крабом",
+    "description": "Рис, Нори, Спайси соус, Имитация краба",
+    "price": 250,
+    "imageUrl": "/Роллы-все_files/85bcbe98b0-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-ostrye-s-krabom",
+    "weight": "110 гр",
+    "pieces": "6 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Спайси соус",
+      "Имитация краба"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "203",
+    "name": "Ролл Острые с угрем",
+    "description": "Рис, Нори, Угорь, Спайси соус",
+    "price": 250,
+    "imageUrl": "/Роллы-все_files/41d99cd1ea-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-ostrye-s-ugrem",
+    "weight": "",
+    "pieces": "6 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Угорь",
+      "Спайси соус"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "97",
+    "name": "Ролл Овощной",
+    "description": "Рис, Нори, Огурец, Кунжут, Паприка, Помидор",
+    "price": 270,
+    "imageUrl": "/Роллы-все_files/15d1ddcc8c-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-ovosnoj",
+    "weight": "205 гр",
+    "pieces": "8 шт",
+    "calories": 261,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Кунжут",
+      "Паприка",
+      "Помидор"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "112",
+    "name": "Ролл Угорь",
+    "description": "Рис, Нори, Угорь, Кунжут",
+    "price": 270,
+    "imageUrl": "/Роллы-все_files/21759e0593-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-ugor",
+    "weight": "115 гр",
+    "pieces": "6 шт",
+    "calories": 191,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Угорь",
+      "Кунжут"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "204",
+    "name": "Ролл Шиитаке с сыром",
+    "description": "Рис, Нори, Огурец, Сыр Буко, Грибы Шиитаке",
+    "price": 290,
+    "imageUrl": "/Роллы-все_files/c023880984-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-siitake-s-syrom",
+    "weight": "200 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Сыр Буко",
+      "Грибы Шиитаке"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "70",
+    "name": "Ролл CHINA",
+    "description": "Рис, Нори, Огурец, Масляная рыба, Кунжут, Перец болгарский",
+    "price": 320,
+    "imageUrl": "/Роллы-все_files/01ef702bc5-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-china",
+    "weight": "185 гр",
+    "pieces": "8 шт",
+    "calories": 196,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Масляная рыба",
+      "Кунжут",
+      "Перец болгарский"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "91",
+    "name": "Ролл Лосось-Огурец",
+    "description": "Рис, Нори, Огурец, Лосось, Кунжут",
+    "price": 330,
+    "imageUrl": "/Роллы-все_files/08ef6f4699-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-losos-ogurec",
+    "weight": "190 гр",
+    "pieces": "8 шт",
+    "calories": 226,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Лосось",
+      "Кунжут"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "119",
+    "name": "Ролл Чикен",
+    "description": "Рис, Нори, Огурец, Курица, Спайси соус",
+    "price": 330,
+    "imageUrl": "/Роллы-все_files/a17dd93e12-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-ciken",
+    "weight": "200 гр",
+    "pieces": "8 шт",
+    "calories": 257,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Курица",
+      "Спайси соус"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "116",
+    "name": "Ролл Фреш",
+    "description": "Рис, Нори, Огурец, Сыр Буко, Лосось, Паприка",
+    "price": 340,
+    "imageUrl": "/Роллы-все_files/070d2fd4fb-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-fres",
+    "weight": "220 гр",
+    "pieces": "8 шт",
+    "calories": 240,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Сыр Буко",
+      "Лосось",
+      "Паприка"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "257",
+    "name": "Ролл Тортилья с копченой курицей",
+    "description": "Помидор, Сыр, Копченая курица, Соленые огурцы, Тортилья",
+    "price": 340,
+    "imageUrl": "/Роллы-все_files/52b4fb5a91-1_184.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-tortila-s-kopcenoj-kuricej",
+    "weight": "175 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Помидор",
+      "Сыр",
+      "Копченая курица",
+      "Соленые огурцы",
+      "Тортилья"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "258",
+    "name": "Ролл Тортилья с крабом",
+    "description": "Помидор, Сыр, Тортилья, салат асберг, Имитация краба",
+    "price": 340,
+    "imageUrl": "/Роллы-все_files/a380725a31-1_184.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-tortila-s-krabom",
+    "weight": "175 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Помидор",
+      "Сыр",
+      "Тортилья",
+      "салат асберг",
+      "Имитация краба"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "20",
+    "name": "Ролл Сейшн",
+    "description": "Рис, Нори, Огурец, Масаго, Сыр Буко, Масляная рыба",
+    "price": 350,
+    "imageUrl": "/Роллы-все_files/ad91c6649b-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-sejsn",
+    "weight": "205 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Масаго",
+      "Сыр Буко",
+      "Масляная рыба"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "73",
+    "name": "Ролл Татами",
+    "description": "Рис, Нори, Тобико красная, Огурец, Масляная рыба, Спайси соус",
+    "price": 350,
+    "imageUrl": "/Роллы-все_files/46e7c04c21-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-tatami",
+    "weight": "210 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Тобико красная",
+      "Огурец",
+      "Масляная рыба",
+      "Спайси соус"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "80",
+    "name": "Ролл За всё",
+    "description": "Рис, Нори, Тобико красная, Огурец, Курица, Спайси соус",
+    "price": 350,
+    "imageUrl": "/Роллы-все_files/691cc4aa35-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-za-vse",
+    "weight": "205 гр",
+    "pieces": "8 шт",
+    "calories": 186,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Тобико красная",
+      "Огурец",
+      "Курица",
+      "Спайси соус"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "82",
+    "name": "Ролл Калифорния",
+    "description": "Рис, Нори, Огурец, Масаго, Майонез, Имитация краба",
+    "price": 350,
+    "imageUrl": "/Роллы-все_files/dc2f3fe7fe-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-kalifornia",
+    "weight": "225 гр",
+    "pieces": "8 шт",
+    "calories": 256,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Масаго",
+      "Майонез",
+      "Имитация краба"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "94",
+    "name": "Ролл Нежный",
+    "description": "Рис, Нори, Тобико красная, Яблоко, Сыр",
+    "price": 350,
+    "imageUrl": "/Роллы-все_files/e72f6a0b9d-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-neznyj",
+    "weight": "205 гр",
+    "pieces": "8 шт",
+    "calories": 196,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Тобико красная",
+      "Яблоко",
+      "Сыр"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "115",
+    "name": "Ролл Филадельфия спешл",
+    "description": "Рис, Нори, Огурец, Сыр Буко, Лосось, Кунжут",
+    "price": 350,
+    "imageUrl": "/Роллы-все_files/9a90da4e4c-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-filadelfia-spesl",
+    "weight": "195 гр",
+    "pieces": "8 шт",
+    "calories": 245,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Сыр Буко",
+      "Лосось",
+      "Кунжут"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "307",
+    "name": "Ролл Снежинка",
+    "description": "Рис, Нори, Кунжут, Сыр моцарелла, Сыр, такуан",
+    "price": 350,
+    "imageUrl": "/Роллы-все_files/3b1d54bba1-1_184.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-roll-snezinka",
+    "weight": "250 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Кунжут",
+      "Сыр моцарелла",
+      "Сыр",
+      "такуан"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "77",
+    "name": "Ролл Гейша",
+    "description": "Рис, Нори, Тобико красная, Огурец, Сыр Буко, Лосось",
+    "price": 360,
+    "imageUrl": "/Роллы-все_files/b9eee64cde-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-gejsa",
+    "weight": "145 гр",
+    "pieces": "4 шт",
+    "calories": 219,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Тобико красная",
+      "Огурец",
+      "Сыр Буко",
+      "Лосось"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "161",
+    "name": "Ролл Шиитаке с сыром (Запеченный)",
+    "description": "Рис, Нори, Сыр Буко, Грибы Шиитаке, Сыр моцарелла",
+    "price": 360,
+    "imageUrl": "/Роллы-все_files/d2868ef556-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-siitake-s-syrom-zapecennyj",
+    "weight": "250 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Сыр Буко",
+      "Грибы Шиитаке",
+      "Сыр моцарелла"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "252",
+    "name": "Ролл Тортилья с крабом (горячие)",
+    "description": "Помидор, Сыр, Тортилья, салат асберг, Имитация краба",
+    "price": 360,
+    "imageUrl": "/Роллы-все_files/8b35129fe5-1_184.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-tortila-s-krabom-goracie",
+    "weight": "200 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Помидор",
+      "Сыр",
+      "Тортилья",
+      "салат асберг",
+      "Имитация краба"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "253",
+    "name": "Ролл Тортилья с копченой курицей (горячие)",
+    "description": "Помидор, Сыр, Копченая курица, Соленые огурцы, Тортилья",
+    "price": 360,
+    "imageUrl": "/Роллы-все_files/efb6249d25-1_184.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-tortila-s-kopcenoj-kuricej-goracie",
+    "weight": "200 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Помидор",
+      "Сыр",
+      "Копченая курица",
+      "Соленые огурцы",
+      "Тортилья"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "162",
+    "name": "Ролл Чикен (Запеченный)",
+    "description": "Рис, Нори, Курица, Спайси соус, Сыр моцарелла",
+    "price": 370,
+    "imageUrl": "/Роллы-все_files/c105a27fb9-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-ciken-zapecennyj",
+    "weight": "250 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Курица",
+      "Спайси соус",
+      "Сыр моцарелла"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "255",
+    "name": "Ролл Тортилья с креветкой",
+    "description": "Креветка, Помидор, Сыр, Тортилья, салат асберг",
+    "price": 370,
+    "imageUrl": "/Роллы-все_files/f20450b27a-1_184.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-tortila-s-krevetkoj",
+    "weight": "175 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Креветка",
+      "Помидор",
+      "Сыр",
+      "Тортилья",
+      "салат асберг"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "104",
+    "name": "Ролл Овара",
+    "description": "Рис, Нори, Огурец, Масаго, Кунжут, Майонез, Жаренный лосось",
+    "price": 380,
+    "imageUrl": "/Роллы-все_files/6e5f4d34ad-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-ovara",
+    "weight": "200 гр",
+    "pieces": "8 шт",
+    "calories": 266,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Масаго",
+      "Кунжут",
+      "Майонез",
+      "Жаренный лосось"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "156",
+    "name": "Ролл Сыр-лосось (Запеченный)",
+    "description": "Рис, Нори, Сыр Буко, Лосось, Сыр моцарелла",
+    "price": 380,
+    "imageUrl": "/Роллы-все_files/ca64cfe309-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-syr-losos-zapecennyj",
+    "weight": "",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Сыр Буко",
+      "Лосось",
+      "Сыр моцарелла"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "256",
+    "name": "Ролл Тортилья с лососем",
+    "description": "Лосось, Помидор, Сыр, Тортилья, салат асберг",
+    "price": 370,
+    "imageUrl": "/Роллы-все_files/87cfaeec78-1_184.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-tortila-s-lososem",
+    "weight": "175 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Лосось",
+      "Помидор",
+      "Сыр",
+      "Тортилья",
+      "салат асберг"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "213",
+    "name": "Ролл С Копченой курицей (Горячие)",
+    "description": "Рис, Нори, Сыр Буко, Копченая курица",
+    "price": 390,
+    "imageUrl": "/Роллы-все_files/8380a34006-1_184.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-s-kopcenoj-kuricej-goracie",
+    "weight": "250 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Сыр Буко",
+      "Копченая курица"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "230",
+    "name": "Ролл Запеченный с беконом",
+    "description": "Рис, Нори, Сыр Буко, Бекон, Сыр моцарелла",
+    "price": 390,
+    "imageUrl": "/Роллы-все_files/6c9ea6c01b-1_184.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-zapecennyj-s-bekonom",
+    "weight": "250 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Сыр Буко",
+      "Бекон",
+      "Сыр моцарелла"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "250",
+    "name": "Ролл Овара (запеченный)",
+    "description": "Рис, Нори, Огурец, Сыр Буко, Кунжут, Жаренный лосось, Сыр",
+    "price": 390,
+    "imageUrl": "/Роллы-все_files/03f32f77b5-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-ovara-zapecennyj",
+    "weight": "250 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Сыр Буко",
+      "Кунжут",
+      "Жаренный лосось",
+      "Сыр"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "95",
+    "name": "Ролл Норвежский",
+    "description": "Рис, Нори, Огурец, Сыр Буко, Лосось, Стружка тунца",
+    "price": 410,
+    "imageUrl": "/Роллы-все_files/ea9572bfea-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-norvezskij",
+    "weight": "200 гр",
+    "pieces": "8 шт",
+    "calories": 235,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Сыр Буко",
+      "Лосось",
+      "Стружка тунца"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "84",
+    "name": "Ролл Калифорния с лососем",
+    "description": "Рис, Нори, Тобико красная, Лосось, Майонез",
+    "price": 420,
+    "imageUrl": "/Роллы-все_files/ece989bc8e-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-kalifornia-s-lososem",
+    "weight": "205 гр",
+    "pieces": "8 шт",
+    "calories": 257,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Тобико красная",
+      "Лосось",
+      "Майонез"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "101",
+    "name": "Ролл По-русски",
+    "description": "Рис, Нори, Огурец, Паприка, Майонез, Бекон, Помидор",
+    "price": 420,
+    "imageUrl": "/Роллы-все_files/9a3a9587b2-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-po-russki",
+    "weight": "235 гр",
+    "pieces": "8 шт",
+    "calories": 401,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Паприка",
+      "Майонез",
+      "Бекон",
+      "Помидор"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "154",
+    "name": "Ролл Калифорния(Запеченный)",
+    "description": "Рис, Нори, Огурец, Масаго, Майонез, Сыр моцарелла, Имитация краба",
+    "price": 420,
+    "imageUrl": "/Роллы-все_files/90bac5b303-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-kaliforniazapecennyj",
+    "weight": "250 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Масаго",
+      "Майонез",
+      "Сыр моцарелла",
+      "Имитация краба"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "228",
+    "name": "Ролл Запеченный с креветкой",
+    "description": "Рис, Нори, Огурец, Креветка, Сыр Буко, Сыр моцарелла",
+    "price": 420,
+    "imageUrl": "/Роллы-все_files/fd6fec7c70-1_184.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-zapecennyj-s-krevetkoj",
+    "weight": "250 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Креветка",
+      "Сыр Буко",
+      "Сыр моцарелла"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "93",
+    "name": "Ролл Мексиканский",
+    "description": "Рис, Нори, Огурец, Креветка, Масаго, Спайси соус",
+    "price": 430,
+    "imageUrl": "/Роллы-все_files/9602fd0853-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-meksikanskij",
+    "weight": "210 гр",
+    "pieces": "8 шт",
+    "calories": 250,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Креветка",
+      "Масаго",
+      "Спайси соус"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "160",
+    "name": "Ролл Филадельфия спешл (Запеченный)",
+    "description": "Рис, Нори, Огурец, Сыр Буко, Лосось, Кунжут, Сыр моцарелла",
+    "price": 430,
+    "imageUrl": "/Роллы-все_files/a71a30c060-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-filadelfia-spesl-zapecennyj",
+    "weight": "250 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Сыр Буко",
+      "Лосось",
+      "Кунжут",
+      "Сыр моцарелла"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "251",
+    "name": "Ролл Тортилья с креветкой (горячий)",
+    "description": "Креветка, Помидор, Сыр, Тортилья, салат асберг",
+    "price": 430,
+    "imageUrl": "/Роллы-все_files/53fa9f7b0b-1_184.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-tortila-s-krevetkoj-goracij",
+    "weight": "200 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Креветка",
+      "Помидор",
+      "Сыр",
+      "Тортилья",
+      "салат асберг"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "254",
+    "name": "Ролл Тортилья с лососем (горячий)",
+    "description": "Лосось, Помидор, Сыр, Тортилья, салат асберг",
+    "price": 430,
+    "imageUrl": "/Роллы-все_files/b0f5a6f373-1_184.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-tortila-s-lososem-goracij",
+    "weight": "200 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Лосось",
+      "Помидор",
+      "Сыр",
+      "Тортилья",
+      "салат асберг"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "75",
+    "name": "Ролл Бонито",
+    "description": "Рис, Нори, Угорь, Огурец, Стружка тунца, Спайси соус",
+    "price": 440,
+    "imageUrl": "/Роллы-все_files/c08b87413e-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-bonito",
+    "weight": "195 гр",
+    "pieces": "8 шт",
+    "calories": 277,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Угорь",
+      "Огурец",
+      "Стружка тунца",
+      "Спайси соус"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "79",
+    "name": "Ролл Евразия",
+    "description": "Рис, Нори, Тобико красная, Креветка, Сыр Буко, Паприка",
+    "price": 440,
+    "imageUrl": "/Роллы-все_files/db05d7cd08-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-evrazia",
+    "weight": "215 гр",
+    "pieces": "8 шт",
+    "calories": 198,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Тобико красная",
+      "Креветка",
+      "Сыр Буко",
+      "Паприка"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "83",
+    "name": "Ролл Калифорния с креветкой",
+    "description": "Рис, Нори, Тобико красная, Огурец, Креветка, Майонез",
+    "price": 440,
+    "imageUrl": "/Роллы-все_files/6731bbffe3-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-kalifornia-s-krevetkoj",
+    "weight": "205 гр",
+    "pieces": "8 шт",
+    "calories": 221,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Тобико красная",
+      "Огурец",
+      "Креветка",
+      "Майонез"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "99",
+    "name": "Ролл Окинава",
+    "description": "Рис, Нори, Огурец, Креветка, Масаго, Сыр Буко",
+    "price": 440,
+    "imageUrl": "/Роллы-все_files/34a22dba35-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-okinava",
+    "weight": "200 гр",
+    "pieces": "8 шт",
+    "calories": 200,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Креветка",
+      "Масаго",
+      "Сыр Буко"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "146",
+    "name": "Ролл Острый лосось (Горячие)",
+    "description": "Рис, Нори, Огурец, Лосось, Спайси соус, Паприка, Сыр",
+    "price": 440,
+    "imageUrl": "/Роллы-все_files/a0cd1afb49-1_184.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-ostryj-losos-goracie",
+    "weight": "210 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Лосось",
+      "Спайси соус",
+      "Паприка",
+      "Сыр"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "147",
+    "name": "Ролл С беконом (Горячие)",
+    "description": "Рис, Нори, Сыр Буко, Бекон, Перец",
+    "price": 440,
+    "imageUrl": "/Роллы-все_files/a20d5175e7-1_184.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-s-bekonom-goracie",
+    "weight": "250 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Сыр Буко",
+      "Бекон",
+      "Перец"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "229",
+    "name": "Ролл Вулкан запеченный",
+    "description": "Рис, Нори, Огурец, Креветка, Сыр Буко, Кунжут, Сыр моцарелла",
+    "price": 440,
+    "imageUrl": "/Роллы-все_files/7248b2117e-1_184.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-vulkan-zapecennyj",
+    "weight": "250 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Креветка",
+      "Сыр Буко",
+      "Кунжут",
+      "Сыр моцарелла"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "231",
+    "name": "Ролл Запеченный в стружке тунца",
+    "description": "Рис, Нори, Огурец, Сыр Буко, Лосось, Стружка тунца, Спайси соус, Сыр моцарелла",
+    "price": 440,
+    "imageUrl": "/Роллы-все_files/3d1ecfbd8e-1_184.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-zapecennyj-v-struzke-tunca",
+    "weight": "250 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Сыр Буко",
+      "Лосось",
+      "Стружка тунца",
+      "Спайси соус",
+      "Сыр моцарелла"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "92",
+    "name": "Ролл Майами",
+    "description": "Рис, Нори, Угорь, Тобико красная, Сыр Буко, Яблоко",
+    "price": 450,
+    "imageUrl": "/Роллы-все_files/6d66b17f82-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-majami",
+    "weight": "220 гр",
+    "pieces": "8 шт",
+    "calories": 330,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Угорь",
+      "Тобико красная",
+      "Сыр Буко",
+      "Яблоко"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "85",
+    "name": "Ролл Калифорния с угрем",
+    "description": "Рис, Нори, Угорь, Тобико красная, Огурец, Майонез",
+    "price": 470,
+    "imageUrl": "/Роллы-все_files/7a5e250749-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-kalifornia-s-ugrem",
+    "weight": "205 гр",
+    "pieces": "8 шт",
+    "calories": 267,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Угорь",
+      "Тобико красная",
+      "Огурец",
+      "Майонез"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "150",
+    "name": "Ролл С креветкой (Горячие)",
+    "description": "Рис, Нори, Огурец, Креветка, Паприка, Сыр",
+    "price": 470,
+    "imageUrl": "/Роллы-все_files/c2ece74eb5-1_184.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-s-krevetkoj-goracie",
+    "weight": "250 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Креветка",
+      "Паприка",
+      "Сыр"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "145",
+    "name": "Ролл Нептун (Горячие)",
+    "description": "Рис, Нори, Угорь, Огурец, Креветка, Паприка, Сыр",
+    "price": 490,
+    "imageUrl": "/Роллы-все_files/23e4565b32-1_184.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-neptun-goracie",
+    "weight": "250 гр",
+    "pieces": "",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Угорь",
+      "Огурец",
+      "Креветка",
+      "Паприка",
+      "Сыр"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "148",
+    "name": "Ролл Лосось с сыром (Горячие)",
+    "description": "Рис, Нори, Огурец, Лосось, Паприка, Сыр",
+    "price": 490,
+    "imageUrl": "/Роллы-все_files/b5f5bdd9df-1_184.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-losos-s-syrom-goracie",
+    "weight": "250 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Лосось",
+      "Паприка",
+      "Сыр"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "155",
+    "name": "Ролл Окинава (Запеченный)",
+    "description": "Рис, Нори, Огурец, Креветка, Масаго, Сыр Буко, Сыр моцарелла",
+    "price": 490,
+    "imageUrl": "/Роллы-все_files/a877c5e61d-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-okinava-zapecennyj",
+    "weight": "250 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Креветка",
+      "Масаго",
+      "Сыр Буко",
+      "Сыр моцарелла"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "227",
+    "name": "Ролл Мексиканский запеченный",
+    "description": "Нори, Огурец, Креветка, Масаго, Спайси соус, Сыр моцарелла",
+    "price": 490,
+    "imageUrl": "/Роллы-все_files/9d51d6381d-1_184.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-meksikanskij-zapecennyj",
+    "weight": "250 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Нори",
+      "Огурец",
+      "Креветка",
+      "Масаго",
+      "Спайси соус",
+      "Сыр моцарелла"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "103",
+    "name": "Ролл Рок-н-Ролл",
+    "description": "Рис, Нори, Угорь, Тобико красная, Сыр Буко, Лосось",
+    "price": 499,
+    "imageUrl": "/Роллы-все_files/0539a588bf-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-rok-n-roll",
+    "weight": "235 гр",
+    "pieces": "8 шт",
+    "calories": 274,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Угорь",
+      "Тобико красная",
+      "Сыр Буко",
+      "Лосось"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "106",
+    "name": "Ролл Самурай",
+    "description": "Рис, Нори, Огурец, Сыр Буко, Лосось",
+    "price": 499,
+    "imageUrl": "/Роллы-все_files/fef1e5e04e-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-samuraj",
+    "weight": "215 гр",
+    "pieces": "8 шт",
+    "calories": 289,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Сыр Буко",
+      "Лосось"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "114",
+    "name": "Ролл Филадельфия с угрем",
+    "description": "Рис, Нори, Угорь, Огурец, Сыр Буко, Кунжут",
+    "price": 499,
+    "imageUrl": "/Роллы-все_files/6775392f1b-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-filadelfia-s-ugrem",
+    "weight": "195 гр",
+    "pieces": "8 шт",
+    "calories": 253,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Угорь",
+      "Огурец",
+      "Сыр Буко",
+      "Кунжут"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "125",
+    "name": "Ролл Ямайка",
+    "description": "Рис, Нори, Огурец, Масаго, Сыр Буко, Лосось",
+    "price": 499,
+    "imageUrl": "/Роллы-все_files/330d382bbf-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-amajka",
+    "weight": "220 гр",
+    "pieces": "8 шт",
+    "calories": 248,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Масаго",
+      "Сыр Буко",
+      "Лосось"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "117",
+    "name": "Ролл Чиз лосось",
+    "description": "Рис, Нори, Сыр Буко, Лосось",
+    "price": 500,
+    "imageUrl": "/Роллы-все_files/2c49d4dae1-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-ciz-losos",
+    "weight": "220 гр",
+    "pieces": "8 шт",
+    "calories": 303,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Сыр Буко",
+      "Лосось"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "149",
+    "name": "Ролл С угрем (Горячие)",
+    "description": "Рис, Нори, Угорь, Огурец, Паприка, Сыр, Соус унаги",
+    "price": 500,
+    "imageUrl": "/Роллы-все_files/1687d6e26d-1_184.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-s-ugrem-goracie",
+    "weight": "250 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Угорь",
+      "Огурец",
+      "Паприка",
+      "Сыр",
+      "Соус унаги"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "157",
+    "name": "Ролл Сливочный (Запеченный)",
+    "description": "Рис, Нори, Огурец, Масаго, Сыр Буко, Лосось, Спайси соус, Сыр моцарелла",
+    "price": 490,
+    "imageUrl": "/Роллы-все_files/2e9c034c7d-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-slivocnyj-zapecennyj",
+    "weight": "250 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Масаго",
+      "Сыр Буко",
+      "Лосось",
+      "Спайси соус",
+      "Сыр моцарелла"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "74",
+    "name": "Ролл Атлантический",
+    "description": "Рис, Нори, Угорь, Масаго, Сыр Буко, Лосось, Кунжут",
+    "price": 530,
+    "imageUrl": "/Роллы-все_files/b98e125595-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-atlanticeskij",
+    "weight": "210 гр",
+    "pieces": "8 шт",
+    "calories": 310,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Угорь",
+      "Масаго",
+      "Сыр Буко",
+      "Лосось",
+      "Кунжут"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "72",
+    "name": "Ролл Romantic",
+    "description": "Рис, Нори, Тобико красная, Огурец, Сыр Буко, Икра лосося",
+    "price": 540,
+    "imageUrl": "/Роллы-все_files/ab5f733975-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-romantic",
+    "weight": "230 гр",
+    "pieces": "8 шт",
+    "calories": 258,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Тобико красная",
+      "Огурец",
+      "Сыр Буко",
+      "Икра лосося"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "105",
+    "name": "Ролл Люкс",
+    "description": "Рис, Нори, Огурец, Лосось, Лосось спайси",
+    "price": 540,
+    "imageUrl": "/Роллы-все_files/56c03064e3-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-luks",
+    "weight": "220 гр",
+    "pieces": "8 шт",
+    "calories": 338,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Лосось",
+      "Лосось спайси"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "153",
+    "name": "Ролл Rock-n-Roll (запеченный)",
+    "description": "Рис, Угорь, Тобико красная, Огурец, Лосось, Сыр моцарелла, Сыр",
+    "price": 540,
+    "imageUrl": "/Роллы-все_files/4dce028797-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-rock-n-roll-zapecennyj",
+    "weight": "250 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Угорь",
+      "Тобико красная",
+      "Огурец",
+      "Лосось",
+      "Сыр моцарелла",
+      "Сыр"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "71",
+    "name": "Ролл Prado Roll",
+    "description": "Рис, Нори, Огурец, Сыр Буко, Лосось, Икра лосося",
+    "price": 550,
+    "imageUrl": "/Роллы-все_files/e0ee5eccd4-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-prado-roll",
+    "weight": "240 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Сыр Буко",
+      "Лосось",
+      "Икра лосося"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "96",
+    "name": "Ролл Нью-Йорк",
+    "description": "Рис, Нори, Лосось, Икра лосося, Сыр",
+    "price": 550,
+    "imageUrl": "/Роллы-все_files/61fdfb8f32-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-nu-jork",
+    "weight": "210 гр",
+    "pieces": "8 шт",
+    "calories": 235,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Лосось",
+      "Икра лосося",
+      "Сыр"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "159",
+    "name": "Ролл Филадельфия с угрем (Запеченный)",
+    "description": "Рис, Нори, Угорь, Огурец, Сыр Буко, Кунжут, Сыр моцарелла",
+    "price": 550,
+    "imageUrl": "/Роллы-все_files/bfb830b536-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-filadelfia-s-ugrem-zapecennyj",
+    "weight": "250 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Угорь",
+      "Огурец",
+      "Сыр Буко",
+      "Кунжут",
+      "Сыр моцарелла"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "163",
+    "name": "Ролл Ямайка (Запеченный)",
+    "description": "Рис, Нори, Огурец, Масаго, Сыр Буко, Лосось, Сыр моцарелла",
+    "price": 550,
+    "imageUrl": "/Роллы-все_files/83c2113c0f-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-amajka-zapecennyj",
+    "weight": "250 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Масаго",
+      "Сыр Буко",
+      "Лосось",
+      "Сыр моцарелла"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "131",
+    "name": "Ролл Филадельфия с креветкой",
+    "description": "Рис, Нори, Огурец, Креветка, Сыр Буко, Лосось",
+    "price": 600,
+    "imageUrl": "/Роллы-все_files/8537649d06-1_184.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-filadelfia-s-krevetkoj",
+    "weight": "230 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Креветка",
+      "Сыр Буко",
+      "Лосось"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "118",
+    "name": "Ролл Чиз угорь",
+    "description": "Рис, Нори, Угорь, Сыр Буко, Кунжут",
+    "price": 600,
+    "imageUrl": "/Роллы-все_files/37adac474f-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-ciz-ugor",
+    "weight": "225 гр",
+    "pieces": "8 шт",
+    "calories": 341,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Угорь",
+      "Сыр Буко",
+      "Кунжут"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "78",
+    "name": "Ролл Дракон",
+    "description": "Рис, Нори, Угорь, Огурец, Сыр Буко, Лосось, Кунжут",
+    "price": 660,
+    "imageUrl": "/Роллы-все_files/5d4524dd35-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-drakon",
+    "weight": "240 гр",
+    "pieces": "8 шт",
+    "calories": 266,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Угорь",
+      "Огурец",
+      "Сыр Буко",
+      "Лосось",
+      "Кунжут"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "113",
+    "name": "Ролл Филадельфия",
+    "description": "Рис, Угорь, Огурец, Сыр Буко, Лосось",
+    "price": 660,
+    "imageUrl": "/Роллы-все_files/fcf7bd041a-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-filadelfia",
+    "weight": "230 гр",
+    "pieces": "8 шт",
+    "calories": 339,
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Угорь",
+      "Огурец",
+      "Сыр Буко",
+      "Лосось"
+    ],
+    "allergens": []
+  },
+  {
+    "id": "158",
+    "name": "Ролл Филадельфия с креветкой (Запеченный)",
+    "description": "Рис, Нори, Огурец, Креветка, Сыр Буко, Лосось, Кунжут, Сыр моцарелла",
+    "price": 660,
+    "imageUrl": "/Роллы-все_files/21f3a7545c-1_184.png",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/rolly-filadelfia-s-krevetkoj-zapecennyj",
+    "weight": "250 гр",
+    "pieces": "8 шт",
+    "category": "rolls",
+    "ingredients": [
+      "Рис",
+      "Нори",
+      "Огурец",
+      "Креветка",
+      "Сыр Буко",
+      "Лосось",
+      "Кунжут",
+      "Сыр моцарелла"
+    ],
+    "allergens": []
+  }
+]

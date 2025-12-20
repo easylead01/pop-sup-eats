@@ -1,0 +1,1426 @@
+"use strict";
+
+$(document).ready(function () {
+  const dialogInfo = document.getElementById("dialog-info");
+  
+
+  $(".modal-cont").click(function () {
+    $("body").removeClass("show-modal");
+    dialogInfo.close();
+  });
+
+  dialogInfo.addEventListener("click", function (event) {
+    var rect = dialogInfo.getBoundingClientRect();
+    var isInDialog =
+      rect.top <= event.clientY &&
+      event.clientY <= rect.top + rect.height &&
+      rect.left <= event.clientX &&
+      event.clientX <= rect.left + rect.width;
+    if (!isInDialog) {
+      dialogInfo.close();
+      document.body.classList.remove("show-modal");
+    }
+  });
+});
+  function modal_alert(div_price){
+      const dialogInfo = document.getElementById("dialog-info");
+      $("body").addClass("show-modal");
+      dialogInfo.showModal();
+      $("#div_price").html(div_price);
+  }
+
+const addEventToModal = () => {
+  $(".vmodal").on("submit", "form", function (event) {
+    event.preventDefault();
+
+    let target = this;
+
+    $.ajax({
+      url: this.action, //url страницы (action_ajax_form.php)
+      type: "POST", //метод отправки
+      dataType: "html", //формат данных
+      data: $(this).serialize(), // Сеарилизуем объект
+      success: function (data, textStatus, request) {
+        //Данные отправлены успешно
+        target.closest(".vmodal").querySelector(".vmodal__body").innerHTML =
+          data;
+        return false;
+      },
+      error: function (response) {
+        // Данные не отправлены
+        window.location.href = response.getResponseHeader("X-Redirect");
+      },
+    });
+
+    return false;
+  });
+};
+
+const modalHendler = () => {
+  const modalLinks = document.querySelectorAll(".modal-handler");
+
+  let modalElem;
+
+  $(document).on("click", ".modal-handler", function (evt) {
+    evt.preventDefault();
+    let target = evt.target;
+
+    if (target.tagName !== "A") {
+      target = target.closest("a");
+    }
+
+    $.ajax({
+      url: target.href, //url страницы (action_ajax_form.php)
+      type: "GET", //метод отправки
+      dataType: "html", //формат данных
+      success: function (response) {
+        //Данные отправлены успешно
+
+        modalElem = $plugins.modal({
+          title: "",
+          closable: true,
+          width: "800px",
+          content: response,
+        });
+
+        setTimeout(function () {
+          return modalElem.open();
+        }, 300);
+
+        addEventToModal();
+      },
+      error: function (response) {
+        // Данные не отправлены
+        $("#result_form").html("Ошибка. Данные не отправлены.");
+      },
+    });
+  });
+};
+
+modalHendler();
+
+document.addEventListener("DOMContentLoaded", function () {
+  //записываем мой хелпер в глобальную область видимости
+
+  window._helper = {
+    fetch: (url, data, callbackThen, callbackCatch = null) => {
+      data.append(yii.getCsrfParam(), yii.getCsrfToken());
+
+      fetch(url, {
+        method: "post",
+        headers: {
+          // "Content-type": "application/json; charset=UTF-8"
+        },
+        body: data,
+      })
+        .then((data) => callbackThen(data))
+        .catch((error) => callbackCatch(error));
+    },
+
+    callModal: (name) => {
+      this.fetch("/submit/modal", name, (response) => {
+        response.json().then((data) => {
+          // modal.open(response);
+          // console.log(data);
+        });
+      });
+    },
+
+    get: (url, callbackThen, callbackCatch = null) => {
+      fetch(url, {
+        method: "get",
+        // headers: {
+        //   // "Content-type": "application/json; charset=UTF-8"
+        // },
+      })
+        .then((data) => callbackThen(data))
+        .catch((error) => callbackCatch(error));
+    },
+  };
+
+  // polyfill flat
+  if (!Array.prototype.flat)
+    Array.prototype.flat = function () {
+      return (function f(arr) {
+        return arr.reduce(function (a, v) {
+          return Array.isArray(v) ? a.concat(f(v)) : a.concat(v);
+        }, []);
+      })(this);
+    }; // let mySelectJS = document.querySelector('.mySelectJS');
+  // mySelectJS.addEventListener('change', (e) => {
+  // 	console.log(e.target)
+  // })
+
+  var basketPayLeftSelBlock = document.querySelector(
+    ".basketPay__left-sel .block"
+  );
+  var basketPayLeftSelSelect = document.querySelector(
+    ".basketPay__left-sel .mySelect"
+  );
+
+  if (basketPayLeftSelSelect) {
+    basketPayLeftSelSelect.addEventListener("change", function (e) {
+      if (e.target.value == "time") {
+        basketPayLeftSelBlock.classList.add("active");
+      } else {
+        basketPayLeftSelBlock.classList.remove("active");
+      }
+    });
+  }
+
+  var basketPayLeftWayChange = document.querySelector(
+    ".basketPay__left-way .fiter__change"
+  );
+  var basketPayLeftMark = document.querySelector(".basketPay__left-mark");
+
+  // if (basketPayLeftWayChange) {
+  //   basketPayLeftWayChange.addEventListener('change', function (e) {
+  //     if (e.target.value == 'value-8') {
+  //       basketPayLeftMark.innerHTML = "\n\t\t\t\t\t<p>\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0430\u0434\u0440\u0435\u0441:</p>\n\t\t\t\t\t<input type=\"text\">\n\t\t\t\t";
+  //     } else {
+  //       basketPayLeftMark.innerHTML = "\n\t\t\t\t<p>\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0441\u0443\u0448\u0438-\u043C\u0430\u0440\u043A\u0435\u0442</p>\n\t\t\t\t<label class=\"label\">\n\t\t\t\t  <select class=\"mySelect\">\n\t\t\t\t\t<option value=\"1\">\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0441\u0443\u0448\u0438-\u043C\u0430\u0440\u043A\u0435\u0442</option>\n\t\t\t\t\t<option value=\"2\">\u0433. \u0412\u043E\u0440\u043E\u043D\u0435\u0436, \u0443\u043B. \u0424\u0435\u0434\u043E\u0440\u0430 \u0422\u044E\u0442\u0447\u0435\u0432\u0430, 97 \u043C\u0430\u0433\u0430\u0437\u0438\u043D \u043F\u0438\u0432\u043D\u0430\u044F \u211615.</option>\n\t\t\t\t\t<option value=\"3\">\u0433. \u0412\u043E\u0440\u043E\u043D\u0435\u0436, \u0443\u043B.\u041C\u0438\u043D\u0441\u043A\u0430\u044F, 63 \u0411 \u0422\u0426 \u041C\u0430\u0433\u043D\u0438\u0442 </option>\n\t\t\t\t\t<option value=\"4\">\u0433. \u0412\u043E\u0440\u043E\u043D\u0435\u0436, \u0443\u043B. \u0410\u0434\u043C\u0438\u0440\u0430\u043B\u0430 \u0427\u0443\u0440\u0441\u0438\u043D\u0430, 2/1, \u0440\u0430\u0439\u043E\u043D \u041E\u0437\u0435\u0440\u043A\u0438 </option>\n\t\t\t\t\t<option value=\"5\">\u0433. \u0412\u043E\u0440\u043E\u043D\u0435\u0436, \u0443\u043B. \u0420\u043E\u0441\u0442\u043E\u0432\u0441\u043A\u0430\u044F, 84 </option>\n\t\t\t\t\t<option value=\"6\">\u043F. \u041E\u0442\u0440\u0430\u0434\u043D\u043E\u0435, \u0443\u043B. 50 \u041B\u0435\u0442 \u041E\u043A\u0442\u044F\u0431\u0440\u044F, \u0434. 95</option>\n\t\t\t\t  </select>\n\t\t\t\t</label>\n\t\t\t\t";
+  //     }
+  //   });
+  // }
+
+  var customCheckboxBigBgValue = document.querySelectorAll(
+    ".custom-checkbox-bigBgValue"
+  );
+  var customCheckboxBigBgValueInp = document.querySelectorAll(
+    ".custom-checkbox-bigBgValue > input"
+  );
+  var fullPrice = document.querySelector(".cards__item-price");
+
+  // customCheckboxBigBgValueInp.forEach(function (el) {
+  //   if (el.checked) {
+  //     fullPrice.innerHTML = +fullPrice.innerHTML + +el.getAttribute('data-price'); // fullPrice.setAttribute('data-my-price', fullPrice.innerHTML)
+  //
+  //     fullPrice.setAttribute('data-vvl', fullPrice.innerHTML);
+  //   }
+  // });
+  customCheckboxBigBgValue.forEach(function (el) {
+    el.addEventListener("change", function (e) {
+      if (e.target.getAttribute("form") === "mainFilter") {
+        return;
+      }
+      if (e.target.checked) {
+        // fullPrice.innerHTML = +fullPrice.innerHTML + +e.target.getAttribute('data-price');
+        // fullPrice.innerHTML = +fullPrice.innerHTML + +e.target.value;
+
+        fullPrice.setAttribute("data-vvl", fullPrice.innerHTML); // fullPrice.setAttribute('data-my-price', fullPrice.innerHTML)
+      } else {
+        // fullPrice.innerHTML = +fullPrice.innerHTML - +e.target.getAttribute('data-price'); // fullPrice.setAttribute('data-my-price', fullPrice.innerHTML)
+        // fullPrice.innerHTML = +fullPrice.innerHTML + +e.target.value;
+
+        fullPrice.setAttribute("data-vvl", fullPrice.innerHTML);
+      }
+    });
+  }); // Наращивание кол-ва товаров при клике
+
+  var productRampUp = function productRampUp(myWrap, myElems, myFullValue) {
+    var wrap = document.querySelector(myWrap);
+    var elems = document.querySelectorAll(myElems);
+    var fullValue = document.querySelectorAll(myFullValue); // console.log(elems)
+    // console.log(fullValue)
+
+    var rez;
+    var rez2; // console.log(elems)
+    // console.log(fullValue)
+  };
+
+  productRampUp(".cards__row", ".cards__int", ".cards__item-price");
+  productRampUp(".cards__row2", ".cards__int", ".cards__item-price");
+  productRampUp(".cards__item-bottom", ".cards__int2", ".cards__item-price");
+
+  var productRampUp2 = function productRampUp2(
+    myWrap,
+    myElems,
+    myPrice,
+    myFullValue
+  ) {
+    var wrap = document.querySelector(myWrap);
+    var elems = document.querySelectorAll(myElems);
+    var price = document.querySelectorAll(myPrice);
+    var fullValue = document.querySelectorAll(myFullValue);
+    var rez;
+    var orderValue = document.querySelector(".order__value");
+    var tot = document.querySelector(".tot");
+    var writeOff = document.querySelector(".write__off");
+    var basketPayRight1HidBb = document.querySelector(
+      ".basketPay__right1-hid-b > span"
+    );
+    var basketPayRight1HidBb2 = document.querySelector(
+      ".basketPay__right1-hid-b2 > span"
+    );
+  };
+
+  productRampUp2(
+    ".basketPay__right1",
+    ".cards__int2",
+    ".cards__item-priceJS",
+    ".cards__item-price-FULL"
+  ); // конец
+
+  var footerWrapBottom = document.querySelector(".footer__wrap-bottom");
+  var footerBotElems = document.querySelector(".footer_bot-elems");
+  var footerWrapRight = document.querySelector(".footer__wrap-right");
+  var footerWrapLeft = document.querySelector(".footer__wrap-left");
+  var footerAddr = document.querySelector(".footer__addr");
+  var footerLeft = document.querySelector(".footer__left");
+
+  var changePositionElements = function changePositionElements() {
+    if (document.documentElement.clientWidth <= 577) {
+      footerWrapRight.insertAdjacentElement("beforeend", footerAddr);
+      footerWrapRight.insertAdjacentElement("beforeend", footerWrapBottom);
+      footerWrapRight.insertAdjacentElement("beforeend", footerBotElems);
+    } else {
+      footerWrapLeft.insertAdjacentElement("beforeend", footerAddr);
+      footerLeft.insertAdjacentElement("beforeend", footerWrapBottom);
+      footerLeft.insertAdjacentElement("beforeend", footerBotElems);
+    }
+  };
+
+  changePositionElements();
+
+  var changePositionElements2 = function changePositionElements2() {
+    if (document.documentElement.clientWidth <= 992) {
+      footerLeft.insertAdjacentElement("beforeend", footerAddr);
+    } else {
+      footerWrapLeft.insertAdjacentElement("beforeend", footerAddr);
+    }
+  };
+
+  changePositionElements2();
+  var assemblyRighth2 = document.querySelector(".assembly__right > h2");
+  var assemblyRight = document.querySelector(".assembly__right");
+  var assembly = document.querySelector(".assembly");
+
+  var changePositionElements3 = function changePositionElements3() {
+    if (assembly && assemblyRight && assemblyRighth2) {
+      if (document.documentElement.clientWidth <= 992) {
+        assembly.insertAdjacentElement("afterbegin", assemblyRighth2);
+      } else {
+        assemblyRight.insertAdjacentElement("afterbegin", assemblyRighth2);
+      }
+    }
+  };
+
+  changePositionElements3();
+  var setEc = document.querySelector(".set__ec");
+  var setLeft = document.querySelector(".set__left");
+  var setRight = document.querySelector(".set__right");
+
+  var changePositionElements4 = function changePositionElements4() {
+    if (setLeft) {
+      if (document.documentElement.clientWidth <= 577) {
+        if (setEc) {
+          setRight.insertAdjacentElement("beforeend", setEc);
+        }
+      } else {
+        if (setEc) {
+          setLeft.insertAdjacentElement("beforeend", setEc);
+        }
+      }
+    }
+  };
+
+  changePositionElements4();
+
+  var basketPayRight1Sm = document.querySelector(".basketPay__right1-sm-bot");
+  var basketPayBottom = document.querySelector(".basketPay__bottom");
+  var basketPayRight1 = document.querySelector(".basketPay__right1");
+  var basketPayRight1Payment = document.querySelector(
+    ".basketPay__right1-payment"
+  );
+  var basketPayRight1Comm = document.querySelector(".basketPay__right1-comm");
+
+  var changePositionElements5 = function changePositionElements5() {
+    if (basketPayRight1Sm) {
+      if (document.documentElement.clientWidth <= 1199) {
+        basketPayBottom.insertAdjacentElement("beforeend", basketPayRight1Sm);
+        basketPayRight1.insertAdjacentElement(
+          "beforeend",
+          basketPayRight1Payment
+        );
+      } else {
+        basketPayRight1.insertAdjacentElement("beforeend", basketPayRight1Sm);
+        basketPayRight1Comm.insertAdjacentElement(
+          "beforebegin",
+          basketPayRight1Payment
+        );
+      }
+    }
+  };
+
+  changePositionElements5();
+  var basketPayLeftTopA = document.querySelector(".basketPay__left-top a");
+  var basketPayLeftTop = document.querySelector(".basketPay__left-top");
+  var basketPayLeftInputs = document.querySelector(".basketPay__left-inputs");
+
+  var changePositionElements6 = function changePositionElements6() {
+    if (basketPayLeftTopA) {
+      if (document.documentElement.clientWidth <= 576) {
+        basketPayLeftInputs.insertAdjacentElement(
+          "beforeend",
+          basketPayLeftTopA
+        );
+      } else {
+        basketPayLeftTop.insertAdjacentElement("beforeend", basketPayLeftTopA);
+      }
+    }
+  };
+
+  changePositionElements6();
+  window.addEventListener("resize", function () {
+    changePositionElements();
+  });
+  window.addEventListener("resize", function () {
+    changePositionElements2();
+  });
+  window.addEventListener("resize", function () {
+    changePositionElements3();
+  });
+  window.addEventListener("resize", function () {
+    changePositionElements4();
+  });
+  window.addEventListener("resize", function () {
+    changePositionElements5();
+  });
+  window.addEventListener("resize", function () {
+    changePositionElements6();
+  });
+  var headerBottom = document.querySelector(".header__bottom");
+  var headerTopComparisonWrap = document.querySelector(
+    ".header__top-comparison-wrap"
+  );
+  var headerTopHeartWrap = document.querySelector(".header__top-heart-wrap");
+  var headerTopProductsWrap = document.querySelector(
+    ".header__top-products-wrap"
+  );
+  var headerBottomHiddenLogo = document.querySelector(
+    ".header__bottom-hiddenLogo"
+  );
+  var headerList = document.querySelector(".header__list");
+  window.addEventListener("scroll", function (e) {
+    // console.log(window.pageYOffset)
+    if (headerBottom) {
+      if (window.pageYOffset > 80 && screen.width >= 991) {
+        headerBottom.classList.add("active");
+        headerTopComparisonWrap.classList.add("active");
+        headerTopHeartWrap.classList.add("active");
+        headerTopProductsWrap.classList.add("active");
+        headerBottomHiddenLogo.classList.add("active");
+        headerList.classList.add("active");
+      } else {
+        headerBottom.classList.remove("active");
+        headerTopComparisonWrap.classList.remove("active");
+        headerTopHeartWrap.classList.remove("active");
+        headerTopProductsWrap.classList.remove("active");
+        headerBottomHiddenLogo.classList.remove("active");
+        headerList.classList.remove("active");
+      }
+    }
+  });
+  var myHeader = document.querySelector(".header");
+
+  window.addEventListener("scroll", function (e) {
+    if (headerBottom) {
+      if (window.scrollY > 2 && screen.width < 991) {
+        myHeader.classList.add("active2");
+      } else {
+        myHeader.classList.remove("active2");
+      }
+    }
+  });
+
+  // var outSvg = function outSvg(myElems, nameSvg, nameSvgActive) {
+  //   var elems = document.querySelectorAll(myElems);
+  //   elems.forEach(function (el) {
+  //     el.addEventListener('click', function (e) {
+  //       e.preventDefault();
+  //       el.classList.toggle('active');
+  //
+  //       if (el.classList.contains('active')) {
+  //         el.innerHTML = "\n\t\t\t\t\t<svg class=\"svg-sprite-icon icon-".concat(nameSvgActive, "\">\n\t\t\t\t\t\t<use xlink:href=\"/images/sprite/symbol/sprite.svg#").concat(nameSvgActive, "\"></use>\n\t\t\t\t\t</svg>\n\t\t\t\t\t");
+  //       } else {
+  //         el.innerHTML = "\n\t\t\t\t\t<svg class=\"svg-sprite-icon icon-".concat(nameSvg, "\">\n\t\t\t\t\t\t<use xlink:href=\"/images/sprite/symbol/sprite.svg#").concat(nameSvg, "\"></use>\n\t\t\t\t\t</svg>\n\t\t\t\t\t");
+  //       }
+  //     });
+  //   });
+  // };
+  //
+  // outSvg('.cards__item-top-el2', 'heart2', '2');
+  // outSvg('.cards__item-top-el1', 'rat2', 'rat');
+
+  var inputs = document.querySelectorAll(".inputfile");
+  Array.prototype.forEach.call(inputs, function (input) {
+    var label = input.nextElementSibling,
+      labelVal = label.innerHTML;
+    input.addEventListener("change", function (e) {
+      var fileName = "";
+      if (this.files && this.files.length > 1)
+        fileName = (this.getAttribute("data-multiple-caption") || "").replace(
+          "{count}",
+          this.files.length
+        );
+      else fileName = e.target.value.split("\\").pop();
+      if (fileName) label.querySelector("span").innerHTML = fileName;
+      else label.innerHTML = labelVal;
+    }); // Firefox bug fix
+
+    input.addEventListener("focus", function () {
+      input.classList.add("has-focus");
+    });
+    input.addEventListener("blur", function () {
+      input.classList.remove("has-focus");
+    });
+  }); // Вызовы модалок
+  // Вся разметка модалок лежит в .//js/elements.js
+
+  var modalElem;
+  document.addEventListener("click", function (e) {
+    if (e.target.closest("[data-btn-modal]")) {
+      e.preventDefault();
+      var datTarget = e.target.closest("[data-btn-modal]").dataset.btnModal;
+
+      let formData = new FormData();
+
+      switch (datTarget) {
+        case "creatingClient":
+          let reviewId = e.target.closest("[data-btn-modal]").dataset.reviewId;
+
+          formData = new FormData();
+          formData.append("data", "viewReview");
+          formData.append("id", reviewId);
+
+          _helper.fetch("/submit/modal", formData, (response) => {
+            response.json().then((json) => {
+              modalElem = $plugins.modal({
+                title: json.header,
+                closable: true,
+                width: "800px",
+                content: json.text,
+              });
+            });
+          });
+
+          setTimeout(function () {
+            return modalElem.open();
+          }, 300);
+          break;
+
+        case "reviewsModal":
+          formData = new FormData();
+          formData.append("data", "review");
+
+          _helper.fetch("/submit/modal", formData, (response) => {
+            response.json().then((json) => {
+              modalElem = $plugins.modal({
+                title: json.header,
+                closable: true,
+                width: "800px",
+                content: json.text,
+              });
+            });
+          });
+
+          setTimeout(function () {
+            return modalElem.open();
+          }, 300);
+          break;
+
+        case "modalFive":
+          formData = new FormData();
+          formData.append("data", "listMarket");
+
+          _helper.fetch("/submit/modal", formData, (response) => {
+            response.json().then((json) => {
+              modalElem = $plugins.modal({
+                title: json.header,
+                closable: true,
+                width: "800px",
+                content: json.text,
+              });
+
+              setTimeout(function () {
+                return modalElem.open();
+              }, 300);
+            });
+          });
+
+          break;
+
+        case "login":
+          formData = new FormData();
+          formData.append("data", "login");
+
+          _helper.fetch("/submit/modal", formData, (response) => {
+            response.json().then((json) => {
+              modalElem = $plugins.modal({
+                title: json.header,
+                closable: true,
+                width: "800px",
+                content: json.text,
+              });
+            });
+          });
+
+          setTimeout(function () {
+            return modalElem.open();
+          }, 300);
+          break;
+
+        case "modalVost":
+          formData = new FormData();
+          formData.append("data", "resetPassword");
+
+          _helper.fetch("/submit/modal", formData, (response) => {
+            response.json().then((json) => {
+              console.log(json);
+
+              modalElem = $plugins.modal({
+                title: json.header,
+                closable: true,
+                width: "800px",
+                content: json.text,
+              });
+
+              document.addEventListener("submit", (event) => {
+                event.preventDefault();
+                let eventTarget = event.target;
+
+                let button = eventTarget.querySelector("button");
+
+                formData = new FormData();
+                formData.append(
+                  "email",
+                  eventTarget.querySelector("[name=email]").value
+                );
+
+                _helper.fetch(
+                  eventTarget.getAttribute("action"),
+                  formData,
+                  (response) => {
+                    response.json().then((json) => {
+                      if (!json.messege.includes("Нет пользователя")) {
+                        button.remove();
+                      }
+
+                      eventTarget.querySelector(".info").innerHTML =
+                        json.messege;
+                    });
+                  }
+                );
+              });
+            });
+          });
+
+          setTimeout(function () {
+            return modalElem.open();
+          }, 300);
+          break;
+
+        case "modalReg":
+          formData = new FormData();
+          formData.append("data", "registration");
+
+          _helper.fetch("/submit/modal", formData, (response) => {
+            response.json().then((json) => {
+              modalElem = $plugins.modal({
+                title: json.header,
+                closable: true,
+                width: "800px",
+                content: json.text,
+              });
+            });
+          });
+
+          setTimeout(function () {
+            return modalElem.open();
+          }, 300);
+          break;
+
+        default:
+          return;
+      }
+    }
+  });
+
+  var $globalHtmlElements = {};
+
+  window.$globalHtmlElements = $globalHtmlElements; // Модальное окно для Развернутого отзыва
+
+  // $globalHtmlElements.reviewsModal = "\n\t\t<form class=\"reviewsModal\">\n\t\t\t<div class=\"reviewsModal__top\">\n\t\t\t\t<div class=\"reviewsModal__top-left\">\n\t\t\t\t\t<h6>\u0418\u043C\u044F:</h6>\n\t\t\t\t\t<input type=\"text\" placeholder=\"\u0418\u043C\u044F\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"reviewsModal__top-right\">\n\t\t\t\t\t<h6>\u0412\u0430\u0448\u0430 \u043E\u0446\u0435\u043D\u043A\u0430:</h6>\n\t\t\t\t\t<div class=\"rating-area\">\n\t\t\t\t\t\t<input id=\"star-5\" type=\"radio\" name=\"rating\" value=\"5\">\n\t\t\t\t\t\t<label for=\"star-5\" title=\"\u041E\u0446\u0435\u043D\u043A\u0430 \xAB5\xBB\"></label>\n\t\t\t\t\t\t<input id=\"star-4\" type=\"radio\" name=\"rating\" value=\"4\">\n\t\t\t\t\t\t<label for=\"star-4\" title=\"\u041E\u0446\u0435\u043D\u043A\u0430 \xAB4\xBB\"></label>\n\t\t\t\t\t\t<input id=\"star-3\" type=\"radio\" name=\"rating\" value=\"3\">\n\t\t\t\t\t\t<label for=\"star-3\" title=\"\u041E\u0446\u0435\u043D\u043A\u0430 \xAB3\xBB\"></label>\n\t\t\t\t\t\t<input id=\"star-2\" type=\"radio\" name=\"rating\" value=\"2\">\n\t\t\t\t\t\t<label for=\"star-2\" title=\"\u041E\u0446\u0435\u043D\u043A\u0430 \xAB2\xBB\"></label>\n\t\t\t\t\t\t<input id=\"star-1\" type=\"radio\" name=\"rating\" value=\"1\">\n\t\t\t\t\t\t<label for=\"star-1\" title=\"\u041E\u0446\u0435\u043D\u043A\u0430 \xAB1\xBB\"></label>\n\t\t\t\t  </div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"reviewsModal__top\">\n\t\t\t\t<div class=\"reviewsModal__top-full\">\n\t\t\t\t\t<h6>\u0411\u043B\u044E\u0434\u043E:</h6>\n\t\t\t\t\t<input type=\"text\" placeholder=\"\u0411\u043B\u044E\u0434\u043E, \u043E \u043A\u043E\u0442\u043E\u0440\u043E\u043C \u043F\u0438\u0448\u0438\u0442\u0435 \u043E\u0442\u0437\u044B\u0432\">\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"reviewsModal__top\">\n\t\t\t\t<div class=\"reviewsModal__top-full\">\n\t\t\t\t\t<h6>\u041D\u0430\u043F\u0438\u0448\u0438\u0442\u0435 \u043E\u0442\u0437\u044B\u0432:</h6>\n\t\t\t\t\t<textarea></textarea>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"reviewsModal__btns\">\n\t\t\t\t<input type=\"file\" name=\"file\" id=\"file\" class=\"inputfile\" data-multiple-caption=\"{count} files selected\" multiple />\n\t\t\t\t<label for=\"file\" class=\"button\">\n\t\t\t\t\t<svg class=\"svg-sprite-icon icon-download\">\n\t\t\t\t\t<use xlink:href=\"/images/sprite/symbol/sprite.svg#download\"></use>\n\t\t\t\t</svg>\n\t\t\t\t\u041F\u0440\u0438\u043A\u0440\u0435\u043F\u0438\u0442\u044C \u0444\u043E\u0442\u043E</label>\n\t\t\t\t<button class=\"button\">\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C \u043E\u0442\u0437\u044B\u0432</button>\n\t\t\t</div>\n\t\t</form>\n\t"; // Модальное окно для Написания отзыва
+  $globalHtmlElements.reviewsModal =
+    '\n\t\t<form class="reviewsModal" action=\'/user/default/login\'>\n\t\t\t<div class="reviewsModal__top">\n\t\t\t\t<div class="reviewsModal__top-left">\n\t\t\t\t\t<h6>\u0418\u043C\u044F:</h6>\n\t\t\t\t\t<input type="text" placeholder="\u0418\u043C\u044F">\n\t\t\t\t</div>\n\t\t\t\t<div class="reviewsModal__top-right">\n\t\t\t\t\t<h6>\u0412\u0430\u0448\u0430 \u043E\u0446\u0435\u043D\u043A\u0430:</h6>\n\t\t\t\t\t<div class="rating-area">\n\t\t\t\t\t\t<input id="star-5" type="radio" name="rating" value="5">\n\t\t\t\t\t\t<label for="star-5" title="\u041E\u0446\u0435\u043D\u043A\u0430 \xAB5\xBB"></label>\n\t\t\t\t\t\t<input id="star-4" type="radio" name="rating" value="4">\n\t\t\t\t\t\t<label for="star-4" title="\u041E\u0446\u0435\u043D\u043A\u0430 \xAB4\xBB"></label>\n\t\t\t\t\t\t<input id="star-3" type="radio" name="rating" value="3">\n\t\t\t\t\t\t<label for="star-3" title="\u041E\u0446\u0435\u043D\u043A\u0430 \xAB3\xBB"></label>\n\t\t\t\t\t\t<input id="star-2" type="radio" name="rating" value="2">\n\t\t\t\t\t\t<label for="star-2" title="\u041E\u0446\u0435\u043D\u043A\u0430 \xAB2\xBB"></label>\n\t\t\t\t\t\t<input id="star-1" type="radio" name="rating" value="1">\n\t\t\t\t\t\t<label for="star-1" title="\u041E\u0446\u0435\u043D\u043A\u0430 \xAB1\xBB"></label>\n\t\t\t\t  </div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class="reviewsModal__top">\n\t\t\t\t<div class="reviewsModal__top-full">\n\t\t\t\t\t<h6>\u0411\u043B\u044E\u0434\u043E:</h6>\n\t\t\t\t\t<input type="text" placeholder="\u0411\u043B\u044E\u0434\u043E, \u043E \u043A\u043E\u0442\u043E\u0440\u043E\u043C \u043F\u0438\u0448\u0438\u0442\u0435 \u043E\u0442\u0437\u044B\u0432">\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class="reviewsModal__top">\n\t\t\t\t<div class="reviewsModal__top-full">\n\t\t\t\t\t<h6>\u041D\u0430\u043F\u0438\u0448\u0438\u0442\u0435 \u043E\u0442\u0437\u044B\u0432:</h6>\n\t\t\t\t\t<textarea></textarea>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class="reviewsModal__btns">\n\t\t\t\t<input type="file" name="file" id="file" class="inputfile" data-multiple-caption="{count} files selected" multiple />\n\t\t\t\t<label for="file" class="button">\n\t\t\t\t\t<svg class="svg-sprite-icon icon-download">\n\t\t\t\t\t<use xlink:href="/images/sprite/symbol/sprite.svg#download"></use>\n\t\t\t\t</svg>\n\t\t\t\t\u041F\u0440\u0438\u043A\u0440\u0435\u043F\u0438\u0442\u044C \u0444\u043E\u0442\u043E</label>\n\t\t\t\t<button class="button">\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C \u043E\u0442\u0437\u044B\u0432</button>\n\t\t\t</div>\n\t\t</form>\n\t'; // Модальное окно для Написания отзыва
+
+  $globalHtmlElements.modalAutoriz =
+    '\n\t\t<section class="authorisation section-ind">\n\t\t\t<h1>\u0410\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u044F</h1>\n\t\t\t<div class="authorisation__block">\n\t\t\t<form class="authorisation__form">\n\t\t\t\t<div class="authorisation__form-el"> \n\t\t\t\t<p>\u041B\u043E\u0433\u0438\u043D:<span>*</span></p>\n\t\t\t\t<input class="g-input" type="email" placeholder="\u0412\u0430\u0448 \u043B\u043E\u0433\u0438\u043D (Email)">\n\t\t\t\t</div>\n\t\t\t\t<div class="authorisation__form-el"> \n\t\t\t\t<p>\u041F\u0430\u0440\u043E\u043B\u044C:<span>*</span></p>\n\t\t\t\t<input class="g-input" type="password" placeholder="\u0412\u0430\u0448 \u043F\u0430\u0440\u043E\u043B\u044C">\n\t\t\t\t</div>\n\t\t\t\t<div class="authorisation__form-btn"> \n\t\t\t\t<button class="button">\u0412\u043E\u0439\u0442\u0438</button>\n\t\t\t\t</div>\n\t\t\t</form>\n\t\t\t</div>\n\t\t\t<div class="authorisation__reg"><a class="button" href="#" data-btn-modal="modalVost">\u0412\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u044C \u043F\u0430\u0440\u043E\u043B\u044C</a><a class="button" href="#" data-btn-modal="modalReg">\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044F</a></div>\n\t\t</section>\n\t'; // Модальное окно для Авторизации
+
+  // Модальное окно для Авторизации
+  $globalHtmlElements.modalVost = `
+		<section class="authorisation section-ind">
+			<h1>Восстановление пароля</h1>
+			<div class="authorisation__block">
+			<form class="authorisation__form" action="/user/default/request-password-reset" method="post">
+			    <input type="hidden" name="${yii.getCsrfParam()}" value="${yii.getCsrfToken()}">
+				<div class="authorisation__form-el"> 
+				<p>Логин:<span>*</span></p>
+				<input class="g-input" name="email" type="email" placeholder="Ваш логин (Email)">
+				</div>
+				<div class="authorisation__form-btn"> 
+				<button class="button">Отправить</button>
+				</div>
+			</form>
+			</div>
+		</section>
+	`;
+
+  $globalHtmlElements.modalReg =
+    '\n        <section class="authorisation section-ind">\n          <h1>\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044F</h1>\n          <div class="authorisation__block">\n            <form class="authorisation__form">\n              <div class="authorisation__form-el"> \n                <p>\u0418\u043C\u044F:<span>*</span></p>\n                <input class="g-input" type="text" placeholder="\u0412\u0430\u0448\u0435 \u0418\u043C\u044F">\n              </div>\n              <div class="authorisation__form-el"> \n                <p>\u041B\u043E\u0433\u0438\u043D:<span>*</span></p>\n                <input class="g-input" type="email" placeholder="\u0412\u0430\u0448 \u043B\u043E\u0433\u0438\u043D (Email)">\n              </div>\n              <div class="authorisation__form-el"> \n                <p>\u0422\u0435\u043B\u0435\u0444\u043E\u043D:<span>*</span></p>\n                <input class="g-input numbersPhone" type="text" placeholder="\u0412\u0430\u0448 \u0442\u0435\u043B\u0435\u0444\u043E\u043D">\n              </div>\n              <div class="authorisation__form-el"> \n                <p>\u0410\u0434\u0440\u0435\u0441 \u0434\u043E\u0441\u0442\u0430\u0432\u043A\u0438:<span>*</span></p>\n                <input class="g-input" type="text" placeholder="\u0412\u0430\u0448 \u0430\u0434\u0440\u0435\u0441">\n              </div>\n              <div class="authorisation__form-el"> \n                <p>\u0414\u0430\u0442\u0430 \u0440\u043E\u0436\u0434\u0435\u043D\u0438\u044F (\u0434\u043B\u044F \u043F\u043E\u0434\u0430\u0440\u043A\u043E\u0432 \u0438 \u0441\u043A\u0438\u0434\u043E\u043A)<span>*</span></p>\n                <label class="calendar">\n                  <input type="date" name="date">\n                </label>\n              </div>\n              <div class="authorisation__form-el"> \n                <p>\u041F\u0430\u0440\u043E\u043B\u044C:<span>*</span></p>\n                <input class="g-input" type="password" placeholder="\u0412\u0430\u0448 \u043F\u0430\u0440\u043E\u043B\u044C">\n              </div>\n              <div class="authorisation__form-el"> \n                <p>\u041F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u043F\u0430\u0440\u043E\u043B\u044C:<span>*</span></p>\n                <input class="g-input" type="password" placeholder="\u041F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0435 \u0432\u0430\u0448 \u043F\u0430\u0440\u043E\u043B\u044C">\n              </div>\n              <div class="authorisation__form-btn"> \n                <button class="button">\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C</button>\n              </div>\n            </form>\n          </div>\n        </section>\n\t';
+
+  var mySearch = function mySearch(myTarget, myWrap, closestEl) {
+    var target = document.querySelector(myTarget);
+    var wrap = document.querySelector(myWrap);
+    target.addEventListener("click", function (e) {
+      if (target.contains(e.target)) {
+        wrap.classList.add("active");
+      } // e.preventDefault();
+    });
+    document.addEventListener("click", function (e) {
+      if (!e.target.closest(closestEl)) {
+        target.classList.remove("active");
+        wrap.classList.remove("active");
+      }
+    }); // wrap.addEventListener('click', (e) => {
+    // 	if (e.target != wrap && e.target != target) {
+    // 		wrap.classList.remove('active');
+    // 	}
+    // })
+
+    document.addEventListener("keyup", function (e) {
+      if (e.key == "Escape") {
+        wrap.classList.remove("active");
+      }
+    });
+  };
+
+  // mySearch('.header__bottom-inp > .svg-sprite-icon', '.header__bottom-outInp', '.header__bottom-search');
+  mySearch(
+    ".header__bottom-filter",
+    ".header__bottom-filter-cont",
+    ".header__bottom-filter-wrap"
+  ); // mySearch('.header__top-addr-el > a', '.header__top-addr-cont');
+
+  var myProlapse = function myProlapse() {
+    var prolapse = function prolapse(myTargets, myContents) {
+      var myClose =
+        arguments.length > 2 && arguments[2] !== undefined
+          ? arguments[2]
+          : false;
+      var targets = document.querySelectorAll(myTargets);
+      var contents = document.querySelectorAll(myContents);
+      var close = document.querySelector(myClose);
+      targets.forEach(function (target) {
+        target.addEventListener("click", function (e) {
+          contents.forEach(function (cont) {
+            if (
+              target.getAttribute("data-linkValue") ==
+              cont.getAttribute("data-ulValue")
+            ) {
+              target.classList.add("active");
+
+              if (cont.style.maxHeight) {
+                cont.style.maxHeight = null;
+                target.classList.remove("active");
+              } else {
+                cont.style.maxHeight = 50 + "vh";
+                cont.style.overflow = "auto";
+              }
+            }
+
+            if (close) {
+              close.addEventListener("click", function (e) {
+                cont.style.maxHeight = null;
+              });
+            }
+          });
+        });
+      });
+    };
+
+    prolapse(".fiter__title", ".fiter__cont");
+    prolapse(".fiter__title2", ".fiter__cont2");
+  };
+
+  myProlapse(); // end accordion
+
+  var customCheckboxBig = document.querySelectorAll(".custom-checkbox-big");
+  var sp = document.querySelectorAll(".custom-checkbox-big > span");
+  customCheckboxBig.forEach(function (el, i) {
+    el.addEventListener("change", function (e) {
+      if (e.target.checked) {
+        sp.forEach(function (elem) {
+          elem.classList.remove("act");
+        });
+
+        if (el.getAttribute("data-ch") == sp[i].getAttribute("data-sp")) {
+          sp[i].classList.add("act");
+        }
+      } else {
+        // console.log(sp[i])
+        // if (el.getAttribute('data-ch') == sp[i].getAttribute('data-sp')) {
+        // 	if (sp[i].classList.contains('act')) {
+        // 		sp[i].classList.remove('act')
+        // 	}
+        // }
+      }
+    });
+  });
+  var customCheckboxBigBgRad = document.querySelectorAll(
+    ".custom-checkbox-bigBgRadio"
+  );
+  var spBgRad = document.querySelectorAll(".custom-checkbox-bigBgRadio > span");
+  customCheckboxBigBgRad.forEach(function (el, i) {
+    el.addEventListener("change", function (e) {
+      if (e.target.checked) {
+        spBgRad.forEach(function (elem) {
+          elem.classList.remove("act");
+        });
+        customCheckboxBigBgRad.forEach(function (elem) {
+          elem.classList.remove("act");
+        });
+
+        if (el.getAttribute("data-ch") == spBgRad[i].getAttribute("data-sp")) {
+          spBgRad[i].classList.add("act");
+          el.classList.add("act");
+        }
+      } else {
+        // if (el.getAttribute('data-ch') == spBg[i].getAttribute('data-sp')) {
+        // 	spBg[i].classList.remove('act')
+        // 	el.classList.remove('act')
+        // }
+      }
+    });
+  });
+  var customCheckboxBigBg = document.querySelectorAll(".custom-checkbox-bigBg");
+  var spBg = document.querySelectorAll(".custom-checkbox-bigBg > span");
+  customCheckboxBigBg.forEach(function (el, i) {
+    el.addEventListener("change", function (e) {
+      if (e.target.checked) {
+        if (el.getAttribute("data-ch") == spBg[i].getAttribute("data-sp")) {
+          spBg[i].classList.add("act");
+          el.classList.add("act");
+        }
+      } else {
+        if (el.getAttribute("data-ch") == spBg[i].getAttribute("data-sp")) {
+          spBg[i].classList.remove("act");
+          el.classList.remove("act");
+        }
+      }
+    });
+  }); // let timeout;
+  // let headerTopProductsComparison = document.querySelector('.header__top-products-comparison');
+  // let tkk = document.querySelector('.tkk');
+  // headerTopProductsComparison.addEventListener('mouseover', (e) => {
+  // 	clearTimeout(timeout);
+  // 	tkk.innerHTML = 'Корзина - 450';
+  // 	timeout = setTimeout(function () {
+  // 	}, 1000);
+  // })
+  // headerTopProductsComparison.addEventListener('mouseout', (e) => {
+  // 	clearTimeout(timeout);
+  // 	tkk.innerHTML = '450';
+  // 	timeout = setTimeout(function () {
+  // 	}, 1000);
+  // })
+  // let myFooter = document.querySelector('.footer');
+  // window.addEventListener('scroll', (e) => {
+  // 	// console.log(window.pageYOffset)
+  // 	if (myFooter) {
+  // 		if (window.pageYOffset > 3200) {
+  // 			myFooter.classList.add('active');
+  // 		} else {
+  // 			myFooter.classList.remove('active');
+  // 		}
+  // 	}
+  // })
+
+  var delivery = document.querySelector(".delivery");
+
+  if (delivery) {
+    window.addEventListener("scroll", function (e) {
+      var scroll = window.scrollY + delivery.scrollHeight; // console.log(scroll)
+
+      var offset = delivery.offsetTop; // console.log(offset)
+
+      if (scroll > offset) {
+        delivery.classList.add("active");
+      } else {
+        // delivery.classList.remove('active');
+      }
+    });
+  }
+
+  // var less = document.querySelectorAll('.less');
+  // less.forEach(function (el) {
+  //   el.addEventListener('click', function (e) {
+  //     e.preventDefault();
+  //   });
+  // });
+  // var more = document.querySelectorAll('.more');
+  // more.forEach(function (el) {
+  //   el.addEventListener('click', function (e) {
+  //     e.preventDefault();
+  //   });
+  // });
+  //
+
+  var numbersPhone = document.querySelectorAll(".numbersPhone");
+  var maskOptionsPhone = {
+    mask: "+{7}(000)000-00-00",
+  };
+  numbersPhone.forEach(function (el) {
+    var mask = IMask(el, maskOptionsPhone);
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  $("#InputID").inputmask("99:99");
+  var $element = $(".footer");
+  var counter = 0;
+  $(window).scroll(function () {
+    var scroll = $(window).scrollTop() + $(window).height();
+    var offset = $element.offset().top;
+
+    if (scroll > offset && counter == 0) {
+      $(".footer").addClass("active");
+    } else {
+      $(".footer").removeClass("active");
+    }
+  });
+  $(".js-scroll-to-form").click(function (event) {
+    //отменяем стандартную обработку нажатия по ссылке
+    event.preventDefault(); //забираем идентификатор бока с атрибута href
+
+    var id = $(this).attr("href"),
+      //узнаем высоту от начала страницы до блока на который ссылается якорь
+      top = $(id).offset().top; //анимируем переход на расстояние - top за 1000 мс
+
+    $("body,html").animate(
+      {
+        scrollTop: top,
+      },
+      1000
+    );
+    $(".header__burger, .header__menu").removeClass("active");
+    $("body").removeClass("lock");
+  });
+  $(".open-magn").magnificPopup({
+    type: "image",
+    closeOnContentClick: true,
+    closeBtnInside: false,
+    fixedContentPos: true,
+    mainClass: "mfp-no-margins mfp-with-zoom",
+    // class to remove default margin from left and right side
+    image: {
+      verticalFit: true,
+    },
+    zoom: {
+      enabled: true,
+      duration: 300, // don't foget to change the duration also in CSS
+    },
+  });
+
+  $(".cards__item-bottom-mark").on("click", function (e) {
+    e.preventDefault();
+
+    if ($(window).width() > 992) {
+      var that = $(this).closest(".cards__item").find("img");
+      var bascket = $(".header__top-products-comparison");
+      var w = that.width();
+      that
+        .clone()
+        .css({
+          width: w,
+          position: "absolute",
+          "z-index": "9999",
+          top: that.offset().top,
+          left: that.offset().left,
+        })
+        .appendTo("body")
+        .animate(
+          {
+            opacity: 0.05,
+            left: bascket.offset()["left"],
+            top: bascket.offset()["top"],
+            width: 20,
+          },
+          1000,
+          function () {
+            $(this).remove();
+          }
+        );
+    } else {
+      $(".header__top-comparison-products-el").addClass("act");
+      setTimeout(function () {
+        $(".header__top-comparison-products-el").removeClass("act");
+      }, 800);
+    }
+  });
+  $(".cards__item-bottom-mark2").on("click", function (e) {
+    e.preventDefault();
+    if ($(window).width() > 992) {
+      var that = $(".assembly").find(".assembly__left-card").find("img");
+
+      var bascket = $(".header__top-products-comparison");
+      var w = that.width();
+      that
+        .clone()
+        .css({
+          width: w,
+          position: "absolute",
+          "z-index": "9999",
+          top: that.offset().top,
+          left: that.offset().left,
+        })
+        .appendTo("body")
+        .animate(
+          {
+            opacity: 0.05,
+            left: bascket.offset()["left"],
+            top: bascket.offset()["top"],
+            width: 20,
+          },
+          1000,
+          function () {
+            $(this).remove();
+          }
+        );
+    } else {
+      $(".header__top-comparison-products-el").addClass("act");
+      setTimeout(function () {
+        $(".header__top-comparison-products-el").removeClass("act");
+      }, 800);
+    }
+  });
+  var wow = new WOW({
+    boxClass: "wow",
+    // animated element css class (default is wow)
+    animateClass: "animated",
+    // animation css class (default is animated)
+    offset: 0,
+    // distance to the element when triggering the animation (default is 0)
+    mobile: true,
+    // trigger animations on mobile devices (default is true)
+    live: true,
+    // act on asynchronously loaded content (default is true)
+    callback: function callback(box) {
+      // the callback is fired every time an animation is started
+      // the argument that is passed in is the DOM node being animated
+    },
+    scrollContainer: null,
+    // optional scroll container selector, otherwise use window,
+    resetAnimation: true, // reset animation on end (default is true)
+  });
+  wow.init();
+  $(".header__burger").click(function (event) {
+    $(".header__burger, .header__mnu").toggleClass("active");
+    $("body").toggleClass("lock");
+  });
+  var swiper = new Swiper(".works__slider", {
+    autoHeight: true,
+    centeredSlides: true,
+    initialSlide: 0,
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: true,
+    observer: true,
+    observeParents: true,
+    pagination: {
+      el: ".swiper-pagination",
+      type: "bullets",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 10,
+      },
+      420: {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        observer: false,
+        observeParents: false,
+      },
+      768: {
+        slidesPerView: 1,
+        spaceBetween: 20,
+      },
+      992: {
+        slidesPerView: 1,
+        spaceBetween: 20,
+      },
+    }, // autoplay: {
+    // 	delay: 5000,
+    // },
+  });
+  var slider2 = new Swiper(".reviews__slider", {
+    autoHeight: true,
+    slidesPerView: 3,
+    spaceBetween: 20,
+    loop: true,
+    observer: true,
+    observeParents: true,
+    pagination: {
+      el: ".swiper-pagination",
+      type: "bullets",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 10,
+      },
+      576: {
+        slidesPerView: 1,
+        spaceBetween: 10,
+      },
+      767: {
+        slidesPerView: 1,
+        spaceBetween: 10,
+      },
+      991: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+      1199: {
+        slidesPerView: 3,
+        spaceBetween: 20,
+      },
+    }, // autoplay: {
+    // 	delay: 5000,
+    // },
+  });
+  var slider3 = new Swiper(".news__slider", {
+    // autoHeight: true,
+    slidesPerView: 2,
+    spaceBetween: 20,
+    loop: true,
+    observer: true,
+    observeParents: true,
+    pagination: {
+      el: ".swiper-pagination2",
+      type: "bullets",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next2",
+      prevEl: ".swiper-button-prev2",
+    },
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 10,
+      },
+      576: {
+        slidesPerView: 1,
+        spaceBetween: 10,
+      },
+      767: {
+        slidesPerView: 1,
+        spaceBetween: 10,
+      },
+      991: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+      1199: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+    }, // autoplay: {
+    // 	delay: 5000,
+    // },
+  });
+
+  //Главный поиск сфинкс
+
+  let searchElement = document.querySelector("[data-name=mainSearch]");
+
+  let searchIcon = document.querySelector(".svg-sprite-icon.icon-search");
+
+  searchIcon.addEventListener("click", (event) => {
+    let target = event.target.parentElement.querySelector(
+      "[data-name=mainSearch]"
+    );
+
+    window.location.href = "/goods/search?good=" + target.value;
+  });
+
+  searchElement.addEventListener("keyup", (event) => {
+    if (event.keyCode == 13) {
+      window.location.href = "/goods/search?good=" + event.target.value;
+    }
+
+    let target = event.target;
+    let hinter = target.parentElement.querySelector(".hint");
+    hinter.innerHTML = "";
+
+    if (target.value.length < 3) return;
+
+    _helper.get(
+      "/submit/sphinx-good-search?good=" + target.value,
+      (response) => {
+        response.json().then((json) => {
+          json.data.forEach((el) => {
+            let a = document.createElement("a");
+            a.setAttribute("href", el[0]);
+            a.innerHTML = el[1];
+            hinter.appendChild(a);
+          });
+        });
+      }
+    );
+  });
+
+  // make-wok изменение радио баттонов
+
+  const rollsLink = document.getElementById("rollsLink");
+  const headerBottomOutInp = document.querySelector(".header__bottom-outInp");
+
+  rollsLink.addEventListener("mouseenter", () => {
+    headerBottomOutInp.classList.add("active");
+  });
+
+  rollsLink.addEventListener("mouseleave", () => {
+    headerBottomOutInp.classList.remove("active");
+  });
+
+  const checkGroup1 = document.querySelectorAll(".check-group-1");
+  const checkGroup2 = document.querySelectorAll(".check-group-2");
+
+  const checkGroup = (nodeList) => {
+    nodeList.forEach((item, i, arr) => {
+      item.addEventListener("change", (evt) => {
+        const target = evt.target;
+
+        for (const elem of arr) {
+          elem.classList.remove("act");
+        }
+
+        if (target.checked) {
+          item.classList.add("act");
+        }
+      });
+    });
+  };
+
+  checkGroup(checkGroup1);
+  checkGroup(checkGroup2);
+
+  //модалка для отзыва
+
+  let modalElem;
+
+  $globalHtmlElements.AddedReview = `
+    <div class="response-added">
+      <h6>Благодарим за Ваш отзыв!</h6>
+      <p>Он будет опубликован после проверки модератором.</p>
+    </div>
+  `;
+
+  function getCookie(name) {
+    var value = "; " + document.cookie;
+    var parts = value.split("; " + name + "=");
+    if (parts.length == 2) return parts.pop().split(";").shift();
+  }
+
+  var review = getCookie("Review");
+  if (review == "Added") {
+    modalElem = $plugins.modal({
+      title: "Отзыв",
+      closable: true,
+      width: "550px",
+      content: $globalHtmlElements.AddedReview,
+    });
+    setTimeout(() => modalElem.open(), 300);
+    document.cookie =
+      "Review=Added;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;";
+  }
+
+  //modal for oreder checkout
+
+  var orederCheckout = getCookie("Order");
+
+  $globalHtmlElements.SuccessOrder = `
+    <div class="response-added">
+      <h6>Заказ оформлен!</h6>
+    </div>
+  `;
+
+  $globalHtmlElements.minPriceOrder = `
+    <div class="response-added">
+      <h6>Минимальная сумма заказа для бесплатной доставки – 500 ₽. Если у Вас заказ на меньшую сумму, используйте самовывоз.</h6>
+    </div>
+  `;
+
+  // console.log(orederCheckout)
+
+  if (orederCheckout == 1) {
+    modalElem = $plugins.modal({
+      title: "Оформление заказа",
+      closable: true,
+      width: "550px",
+      content: $globalHtmlElements.SuccessOrder,
+    });
+    setTimeout(() => modalElem.open(), 300);
+    document.cookie = "Order=1;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;";
+  } else if (orederCheckout == 2) {
+    modalElem = $plugins.modal({
+      title: "Оформление заказа",
+      closable: true,
+      width: "550px",
+      content: $globalHtmlElements.minPriceOrder,
+    });
+    setTimeout(() => modalElem.open(), 300);
+    document.cookie = "Order=1;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;";
+  }
+
+  $(".hover-link").hover(
+    function () {
+      var imageUrl = $(this).data("image-src");
+      var imagePrice = $(this).data("price");
+      // Создаем элемент изображения и добавляем его в родительский контейнер
+      var imageElement = $(
+        '<div class="image-container"><img class="hover-image" width="100px" height="100px" src="' +
+          imageUrl +
+          '" alt="Hover Image"><span class="image-container--price">' +
+          imagePrice +
+          " ₽</span></div>"
+      );
+      $(this).append(imageElement);
+    },
+    function () {
+      // Удаляем элемент изображения при завершении наведения
+      $(this).find(".image-container").remove();
+    }
+  );
+
+  const $mainButton = $(".assembly__right-content .cards__item-bottom");
+  //   const $addTextFullCard = $('.created__right');
+  //   const $addTextFullCardDiv = $('.assembly__right-stuffing');
+  //   // const $addFreeText = $('.cards__item-info--free');
+
+  //   if($(window).width() <= 1000) {
+  //     const $freeDiv = $('.cards__item-info--free').detach();
+  //     const $stuffingDiv = $('.assembly__right-stuffing').detach();
+  //     $('.set__left').append($freeDiv);
+  //     $('.set__left').append($stuffingDiv);
+  //     $mainButton.css('order', '5');
+  //   }
+  if ($(window).width() <= 600) {
+    const $ecDiv = $(".assembly__right-button .economy--big").detach();
+    $(".assembly__right-stuffing").prepend($ecDiv);
+    const $newElem = $(".created__right").detach();
+    $mainButton.after($newElem);
+  }
+  if ($(window).width() <= 420) {
+    const $titleDiv = $(".assembly__right h1").detach();
+    $(".assembly").prepend($titleDiv);
+  }
+  if ($(window).width() < 1200 && $(window).width() > 800) {
+    const $divForRemove = $addTextFullCardDiv.detach();
+    $divForRemove.find(".fiter__change2").css("margin", "5px 0px 10px 0px");
+    $(".assembly__right").append($divForRemove);
+    $addTextFullCard.css("display", "none");
+    $(".created__left").css("flex", "0 1 100%");
+    $(".cards__item-info--free").css("border-right", "none");
+  }
+
+  //   const $buttonCartMobile = $('.cards__item .cards__item-bottom-mark');
+
+  //   if($(window).width() <= 1200) {
+  //     $buttonCartMobile.find('span').replaceWith('<svg class="svg-sprite-icon icon-3"><use xlink:href="/images/sprite/symbol/sprite.svg#3"></use></svg>')
+  //   }
+  var categoriesToHide = ["Салаты и напитки", "Горячие закуски"];
+  const categoryNameCart = $(".basketPay__right1-el-img p");
+
+  categoryNameCart.each(function () {
+    var text = $(this).text();
+    for (var i = 0; i < categoriesToHide.length; i++) {
+      if (text.includes("(" + categoriesToHide[i] + ")")) {
+        $(this).text(text.replace("(" + categoriesToHide[i] + ")", "").trim());
+        break;
+      }
+    }
+  });
+
+  const salePageButtons = document.querySelectorAll('.sale_cards__button');
+  const salePageDescriptions = document.querySelectorAll('.sale_cards__description');
+  salePageButtons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+      salePageDescriptions[index].classList.toggle('opened');
+      salePageButtons[index].classList.toggle('active');
+    });
+  });
+});
+//  фильтр товаров
+//
+// window.filterCheck = () => {
+//
+//     const filterElems = document.querySelector('.assembly__right-stuffing');
+//
+//     if (filterElems) {
+//         const cards = [...document.querySelectorAll('.cards__column')];
+//         const inputs = filterElems.querySelectorAll('input');
+//
+//         let cardActions = new Map(); //создаем коллекцию Мап чтобы мы могли создать многомерный массив
+//
+//         cards.map(card => cardActions.set(card.dataset.good_id, card.dataset.actions.split(','))); // записываем в коллецию элементы где ключ good_id а значение массив из чисел дата-экшн
+//
+//         filterElems.addEventListener('click', evt => {
+//             const target = evt.target;
+//
+//             if (target.tagName.toLocaleLowerCase() === 'input') {
+//                 let values = [];
+//
+//                 inputs.forEach(input => {
+//                     if (input.checked) values.push(input.value); // собираем массив из кликнутых value
+//                 });
+//
+//                 cards.forEach(card => {
+//                     card.style.display = 'none';
+//                     if (!values.length) {
+//                         card.style.display = 'flex';
+//                     }
+//
+//                     values.forEach(value => {
+//                         for (let elem of cardActions) { //перебираем нашу коллекцию и ишем совпадения
+//                             elem[1].forEach(num => {
+//                                 if (value === num) {
+//                                     if (card.dataset.good_id === elem[0]) {
+//                                         card.style.display = 'flex';
+//                                     }
+//                                 }
+//                             });
+//                         };
+//                     });
+//                 });
+//             }
+//         });
+//
+//     }
+// };
+
+// filterCheck();
+
+// alert('Внимание! Мы сегодня уже не принимаем заказы. Возобновляем работу 1 января 2025 г. в 14:00. Приносим извинения, но мы тоже хотим отметить Новый год!')

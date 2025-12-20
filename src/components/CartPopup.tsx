@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { X, Minus, Plus, Trash2, ShoppingBag } from 'lucide-react';
 import { useCartStore } from '@/store/cartStore';
 import { useUIStore } from '@/store/uiStore';
-import { getProductImage } from '@/lib/images';
+import { getProductImageForProduct } from '@/lib/images';
+import { Product } from '@/data/products';
 import { useSwipeClose } from '@/hooks/useSwipeClose';
 import { useProductImageContext } from '@/components/ProductImageProvider';
 
@@ -23,8 +24,8 @@ const CartPopup = () => {
   const [isClosing, setIsClosing] = useState(false);
   const totalPrice = getTotalPrice();
   
-  const getImageUrl = (imageKey: string) => {
-    return customImages[imageKey] || getProductImage(imageKey);
+  const getImageUrl = (product: Product) => {
+    return customImages[product.image] || getProductImageForProduct(product);
   };
   const handleClose = () => {
     setIsClosing(true);
@@ -74,7 +75,7 @@ const CartPopup = () => {
           }}>
                   {/* Image */}
                   <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
-                    <img src={getImageUrl(item.product.image)} alt={item.product.name} className="w-full h-full object-cover" />
+                    <img src={getImageUrl(item.product)} alt={item.product.name} className="w-full h-full object-cover" />
                   </div>
 
                   {/* Info */}

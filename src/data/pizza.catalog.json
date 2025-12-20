@@ -1,0 +1,378 @@
+[
+  {
+    "id": "7",
+    "name": "Пицца Маргарита",
+    "description": "Помидор, Сливочный соус, Сыр моцарелла, Сыр дорблю, Сыр пармезан",
+    "price": 730,
+    "imageUrl": "/files/images/cache/Goods/Good7/a25764cf84-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/picca-margarita",
+    "weight": "800 гр",
+    "size": "36 см",
+    "ingredients": [
+      "Помидор",
+      "Сливочный соус",
+      "Сыр моцарелла",
+      "Сыр дорблю",
+      "Сыр пармезан"
+    ]
+  },
+  {
+    "id": "273",
+    "name": "Пицца Ветчина и сыр",
+    "description": "Сливочный соус, Ветчина, Сыр",
+    "price": 730,
+    "imageUrl": "/files/images/cache/Goods/Good273/bc13d794f6-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/picca-vetcina-i-syr",
+    "weight": "750 гр",
+    "ingredients": [
+      "Сливочный соус",
+      "Ветчина",
+      "Сыр"
+    ]
+  },
+  {
+    "id": "6",
+    "name": "Пицца Мама Миа",
+    "description": "Помидор, Сливочный соус, Сыр моцарелла, Соус томатный, Ветчина",
+    "price": 780,
+    "imageUrl": "/files/images/cache/Goods/Good6/e9020b5222-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/picca-mama-mia",
+    "weight": "800 гр",
+    "size": "36 см",
+    "ingredients": [
+      "Помидор",
+      "Сливочный соус",
+      "Сыр моцарелла",
+      "Соус томатный",
+      "Ветчина"
+    ]
+  },
+  {
+    "id": "16",
+    "name": "Пицца 4 сыра",
+    "description": "Сливочный соус, Сыр моцарелла, Сыр дорблю, Сыр мраморный, Сыр пармезан, Сливочный сыр",
+    "price": 780,
+    "imageUrl": "/files/images/cache/Goods/Good16/28b82c8192-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/picca-4-syra",
+    "weight": "750 гр",
+    "size": "36 см",
+    "ingredients": [
+      "Сливочный соус",
+      "Сыр моцарелла",
+      "Сыр дорблю",
+      "Сыр мраморный",
+      "Сыр пармезан",
+      "Сливочный сыр"
+    ]
+  },
+  {
+    "id": "21",
+    "name": "Пицца Италия",
+    "description": "Сливочный соус, Сыр моцарелла, Грибы, Соус томатный, Ветчина",
+    "price": 780,
+    "imageUrl": "/files/images/cache/Goods/Good21/232f9b80aa-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/picca-italia",
+    "weight": "800 гр",
+    "size": "36 см",
+    "ingredients": [
+      "Сливочный соус",
+      "Сыр моцарелла",
+      "Грибы",
+      "Соус томатный",
+      "Ветчина"
+    ]
+  },
+  {
+    "id": "18",
+    "name": "Пицца Гаваи",
+    "description": "Паприка, Сливочный соус, Сыр моцарелла, Ананас, Куриная грудка, Грибы",
+    "price": 790,
+    "imageUrl": "/files/images/cache/Goods/Good18/9ee11c2da7-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/picca-hawaii",
+    "weight": "900 гр",
+    "size": "36 см",
+    "ingredients": [
+      "Паприка",
+      "Сливочный соус",
+      "Сыр моцарелла",
+      "Ананас",
+      "Куриная грудка",
+      "Грибы"
+    ]
+  },
+  {
+    "id": "272",
+    "name": "Пицца Марокко",
+    "description": "Курица, Сливочный соус, Сыр моцарелла, Ананас",
+    "price": 720,
+    "imageUrl": "/files/images/cache/Goods/Good272/49f929a053-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/picca-marokko",
+    "weight": "800 гр",
+    "oldPrice": 820,
+    "economy": 100,
+    "ingredients": [
+      "Курица",
+      "Сливочный соус",
+      "Сыр моцарелла",
+      "Ананас"
+    ]
+  },
+  {
+    "id": "244",
+    "name": "Пицца Нежная",
+    "description": "Курица, Сыр моцарелла, Ветчина, Маслины, лук репчатый",
+    "price": 840,
+    "imageUrl": "/files/images/cache/Goods/Good244/27b791d7db-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/picca-neznaa",
+    "weight": "850 гр",
+    "ingredients": [
+      "Курица",
+      "Сыр моцарелла",
+      "Ветчина",
+      "Маслины",
+      "лук репчатый"
+    ]
+  },
+  {
+    "id": "19",
+    "name": "Пицца Баварская",
+    "description": "Сливочный соус, Сыр моцарелла, Грибы, Соус томатный, Баварские колбаски, Соленые огурцы",
+    "price": 840,
+    "imageUrl": "/files/images/cache/Goods/Good19/123040b7a7-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/picca-bavarskaa",
+    "weight": "850 гр",
+    "size": "36 см",
+    "ingredients": [
+      "Сливочный соус",
+      "Сыр моцарелла",
+      "Грибы",
+      "Соус томатный",
+      "Баварские колбаски",
+      "Соленые огурцы"
+    ]
+  },
+  {
+    "id": "243",
+    "name": "Пицца По деревенски",
+    "description": "Курица, Сыр моцарелла, Грибы, лук репчатый, огурцы корнишоны",
+    "price": 840,
+    "imageUrl": "/files/images/cache/Goods/Good243/b37bde5915-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/picca-po-derevenski",
+    "weight": "900 гр",
+    "ingredients": [
+      "Курица",
+      "Сыр моцарелла",
+      "Грибы",
+      "лук репчатый",
+      "огурцы корнишоны"
+    ]
+  },
+  {
+    "id": "268",
+    "name": "Пицца 50 на 50",
+    "description": "1/2 Италия, 1/2 пепперони",
+    "price": 840,
+    "imageUrl": "/files/images/cache/Goods/Good268/1e9ad576ce-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/picca-fifti-fifti",
+    "weight": "800 гр",
+    "ingredients": [
+      "1/2 Италия",
+      "1/2 пепперони"
+    ]
+  },
+  {
+    "id": "9",
+    "name": "Пицца Пепперони",
+    "description": "Помидор, Сливочный соус, Сыр моцарелла, Соус томатный, Пепперони, Халапеньо",
+    "price": 850,
+    "imageUrl": "/files/images/cache/Goods/Good9/28145dd512-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/picca-pepperoni",
+    "weight": "850 гр",
+    "size": "36 см",
+    "ingredients": [
+      "Помидор",
+      "Сливочный соус",
+      "Сыр моцарелла",
+      "Соус томатный",
+      "Пепперони",
+      "Халапеньо"
+    ]
+  },
+  {
+    "id": "350",
+    "name": "Пицца Грибная",
+    "description": "Сыр моцарелла, Маринованные опята, сливочно грибная основа, грибы",
+    "price": 850,
+    "imageUrl": "/files/images/cache/Goods/Good350/60959e5ebb-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/picca-gribnaa",
+    "weight": "1000 гр",
+    "size": "36 см",
+    "ingredients": [
+      "Сыр моцарелла",
+      "Маринованные опята",
+      "сливочно грибная основа",
+      "грибы"
+    ]
+  },
+  {
+    "id": "352",
+    "name": "Пицца Мехико",
+    "description": "Перец болгарский, Помидор, Сыр моцарелла, Халапеньо, сливочно томатная основа , Маринованная курица",
+    "price": 850,
+    "imageUrl": "/files/images/cache/Goods/Good352/4a922da2e5-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/picca-meksiko",
+    "weight": "1000 гр",
+    "size": "36 см",
+    "ingredients": [
+      "Перец болгарский",
+      "Помидор",
+      "Сыр моцарелла",
+      "Халапеньо",
+      "сливочно томатная основа",
+      "Маринованная курица"
+    ]
+  },
+  {
+    "id": "8",
+    "name": "Пицца Морская",
+    "description": "Креветка, Лосось, Сливочный соус, Сыр моцарелла, Сыр пармезан, Грибы, Соус томатный, Маслины",
+    "price": 900,
+    "imageUrl": "/files/images/cache/Goods/Good8/1fbcbafd8f-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/picca-morskaa",
+    "weight": "850 гр",
+    "size": "36 см",
+    "ingredients": [
+      "Креветка",
+      "Лосось",
+      "Сливочный соус",
+      "Сыр моцарелла",
+      "Сыр пармезан",
+      "Грибы",
+      "Соус томатный",
+      "Маслины"
+    ]
+  },
+  {
+    "id": "126",
+    "name": "Пицца Новинка",
+    "description": "Бекон, Помидор, Сливочный соус, Сыр моцарелла, Грибы, Соус томатный, Пепперони",
+    "price": 900,
+    "imageUrl": "/files/images/cache/Goods/Good126/6622cfda95-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/picca-novinka",
+    "weight": "900 гр",
+    "size": "36 см",
+    "ingredients": [
+      "Бекон",
+      "Помидор",
+      "Сливочный соус",
+      "Сыр моцарелла",
+      "Грибы",
+      "Соус томатный",
+      "Пепперони"
+    ]
+  },
+  {
+    "id": "242",
+    "name": "Пицца Барбекю",
+    "description": "Сыр моцарелла, Баварские колбаски, Пепперони, лук репчатый, соус барбекю, огурцы корнишоны",
+    "price": 900,
+    "imageUrl": "/files/images/cache/Goods/Good242/7a80c4943c-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/picca-barbeku",
+    "weight": "850 гр",
+    "ingredients": [
+      "Сыр моцарелла",
+      "Баварские колбаски",
+      "Пепперони",
+      "лук репчатый",
+      "соус барбекю",
+      "огурцы корнишоны"
+    ]
+  },
+  {
+    "id": "353",
+    "name": "Пицца Два мяса",
+    "description": "Сыр моцарелла, Ветчина, карбонад, Сливочная основа",
+    "price": 900,
+    "imageUrl": "/files/images/cache/Goods/Good353/7c9637b7fa-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/picca-dva-masa",
+    "weight": "1000 гр",
+    "size": "36 см",
+    "ingredients": [
+      "Сыр моцарелла",
+      "Ветчина",
+      "карбонад",
+      "Сливочная основа"
+    ]
+  },
+  {
+    "id": "355",
+    "name": "Пицца Домашняя",
+    "description": "Помидор, Сыр моцарелла, сливочно грибная основа, грибы, Маринованная курица",
+    "price": 900,
+    "imageUrl": "/files/images/cache/Goods/Good355/5f7982417a-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/picca-domasnaa",
+    "weight": "1000 гр",
+    "size": "36 см",
+    "ingredients": [
+      "Помидор",
+      "Сыр моцарелла",
+      "сливочно грибная основа",
+      "грибы",
+      "Маринованная курица"
+    ]
+  },
+  {
+    "id": "17",
+    "name": "Пицца 4 сезона",
+    "description": "Сливочный соус, 1/4 4 сыра, 1/4 морская, 1/4 пепперони, 1/4 мама миа",
+    "price": 910,
+    "imageUrl": "/files/images/cache/Goods/Good17/104dd0ca4d-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/picca-4-sezona",
+    "weight": "900 гр",
+    "size": "36 см",
+    "ingredients": [
+      "Сливочный соус",
+      "1/4 4 сыра",
+      "1/4 морская",
+      "1/4 пепперони",
+      "1/4 мама миа"
+    ]
+  },
+  {
+    "id": "241",
+    "name": "Пицца Мясная",
+    "description": "Курица, Бекон, Сыр моцарелла, Грибы, Ветчина",
+    "price": 970,
+    "imageUrl": "/files/images/cache/Goods/Good241/e75f9fc088-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/picca-masnaa",
+    "weight": "900 гр",
+    "ingredients": [
+      "Курица",
+      "Бекон",
+      "Сыр моцарелла",
+      "Грибы",
+      "Ветчина"
+    ]
+  },
+  {
+    "id": "356",
+    "name": "Пицца Карбонад",
+    "description": "Помидор, Сыр моцарелла, Соленые огурцы, лук репчатый, Соус Терияки, грибы, сливочно томатная основа , карбонад, Маринованная курица",
+    "price": 1050,
+    "imageUrl": "/files/images/cache/Goods/Good356/96ec0b6105-1_328.jpg",
+    "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/picca-karbonad",
+    "weight": "1000 гр",
+    "size": "36 см",
+    "ingredients": [
+      "Помидор",
+      "Сыр моцарелла",
+      "Соленые огурцы",
+      "лук репчатый",
+      "Соус Терияки",
+      "грибы",
+      "сливочно томатная основа",
+      "карбонад",
+      "Маринованная курица"
+    ]
+  }
+]

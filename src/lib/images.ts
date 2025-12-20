@@ -1,4 +1,5 @@
 import rollPhiladelphia from '@/assets/roll-philadelphia.png';
+import { Product } from '@/data/products';
 import rollDragon from '@/assets/roll-dragon.png';
 import rollCalifornia from '@/assets/roll-california.png';
 import rollSpicyTuna from '@/assets/roll-spicy-tuna.png';
@@ -132,6 +133,38 @@ export const categoryImages: Record<string, string> = {
 };
 
 export const getProductImage = (imageKey: string): string => {
+  if (!imageKey) return rollPhiladelphia;
+  if (imageKey.startsWith('http')) {
+    return imageKey;
+  }
+  if (imageKey.startsWith('/')) {
+    const base = import.meta.env.BASE_URL || '/';
+    const url = `${base.replace(/\/$/, '')}/${imageKey.replace(/^\//, '')}`;
+    return url;
+  }
+  if (imageKey.startsWith('.')) {
+    return imageKey;
+  }
+  return productImages[imageKey] || rollPhiladelphia;
+};
+
+export const getProductImageForProduct = (product: Product): string => {
+  const imageKey = product.image;
+  if (!imageKey) return rollPhiladelphia;
+  if (imageKey.startsWith('http')) return imageKey;
+  if (imageKey.startsWith('/Роллы-все_files/')) {
+    const name = imageKey.split('/').pop() || '';
+    const upgraded = name.replace('_184', '_328');
+    return `https://xn--36-6kcaj8anzg.xn--p1ai/files/images/cache/Goods/Good${product.id}/${upgraded}`;
+  }
+  if (imageKey.startsWith('/files/images/cache/')) {
+    return `https://xn--36-6kcaj8anzg.xn--p1ai${imageKey}`;
+  }
+  if (imageKey.startsWith('/')) {
+    const base = import.meta.env.BASE_URL || '/';
+    return `${base.replace(/\/$/, '')}/${imageKey.replace(/^\//, '')}`;
+  }
+  if (imageKey.startsWith('.')) return imageKey;
   return productImages[imageKey] || rollPhiladelphia;
 };
 
