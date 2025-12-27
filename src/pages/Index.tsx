@@ -34,7 +34,7 @@ const Index = () => {
         <CategorySidebar />
         
         {/* Products */}
-        <main className="flex-1 pb-20">
+        <main className="flex-1 pb-20 xl:pl-[20px]">
           {categories.map((category) => (
             <CategorySection
               key={category.id}

@@ -5,6 +5,10 @@ import { promos } from '@/data/promos';
 const ShortsCarousel = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [progress, setProgress] = useState(0);
+  const progressIntervalRef = useRef<number | null>(null);
+  const nextTimeoutRef = useRef<number | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
@@ -29,6 +33,76 @@ const ShortsCarousel = () => {
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
+  }, [activeIndex]);
+  
+  useEffect(() => {
+    if (activeIndex === null) {
+      setProgress(0);
+      if (progressIntervalRef.current) {
+        window.clearInterval(progressIntervalRef.current);
+        progressIntervalRef.current = null;
+      }
+      if (nextTimeoutRef.current) {
+        window.clearTimeout(nextTimeoutRef.current);
+        nextTimeoutRef.current = null;
+      }
+      return;
+    }
+    setProgress(0);
+    if (progressIntervalRef.current) {
+      window.clearInterval(progressIntervalRef.current);
+      progressIntervalRef.current = null;
+    }
+    if (nextTimeoutRef.current) {
+      window.clearTimeout(nextTimeoutRef.current);
+      nextTimeoutRef.current = null;
+    }
+    const promo = promos[activeIndex];
+    const hasVideo = (promo as any).video;
+    if (hasVideo && videoRef.current) {
+      const v = videoRef.current;
+      const handleLoaded = () => {
+        setProgress(0);
+        v.play().catch(() => {});
+      };
+      const handleTimeUpdate = () => {
+        if (v.duration && v.currentTime >= 0) {
+          setProgress(Math.min(v.currentTime / v.duration, 1));
+        }
+      };
+      const handleEnded = () => {
+        next();
+      };
+      v.addEventListener('loadedmetadata', handleLoaded);
+      v.addEventListener('timeupdate', handleTimeUpdate);
+      v.addEventListener('ended', handleEnded);
+      return () => {
+        v.removeEventListener('loadedmetadata', handleLoaded);
+        v.removeEventListener('timeupdate', handleTimeUpdate);
+        v.removeEventListener('ended', handleEnded);
+      };
+    } else {
+      const durationMs = 12000;
+      const startedAt = Date.now();
+      progressIntervalRef.current = window.setInterval(() => {
+        const elapsed = Date.now() - startedAt;
+        const p = Math.min(elapsed / durationMs, 1);
+        setProgress(p);
+      }, 100);
+      nextTimeoutRef.current = window.setTimeout(() => {
+        next();
+      }, durationMs);
+      return () => {
+        if (progressIntervalRef.current) {
+          window.clearInterval(progressIntervalRef.current);
+          progressIntervalRef.current = null;
+        }
+        if (nextTimeoutRef.current) {
+          window.clearTimeout(nextTimeoutRef.current);
+          nextTimeoutRef.current = null;
+        }
+      };
+    }
   }, [activeIndex]);
 
   return (
@@ -95,10 +169,10 @@ const ShortsCarousel = () => {
                     src={promos[activeIndex].image as string}
                     alt=""
                     aria-hidden
-                    className="absolute inset-0 w-full h-full object-cover blur-2xl brightness-75 saturate-125 scale-110"
+                    className="absolute inset-0 w-full h-full object-cover scale-110 saturate-110 brightness-85 blur-sm md:blur-2xl md:brightness-75 md:saturate-125"
                   />
                 )}
-                <div className="absolute inset-0 bg-black/40" />
+                <div className="absolute inset-0 md:bg-black/40 bg-black/30" />
               </div>
 
               {/* Navigation arrows */}
@@ -122,14 +196,35 @@ const ShortsCarousel = () => {
                 className="relative z-[120] w-[min(92vw,380px)] aspect-[3/4] rounded-2xl overflow-hidden shadow-popup animate-scale-in bg-card"
                 onClick={(e) => e.stopPropagation()}
               >
-                {promos[activeIndex]?.image && (
-                  <img
-                    src={promos[activeIndex].image as string}
-                    alt={promos[activeIndex].title}
+                {(promos[activeIndex] as any)?.video ? (
+                  <video
+                    ref={videoRef}
+                    src={(promos[activeIndex] as any).video as string}
                     className="w-full h-full object-cover"
+                    autoPlay
+                    muted
+                    playsInline
                   />
+                ) : (
+                  promos[activeIndex]?.image && (
+                    <img
+                      src={promos[activeIndex].image as string}
+                      alt={promos[activeIndex].title}
+                      className="w-full h-full object-cover"
+                    />
+                  )
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <div className="absolute top-3 left-3 right-3 z-[130] flex gap-1">
+                  {promos.map((_, i) => (
+                    <div key={i} className="h-1 rounded-full bg-white/30 overflow-hidden flex-1">
+                      <div
+                        className="h-full bg-white"
+                        style={{ width: `${i < activeIndex! ? 100 : i === activeIndex ? Math.round(progress * 100) : 0}%` }}
+                      />
+                    </div>
+                  ))}
+                </div>
                 <div className="absolute bottom-0 left-0 right-0 p-4 flex justify-center">
                   <p className="text-white font-bold text-base md:text-lg leading-tight drop-shadow-lg text-center">
                     {promos[activeIndex]?.title}

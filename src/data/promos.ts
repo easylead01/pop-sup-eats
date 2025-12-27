@@ -11,6 +11,7 @@ export interface Promo {
   title: string;
   gradient: string;
   image?: string;
+  video?: string;
 }
 
 export const promos: Promo[] = [

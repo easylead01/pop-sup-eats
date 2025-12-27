@@ -17,12 +17,12 @@ const Header = () => {
   } = useUIStore();
   const totalPrice = getTotalPrice();
   const totalItems = getTotalItems();
-  return <header className="sticky top-0 z-40 bg-card/95 backdrop-blur-sm border-b border-border">
+  return <header className="sticky top-0 z-[60] bg-card/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4">
         <div className="items-center justify-between h-16 md:h-20 my-[23px] py-[42px] px-0 mx-0 flex flex-row gap-0 relative">
           {/* Menu button - left on mobile/tablet */}
-          <button onClick={() => setMenuOpen(true)} className="lg:hidden absolute left-0 w-10 h-10 bg-primary text-primary-foreground rounded-full flex items-center justify-center shadow-md hover:bg-primary/90 transition-all">
-            <div className="grid grid-cols-3 gap-[2px]">
+          <button onClick={() => setMenuOpen(true)} className="lg:hidden absolute left-0 top-[27px] md:top-[35px] w-10 h-10 bg-primary text-primary-foreground rounded-full flex items-center justify-center shadow-md hover:bg-primary/90 transition-all">
+            <div className="grid grid-cols-3 gap-[1px]">
               <span className="w-1.5 h-1.5 bg-primary-foreground rounded-sm" />
               <span className="w-1.5 h-1.5 bg-primary-foreground rounded-sm" />
               <span className="w-1.5 h-1.5 bg-primary-foreground rounded-sm" />
@@ -36,9 +36,9 @@ const Header = () => {
           </button>
           
           {/* Logo - centered on mobile/tablet, left on desktop */}
-          <div className="flex items-center gap-2 lg:relative absolute left-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0">
-            <button onClick={() => setMenuOpen(true)} className="hidden lg:flex w-10 h-10 bg-primary text-primary-foreground rounded-full items-center justify-center shadow-md hover:bg-primary/90 transition-all">
-              <div className="grid grid-cols-3 grid-rows-3 lg:w-[70%] lg:h-[70%] place-items-center gap-[8%]">
+          <div className="flex items-center gap-2 lg:relative absolute top-[15px] left-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0">
+            <button onClick={() => setMenuOpen(true)} className="hidden lg:flex mt-[15px] w-10 h-10 bg-primary text-primary-foreground rounded-full items-center justify-center shadow-md hover:bg-primary/90 transition-all">
+              <div className="grid grid-cols-3 grid-rows-3 lg:w-[70%] lg:h-[70%] place-items-center gap-[4%]">
                 <span className="block w-[60%] h-[60%] bg-primary-foreground rounded-full" />
                 <span className="block w-[60%] h-[60%] bg-primary-foreground rounded-full" />
                 <span className="block w-[60%] h-[60%] bg-primary-foreground rounded-full" />
