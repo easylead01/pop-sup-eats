@@ -164,15 +164,17 @@ const ShortsCarousel = () => {
             <div className="fixed inset-0 z-[100] flex items-center justify-center" onClick={close}>
               {/* Blurred tinted backdrop */}
               <div className="absolute inset-0">
-                {promos[activeIndex]?.image && (
+                {promos[activeIndex]?.image ? (
                   <img
                     src={promos[activeIndex].image as string}
                     alt=""
                     aria-hidden
                     className="absolute inset-0 w-full h-full object-cover scale-110 saturate-110 brightness-85 blur-sm md:blur-2xl md:brightness-75 md:saturate-125"
                   />
+                ) : (
+                  <div className={`absolute inset-0 bg-gradient-to-br ${promos[activeIndex]?.gradient ?? 'from-gray-700 to-gray-900'}`} />
                 )}
-                <div className="absolute inset-0 md:bg-black/40 bg-black/30" />
+                <div className="absolute inset-0 bg-black/30 md:bg-black/40 lg:bg-black/50 backdrop-blur-sm md:backdrop-blur-md" />
               </div>
 
               {/* Navigation arrows */}

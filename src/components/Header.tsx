@@ -22,32 +22,32 @@ const Header = () => {
         <div className="items-center justify-between h-16 md:h-20 my-[23px] py-[42px] px-0 mx-0 flex flex-row gap-0 relative">
           {/* Menu button - left on mobile/tablet */}
           <button onClick={() => setMenuOpen(true)} className="lg:hidden absolute left-0 top-[27px] md:top-[35px] w-10 h-10 bg-primary text-primary-foreground rounded-full flex items-center justify-center shadow-md hover:bg-primary/90 transition-all">
-            <div className="grid grid-cols-3 gap-[1px]">
-              <span className="w-1.5 h-1.5 bg-primary-foreground rounded-sm" />
-              <span className="w-1.5 h-1.5 bg-primary-foreground rounded-sm" />
-              <span className="w-1.5 h-1.5 bg-primary-foreground rounded-sm" />
-              <span className="w-1.5 h-1.5 bg-primary-foreground rounded-sm" />
-              <span className="w-1.5 h-1.5 bg-primary-foreground rounded-sm" />
-              <span className="w-1.5 h-1.5 bg-primary-foreground rounded-sm" />
-              <span className="w-1.5 h-1.5 bg-primary-foreground rounded-sm" />
-              <span className="w-1.5 h-1.5 bg-primary-foreground rounded-sm" />
-              <span className="w-1.5 h-1.5 bg-primary-foreground rounded-sm" />
+            <div className="grid grid-cols-3 gap-[2px] md:gap-[3px]">
+              <span className="w-1 h-1 bg-primary-foreground rounded-full" />
+              <span className="w-1 h-1 bg-primary-foreground rounded-full" />
+              <span className="w-1 h-1 bg-primary-foreground rounded-full" />
+              <span className="w-1 h-1 bg-primary-foreground rounded-full" />
+              <span className="w-1 h-1 bg-primary-foreground rounded-full" />
+              <span className="w-1 h-1 bg-primary-foreground rounded-full" />
+              <span className="w-1 h-1 bg-primary-foreground rounded-full" />
+              <span className="w-1 h-1 bg-primary-foreground rounded-full" />
+              <span className="w-1 h-1 bg-primary-foreground rounded-full" />
             </div>
           </button>
           
           {/* Logo - centered on mobile/tablet, left on desktop */}
-          <div className="flex items-center gap-2 lg:relative absolute top-[15px] left-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0">
-            <button onClick={() => setMenuOpen(true)} className="hidden lg:flex mt-[15px] w-10 h-10 bg-primary text-primary-foreground rounded-full items-center justify-center shadow-md hover:bg-primary/90 transition-all">
+          <div className="flex items-center gap-2 lg:relative absolute top-[15px] lg:top-[5px] left-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0">
+            <button onClick={() => setMenuOpen(true)} className="hidden lg:flex mt-[5px] w-10 h-10 bg-primary text-primary-foreground rounded-full items-center justify-center shadow-md hover:bg-primary/90 transition-all">
               <div className="grid grid-cols-3 grid-rows-3 lg:w-[70%] lg:h-[70%] place-items-center gap-[4%]">
-                <span className="block w-[60%] h-[60%] bg-primary-foreground rounded-full" />
-                <span className="block w-[60%] h-[60%] bg-primary-foreground rounded-full" />
-                <span className="block w-[60%] h-[60%] bg-primary-foreground rounded-full" />
-                <span className="block w-[60%] h-[60%] bg-primary-foreground rounded-full" />
-                <span className="block w-[60%] h-[60%] bg-primary-foreground rounded-full" />
-                <span className="block w-[60%] h-[60%] bg-primary-foreground rounded-full" />
-                <span className="block w-[60%] h-[60%] bg-primary-foreground rounded-full" />
-                <span className="block w-[60%] h-[60%] bg-primary-foreground rounded-full" />
-                <span className="block w-[60%] h-[60%] bg-primary-foreground rounded-full" />
+                <span className="block w-1 h-1 bg-primary-foreground rounded-full" />
+                <span className="block w-1 h-1 bg-primary-foreground rounded-full" />
+                <span className="block w-1 h-1 bg-primary-foreground rounded-full" />
+                <span className="block w-1 h-1 bg-primary-foreground rounded-full" />
+                <span className="block w-1 h-1 bg-primary-foreground rounded-full" />
+                <span className="block w-1 h-1 bg-primary-foreground rounded-full" />
+                <span className="block w-1 h-1 bg-primary-foreground rounded-full" />
+                <span className="block w-1 h-1 bg-primary-foreground rounded-full" />
+                <span className="block w-1 h-1 bg-primary-foreground rounded-full" />
               </div>
             </button>
             <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>

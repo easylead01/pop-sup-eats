@@ -52,7 +52,7 @@ const CategoryNav = () => {
               className="flex flex-col items-center gap-2 flex-shrink-0 group"
             >
               {/* Text */}
-              <span className={`text-sm font-medium whitespace-nowrap transition-colors ${
+              <span className={`text-[12px] font-medium whitespace-nowrap transition-colors ${
                 activeCategory === category.id
                   ? 'text-primary'
                   : 'text-foreground/70 group-hover:text-foreground'
@@ -61,7 +61,7 @@ const CategoryNav = () => {
               </span>
               
               {/* Image */}
-              <div className={`w-16 h-10 md:w-20 md:h-12 rounded-xl overflow-hidden transition-transform ${
+              <div className={`w-8 h-5 md:w-10 md:h-6 rounded-xl overflow-hidden transition-transform ${
                 activeCategory === category.id
                   ? 'scale-110'
                   : 'group-hover:scale-105'
