@@ -45,6 +45,8 @@ export interface Category {
 
 export const categories: Category[] = [
   { id: 'rolls', name: 'Роллы', icon: '🍣', image: 'cat-rolls' },
+  { id: 'rolls-baked', name: 'Роллы запеченые', icon: '🔥', image: 'cat-rolls-baked' },
+  { id: 'rolls-tempura', name: 'Роллы темпура', icon: '🍤', image: 'cat-rolls-tempura' },
   { id: 'sets', name: 'Сеты', icon: '🍱', image: 'cat-sets' },
   { id: 'sushi', name: 'Суши', icon: '🥢', image: 'cat-sushi' },
   { id: 'pizza', name: 'Пицца', icon: '🍕', image: 'cat-pizza' },
@@ -3011,11 +3013,23 @@ export const snacksProducts: Product[] = snacksRaw.map((item) => ({
   economy: typeof item.economy === 'number' ? item.economy : undefined,
 }));
 
+const isBakedProduct = (p: Product) => {
+  const lower = `${p.name} ${p.description} ${(p.ingredients || []).join(' ')}`.toLowerCase();
+  return /запеч|печен/i.test(lower);
+};
+const isTempuraProduct = (p: Product) => {
+  const lower = `${p.name} ${p.description} ${(p.ingredients || []).join(' ')}`.toLowerCase();
+  return /темпур|жарен|горяч/i.test(lower);
+};
+
 export const getProductsByCategory = (categoryId: string) => {
   if (categoryId === 'sets') return setsProducts;
   if (categoryId === 'sushi') return sushiProducts;
   if (categoryId === 'pizza') return pizzaProducts;
   if (categoryId === 'snacks') return snacksProducts;
+  if (categoryId === 'rolls-baked') return products.filter((p) => p.category === 'rolls' && isBakedProduct(p));
+  if (categoryId === 'rolls-tempura') return products.filter((p) => p.category === 'rolls' && isTempuraProduct(p));
+  if (categoryId === 'rolls') return products.filter((p) => p.category === 'rolls' && !isBakedProduct(p) && !isTempuraProduct(p));
   return products.filter((product) => product.category === categoryId);
 };
 

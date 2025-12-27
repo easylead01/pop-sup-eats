@@ -7,6 +7,8 @@ import { useSwipeClose } from '@/hooks/useSwipeClose';
 
 const categoryImages: Record<string, string> = {
   rolls: 'roll-philadelphia',
+  'rolls-baked': 'roll-philadelphia',
+  'rolls-tempura': 'tempura',
   sets: 'sushi-set',
   sushi: 'sushi-salmon',
   pizza: 'pizza-pepperoni',

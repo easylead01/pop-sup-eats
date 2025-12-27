@@ -119,6 +119,8 @@ export const productImages: Record<string, string> = {
 
 export const categoryImages: Record<string, string> = {
   'cat-rolls': catRolls,
+  'cat-rolls-baked': catRolls,
+  'cat-rolls-tempura': catHot,
   'cat-sets': catSets,
   'cat-sushi': catSushi,
   'cat-pizza': catPizza,
