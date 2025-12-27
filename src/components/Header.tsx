@@ -38,16 +38,16 @@ const Header = () => {
           {/* Logo - centered on mobile/tablet, left on desktop */}
           <div className="flex items-center gap-2 lg:relative absolute left-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0">
             <button onClick={() => setMenuOpen(true)} className="hidden lg:flex w-10 h-10 bg-primary text-primary-foreground rounded-full items-center justify-center shadow-md hover:bg-primary/90 transition-all">
-              <div className="grid grid-cols-3 gap-[2px]">
-                <span className="w-1.5 h-1.5 bg-primary-foreground rounded-sm" />
-                <span className="w-1.5 h-1.5 bg-primary-foreground rounded-sm" />
-                <span className="w-1.5 h-1.5 bg-primary-foreground rounded-sm" />
-                <span className="w-1.5 h-1.5 bg-primary-foreground rounded-sm" />
-                <span className="w-1.5 h-1.5 bg-primary-foreground rounded-sm" />
-                <span className="w-1.5 h-1.5 bg-primary-foreground rounded-sm" />
-                <span className="w-1.5 h-1.5 bg-primary-foreground rounded-sm" />
-                <span className="w-1.5 h-1.5 bg-primary-foreground rounded-sm" />
-                <span className="w-1.5 h-1.5 bg-primary-foreground rounded-sm" />
+              <div className="grid grid-cols-3 grid-rows-3 lg:w-[70%] lg:h-[70%] place-items-center gap-[8%]">
+                <span className="block w-[60%] h-[60%] bg-primary-foreground rounded-full" />
+                <span className="block w-[60%] h-[60%] bg-primary-foreground rounded-full" />
+                <span className="block w-[60%] h-[60%] bg-primary-foreground rounded-full" />
+                <span className="block w-[60%] h-[60%] bg-primary-foreground rounded-full" />
+                <span className="block w-[60%] h-[60%] bg-primary-foreground rounded-full" />
+                <span className="block w-[60%] h-[60%] bg-primary-foreground rounded-full" />
+                <span className="block w-[60%] h-[60%] bg-primary-foreground rounded-full" />
+                <span className="block w-[60%] h-[60%] bg-primary-foreground rounded-full" />
+                <span className="block w-[60%] h-[60%] bg-primary-foreground rounded-full" />
               </div>
             </button>
             <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
