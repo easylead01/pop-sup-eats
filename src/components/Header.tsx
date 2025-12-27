@@ -7,17 +7,23 @@ import logo from '@/assets/logo.png';
 const Header = () => {
   const {
     setIsOpen: setCartOpen,
+    isOpen: isCartOpen,
     getTotalPrice,
     getTotalItems
   } = useCartStore();
   const {
     setMenuOpen,
     setAuthOpen,
-    isLoggedIn
+    isLoggedIn,
+    isMenuOpen,
+    isAuthOpen,
+    isCheckoutOpen,
+    selectedProduct
   } = useUIStore();
+  const isOverlayOpen = isMenuOpen || isAuthOpen || isCheckoutOpen || !!selectedProduct || isCartOpen;
   const totalPrice = getTotalPrice();
   const totalItems = getTotalItems();
-  return <header className="sticky top-0 z-[60] bg-card/95 backdrop-blur-sm border-b border-border">
+  return <header className={`sticky top-0 z-[60] bg-card/95 backdrop-blur-sm border-b border-border transition-opacity duration-200 ${isOverlayOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
       <div className="container mx-auto px-4">
         <div className="items-center justify-between h-16 md:h-20 my-[23px] py-[42px] px-0 mx-0 flex flex-row gap-0 relative">
           {/* Menu button - left on mobile/tablet */}

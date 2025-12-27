@@ -15,6 +15,8 @@ const ProductPopup = () => {
   const [quantity, setQuantity] = useState(1);
   const [isClosing, setIsClosing] = useState(false);
   const isMobile = useIsMobile();
+  const [cursorPos, setCursorPos] = useState<{ x: number; y: number } | null>(null);
+  const [isBackdropHover, setIsBackdropHover] = useState(false);
   
   const imageUrl = selectedProduct 
     ? (customImages[selectedProduct.image] || getProductImageForProduct(selectedProduct))
@@ -39,6 +41,17 @@ const ProductPopup = () => {
   useEffect(() => {
     setQuantity(1);
   }, [selectedProduct?.id]);
+
+  // Lock body scroll when popup is open
+  useEffect(() => {
+    if (selectedProduct) {
+      const prevOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = prevOverflow;
+      };
+    }
+  }, [selectedProduct]);
 
   if (!selectedProduct) return null;
   const desc = (selectedProduct.description || '').trim();
@@ -85,7 +98,20 @@ const ProductPopup = () => {
       <div
         className={`absolute inset-0 bg-foreground/50 transition-opacity duration-300 ${isClosing ? 'opacity-0' : 'animate-fade-in'}`}
         onClick={handleClose}
-      />
+        onMouseEnter={() => setIsBackdropHover(true)}
+        onMouseLeave={() => { setIsBackdropHover(false); setCursorPos(null); }}
+        onMouseMove={(e) => setCursorPos({ x: e.clientX, y: e.clientY })}
+      >
+        <button
+          onClick={(e) => { e.stopPropagation(); handleClose(); }}
+          className={`hidden md:flex absolute -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-foreground text-background rounded-full items-center justify-center shadow-md transition-opacity duration-100 ${isBackdropHover ? 'opacity-100' : 'opacity-0'} hover:scale-105 active:scale-95 z-[110]`}
+          style={cursorPos ? { left: cursorPos.x, top: cursorPos.y } : undefined}
+          title="Закрыть"
+          aria-label="Закрыть"
+        >
+          <X className="w-5 h-5" />
+        </button>
+      </div>
 
       {/* Desktop: Right drawer */}
       <div 
@@ -105,13 +131,8 @@ const ProductPopup = () => {
             className="w-full h-full object-contain p-2 md:p-4"
           />
           
+          
           {/* Close & Favorite */}
-          <button
-            onClick={handleClose}
-            className="absolute top-4 left-4 w-10 h-10 bg-foreground text-background rounded-full flex items-center justify-center hover:bg-foreground/90 transition-all hover:scale-105 active:scale-95"
-          >
-            <X className="w-5 h-5" />
-          </button>
           
           <button className="absolute top-4 right-4 w-10 h-10 bg-card rounded-full flex items-center justify-center hover:bg-muted transition-all border border-border hover:scale-105 active:scale-95">
             <Heart className="w-5 h-5" />
@@ -133,7 +154,7 @@ const ProductPopup = () => {
         </div>
 
         {/* Content - fills remaining 45% */}
-        <div className="flex-1 pt-2 px-6 pb-6 flex flex-col overflow-y-auto">
+        <div className="flex-1 pt-2 px-6 pb-6 flex flex-col overflow-y-auto overscroll-contain">
           <h2 className="text-2xl font-bold mb-2">
             {selectedProduct.name}
           </h2>
@@ -275,7 +296,7 @@ const ProductPopup = () => {
           </div>
 
           {/* Content */}
-          <div className="pt-2 px-6 pb-6 flex flex-col overflow-y-auto">
+          <div className="pt-2 px-6 pb-6 flex flex-col overflow-y-auto overscroll-contain">
             <h2 className="text-xl font-bold mb-2">
               {selectedProduct.name}
             </h2>

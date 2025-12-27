@@ -13,6 +13,8 @@ import CheckoutSheet from '@/components/CheckoutSheet';
 import FloatingCartButton from '@/components/FloatingCartButton';
 import { categories, getProductsByCategory } from '@/data/products';
 import { ChevronUp } from 'lucide-react';
+import { useUIStore } from '@/store/uiStore';
+import { useCartStore } from '@/store/cartStore';
 
 const Index = () => {
   const [showTop, setShowTop] = useState(false);
@@ -22,6 +24,9 @@ const Index = () => {
     onScroll();
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+  const { selectedProduct, isMenuOpen, isAuthOpen, isCheckoutOpen } = useUIStore();
+  const { isOpen: isCartOpen } = useCartStore();
+  const isOverlayOpen = !!selectedProduct || isMenuOpen || isAuthOpen || isCheckoutOpen || isCartOpen;
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -114,7 +119,7 @@ const Index = () => {
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         className={`fixed z-50 rounded-full bg-black text-white flex items-center justify-center shadow-lg transition-opacity duration-200 
-          ${showTop ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}
+          ${showTop && !isOverlayOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}
           w-11 h-11 md:w-11 md:h-11 xl:w-12 xl:h-12
           bottom-6 right-6 md:bottom-6 md:right-6 xl:bottom-8 xl:right-8
         `}

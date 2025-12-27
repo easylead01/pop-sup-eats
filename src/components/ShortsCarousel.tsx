@@ -9,6 +9,8 @@ const ShortsCarousel = () => {
   const progressIntervalRef = useRef<number | null>(null);
   const nextTimeoutRef = useRef<number | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [cursorPos, setCursorPos] = useState<{ x: number; y: number } | null>(null);
+  const [isBackdropHover, setIsBackdropHover] = useState(false);
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
@@ -163,7 +165,12 @@ const ShortsCarousel = () => {
           {activeIndex !== null && (
             <div className="fixed inset-0 z-[100] flex items-center justify-center" onClick={close}>
               {/* Blurred tinted backdrop */}
-              <div className="absolute inset-0">
+              <div
+                className="absolute inset-0"
+                onMouseEnter={() => setIsBackdropHover(true)}
+                onMouseLeave={() => { setIsBackdropHover(false); setCursorPos(null); }}
+                onMouseMove={(e) => setCursorPos({ x: e.clientX, y: e.clientY })}
+              >
                 {promos[activeIndex]?.image ? (
                   <img
                     src={promos[activeIndex].image as string}
@@ -175,6 +182,15 @@ const ShortsCarousel = () => {
                   <div className={`absolute inset-0 bg-gradient-to-br ${promos[activeIndex]?.gradient ?? 'from-gray-700 to-gray-900'}`} />
                 )}
                 <div className="absolute inset-0 bg-black/30 md:bg-black/40 lg:bg-black/50 backdrop-blur-sm md:backdrop-blur-md" />
+                <button
+                  onClick={(e) => { e.stopPropagation(); close(); }}
+                  className={`hidden md:flex absolute -translate-x-1/2 -translate-y-1/2 z-[110] w-10 h-10 bg-foreground text-background rounded-full items-center justify-center shadow-lg transition-opacity duration-100 ${isBackdropHover ? 'opacity-100' : 'opacity-0'} hover:scale-105 active:scale-95`}
+                  style={cursorPos ? { left: cursorPos.x, top: cursorPos.y } : undefined}
+                  title="Закрыть"
+                  aria-label="Закрыть"
+                >
+                  <X className="w-5 h-5" />
+                </button>
               </div>
 
               {/* Navigation arrows */}
@@ -235,7 +251,7 @@ const ShortsCarousel = () => {
                 {/* Close button */}
                 <button
                   onClick={close}
-                  className="absolute top-3 right-3 z-[130] p-2 bg-card rounded-full shadow-md hover:bg-muted transition-all hover:scale-105 active:scale-95"
+                  className="absolute top-3 right-3 z-[130] p-2 bg-card rounded-full shadow-md hover:bg-muted transition-all hover:scale-105 active:scale-95 md:hidden"
                   title="Закрыть"
                 >
                   <X className="w-5 h-5" />
