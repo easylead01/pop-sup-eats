@@ -251,13 +251,9 @@ const ProductPopup = () => {
         className={`
           lg:hidden
           absolute bottom-0 left-0 right-0 bg-card rounded-t-3xl shadow-popup
-          overflow-hidden transition-transform duration-300 ease-out
+          max-h-[95vh] overflow-hidden transition-transform duration-300 ease-out
           ${isClosing ? 'translate-y-full' : 'animate-slide-in-up'}
         `}
-        style={{
-          top: 'calc(env(safe-area-inset-top) + 8px)',
-          maxHeight: 'calc(100dvh - env(safe-area-inset-top) - 8px)',
-        }}
         {...swipeHandlers}
       >
         {/* Drag Handle */}
@@ -265,9 +261,9 @@ const ProductPopup = () => {
           <div className="w-10 h-1 bg-muted-foreground/30 rounded-full" />
         </div>
 
-        <div className="flex flex-col overflow-hidden relative" style={{ maxHeight: 'calc(100dvh - env(safe-area-inset-top) - 8px)' }}>
+        <div className="flex flex-col max-h-[95vh] overflow-hidden relative">
           {/* Image */}
-          <div className="relative bg-secondary/20 flex-shrink-0" style={{ height: 'calc(60dvh - 10px)' }}>
+          <div className="relative h-[calc(60vh-10px)] bg-secondary/20 flex-shrink-0">
             <img
               src={imageUrl}
               alt={selectedProduct.name}
