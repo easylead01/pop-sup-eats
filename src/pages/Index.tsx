@@ -41,11 +41,17 @@ const Index = () => {
       const prevWidth = document.body.style.width;
       const prevHtmlTouchAction = (document.documentElement.style as any).touchAction || '';
       const prevBodyTouchAction = (document.body.style as any).touchAction || '';
+      const prevBodyPaddingRight = document.body.style.paddingRight;
+      const prevHtmlPaddingRight = document.documentElement.style.paddingRight;
+      const prevHtmlScrollBehavior = (document.documentElement.style as any).scrollBehavior || '';
+      const scrollbarWidth = Math.max(0, window.innerWidth - document.documentElement.clientWidth);
       document.body.style.position = 'fixed';
       document.body.style.top = `-${scrollY}px`;
       document.body.style.left = '0';
       document.body.style.right = '0';
       document.body.style.width = '100%';
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+      document.documentElement.style.paddingRight = `${scrollbarWidth}px`;
       document.body.style.overflow = 'hidden';
       document.documentElement.style.overflow = 'hidden';
       (document.documentElement.style as any).overscrollBehaviorY = 'none';
@@ -54,11 +60,14 @@ const Index = () => {
       (document.body.style as any).touchAction = 'none';
       return () => {
         const lockedY = Math.abs(parseInt(document.body.style.top || '0', 10)) || scrollY;
+        (document.documentElement.style as any).scrollBehavior = 'auto';
         document.body.style.position = prevPosition;
         document.body.style.top = prevTop;
         document.body.style.left = prevLeft;
         document.body.style.right = prevRight;
         document.body.style.width = prevWidth;
+        document.body.style.paddingRight = prevBodyPaddingRight;
+        document.documentElement.style.paddingRight = prevHtmlPaddingRight;
         document.body.style.overflow = prevBodyOverflow;
         document.documentElement.style.overflow = prevHtmlOverflow;
         (document.documentElement.style as any).overscrollBehaviorY = prevHtmlOverscroll;
@@ -66,6 +75,7 @@ const Index = () => {
         (document.documentElement.style as any).touchAction = prevHtmlTouchAction;
         (document.body.style as any).touchAction = prevBodyTouchAction;
         window.scrollTo(0, lockedY);
+        (document.documentElement.style as any).scrollBehavior = prevHtmlScrollBehavior;
       };
     }
   }, [isOverlayOpen]);
