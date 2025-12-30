@@ -53,16 +53,7 @@ const ProductPopup = () => {
     setQuantity(1);
   }, [selectedProduct?.id]);
 
-  // Lock body scroll when popup is open
-  useEffect(() => {
-    if (selectedProduct) {
-      const prevOverflow = document.body.style.overflow;
-      document.body.style.overflow = 'hidden';
-      return () => {
-        document.body.style.overflow = prevOverflow;
-      };
-    }
-  }, [selectedProduct]);
+  
 
   if (!selectedProduct) return null;
   const desc = (selectedProduct.description || '').trim();

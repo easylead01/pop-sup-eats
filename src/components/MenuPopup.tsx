@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { X } from 'lucide-react';
 import { categories } from '@/data/products';
 import { useUIStore } from '@/store/uiStore';
@@ -27,16 +27,6 @@ const MenuPopup = () => {
   const [isClosing, setIsClosing] = useState(false);
   const [cursorPos, setCursorPos] = useState<{ x: number; y: number } | null>(null);
   const [isBackdropHover, setIsBackdropHover] = useState(false);
-
-  useEffect(() => {
-    if (isMenuOpen) {
-      const prevOverflow = document.body.style.overflow;
-      document.body.style.overflow = 'hidden';
-      return () => {
-        document.body.style.overflow = prevOverflow;
-      };
-    }
-  }, [isMenuOpen]);
 
   const handleClose = () => {
     setIsClosing(true);

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { X, MapPin, User, Phone, MessageSquare, CreditCard, Truck } from 'lucide-react';
 import { useUIStore } from '@/store/uiStore';
 import { useCartStore } from '@/store/cartStore';
@@ -24,16 +24,6 @@ const CheckoutSheet = () => {
     threshold: 80,
     onClose: () => setCheckoutOpen(false),
   });
-
-  useEffect(() => {
-    if (isCheckoutOpen) {
-      const prevOverflow = document.body.style.overflow;
-      document.body.style.overflow = 'hidden';
-      return () => {
-        document.body.style.overflow = prevOverflow;
-      };
-    }
-  }, [isCheckoutOpen]);
 
   if (!isCheckoutOpen) return null;
 

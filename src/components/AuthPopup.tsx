@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { X, Phone, ArrowLeft } from 'lucide-react';
 import { useUIStore } from '@/store/uiStore';
 import { toast } from '@/hooks/use-toast';
@@ -26,16 +26,6 @@ const AuthPopup = () => {
     threshold: 80,
     onClose: handleClose,
   });
-
-  useEffect(() => {
-    if (isAuthOpen) {
-      const prevOverflow = document.body.style.overflow;
-      document.body.style.overflow = 'hidden';
-      return () => {
-        document.body.style.overflow = prevOverflow;
-      };
-    }
-  }, [isAuthOpen]);
 
   if (!isAuthOpen) return null;
 
