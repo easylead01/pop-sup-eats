@@ -238,7 +238,9 @@ const ShortsCarousel = () => {
                 onMouseLeave={() => { setIsBackdropHover(false); setCursorPos(null); }}
                 onMouseMove={(e) => setCursorPos({ x: e.clientX, y: e.clientY })}
               >
-                {promos[activeIndex]?.image ? (
+                {isSmallScreen ? (
+                  <div className={`absolute inset-0 bg-gradient-to-br ${promos[activeIndex]?.gradient ?? 'from-gray-700 to-gray-900'}`} />
+                ) : promos[activeIndex]?.image ? (
                   <img
                     src={promos[activeIndex].image as string}
                     alt=""
@@ -279,7 +281,7 @@ const ShortsCarousel = () => {
 
               {/* Center card */}
               <div
-                className={`relative z-[120] w-[min(92vw,380px)] aspect-[3/4] rounded-2xl overflow-hidden shadow-popup bg-card transition-opacity duration-300 ease-out ${cardLoaded ? 'opacity-100' : 'opacity-0'}`}
+                className={`relative z-[120] ${isSmallScreen ? 'w-screen h-screen rounded-none shadow-none' : 'w-[min(92vw,380px)] aspect-[3/4] rounded-2xl shadow-popup'} overflow-hidden bg-card transition-opacity duration-300 ease-out ${cardLoaded ? 'opacity-100' : 'opacity-0'}`}
                 onClick={(e) => e.stopPropagation()}
               >
                 {(promos[activeIndex] as any)?.video ? (
