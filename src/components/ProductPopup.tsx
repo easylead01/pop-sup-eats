@@ -15,6 +15,17 @@ const ProductPopup = () => {
   const [quantity, setQuantity] = useState(1);
   const [isClosing, setIsClosing] = useState(false);
   const isMobile = useIsMobile();
+  const [isSmallScreen, setIsSmallScreen] = useState<boolean>(() => {
+    if (typeof window === 'undefined') return false;
+    return window.innerWidth < 1024;
+  });
+  useEffect(() => {
+    const mql = window.matchMedia('(max-width: 1023px)');
+    const onChange = () => setIsSmallScreen(window.innerWidth < 1024);
+    mql.addEventListener('change', onChange);
+    setIsSmallScreen(window.innerWidth < 1024);
+    return () => mql.removeEventListener('change', onChange);
+  }, []);
   const [cursorPos, setCursorPos] = useState<{ x: number; y: number } | null>(null);
   const [isBackdropHover, setIsBackdropHover] = useState(false);
   
@@ -32,7 +43,7 @@ const ProductPopup = () => {
   };
 
   const swipeHandlers = useSwipeClose({
-    direction: isMobile ? 'down' : 'right',
+    direction: (isMobile || isSmallScreen) ? 'down' : 'right',
     threshold: 80,
     onClose: handleClose,
   });
@@ -116,7 +127,7 @@ const ProductPopup = () => {
       {/* Desktop: Right drawer */}
       <div 
         className={`
-          hidden md:flex
+          hidden lg:flex
           absolute right-0 top-0 h-screen w-1/2 bg-card shadow-popup
           flex-col transition-transform duration-300 ease-out
           ${isClosing ? 'translate-x-full' : 'animate-slide-in-right'}
@@ -244,10 +255,10 @@ const ProductPopup = () => {
         </div>
       </div>
 
-      {/* Mobile: Bottom sheet */}
+      {/* Mobile/Tablet: Bottom sheet */}
       <div 
         className={`
-          md:hidden
+          lg:hidden
           absolute bottom-0 left-0 right-0 bg-card rounded-t-3xl shadow-popup
           max-h-[95vh] overflow-hidden transition-transform duration-300 ease-out
           ${isClosing ? 'translate-y-full' : 'animate-slide-in-up'}
@@ -259,7 +270,7 @@ const ProductPopup = () => {
           <div className="w-10 h-1 bg-muted-foreground/30 rounded-full" />
         </div>
 
-        <div className="flex flex-col max-h-[95vh] overflow-hidden">
+        <div className="flex flex-col max-h-[95vh] overflow-hidden relative">
           {/* Image */}
           <div className="relative h-[calc(60vh-10px)] bg-secondary/20 flex-shrink-0">
             <img
@@ -268,14 +279,7 @@ const ProductPopup = () => {
               className="w-full h-full object-contain p-2"
             />
             
-          {/* Close & Favorite */}
-          <button
-            onClick={handleClose}
-            className="absolute top-4 left-4 w-10 h-10 bg-foreground text-background rounded-full flex items-center justify-center hover:bg-foreground/90 transition-all active:scale-95"
-          >
-            <X className="w-5 h-5" />
-          </button>
-            
+          {/* Favorite */}
             <button className="absolute top-4 right-4 w-10 h-10 bg-card rounded-full flex items-center justify-center border border-border active:scale-95">
               <Heart className="w-5 h-5" />
             </button>
@@ -295,7 +299,6 @@ const ProductPopup = () => {
             </div>
           </div>
 
-          {/* Content */}
           <div className="pt-2 px-6 pb-6 flex flex-col overflow-y-auto overscroll-contain">
             <h2 className="text-xl font-bold mb-2">
               {selectedProduct.name}
@@ -350,39 +353,38 @@ const ProductPopup = () => {
               </div>
             )}
 
-            {/* Footer */}
-            <div className="flex items-center gap-4 pt-4 border-t border-border">
-              {/* Quantity */}
-              <div className="flex items-center gap-3">
+          </div>
+          
+          <div className="absolute left-0 right-0 bottom-4 px-6 z-30 pointer-events-none">
+            <div className="flex items-center gap-4 pointer-events-auto justify-end">
+              <div className="flex items-center gap-2 border border-border bg-background rounded-full px-3 py-2 shadow-sm">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="qty-button active:scale-95 transition-transform"
+                  className="qty-button w-8 h-8 active:scale-95 transition-transform"
                 >
                   <Minus className="w-4 h-4" />
                 </button>
-                <span className="w-8 text-center font-semibold text-lg">{quantity}</span>
+                <span className="w-8 text-center font-semibold text-base">{quantity}</span>
                 <button
                   onClick={() => setQuantity(quantity + 1)}
-                  className="qty-button active:scale-95 transition-transform"
+                  className="qty-button w-8 h-8 active:scale-95 transition-transform"
                 >
                   <Plus className="w-4 h-4" />
                 </button>
               </div>
-
-            {/* Add to Cart */}
-            <button
-              onClick={handleAddToCart}
-              className="flex-1 bg-foreground text-background py-4 rounded-full font-semibold text-lg active:scale-[0.98] transition-transform"
-            >
-              {typeof totalOldPrice === 'number' && totalOldPrice > totalPrice ? (
-                <span className="mr-2 line-through opacity-70">{totalOldPrice} ₽</span>
-              ) : null}
-              {totalPrice} ₽
-              {typeof totalEconomy === 'number' && totalEconomy > 0 ? (
-                <span className="ml-2 text-green-200">−{totalEconomy} ₽</span>
-              ) : null}
-            </button>
-          </div>
+              <button
+                onClick={handleAddToCart}
+                className="flex-none w-[124px] md:w-[124px] h-12 px-4 bg-foreground text-background rounded-full font-semibold text-base active:scale-[0.98] transition-transform shadow-md"
+              >
+                {typeof totalOldPrice === 'number' && totalOldPrice > totalPrice ? (
+                  <span className="mr-2 line-through opacity-70">{totalOldPrice} ₽</span>
+                ) : null}
+                {totalPrice} ₽
+                {typeof totalEconomy === 'number' && totalEconomy > 0 ? (
+                  <span className="ml-2 text-green-200">−{totalEconomy} ₽</span>
+                ) : null}
+              </button>
+            </div>
           </div>
         </div>
       </div>
