@@ -142,6 +142,7 @@
   
   .price-badge {
     @apply inline-flex items-center justify-center px-4 py-2 rounded-full border border-border text-sm font-semibold transition-colors;
+    white-space: nowrap;
   }
   
   .price-badge:hover {

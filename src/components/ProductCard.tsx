@@ -123,7 +123,20 @@ const ProductCard = ({ product }: ProductCardProps) => {
         </div>
         <div className="flex items-center justify-between mt-auto pt-2">
           <span className="text-sm text-muted-foreground">
-            {product.pieces && `${product.pieces} / `}{product.weight}
+            <span className="md:hidden">
+              {product.pieces ? (
+                <>
+                  {`${product.pieces} /`}
+                  <br />
+                  {product.weight}
+                </>
+              ) : (
+                product.weight
+              )}
+            </span>
+            <span className="hidden md:inline">
+              {product.pieces && `${product.pieces} / `}{product.weight}
+            </span>
           </span>
           
           <button className="price-badge group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all">
