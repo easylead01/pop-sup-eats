@@ -156,7 +156,7 @@ const ProductPopup = () => {
         </div>
 
         {/* Content - fills remaining 45% */}
-        <div className="flex-1 pt-2 px-6 pb-6 flex flex-col overflow-y-auto overscroll-contain">
+          <div className="pt-2 px-6 pb-2 flex flex-col overflow-y-auto overscroll-contain product-popup-scroll">
           <h2 className="text-2xl font-bold mb-2">
             {selectedProduct.name}
           </h2>
@@ -210,9 +210,7 @@ const ProductPopup = () => {
             </div>
           )}
 
-          {/* Footer */}
-          <div className="flex items-center gap-4 pt-4 pb-8 border-t border-border mt-auto">
-            {/* Quantity */}
+          <div className="sticky-btn-wrapper flex items-center justify-center gap-4 border-t border-border">
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setQuantity(Math.max(1, quantity - 1))}
@@ -229,10 +227,9 @@ const ProductPopup = () => {
               </button>
             </div>
 
-            {/* Add to Cart */}
             <button
               onClick={handleAddToCart}
-              className="flex-1 bg-foreground text-background py-4 rounded-full font-semibold text-lg hover:bg-foreground/90 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              className="bg-foreground text-background py-4 px-8 rounded-full font-semibold text-lg hover:bg-foreground/90 transition-all hover:scale-[1.02] active:scale-[0.98]"
             >
               {typeof totalOldPrice === 'number' && totalOldPrice > totalPrice ? (
                 <span className="mr-2 line-through opacity-70">{totalOldPrice} ₽</span>
@@ -261,13 +258,13 @@ const ProductPopup = () => {
           <div className="w-10 h-1 bg-muted-foreground/30 rounded-full" />
         </div>
 
-        <div className="flex flex-col max-h-[95vh] overflow-hidden relative">
+        <div className="flex flex-col max-h-[95vh] relative product-popup-scroll">
           {/* Image */}
-          <div className="relative h-[calc(60vh-10px)] bg-secondary/20 flex-shrink-0">
+          <div className="relative bg-secondary/20 flex-shrink-0 mt-4">
             <img
               src={imageUrl}
               alt={selectedProduct.name}
-              className="w-full h-full object-contain p-2"
+              className="w-full h-auto object-contain p-2"
             />
             
           {/* Favorite */}
@@ -290,7 +287,7 @@ const ProductPopup = () => {
             </div>
           </div>
 
-          <div className="pt-2 px-6 pb-6 flex flex-col overflow-y-auto overscroll-contain">
+          <div className="pt-2 px-6 pb-2 flex flex-col">
             <h2 className="text-xl font-bold mb-2">
               {selectedProduct.name}
             </h2>
@@ -345,9 +342,8 @@ const ProductPopup = () => {
             )}
 
           </div>
-          
-          <div className="absolute left-0 right-0 bottom-4 px-6 z-30 pointer-events-none">
-            <div className="flex items-center gap-4 pointer-events-auto justify-end">
+          <div className="sticky-btn-wrapper">
+            <div className="flex items-center gap-4 justify-center">
               <div className="flex items-center gap-2 border border-border bg-background rounded-full px-3 py-2 shadow-sm">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}

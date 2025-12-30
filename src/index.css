@@ -175,6 +175,22 @@
   .qty-button:hover {
     @apply bg-muted;
   }
+
+  .product-popup-scroll {
+    overflow-y: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sticky-btn-wrapper {
+    position: sticky;
+    bottom: 0;
+    background-color: #ffffff;
+    padding: 20px;
+    z-index: 100;
+    margin-top: auto;
+  }
 }
 
 /* Animations */
