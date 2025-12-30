@@ -29,19 +29,43 @@ const Index = () => {
   const isOverlayOpen = !!selectedProduct || isMenuOpen || isAuthOpen || isCheckoutOpen || isCartOpen;
   useEffect(() => {
     if (isOverlayOpen) {
+      const scrollY = window.scrollY || window.pageYOffset;
       const prevBodyOverflow = document.body.style.overflow;
       const prevHtmlOverflow = document.documentElement.style.overflow;
-      document.body.style.overflow = 'hidden';
-      document.documentElement.style.overflow = 'hidden';
       const prevHtmlOverscroll = (document.documentElement.style as any).overscrollBehaviorY || '';
       const prevBodyOverscroll = (document.body.style as any).overscrollBehaviorY || '';
+      const prevPosition = document.body.style.position;
+      const prevTop = document.body.style.top;
+      const prevLeft = document.body.style.left;
+      const prevRight = document.body.style.right;
+      const prevWidth = document.body.style.width;
+      const prevHtmlTouchAction = (document.documentElement.style as any).touchAction || '';
+      const prevBodyTouchAction = (document.body.style as any).touchAction || '';
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
       (document.documentElement.style as any).overscrollBehaviorY = 'none';
       (document.body.style as any).overscrollBehaviorY = 'none';
+      (document.documentElement.style as any).touchAction = 'none';
+      (document.body.style as any).touchAction = 'none';
       return () => {
+        const lockedY = Math.abs(parseInt(document.body.style.top || '0', 10)) || scrollY;
+        document.body.style.position = prevPosition;
+        document.body.style.top = prevTop;
+        document.body.style.left = prevLeft;
+        document.body.style.right = prevRight;
+        document.body.style.width = prevWidth;
         document.body.style.overflow = prevBodyOverflow;
         document.documentElement.style.overflow = prevHtmlOverflow;
         (document.documentElement.style as any).overscrollBehaviorY = prevHtmlOverscroll;
         (document.body.style as any).overscrollBehaviorY = prevBodyOverscroll;
+        (document.documentElement.style as any).touchAction = prevHtmlTouchAction;
+        (document.body.style as any).touchAction = prevBodyTouchAction;
+        window.scrollTo(0, lockedY);
       };
     }
   }, [isOverlayOpen]);
