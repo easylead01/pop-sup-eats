@@ -31,6 +31,7 @@ const ShortsCarousel = () => {
   const touchThreshold = 60;
   const [bgLoaded, setBgLoaded] = useState(false);
   const [cardLoaded, setCardLoaded] = useState(false);
+  const [vvTop, setVvTop] = useState(0);
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 1023px)');
     const onChange = (e: MediaQueryListEvent) => setIsSmallScreen(e.matches);
@@ -128,6 +129,17 @@ const ShortsCarousel = () => {
         cleanupOverflow();
       };
     }
+  }, [activeIndex]);
+  useEffect(() => {
+    if (activeIndex === null) return;
+    const update = () => setVvTop(window.visualViewport ? Math.round(window.visualViewport.offsetTop) : 0);
+    update();
+    window.visualViewport?.addEventListener('resize', update);
+    window.visualViewport?.addEventListener('scroll', update);
+    return () => {
+      window.visualViewport?.removeEventListener('resize', update);
+      window.visualViewport?.removeEventListener('scroll', update);
+    };
   }, [activeIndex]);
   
   useEffect(() => {
@@ -262,6 +274,18 @@ const ShortsCarousel = () => {
                   <X className="w-5 h-5" />
                 </button>
               </div>
+              <div className="fixed left-3 right-3 z-[140] pointer-events-none" style={{ top: vvTop + 8 }}>
+                <div className="flex gap-1">
+                  {promos.map((_, i) => (
+                    <div key={i} className="h-1 rounded-full bg-white/30 overflow-hidden flex-1">
+                      <div
+                        className="h-full bg-white"
+                        style={{ width: `${i < activeIndex! ? 100 : i === activeIndex ? Math.round(progress * 100) : 0}%` }}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
 
               {/* Navigation arrows */}
               <button
@@ -304,16 +328,6 @@ const ShortsCarousel = () => {
                   )
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                <div className="absolute top-3 left-3 right-3 z-[130] flex gap-1">
-                  {promos.map((_, i) => (
-                    <div key={i} className="h-1 rounded-full bg-white/30 overflow-hidden flex-1">
-                      <div
-                        className="h-full bg-white"
-                        style={{ width: `${i < activeIndex! ? 100 : i === activeIndex ? Math.round(progress * 100) : 0}%` }}
-                      />
-                    </div>
-                  ))}
-                </div>
                 <div className="absolute bottom-0 left-0 right-0 p-4 flex justify-center">
                   <p className="text-white font-bold text-base md:text-lg leading-tight drop-shadow-lg text-center">
                     {promos[activeIndex]?.title}
