@@ -2906,7 +2906,7 @@ export const setsProducts: Product[] = setsRaw.map((item) => ({
   description: String(item.description || ''),
   price: Number(item.price || 0),
   weight: String(item.weight || ''),
-  category: 'sets',
+  category: String(item.id) === '319' ? 'snacks' : 'sets',
   image: String(item.imageUrl || ''),
   ingredients: Array.isArray(item.ingredients) ? item.ingredients : (String(item.description || '').split(',').map(s => s.trim()).filter(Boolean)),
   allergens: [],
@@ -3019,14 +3019,16 @@ const isBakedProduct = (p: Product) => {
 };
 const isTempuraProduct = (p: Product) => {
   const lower = `${p.name} ${p.description} ${(p.ingredients || []).join(' ')}`.toLowerCase();
+  if (p.id === '104') return false;
+  if (isBakedProduct(p)) return false;
   return /темпур|жарен|горяч/i.test(lower);
 };
 
 export const getProductsByCategory = (categoryId: string) => {
-  if (categoryId === 'sets') return setsProducts;
+  if (categoryId === 'sets') return setsProducts.filter((p) => p.category === 'sets');
   if (categoryId === 'sushi') return sushiProducts;
   if (categoryId === 'pizza') return pizzaProducts;
-  if (categoryId === 'snacks') return snacksProducts;
+  if (categoryId === 'snacks') return snacksProducts.concat(setsProducts.filter((p) => p.category === 'snacks'));
   if (categoryId === 'rolls-baked') return products.filter((p) => p.category === 'rolls' && isBakedProduct(p));
   if (categoryId === 'rolls-tempura') return products.filter((p) => p.category === 'rolls' && isTempuraProduct(p));
   if (categoryId === 'rolls') return products.filter((p) => p.category === 'rolls' && !isBakedProduct(p) && !isTempuraProduct(p));

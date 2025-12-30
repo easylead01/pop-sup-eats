@@ -19,7 +19,14 @@ const ProductCard = ({ product }: ProductCardProps) => {
   const lower = `${product.name} ${product.description} ${product.ingredients.join(' ')}`.toLowerCase();
   const isSpicy = /остр|спайси|чили|паприк/i.test(lower);
   const isBaked = /запеч|печен/i.test(lower);
-  const isTempura = /темпур|жарен|горяч/i.test(lower);
+  const isTempura = /темпур|жарен|горяч/i.test(lower) && product.id !== '104' && !isBaked;
+  const showSpicy = isSpicy && product.category !== 'sets';
+  const showBaked =
+    (isBaked && product.category !== 'sets') ||
+    (product.category === 'sets' && (['211', '44', '127', '294', '128', '130'].includes(product.id)));
+  const showTempura =
+    (isTempura && product.category !== 'sets') ||
+    (product.category === 'sets' && product.id === '133');
   const isContainCategory =
     product.category === 'rolls' ||
     product.category === 'sushi' ||
@@ -83,17 +90,17 @@ const ProductCard = ({ product }: ProductCardProps) => {
             </span>
           )}
           <div className="flex flex-wrap gap-2">
-            {isSpicy && (
+            {showSpicy && (
               <span className="px-2 py-1 bg-red-500 text-white text-xs font-semibold rounded-full flex items-center gap-1">
-                <Flame className="w-4 h-4" /> Острый
+                <Flame className="w-4 h-4" /> Остро
               </span>
             )}
-            {isBaked && (
+            {showBaked && (
               <span className="px-2 py-1 bg-yellow-500 text-white text-xs font-semibold rounded-full flex items-center gap-1">
                 <ChefHat className="w-4 h-4" /> запеченый
               </span>
             )}
-            {isTempura && (
+            {showTempura && (
               <span className="px-2 py-1 bg-orange-500 text-white text-xs font-semibold rounded-full flex items-center gap-1">
                 <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M3 11h3" />

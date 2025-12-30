@@ -25,6 +25,17 @@ const ShortsCarousel = () => {
   const close = () => setActiveIndex(null);
   const prev = () => setActiveIndex((i) => (i === null ? null : (i + promos.length - 1) % promos.length));
   const next = () => setActiveIndex((i) => (i === null ? null : (i + 1) % promos.length));
+  const [isSmallScreen, setIsSmallScreen] = useState(() => window.innerWidth < 1024);
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+  const touchLastRef = useRef<{ x: number; y: number } | null>(null);
+  const touchThreshold = 60;
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 1023px)');
+    const onChange = (e: MediaQueryListEvent) => setIsSmallScreen(e.matches);
+    setIsSmallScreen(mq.matches);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -50,6 +61,11 @@ const ShortsCarousel = () => {
       }
       return;
     }
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const cleanupOverflow = () => {
+      document.body.style.overflow = prevOverflow;
+    };
     setProgress(0);
     if (progressIntervalRef.current) {
       window.clearInterval(progressIntervalRef.current);
@@ -82,6 +98,7 @@ const ShortsCarousel = () => {
         v.removeEventListener('loadedmetadata', handleLoaded);
         v.removeEventListener('timeupdate', handleTimeUpdate);
         v.removeEventListener('ended', handleEnded);
+        cleanupOverflow();
       };
     } else {
       const durationMs = 12000;
@@ -103,6 +120,7 @@ const ShortsCarousel = () => {
           window.clearTimeout(nextTimeoutRef.current);
           nextTimeoutRef.current = null;
         }
+        cleanupOverflow();
       };
     }
   }, [activeIndex]);
@@ -163,7 +181,34 @@ const ShortsCarousel = () => {
 
           {/* Popup */}
           {activeIndex !== null && (
-            <div className="fixed inset-0 z-[100] flex items-center justify-center" onClick={close}>
+            <div
+              className="fixed inset-0 z-[100] flex items-center justify-center"
+              onClick={isSmallScreen ? undefined : close}
+              onTouchStart={(e) => {
+                const t = e.touches[0];
+                touchStartRef.current = { x: t.clientX, y: t.clientY };
+                touchLastRef.current = { x: t.clientX, y: t.clientY };
+              }}
+              onTouchMove={(e) => {
+                const t = e.touches[0];
+                touchLastRef.current = { x: t.clientX, y: t.clientY };
+              }}
+              onTouchEnd={() => {
+                if (!touchStartRef.current || !touchLastRef.current) return;
+                const dx = touchLastRef.current.x - touchStartRef.current.x;
+                const dy = touchLastRef.current.y - touchStartRef.current.y;
+                const absX = Math.abs(dx);
+                const absY = Math.abs(dy);
+                touchStartRef.current = null;
+                touchLastRef.current = null;
+                if (absX > absY && absX > touchThreshold) {
+                  if (dx < 0) next();
+                  else prev();
+                } else if (absY > touchThreshold) {
+                  close();
+                }
+              }}
+            >
               {/* Blurred tinted backdrop */}
               <div
                 className="absolute inset-0"
@@ -184,7 +229,7 @@ const ShortsCarousel = () => {
                 <div className="absolute inset-0 bg-black/30 md:bg-black/40 lg:bg-black/50 backdrop-blur-sm md:backdrop-blur-md" />
                 <button
                   onClick={(e) => { e.stopPropagation(); close(); }}
-                  className={`hidden md:flex absolute -translate-x-1/2 -translate-y-1/2 z-[110] w-10 h-10 bg-foreground text-background rounded-full items-center justify-center shadow-lg transition-opacity duration-100 ${isBackdropHover ? 'opacity-100' : 'opacity-0'} hover:scale-105 active:scale-95`}
+                  className={`hidden lg:flex absolute -translate-x-1/2 -translate-y-1/2 z-[110] w-10 h-10 bg-foreground text-background rounded-full items-center justify-center shadow-lg transition-opacity duration-100 ${isBackdropHover ? 'opacity-100' : 'opacity-0'} hover:scale-105 active:scale-95`}
                   style={cursorPos ? { left: cursorPos.x, top: cursorPos.y } : undefined}
                   title="Закрыть"
                   aria-label="Закрыть"
@@ -196,14 +241,14 @@ const ShortsCarousel = () => {
               {/* Navigation arrows */}
               <button
                 onClick={(e) => { e.stopPropagation(); prev(); }}
-                className="absolute left-6 md:left-12 top-1/2 -translate-y-1/2 z-[110] w-10 h-10 bg-card/80 backdrop-blur rounded-full shadow-lg flex items-center justify-center hover:bg-muted transition-all"
+                className="hidden lg:flex absolute left-6 lg:left-12 top-1/2 -translate-y-1/2 z-[110] w-10 h-10 bg-card/80 backdrop-blur rounded-full shadow-lg items-center justify-center hover:bg-muted transition-all"
                 title="Предыдущий"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
               <button
                 onClick={(e) => { e.stopPropagation(); next(); }}
-                className="absolute right-6 md:right-12 top-1/2 -translate-y-1/2 z-[110] w-10 h-10 bg-card/80 backdrop-blur rounded-full shadow-lg flex items-center justify-center hover:bg-muted transition-all"
+                className="hidden lg:flex absolute right-6 lg:right-12 top-1/2 -translate-y-1/2 z-[110] w-10 h-10 bg-card/80 backdrop-blur rounded-full shadow-lg items-center justify-center hover:bg-muted transition-all"
                 title="Следующий"
               >
                 <ChevronRight className="w-5 h-5" />
@@ -251,7 +296,7 @@ const ShortsCarousel = () => {
                 {/* Close button */}
                 <button
                   onClick={close}
-                  className="absolute top-3 right-3 z-[130] p-2 bg-card rounded-full shadow-md hover:bg-muted transition-all hover:scale-105 active:scale-95 md:hidden"
+                  className="hidden absolute top-3 right-3 z-[130] p-2 bg-card rounded-full shadow-md hover:bg-muted transition-all hover:scale-105 active:scale-95"
                   title="Закрыть"
                 >
                   <X className="w-5 h-5" />

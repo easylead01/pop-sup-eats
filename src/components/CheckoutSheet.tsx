@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { X, MapPin, User, Phone, MessageSquare, CreditCard, Truck } from 'lucide-react';
 import { useUIStore } from '@/store/uiStore';
 import { useCartStore } from '@/store/cartStore';
@@ -16,12 +16,24 @@ const CheckoutSheet = () => {
     comment: '',
   });
   const [loading, setLoading] = useState(false);
+  const [cursorPos, setCursorPos] = useState<{ x: number; y: number } | null>(null);
+  const [isBackdropHover, setIsBackdropHover] = useState(false);
 
   const swipeHandlers = useSwipeClose({
     direction: 'down',
     threshold: 80,
     onClose: () => setCheckoutOpen(false),
   });
+
+  useEffect(() => {
+    if (isCheckoutOpen) {
+      const prevOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = prevOverflow;
+      };
+    }
+  }, [isCheckoutOpen]);
 
   if (!isCheckoutOpen) return null;
 
@@ -59,7 +71,20 @@ const CheckoutSheet = () => {
       <div
         className="absolute inset-0 bg-foreground/50 animate-fade-in"
         onClick={() => setCheckoutOpen(false)}
-      />
+        onMouseEnter={() => setIsBackdropHover(true)}
+        onMouseLeave={() => { setIsBackdropHover(false); setCursorPos(null); }}
+        onMouseMove={(e) => setCursorPos({ x: e.clientX, y: e.clientY })}
+      >
+        <button
+          onClick={(e) => { e.stopPropagation(); setCheckoutOpen(false); }}
+          className={`hidden md:flex absolute -translate-x-1/2 -translate-y-1/2 z-[60] w-10 h-10 bg-foreground text-background rounded-full items-center justify-center shadow-md transition-opacity duration-100 ${isBackdropHover ? 'opacity-100' : 'opacity-0'} hover:scale-105 active:scale-95`}
+          style={cursorPos ? { left: cursorPos.x, top: cursorPos.y } : undefined}
+          title="Закрыть"
+          aria-label="Закрыть"
+        >
+          <X className="w-5 h-5" />
+        </button>
+      </div>
 
       {/* Sheet */}
       <div 
@@ -83,7 +108,7 @@ const CheckoutSheet = () => {
         </div>
 
         {/* Content */}
-        <div className="overflow-y-auto max-h-[calc(85vh-180px)] md:max-h-[calc(90vh-200px)]">
+        <div className="overflow-y-auto overscroll-contain max-h-[calc(85vh-180px)] md:max-h-[calc(90vh-200px)]">
           <div className="p-6 space-y-5">
             {/* Form */}
             <div className="space-y-4">

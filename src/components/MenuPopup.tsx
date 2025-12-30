@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 import { categories } from '@/data/products';
 import { useUIStore } from '@/store/uiStore';
@@ -25,6 +25,18 @@ const categoryImages: Record<string, string> = {
 const MenuPopup = () => {
   const { isMenuOpen, setMenuOpen } = useUIStore();
   const [isClosing, setIsClosing] = useState(false);
+  const [cursorPos, setCursorPos] = useState<{ x: number; y: number } | null>(null);
+  const [isBackdropHover, setIsBackdropHover] = useState(false);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      const prevOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = prevOverflow;
+      };
+    }
+  }, [isMenuOpen]);
 
   const handleClose = () => {
     setIsClosing(true);
@@ -65,11 +77,24 @@ const MenuPopup = () => {
       <div
         className={`absolute inset-0 bg-foreground/40 transition-opacity duration-200 ${isClosing ? 'opacity-0' : 'animate-fade-in'}`}
         onClick={handleClose}
-      />
+        onMouseEnter={() => setIsBackdropHover(true)}
+        onMouseLeave={() => { setIsBackdropHover(false); setCursorPos(null); }}
+        onMouseMove={(e) => setCursorPos({ x: e.clientX, y: e.clientY })}
+      >
+        <button
+          onClick={(e) => { e.stopPropagation(); handleClose(); }}
+          className={`hidden md:flex absolute -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-foreground text-background rounded-full items-center justify-center shadow-md transition-opacity duration-100 ${isBackdropHover ? 'opacity-100' : 'opacity-0'} hover:scale-105 active:scale-95 z-[60]`}
+          style={cursorPos ? { left: cursorPos.x, top: cursorPos.y } : undefined}
+          title="Закрыть"
+          aria-label="Закрыть"
+        >
+          <X className="w-5 h-5" />
+        </button>
+      </div>
 
       {/* Panel */}
       <div 
-        className={`relative w-full max-w-md bg-card h-full overflow-y-auto shadow-popup transition-transform duration-200 ${
+        className={`relative w-full max-w-md bg-card h-full overflow-y-auto overscroll-contain shadow-popup transition-transform duration-200 ${
           isClosing ? '-translate-x-full' : 'animate-slide-in-left'
         }`}
         {...swipeHandlers}
@@ -83,18 +108,6 @@ const MenuPopup = () => {
           >
             <X className="w-6 h-6" />
           </button>
-        </div>
-
-        {/* Tabs */}
-        <div className="p-4 border-b border-border">
-          <div className="flex gap-2">
-            <button className="px-4 py-2 bg-primary text-primary-foreground rounded-full text-sm font-medium transition-all hover:scale-105 active:scale-95">
-              Classic
-            </button>
-            <button className="px-4 py-2 bg-transparent border border-primary text-primary rounded-full text-sm font-medium hover:bg-primary/10 transition-all hover:scale-105 active:scale-95">
-              Market
-            </button>
-          </div>
         </div>
 
         {/* Categories Grid */}

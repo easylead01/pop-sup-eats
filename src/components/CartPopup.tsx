@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { X, Minus, Plus, Trash2, ShoppingBag } from 'lucide-react';
 import { useCartStore } from '@/store/cartStore';
 import { useUIStore } from '@/store/uiStore';
@@ -22,6 +22,8 @@ const CartPopup = () => {
   } = useUIStore();
   const { customImages } = useProductImageContext();
   const [isClosing, setIsClosing] = useState(false);
+  const [cursorPos, setCursorPos] = useState<{ x: number; y: number } | null>(null);
+  const [isBackdropHover, setIsBackdropHover] = useState(false);
   const totalPrice = getTotalPrice();
   
   const getImageUrl = (product: Product) => {
@@ -39,14 +41,38 @@ const CartPopup = () => {
     threshold: 80,
     onClose: handleClose
   });
+  useEffect(() => {
+    if (isOpen) {
+      const prevOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = prevOverflow;
+      };
+    }
+  }, [isOpen]);
   if (!isOpen) return null;
   const handleCheckout = () => {
     setIsOpen(false);
     openCheckoutWithAuthCheck();
   };
   return <div className="fixed inset-0 z-50 flex justify-end">
-      {/* Backdrop */}
-      <div className={`absolute inset-0 bg-foreground/40 transition-opacity duration-200 ${isClosing ? 'opacity-0' : 'animate-fade-in'}`} onClick={handleClose} />
+      <div
+        className={`absolute inset-0 bg-foreground/40 transition-opacity duration-200 ${isClosing ? 'opacity-0' : 'animate-fade-in'}`}
+        onClick={handleClose}
+        onMouseEnter={() => setIsBackdropHover(true)}
+        onMouseLeave={() => { setIsBackdropHover(false); setCursorPos(null); }}
+        onMouseMove={(e) => setCursorPos({ x: e.clientX, y: e.clientY })}
+      >
+        <button
+          onClick={(e) => { e.stopPropagation(); handleClose(); }}
+          className={`hidden md:flex absolute -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-foreground text-background rounded-full items-center justify-center shadow-md transition-opacity duration-100 ${isBackdropHover ? 'opacity-100' : 'opacity-0'} hover:scale-105 active:scale-95 z-[60]`}
+          style={cursorPos ? { left: cursorPos.x, top: cursorPos.y } : undefined}
+          title="Закрыть"
+          aria-label="Закрыть"
+        >
+          <X className="w-5 h-5" />
+        </button>
+      </div>
 
       {/* Panel */}
       <div className={`relative w-full max-w-md bg-card h-full flex flex-col shadow-popup transition-transform duration-200 ${isClosing ? 'translate-x-full' : 'animate-slide-in-right'}`} {...swipeHandlers}>
@@ -56,13 +82,13 @@ const CartPopup = () => {
             <ShoppingBag className="w-5 h-5" />
             <h2 className="text-xl font-bold">Корзина</h2>
           </div>
-          <button onClick={handleClose} className="p-2 hover:bg-muted rounded-full transition-all hover:scale-105 active:scale-95">
+          <button onClick={handleClose} className="p-2 hover:bg-muted rounded-full transition-all hover:scale-105 active:scale-95 md:hidden">
             <X className="w-6 h-6" />
           </button>
         </div>
 
         {/* Content */}
-        <div className="flex-1 overflow-y-auto">
+        <div className="flex-1 overflow-y-auto overscroll-contain">
           {items.length === 0 ? <div className="flex flex-col items-center justify-center h-full text-center p-8">
               <ShoppingBag className="w-16 h-16 text-muted-foreground mb-4" />
               <h3 className="text-lg font-semibold mb-2">Корзина пуста</h3>

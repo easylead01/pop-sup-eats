@@ -42,8 +42,8 @@ const Header = () => {
           </button>
           
           {/* Logo - centered on mobile/tablet, left on desktop */}
-          <div className="flex items-center gap-2 lg:relative absolute top-[15px] lg:top-[5px] left-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0">
-            <button onClick={() => setMenuOpen(true)} className="hidden lg:flex mt-[5px] w-10 h-10 bg-primary text-primary-foreground rounded-full items-center justify-center shadow-md hover:bg-primary/90 transition-all">
+          <div className="flex items-center gap-2 lg:relative absolute top-[15px] lg:-top-[5px] left-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0">
+            <button onClick={() => setMenuOpen(true)} className="hidden lg:flex mt-[14.5px] w-10 h-10 bg-primary text-primary-foreground rounded-full items-center justify-center shadow-md hover:bg-primary/90 transition-all">
               <div className="grid grid-cols-3 grid-rows-3 lg:w-[70%] lg:h-[70%] place-items-center gap-[4%]">
                 <span className="block w-1 h-1 bg-primary-foreground rounded-full" />
                 <span className="block w-1 h-1 bg-primary-foreground rounded-full" />
@@ -62,7 +62,7 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-6">
+          <div className="hidden lg:flex items-center gap-6" style={{ position: 'relative', top: 5 }}>
             
             
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -81,7 +81,7 @@ const Header = () => {
           </div>
 
           {/* Right Section */}
-          <div className="flex items-center gap-2 md:gap-3">
+          <div className="flex items-center gap-2 md:gap-3 lg:translate-y-[5px] lg:transform">
             <Link to="/admin" className="hidden lg:flex p-2.5 hover:bg-muted rounded-full transition-colors" title="Управление изображениями">
               <Settings className="w-5 h-5" />
             </Link>

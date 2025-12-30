@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { X, Phone, ArrowLeft } from 'lucide-react';
 import { useUIStore } from '@/store/uiStore';
 import { toast } from '@/hooks/use-toast';
@@ -10,6 +10,8 @@ const AuthPopup = () => {
   const [code, setCode] = useState('');
   const [loading, setLoading] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const [cursorPos, setCursorPos] = useState<{ x: number; y: number } | null>(null);
+  const [isBackdropHover, setIsBackdropHover] = useState(false);
 
   const handleClose = () => {
     setIsClosing(true);
@@ -24,6 +26,16 @@ const AuthPopup = () => {
     threshold: 80,
     onClose: handleClose,
   });
+
+  useEffect(() => {
+    if (isAuthOpen) {
+      const prevOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = prevOverflow;
+      };
+    }
+  }, [isAuthOpen]);
 
   if (!isAuthOpen) return null;
 
@@ -85,11 +97,24 @@ const AuthPopup = () => {
       <div
         className={`absolute inset-0 bg-foreground/50 transition-opacity duration-200 ${isClosing ? 'opacity-0' : 'animate-fade-in'}`}
         onClick={handleClose}
-      />
+        onMouseEnter={() => setIsBackdropHover(true)}
+        onMouseLeave={() => { setIsBackdropHover(false); setCursorPos(null); }}
+        onMouseMove={(e) => setCursorPos({ x: e.clientX, y: e.clientY })}
+      >
+        <button
+          onClick={(e) => { e.stopPropagation(); handleClose(); }}
+          className={`hidden md:flex absolute -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-foreground text-background rounded-full items-center justify-center shadow-md transition-opacity duration-100 ${isBackdropHover ? 'opacity-100' : 'opacity-0'} hover:scale-105 active:scale-95 z-[60]`}
+          style={cursorPos ? { left: cursorPos.x, top: cursorPos.y } : undefined}
+          title="Закрыть"
+          aria-label="Закрыть"
+        >
+          <X className="w-5 h-5" />
+        </button>
+      </div>
 
       {/* Modal */}
       <div 
-        className={`relative bg-card w-full md:max-w-md rounded-t-3xl md:rounded-3xl p-6 md:p-8 shadow-popup transition-all duration-200 ${
+        className={`relative bg-card w-full md:max-w-md rounded-t-3xl md:rounded-3xl p-6 md:p-8 shadow-popup transition-all duration-200 overscroll-contain ${
           isClosing 
             ? 'translate-y-full md:translate-y-0 md:scale-95 md:opacity-0' 
             : 'animate-slide-in-up md:animate-scale-in'
@@ -116,7 +141,7 @@ const AuthPopup = () => {
           
           <button
             onClick={handleClose}
-            className="p-2 hover:bg-muted rounded-full transition-all -mr-2 hover:scale-105 active:scale-95"
+            className="p-2 hover:bg-muted rounded-full transition-all -mr-2 hover:scale-105 active:scale-95 md:hidden"
           >
             <X className="w-5 h-5" />
           </button>
