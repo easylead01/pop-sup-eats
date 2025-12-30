@@ -45,7 +45,7 @@ export interface Category {
 
 export const categories: Category[] = [
   { id: 'rolls', name: 'Роллы', icon: '🍣', image: 'cat-rolls' },
-  { id: 'rolls-baked', name: 'Роллы запеченые', icon: '🔥', image: 'cat-rolls-baked' },
+  { id: 'rolls-baked', name: 'Роллы запеченные', icon: '🔥', image: 'cat-rolls-baked' },
   { id: 'rolls-tempura', name: 'Роллы темпура', icon: '🍤', image: 'cat-rolls-tempura' },
   { id: 'sets', name: 'Сеты', icon: '🍱', image: 'cat-sets' },
   { id: 'sushi', name: 'Суши', icon: '🥢', image: 'cat-sushi' },

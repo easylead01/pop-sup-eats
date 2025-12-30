@@ -1,10 +1,20 @@
+import { useState } from 'react';
 import { MapPin, Search, SlidersHorizontal, Menu, ShoppingBag, User, Settings } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useCartStore } from '@/store/cartStore';
 import { useUIStore } from '@/store/uiStore';
 import { Button } from '@/components/ui/button';
-import logo from '@/assets/logo.png';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import logo from '@/assets/logo (1).png';
 const Header = () => {
+  const addresses = [
+    'ул. Федора Тютчева, д. 97',
+    'ул. Минская, д. 67а',
+    'ул. Адмирала Чурсина, 2/1, район Озерки',
+    'ул. 50 Лет Октября, д. 95',
+    'ул. Ростовская, д. 100б'
+  ];
+  const [currentAddressIndex, setCurrentAddressIndex] = useState(1);
   const {
     setIsOpen: setCartOpen,
     isOpen: isCartOpen,
@@ -42,7 +52,7 @@ const Header = () => {
           </button>
           
           {/* Logo - centered on mobile/tablet, left on desktop */}
-          <div className="flex items-center gap-2 lg:relative absolute top-[15px] lg:-top-[5px] left-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0">
+          <div className="flex items-center gap-2 lg:relative absolute top-[8px] lg:-top-[5px] left-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0">
             <button onClick={() => setMenuOpen(true)} className="hidden lg:flex mt-[14.5px] w-10 h-10 bg-primary text-primary-foreground rounded-full items-center justify-center shadow-md hover:bg-primary/90 transition-all">
               <div className="grid grid-cols-3 grid-rows-3 lg:w-[70%] lg:h-[70%] place-items-center gap-[4%]">
                 <span className="block w-1 h-1 bg-primary-foreground rounded-full" />
@@ -57,7 +67,9 @@ const Header = () => {
               </div>
             </button>
             <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-              <img alt="OKIAHABA" className="h-16 md:h-20 cursor-pointer lg:ml-5" src={logo} />
+              <span className="h-16 md:h-20 cursor-pointer lg:ml-5 flex items-center">
+                <img src={logo} alt="OKIAHABA" className="h-16 md:h-20 w-auto" />
+              </span>
             </Link>
           </div>
 
@@ -67,17 +79,39 @@ const Header = () => {
             
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <MapPin className="w-4 h-4 text-primary rounded" />
-              <span className="text-base">Москва</span>
+              <span className="text-base">Воронеж</span>
             </div>
-            
             <div className="flex flex-col">
-              <span className="text-sm font-medium">ТЦ Метрополис</span>
-              <span className="text-xs text-muted-foreground">Ленинградское ш., 16А</span>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button className="text-left outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0">
+                    <span className="text-sm font-medium">
+                      {addresses[currentAddressIndex]}
+                    </span>
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="center" sideOffset={8} className="z-[80] mt-1">
+                  {addresses.map((address, index) => (
+                    <DropdownMenuItem
+                      key={address}
+                      onClick={() => setCurrentAddressIndex(index)}
+                    >
+                      {address}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+              {/* Desktop: текст, мобилка/планшет: кликабельный номер */}
+              <span className="hidden lg:inline text-xs text-muted-foreground">
+                +7 (473) 290-43-41
+              </span>
+              <a
+                href="tel:+74732904341"
+                className="inline lg:hidden text-xs text-muted-foreground hover:text-primary transition-colors"
+              >
+                +7 (473) 290-43-41
+              </a>
             </div>
-            
-            <span className="text-sm font-medium text-muted-foreground">
-              8-800-700-01-10
-            </span>
           </div>
 
           {/* Right Section */}

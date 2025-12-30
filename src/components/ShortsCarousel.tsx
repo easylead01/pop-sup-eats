@@ -287,59 +287,62 @@ const ShortsCarousel = () => {
                 </div>
               </div>
 
-              {/* Navigation arrows */}
-              <button
-                onClick={(e) => { e.stopPropagation(); prev(); }}
-                className="hidden lg:flex absolute left-6 lg:left-12 top-1/2 -translate-y-1/2 z-[110] w-10 h-10 bg-card/80 backdrop-blur rounded-full shadow-lg items-center justify-center hover:bg-muted transition-all"
-                title="Предыдущий"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                onClick={(e) => { e.stopPropagation(); next(); }}
-                className="hidden lg:flex absolute right-6 lg:right-12 top-1/2 -translate-y-1/2 z-[110] w-10 h-10 bg-card/80 backdrop-blur rounded-full shadow-lg items-center justify-center hover:bg-muted transition-all"
-                title="Следующий"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-
-              {/* Center card */}
-              <div
-                className={`relative z-[120] ${isSmallScreen ? 'w-screen h-screen rounded-none shadow-none' : 'w-[min(92vw,380px)] aspect-[3/4] rounded-2xl shadow-popup'} overflow-hidden bg-card transition-opacity duration-300 ease-out ${cardLoaded ? 'opacity-100' : 'opacity-0'}`}
-                onClick={(e) => e.stopPropagation()}
-              >
-                {(promos[activeIndex] as any)?.video ? (
-                  <video
-                    ref={videoRef}
-                    src={(promos[activeIndex] as any).video as string}
-                    className="w-full h-full object-cover"
-                    autoPlay
-                    muted
-                    playsInline
-                  />
-                ) : (
-                  promos[activeIndex]?.image && (
-                    <img
-                      src={promos[activeIndex].image as string}
-                      alt={promos[activeIndex].title}
-                      onLoad={() => setCardLoaded(true)}
-                      className="w-full h-full object-cover"
-                    />
-                  )
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-4 flex justify-center">
-                  <p className="text-white font-bold text-base md:text-lg leading-tight drop-shadow-lg text-center">
-                    {promos[activeIndex]?.title}
-                  </p>
-                </div>
-                {/* Close button */}
+              {/* Navigation arrows + center card */}
+              <div className="relative z-[120] flex items-center gap-4">
                 <button
-                  onClick={close}
-                  className="hidden absolute top-3 right-3 z-[130] p-2 bg-card rounded-full shadow-md hover:bg-muted transition-all hover:scale-105 active:scale-95"
-                  title="Закрыть"
+                  onClick={(e) => { e.stopPropagation(); prev(); }}
+                  className="hidden lg:flex w-10 h-10 bg-card/80 backdrop-blur rounded-full shadow-lg items-center justify-center hover:bg-muted transition-all"
+                  title="Предыдущий"
                 >
-                  <X className="w-5 h-5" />
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+
+                {/* Center card */}
+                <div
+                  className={`relative ${isSmallScreen ? 'w-screen h-screen rounded-none shadow-none' : 'w-[min(92vw,380px)] aspect-[3/4] rounded-2xl shadow-popup'} overflow-hidden bg-card transition-opacity duration-300 ease-out ${cardLoaded ? 'opacity-100' : 'opacity-0'}`}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {(promos[activeIndex] as any)?.video ? (
+                    <video
+                      ref={videoRef}
+                      src={(promos[activeIndex] as any).video as string}
+                      className="w-full h-full object-cover"
+                      autoPlay
+                      muted
+                      playsInline
+                    />
+                  ) : (
+                    promos[activeIndex]?.image && (
+                      <img
+                        src={promos[activeIndex].image as string}
+                        alt={promos[activeIndex].title}
+                        onLoad={() => setCardLoaded(true)}
+                        className="w-full h-full object-cover"
+                      />
+                    )
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4 flex justify-center">
+                    <p className="text-white font-bold text-base md:text-lg leading-tight drop-shadow-lg text-center">
+                      {promos[activeIndex]?.title}
+                    </p>
+                  </div>
+                  {/* Close button */}
+                  <button
+                    onClick={close}
+                    className="hidden absolute top-3 right-3 z-[130] p-2 bg-card rounded-full shadow-md hover:bg-muted transition-all hover:scale-105 active:scale-95"
+                    title="Закрыть"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+
+                <button
+                  onClick={(e) => { e.stopPropagation(); next(); }}
+                  className="hidden lg:flex w-10 h-10 bg-card/80 backdrop-blur rounded-full shadow-lg items-center justify-center hover:bg-muted transition-all"
+                  title="Следующий"
+                >
+                  <ChevronRight className="w-5 h-5" />
                 </button>
               </div>
             </div>

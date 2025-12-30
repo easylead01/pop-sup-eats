@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import ShortsCarousel from '@/components/ShortsCarousel';
-import logo from '@/assets/logo.png';
 import CategoryNav from '@/components/CategoryNav';
 import CategorySidebar from '@/components/CategorySidebar';
 import CategorySection from '@/components/CategorySection';
@@ -15,6 +14,7 @@ import { categories, getProductsByCategory } from '@/data/products';
 import { ChevronUp } from 'lucide-react';
 import { useUIStore } from '@/store/uiStore';
 import { useCartStore } from '@/store/cartStore';
+import logo from '@/assets/logo (1).png';
 
 const Index = () => {
   const [showTop, setShowTop] = useState(false);
@@ -143,10 +143,10 @@ const Index = () => {
             {/* Logo & Description */}
             <div>
               <div className="mb-4">
-                <img src={logo} alt="OKIAHABA" className="h-10" />
+                <img src={logo} alt="OKIAHABA" className="h-8 w-auto" />
               </div>
               <p className="text-gray-400 text-sm">
-                Доставка вкусных роллов, суши и пиццы по Москве
+                Доставка вкусных роллов, суши и пиццы по Воронежу
               </p>
             </div>
 
@@ -174,10 +174,26 @@ const Index = () => {
             {/* Contacts */}
             <div>
               <h3 className="text-white font-semibold mb-4">Контакты</h3>
-              <a href="tel:88007000110" className="text-white text-2xl font-bold hover:text-primary transition-colors">
-                8-800-700-01-10
-              </a>
-              <p className="text-gray-400 text-sm mt-2">Звонок бесплатный</p>
+              <div className="space-y-2">
+                <a
+                  href="tel:88003337952"
+                  className="block text-white text-xl font-bold hover:text-primary transition-colors"
+                >
+                  8 800 333-79-52
+                </a>
+                <a
+                  href="tel:+79507656592"
+                  className="block text-gray-200 text-sm font-medium hover:text-primary transition-colors"
+                >
+                  +7 (950) 765-65-92
+                </a>
+                <a
+                  href="tel:+74732904341"
+                  className="block text-gray-200 text-sm font-medium hover:text-primary transition-colors"
+                >
+                  +7 (473) 290-43-41
+                </a>
+              </div>
             </div>
           </div>
 

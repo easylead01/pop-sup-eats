@@ -97,7 +97,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
             )}
             {showBaked && (
               <span className="px-2 py-1 bg-yellow-500 text-white text-xs font-semibold rounded-full flex items-center gap-1">
-                <ChefHat className="w-4 h-4" /> запеченый
+                <ChefHat className="w-4 h-4" /> запеченный
               </span>
             )}
             {showTempura && (
