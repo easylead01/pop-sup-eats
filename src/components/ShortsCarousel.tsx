@@ -29,6 +29,8 @@ const ShortsCarousel = () => {
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
   const touchLastRef = useRef<{ x: number; y: number } | null>(null);
   const touchThreshold = 60;
+  const [bgLoaded, setBgLoaded] = useState(false);
+  const [cardLoaded, setCardLoaded] = useState(false);
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 1023px)');
     const onChange = (e: MediaQueryListEvent) => setIsSmallScreen(e.matches);
@@ -66,6 +68,8 @@ const ShortsCarousel = () => {
     const cleanupOverflow = () => {
       document.body.style.overflow = prevOverflow;
     };
+    setBgLoaded(false);
+    setCardLoaded(false);
     setProgress(0);
     if (progressIntervalRef.current) {
       window.clearInterval(progressIntervalRef.current);
@@ -82,6 +86,7 @@ const ShortsCarousel = () => {
       const handleLoaded = () => {
         setProgress(0);
         v.play().catch(() => {});
+        setCardLoaded(true);
       };
       const handleTimeUpdate = () => {
         if (v.duration && v.currentTime >= 0) {
@@ -122,6 +127,23 @@ const ShortsCarousel = () => {
         }
         cleanupOverflow();
       };
+    }
+  }, [activeIndex]);
+  
+  useEffect(() => {
+    if (activeIndex !== null) {
+      const ids = [
+        activeIndex,
+        (activeIndex + 1) % promos.length,
+        (activeIndex + promos.length - 1) % promos.length,
+      ];
+      ids.forEach((i) => {
+        const p = promos[i];
+        if ((p as any)?.image) {
+          const img = new Image();
+          img.src = (p as any).image as string;
+        }
+      });
     }
   }, [activeIndex]);
 
@@ -221,7 +243,8 @@ const ShortsCarousel = () => {
                     src={promos[activeIndex].image as string}
                     alt=""
                     aria-hidden
-                    className="absolute inset-0 w-full h-full object-cover scale-110 saturate-110 brightness-85 blur-sm md:blur-2xl md:brightness-75 md:saturate-125"
+                    onLoad={() => setBgLoaded(true)}
+                    className={`absolute inset-0 w-full h-full object-cover scale-110 saturate-110 brightness-85 blur-sm md:blur-2xl md:brightness-75 md:saturate-125 transition-opacity duration-300 ${bgLoaded ? 'opacity-100' : 'opacity-0'}`}
                   />
                 ) : (
                   <div className={`absolute inset-0 bg-gradient-to-br ${promos[activeIndex]?.gradient ?? 'from-gray-700 to-gray-900'}`} />
@@ -256,7 +279,7 @@ const ShortsCarousel = () => {
 
               {/* Center card */}
               <div
-                className="relative z-[120] w-[min(92vw,380px)] aspect-[3/4] rounded-2xl overflow-hidden shadow-popup animate-scale-in bg-card"
+                className={`relative z-[120] w-[min(92vw,380px)] aspect-[3/4] rounded-2xl overflow-hidden shadow-popup bg-card transition-opacity duration-300 ease-out ${cardLoaded ? 'opacity-100' : 'opacity-0'}`}
                 onClick={(e) => e.stopPropagation()}
               >
                 {(promos[activeIndex] as any)?.video ? (
@@ -273,6 +296,7 @@ const ShortsCarousel = () => {
                     <img
                       src={promos[activeIndex].image as string}
                       alt={promos[activeIndex].title}
+                      onLoad={() => setCardLoaded(true)}
                       className="w-full h-full object-cover"
                     />
                   )
