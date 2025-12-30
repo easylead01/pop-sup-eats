@@ -45,6 +45,20 @@ const MenuPopup = () => {
   if (!isMenuOpen) return null;
 
   const scrollToCategory = (categoryId: string) => {
+    const animateScrollTo = (to: number, duration = 500) => {
+      const start = window.pageYOffset;
+      const diff = to - start;
+      const startTime = performance.now();
+      const ease = (t: number) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t);
+      const step = (now: number) => {
+        const elapsed = now - startTime;
+        const p = Math.min(elapsed / duration, 1);
+        const eased = ease(p);
+        window.scrollTo(0, Math.round(start + diff * eased));
+        if (elapsed < duration) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
     handleClose();
     setTimeout(() => {
       const element = document.getElementById(categoryId);
@@ -52,11 +66,7 @@ const MenuPopup = () => {
         const offset = 100;
         const elementPosition = element.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth',
-        });
+        animateScrollTo(offsetPosition, 550);
       }
     }, 250);
   };

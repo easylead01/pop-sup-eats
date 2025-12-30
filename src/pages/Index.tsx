@@ -79,6 +79,39 @@ const Index = () => {
       };
     }
   }, [isOverlayOpen]);
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (!target) return;
+      const link = target.closest('a[href^="#"]') as HTMLAnchorElement | null;
+      if (!link) return;
+      const isMobile = window.innerWidth < 1024;
+      if (!isMobile) return;
+      const id = link.getAttribute('href')?.slice(1);
+      if (!id) return;
+      const el = document.getElementById(id);
+      if (!el) return;
+      e.preventDefault();
+      const offset = 100;
+      const rectTop = el.getBoundingClientRect().top;
+      const to = rectTop + window.pageYOffset - offset;
+      const start = window.pageYOffset;
+      const diff = to - start;
+      const duration = 550;
+      const startTime = performance.now();
+      const ease = (t: number) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t);
+      const step = (now: number) => {
+        const elapsed = now - startTime;
+        const p = Math.min(elapsed / duration, 1);
+        const eased = ease(p);
+        window.scrollTo(0, Math.round(start + diff * eased));
+        if (elapsed < duration) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    document.addEventListener('click', handler, true);
+    return () => document.removeEventListener('click', handler, true);
+  }, []);
   return (
     <div className="min-h-screen bg-background">
       <Header />
