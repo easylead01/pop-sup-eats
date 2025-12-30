@@ -29,13 +29,30 @@ const Index = () => {
   const isOverlayOpen = !!selectedProduct || isMenuOpen || isAuthOpen || isCheckoutOpen || isCartOpen;
   useEffect(() => {
     if (isOverlayOpen) {
+      const scrollY = window.scrollY || window.pageYOffset;
       const prevBodyOverflow = document.body.style.overflow;
       const prevHtmlOverflow = document.documentElement.style.overflow;
+      const prevPosition = document.body.style.position;
+      const prevTop = document.body.style.top;
+      const prevWidth = document.body.style.width;
+      const prevLeft = document.body.style.left;
+      const prevRight = document.body.style.right;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.width = '100%';
       document.body.style.overflow = 'hidden';
       document.documentElement.style.overflow = 'hidden';
       return () => {
+        document.body.style.position = prevPosition;
+        document.body.style.top = prevTop;
+        document.body.style.left = prevLeft;
+        document.body.style.right = prevRight;
+        document.body.style.width = prevWidth;
         document.body.style.overflow = prevBodyOverflow;
         document.documentElement.style.overflow = prevHtmlOverflow;
+        window.scrollTo(0, scrollY);
       };
     }
   }, [isOverlayOpen]);
