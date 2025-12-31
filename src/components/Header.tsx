@@ -61,7 +61,7 @@ const Header = () => {
             {/* Centered logo between menu and filters/auth */}
             <div className="flex-1 flex justify-center">
               <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-                <span className="h-16 md:h-20 cursor-pointer flex items-center">
+                <span className="h-16 md:h-20 cursor-pointer flex items-center -translate-y-[6px] md:-translate-y-[4px]">
                   <img src={logo} alt="OKIAHABA" className="h-16 md:h-20 w-auto" />
                 </span>
               </Link>
