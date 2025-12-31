@@ -89,6 +89,16 @@ const Index = () => {
       };
     }
   }, [isOverlayOpen]);
+
+  useEffect(() => {
+    if (!isFiltersOpen) {
+      const id = window.setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 0);
+      return () => window.clearTimeout(id);
+    }
+  }, [isFiltersOpen]);
+
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       const target = e.target as HTMLElement | null;
