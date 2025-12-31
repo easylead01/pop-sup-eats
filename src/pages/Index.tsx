@@ -10,7 +10,8 @@ import CartPopup from '@/components/CartPopup';
 import AuthPopup from '@/components/AuthPopup';
 import CheckoutSheet from '@/components/CheckoutSheet';
 import FloatingCartButton from '@/components/FloatingCartButton';
-import { categories, getProductsByCategory } from '@/data/products';
+import FiltersPopup from '@/components/FiltersPopup';
+import { categories, getProductsByCategory, Product } from '@/data/products';
 import { ChevronUp } from 'lucide-react';
 import { useUIStore } from '@/store/uiStore';
 import { useCartStore } from '@/store/cartStore';
@@ -24,9 +25,18 @@ const Index = () => {
     onScroll();
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
-  const { selectedProduct, isMenuOpen, isAuthOpen, isCheckoutOpen } = useUIStore();
+  const {
+    selectedProduct,
+    isMenuOpen,
+    isAuthOpen,
+    isCheckoutOpen,
+    isFiltersOpen,
+    filterTags,
+    sortOption,
+  } = useUIStore();
   const { isOpen: isCartOpen } = useCartStore();
-  const isOverlayOpen = !!selectedProduct || isMenuOpen || isAuthOpen || isCheckoutOpen || isCartOpen;
+  const isOverlayOpen =
+    !!selectedProduct || isMenuOpen || isAuthOpen || isCheckoutOpen || isCartOpen || isFiltersOpen;
   useEffect(() => {
     if (isOverlayOpen) {
       const scrollY = window.scrollY || window.pageYOffset;
@@ -112,6 +122,57 @@ const Index = () => {
     document.addEventListener('click', handler, true);
     return () => document.removeEventListener('click', handler, true);
   }, []);
+
+  const matchesFilterTag = (product: Product, tagId: string) => {
+    const text = `${product.name} ${product.description} ${(product.ingredients || []).join(' ')}`.toLowerCase();
+
+    if (tagId === 'salmon') {
+      return text.includes('лосос');
+    }
+    if (tagId === 'tuna') {
+      return text.includes('тунец') || text.includes('тунца') || text.includes('тунцом') || text.includes('tuna');
+    }
+    if (tagId === 'eel') {
+      return text.includes('угор');
+    }
+    if (tagId === 'shrimp') {
+      return text.includes('кревет');
+    }
+    if (tagId === 'squid') {
+      return text.includes('кальмар') || text.includes('калмар');
+    }
+    if (tagId === 'chicken') {
+      return text.includes('куриц');
+    }
+    if (tagId === 'spicy') {
+      return text.includes('остр') || text.includes('спайси') || text.includes('spicy');
+    }
+
+    return false;
+  };
+
+  const applyFiltersAndSort = (items: Product[]) => {
+    let list = items;
+
+    if (filterTags.length > 0) {
+      list = list.filter((product) => filterTags.some((tag) => matchesFilterTag(product, tag)));
+    }
+
+    if (sortOption === 'price-asc') {
+      list = [...list].sort((a, b) => a.price - b.price);
+    } else if (sortOption === 'price-desc') {
+      list = [...list].sort((a, b) => b.price - a.price);
+    } else if (sortOption === 'popular') {
+      list = [...list].sort((a, b) => {
+        const scoreA = (a.isHit ? 2 : 0) + (a.isNew ? 1 : 0);
+        const scoreB = (b.isHit ? 2 : 0) + (b.isNew ? 1 : 0);
+        return scoreB - scoreA;
+      });
+    }
+
+    return list;
+  };
+  const hasGlobalFilters = filterTags.length > 0 || sortOption !== 'popular';
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -121,19 +182,29 @@ const Index = () => {
       {/* Main content with sidebar */}
       <div className="container mx-auto px-4 flex">
         {/* Sidebar menu - desktop only */}
-        <CategorySidebar />
+          <CategorySidebar />
         
         {/* Products */}
-        <main className="flex-1 pb-20 xl:pl-[20px]">
-          {categories.map((category) => (
-            <CategorySection
-              key={category.id}
-              id={category.id}
-              name={category.name}
-              products={getProductsByCategory(category.id)}
-            />
-          ))}
-        </main>
+          <main className="flex-1 pb-20 xl:pl-[20px]">
+            {hasGlobalFilters ? (
+              <CategorySection
+                id="filtered"
+                name="Результаты фильтрации"
+                products={applyFiltersAndSort(
+                  categories.flatMap((category) => getProductsByCategory(category.id))
+                )}
+              />
+            ) : (
+              categories.map((category) => (
+                <CategorySection
+                  key={category.id}
+                  id={category.id}
+                  name={category.name}
+                  products={getProductsByCategory(category.id)}
+                />
+              ))
+            )}
+          </main>
       </div>
 
       {/* Footer */}
@@ -215,6 +286,7 @@ const Index = () => {
       <CartPopup />
       <AuthPopup />
       <CheckoutSheet />
+      <FiltersPopup />
       
       {/* Scroll To Top */}
       <button

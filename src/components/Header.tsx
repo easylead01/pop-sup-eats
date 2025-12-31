@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { MapPin, Search, SlidersHorizontal, Menu, ShoppingBag, User, Settings } from 'lucide-react';
+import { MapPin, SlidersHorizontal, Menu, ShoppingBag, User, Settings } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useCartStore } from '@/store/cartStore';
 import { useUIStore } from '@/store/uiStore';
-import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import logo from '@/assets/logo (1).png';
 const Header = () => {
@@ -14,7 +13,7 @@ const Header = () => {
     'ул. 50 Лет Октября, д. 95',
     'ул. Ростовская, д. 100б'
   ];
-  const [currentAddressIndex, setCurrentAddressIndex] = useState(1);
+  const [currentAddressIndex, setCurrentAddressIndex] = useState<number | null>(null);
   const {
     setIsOpen: setCartOpen,
     isOpen: isCartOpen,
@@ -28,9 +27,12 @@ const Header = () => {
     isMenuOpen,
     isAuthOpen,
     isCheckoutOpen,
-    selectedProduct
+    selectedProduct,
+    isFiltersOpen,
+    setFiltersOpen
   } = useUIStore();
-  const isOverlayOpen = isMenuOpen || isAuthOpen || isCheckoutOpen || !!selectedProduct || isCartOpen;
+  const isOverlayOpen =
+    isMenuOpen || isAuthOpen || isCheckoutOpen || !!selectedProduct || isCartOpen || isFiltersOpen;
   const totalPrice = getTotalPrice();
   const totalItems = getTotalItems();
   return <header className={`sticky top-0 z-[60] bg-card/95 backdrop-blur-sm border-b border-border transition-opacity duration-200 ${isOverlayOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
@@ -50,6 +52,22 @@ const Header = () => {
               <span className="w-1 h-1 bg-primary-foreground rounded-full" />
             </div>
           </button>
+
+          {/* Mobile/Tablet: filters & auth buttons - right */}
+          <div className="flex lg:hidden items-center gap-2 absolute right-0 top-[27px] md:top-[35px]">
+            <button
+              onClick={() => setFiltersOpen(true)}
+              className="w-10 h-10 rounded-full flex items-center justify-center bg-card text-foreground border border-border shadow-md hover:bg-muted transition-all"
+            >
+              <SlidersHorizontal className="w-5 h-5" />
+            </button>
+            <button
+              onClick={() => setAuthOpen(true)}
+              className="w-10 h-10 rounded-full flex items-center justify-center bg-card text-foreground border border-border shadow-md hover:bg-muted transition-all"
+            >
+              <User className="w-5 h-5" />
+            </button>
+          </div>
           
           {/* Logo - centered on mobile/tablet, left on desktop */}
           <div className="flex items-center gap-2 lg:relative absolute top-[8px] lg:-top-[5px] left-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0">
@@ -86,7 +104,7 @@ const Header = () => {
                 <DropdownMenuTrigger asChild>
                   <button className="text-left outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0">
                     <span className="text-sm font-medium">
-                      {addresses[currentAddressIndex]}
+                      {currentAddressIndex === null ? 'Укажите адрес' : addresses[currentAddressIndex]}
                     </span>
                   </button>
                 </DropdownMenuTrigger>
@@ -120,17 +138,23 @@ const Header = () => {
               <Settings className="w-5 h-5" />
             </Link>
             
-            <button className="hidden lg:flex p-2.5 hover:bg-muted rounded-full transition-colors">
-              <Search className="w-5 h-5" />
+            <button onClick={() => setFiltersOpen(true)} className="hidden lg:flex p-2.5 hover:bg-muted rounded-full transition-colors">
+              <SlidersHorizontal className="w-5 h-5" />
             </button>
             
-            <Button variant="ghost" size="sm" onClick={() => setAuthOpen(true)} className="hidden lg:flex items-center gap-2 rounded-full px-4">
+            <button
+              onClick={() => setAuthOpen(true)}
+              className="hidden lg:flex items-center gap-2 bg-foreground text-background px-4 py-2.5 rounded-full font-semibold text-sm hover:bg-foreground/90 transition-colors"
+            >
               <User className="w-4 h-4" />
-              {isLoggedIn ? 'Профиль' : 'Войти'}
-            </Button>
+              <span>{isLoggedIn ? 'Профиль' : 'Войти'}</span>
+            </button>
 
             {/* Cart Button - Desktop only */}
-            <button onClick={() => setCartOpen(true)} className="hidden lg:flex items-center gap-2 bg-foreground text-background px-4 py-2.5 rounded-full font-semibold text-sm hover:bg-foreground/90 transition-colors">
+            <button
+              onClick={() => setCartOpen(true)}
+              className="hidden lg:flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2.5 rounded-full font-semibold text-sm shadow-lg hover:bg-primary/90 transition-all active:scale-95"
+            >
               <ShoppingBag className="w-5 h-5" />
               <span>{totalItems > 0 ? `${totalPrice} ₽` : '0 ₽'}</span>
             </button>
