@@ -38,39 +38,54 @@ const Header = () => {
   return <header className={`sticky top-0 z-[60] bg-card/95 backdrop-blur-sm border-b border-border transition-opacity duration-200 ${isOverlayOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
       <div className="container mx-auto px-4">
         <div className="items-center justify-between h-16 md:h-20 my-[23px] py-[42px] px-0 mx-0 flex flex-row gap-0 relative">
-          {/* Menu button - left on mobile/tablet */}
-          <button onClick={() => setMenuOpen(true)} className="lg:hidden absolute left-0 top-[27px] md:top-[35px] w-10 h-10 bg-primary text-primary-foreground rounded-full flex items-center justify-center shadow-md hover:bg-primary/90 transition-all">
-            <div className="grid grid-cols-3 gap-[2px] md:gap-[3px]">
-              <span className="w-1 h-1 bg-primary-foreground rounded-full" />
-              <span className="w-1 h-1 bg-primary-foreground rounded-full" />
-              <span className="w-1 h-1 bg-primary-foreground rounded-full" />
-              <span className="w-1 h-1 bg-primary-foreground rounded-full" />
-              <span className="w-1 h-1 bg-primary-foreground rounded-full" />
-              <span className="w-1 h-1 bg-primary-foreground rounded-full" />
-              <span className="w-1 h-1 bg-primary-foreground rounded-full" />
-              <span className="w-1 h-1 bg-primary-foreground rounded-full" />
-              <span className="w-1 h-1 bg-primary-foreground rounded-full" />
-            </div>
-          </button>
+          {/* Mobile/Tablet header row */}
+          <div className="flex lg:hidden items-center justify-between w-full">
+            {/* Menu button - left on mobile/tablet */}
+            <button
+              onClick={() => setMenuOpen(true)}
+              className="w-10 h-10 bg-primary text-primary-foreground rounded-full flex items-center justify-center shadow-md hover:bg-primary/90 transition-all"
+            >
+              <div className="grid grid-cols-3 gap-[2px] md:gap-[3px]">
+                <span className="w-1 h-1 bg-primary-foreground rounded-full" />
+                <span className="w-1 h-1 bg-primary-foreground rounded-full" />
+                <span className="w-1 h-1 bg-primary-foreground rounded-full" />
+                <span className="w-1 h-1 bg-primary-foreground rounded-full" />
+                <span className="w-1 h-1 bg-primary-foreground rounded-full" />
+                <span className="w-1 h-1 bg-primary-foreground rounded-full" />
+                <span className="w-1 h-1 bg-primary-foreground rounded-full" />
+                <span className="w-1 h-1 bg-primary-foreground rounded-full" />
+                <span className="w-1 h-1 bg-primary-foreground rounded-full" />
+              </div>
+            </button>
 
-          {/* Mobile/Tablet: filters & auth buttons - right */}
-          <div className="flex lg:hidden items-center gap-2 absolute right-0 top-[27px] md:top-[35px]">
-            <button
-              onClick={() => setFiltersOpen(true)}
-              className="w-10 h-10 rounded-full flex items-center justify-center bg-card text-foreground border border-border shadow-md hover:bg-muted transition-all"
-            >
-              <SlidersHorizontal className="w-5 h-5" />
-            </button>
-            <button
-              onClick={() => setAuthOpen(true)}
-              className="w-10 h-10 rounded-full flex items-center justify-center bg-card text-foreground border border-border shadow-md hover:bg-muted transition-all"
-            >
-              <User className="w-5 h-5" />
-            </button>
+            {/* Centered logo between menu and filters/auth */}
+            <div className="flex-1 flex justify-center">
+              <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                <span className="h-16 md:h-20 cursor-pointer flex items-center">
+                  <img src={logo} alt="OKIAHABA" className="h-16 md:h-20 w-auto" />
+                </span>
+              </Link>
+            </div>
+
+            {/* Filters & auth buttons - right on mobile/tablet */}
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setFiltersOpen(true)}
+                className="w-10 h-10 rounded-full flex items-center justify-center bg-card text-foreground border border-border shadow-md hover:bg-muted transition-all"
+              >
+                <SlidersHorizontal className="w-5 h-5" />
+              </button>
+              <button
+                onClick={() => setAuthOpen(true)}
+                className="w-10 h-10 rounded-full flex items-center justify-center bg-card text-foreground border border-border shadow-md hover:bg-muted transition-all"
+              >
+                <User className="w-5 h-5" />
+              </button>
+            </div>
           </div>
           
-          {/* Logo - centered on mobile/tablet, left on desktop */}
-          <div className="flex items-center gap-2 lg:relative absolute top-[8px] lg:-top-[5px] left-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0">
+          {/* Logo - desktop */}
+          <div className="hidden lg:flex items-center gap-2 relative -top-[5px]">
             <button onClick={() => setMenuOpen(true)} className="hidden lg:flex mt-[14.5px] w-10 h-10 bg-primary text-primary-foreground rounded-full items-center justify-center shadow-md hover:bg-primary/90 transition-all">
               <div className="grid grid-cols-3 grid-rows-3 lg:w-[70%] lg:h-[70%] place-items-center gap-[4%]">
                 <span className="block w-1 h-1 bg-primary-foreground rounded-full" />
