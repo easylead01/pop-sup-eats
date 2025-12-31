@@ -43,18 +43,18 @@ const Header = () => {
             {/* Menu button - left on mobile/tablet */}
             <button
               onClick={() => setMenuOpen(true)}
-              className="w-10 h-10 bg-primary text-primary-foreground rounded-full flex items-center justify-center shadow-md hover:bg-primary/90 transition-all"
+              className="w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center shadow-md hover:bg-primary/90 transition-all"
             >
-              <div className="grid grid-cols-3 gap-[2px] md:gap-[3px]">
-                <span className="w-1 h-1 bg-primary-foreground rounded-full" />
-                <span className="w-1 h-1 bg-primary-foreground rounded-full" />
-                <span className="w-1 h-1 bg-primary-foreground rounded-full" />
-                <span className="w-1 h-1 bg-primary-foreground rounded-full" />
-                <span className="w-1 h-1 bg-primary-foreground rounded-full" />
-                <span className="w-1 h-1 bg-primary-foreground rounded-full" />
-                <span className="w-1 h-1 bg-primary-foreground rounded-full" />
-                <span className="w-1 h-1 bg-primary-foreground rounded-full" />
-                <span className="w-1 h-1 bg-primary-foreground rounded-full" />
+              <div className="grid grid-cols-3 gap-[1px] md:gap-[2px]">
+                <span className="w-[3px] h-[3px] bg-primary-foreground rounded-full" />
+                <span className="w-[3px] h-[3px] bg-primary-foreground rounded-full" />
+                <span className="w-[3px] h-[3px] bg-primary-foreground rounded-full" />
+                <span className="w-[3px] h-[3px] bg-primary-foreground rounded-full" />
+                <span className="w-[3px] h-[3px] bg-primary-foreground rounded-full" />
+                <span className="w-[3px] h-[3px] bg-primary-foreground rounded-full" />
+                <span className="w-[3px] h-[3px] bg-primary-foreground rounded-full" />
+                <span className="w-[3px] h-[3px] bg-primary-foreground rounded-full" />
+                <span className="w-[3px] h-[3px] bg-primary-foreground rounded-full" />
               </div>
             </button>
 
@@ -68,18 +68,18 @@ const Header = () => {
             </div>
 
             {/* Filters & auth buttons - right on mobile/tablet */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 translate-y-[1px]">
               <button
                 onClick={() => setFiltersOpen(true)}
-                className="w-10 h-10 rounded-full flex items-center justify-center bg-card text-foreground border border-border shadow-md hover:bg-muted transition-all"
+                className="w-8 h-8 rounded-full flex items-center justify-center bg-card text-foreground border border-border shadow-md hover:bg-muted transition-all"
               >
-                <SlidersHorizontal className="w-5 h-5" />
+                <SlidersHorizontal className="w-4 h-4" />
               </button>
               <button
                 onClick={() => setAuthOpen(true)}
-                className="w-10 h-10 rounded-full flex items-center justify-center bg-card text-foreground border border-border shadow-md hover:bg-muted transition-all"
+                className="w-8 h-8 rounded-full flex items-center justify-center bg-card text-foreground border border-border shadow-md hover:bg-muted transition-all"
               >
-                <User className="w-5 h-5" />
+                <User className="w-4 h-4" />
               </button>
             </div>
           </div>
