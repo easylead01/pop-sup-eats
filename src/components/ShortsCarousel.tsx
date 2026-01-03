@@ -81,7 +81,7 @@ const ShortsCarousel = () => {
       nextTimeoutRef.current = null;
     }
     const promo = promos[activeIndex];
-    const hasVideo = (promo as any).video;
+    const hasVideo = promo.video;
     if (hasVideo && videoRef.current) {
       const v = videoRef.current;
       const handleLoaded = () => {
@@ -151,9 +151,9 @@ const ShortsCarousel = () => {
       ];
       ids.forEach((i) => {
         const p = promos[i];
-        if ((p as any)?.image) {
+        if (p.image) {
           const img = new Image();
-          img.src = (p as any).image as string;
+          img.src = p.image;
         }
       });
     }
@@ -302,10 +302,10 @@ const ShortsCarousel = () => {
                   className={`relative ${isSmallScreen ? 'w-screen h-screen rounded-none shadow-none' : 'w-[min(92vw,380px)] aspect-[3/4] rounded-2xl shadow-popup'} overflow-hidden bg-card transition-opacity duration-300 ease-out ${cardLoaded ? 'opacity-100' : 'opacity-0'}`}
                   onClick={(e) => e.stopPropagation()}
                 >
-                  {(promos[activeIndex] as any)?.video ? (
+                  {promos[activeIndex]?.video ? (
                     <video
                       ref={videoRef}
-                      src={(promos[activeIndex] as any).video as string}
+                      src={promos[activeIndex].video as string}
                       className="w-full h-full object-cover"
                       autoPlay
                       muted
