@@ -37,7 +37,7 @@ const CartPopup = () => {
     }, 200);
   };
   const swipeHandlers = useSwipeClose({
-    direction: 'right',
+    direction: 'down',
     threshold: 80,
     onClose: handleClose
   });
@@ -46,7 +46,7 @@ const CartPopup = () => {
     setIsOpen(false);
     openCheckoutWithAuthCheck();
   };
-  return <div className="fixed inset-0 z-50 flex justify-end">
+  return <div className="fixed inset-0 z-50">
       <div
         className={`absolute inset-0 bg-foreground/40 transition-opacity duration-200 ${isClosing ? 'opacity-0' : 'animate-fade-in'}`}
         onClick={handleClose}
@@ -65,20 +65,28 @@ const CartPopup = () => {
         </button>
       </div>
 
-      {/* Panel */}
-      <div className={`relative w-full max-w-md bg-card h-full flex flex-col shadow-popup transition-transform duration-200 ${isClosing ? 'translate-x-full' : 'animate-slide-in-right'}`} {...swipeHandlers}>
-        {/* Header */}
-        <div className="p-4 border-b border-border flex items-center justify-between">
+      <div
+        className={`
+          lg:hidden
+          absolute bottom-0 left-0 right-0 bg-card rounded-t-3xl shadow-popup
+          max-h-[95vh] overflow-hidden transition-transform duration-300 ease-out
+          ${isClosing ? 'translate-y-full' : 'animate-slide-in-up'}
+        `}
+        {...swipeHandlers}
+      >
+        <div className="flex flex-col max-h-[95vh] relative product-popup-scroll">
+          <div className="flex justify-center pt-3 pb-1 absolute top-0 left-0 right-0 z-20">
+            <div className="w-10 h-1 bg-muted-foreground/30 rounded-full" />
+          </div>
+        <div className="p-4 pt-6 border-b border-border flex items-center justify-between">
           <div className="flex items-center gap-2">
             <ShoppingBag className="w-5 h-5" />
             <h2 className="text-xl font-bold">Корзина</h2>
           </div>
-          <button onClick={handleClose} className="p-2 hover:bg-muted rounded-full transition-all hover:scale-105 active:scale-95 md:hidden">
+          <button onClick={handleClose} className="p-2 hover:bg-muted rounded-full transition-all hover:scale-105 active:scale-95">
             <X className="w-6 h-6" />
           </button>
         </div>
-
-        {/* Content */}
         <div className="flex-1 overflow-y-auto overscroll-contain">
           {items.length === 0 ? <div className="flex flex-col items-center justify-center h-full text-center p-8">
               <ShoppingBag className="w-16 h-16 text-muted-foreground mb-4" />
@@ -90,12 +98,9 @@ const CartPopup = () => {
               {items.map((item, index) => <div key={item.product.id} className="flex gap-4 p-3 bg-muted/50 rounded-2xl animate-fade-in" style={{
             animationDelay: `${index * 50}ms`
           }}>
-                  {/* Image */}
                   <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
                     <img src={getImageUrl(item.product)} alt={item.product.name} className="w-full h-full object-cover" />
                   </div>
-
-                  {/* Info */}
                   <div className="flex-1 min-w-0">
                     <h4 className="font-medium text-sm line-clamp-2 mb-1">
                       {item.product.name}
@@ -103,9 +108,7 @@ const CartPopup = () => {
                     <p className="text-xs text-muted-foreground mb-2">
                       {item.product.weight}
                     </p>
-                    
                     <div className="flex items-center justify-between">
-                      {/* Quantity */}
                       <div className="flex items-center gap-2">
                         <button onClick={() => updateQuantity(item.product.id, item.quantity - 1)} className="w-7 h-7 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-all hover:scale-105 active:scale-95">
                           <Minus className="w-3 h-3" />
@@ -117,40 +120,107 @@ const CartPopup = () => {
                           <Plus className="w-3 h-3" />
                         </button>
                       </div>
-
-                      {/* Price */}
                       <span className="font-semibold text-sm">
                         {item.product.price * item.quantity} ₽
                       </span>
                     </div>
                   </div>
-
-                  {/* Delete */}
                   <button onClick={() => removeItem(item.product.id)} className="p-2 text-muted-foreground hover:text-destructive transition-all self-start hover:scale-105 active:scale-95">
                     <Trash2 className="w-4 h-4" />
                   </button>
                 </div>)}
             </div>}
         </div>
-
-        {/* Footer */}
         {items.length > 0 && <div className="p-4 border-t border-border space-y-4">
-            {/* Clear */}
             <button onClick={clearCart} className="text-sm text-muted-foreground hover:text-destructive transition-colors">
               Очистить корзину
             </button>
-
-            {/* Total */}
             <div className="flex items-center justify-between">
               <span className="text-lg font-semibold">Итого</span>
               <span className="text-2xl font-bold">{totalPrice} ₽</span>
             </div>
-
-            {/* Checkout Button */}
             <button onClick={handleCheckout} className="w-full text-background py-4 rounded-full font-semibold text-lg transition-all hover:scale-[1.01] active:scale-[0.99] bg-orange-500 hover:bg-orange-400">
               Перейти к оформлению
             </button>
+            <p className="text-xs text-center text-muted-foreground">
+              Минимальная сумма заказа: 500 ₽
+            </p>
+          </div>}
+        </div>
+      </div>
 
+      <div
+        className={`
+          hidden lg:flex
+          absolute right-0 top-0 h-screen w-full max-w-md bg-card flex-col shadow-popup
+          transition-transform duration-200
+          ${isClosing ? 'translate-x-full' : 'animate-slide-in-right'}
+        `}
+      >
+        <div className="p-4 border-b border-border flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <ShoppingBag className="w-5 h-5" />
+            <h2 className="text-xl font-bold">Корзина</h2>
+          </div>
+          <button onClick={handleClose} className="p-2 hover:bg-muted rounded-full transition-all hover:scale-105 active:scale-95">
+            <X className="w-6 h-6" />
+          </button>
+        </div>
+        <div className="flex-1 overflow-y-auto overscroll-contain">
+          {items.length === 0 ? <div className="flex flex-col items-center justify-center h-full text-center p-8">
+              <ShoppingBag className="w-16 h-16 text-muted-foreground mb-4" />
+              <h3 className="text-lg font-semibold mb-2">Корзина пуста</h3>
+              <p className="text-muted-foreground text-sm">
+                Добавьте что-нибудь вкусное из меню
+              </p>
+            </div> : <div className="p-4 space-y-4">
+              {items.map((item, index) => <div key={item.product.id} className="flex gap-4 p-3 bg-muted/50 rounded-2xl animate-fade-in" style={{
+            animationDelay: `${index * 50}ms`
+          }}>
+                  <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+                    <img src={getImageUrl(item.product)} alt={item.product.name} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-medium text-sm line-clamp-2 mb-1">
+                      {item.product.name}
+                    </h4>
+                    <p className="text-xs text-muted-foreground mb-2">
+                      {item.product.weight}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <button onClick={() => updateQuantity(item.product.id, item.quantity - 1)} className="w-7 h-7 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-all hover:scale-105 active:scale-95">
+                          <Minus className="w-3 h-3" />
+                        </button>
+                        <span className="w-6 text-center text-sm font-medium">
+                          {item.quantity}
+                        </span>
+                        <button onClick={() => updateQuantity(item.product.id, item.quantity + 1)} className="w-7 h-7 rounded-full border border-border flex items-center justify-center hover:bg-muted transition-all hover:scale-105 active:scale-95">
+                          <Plus className="w-3 h-3" />
+                        </button>
+                      </div>
+                      <span className="font-semibold text-sm">
+                        {item.product.price * item.quantity} ₽
+                      </span>
+                    </div>
+                  </div>
+                  <button onClick={() => removeItem(item.product.id)} className="p-2 text-muted-foreground hover:text-destructive transition-all self-start hover:scale-105 active:scale-95">
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                </div>)}
+            </div>}
+        </div>
+        {items.length > 0 && <div className="p-4 border-t border-border space-y-4">
+            <button onClick={clearCart} className="text-sm text-muted-foreground hover:text-destructive transition-colors">
+              Очистить корзину
+            </button>
+            <div className="flex items-center justify-between">
+              <span className="text-lg font-semibold">Итого</span>
+              <span className="text-2xl font-bold">{totalPrice} ₽</span>
+            </div>
+            <button onClick={handleCheckout} className="w-full text-background py-4 rounded-full font-semibold text-lg transition-all hover:scale-[1.01] active:scale-[0.99] bg-orange-500 hover:bg-orange-400">
+              Перейти к оформлению
+            </button>
             <p className="text-xs text-center text-muted-foreground">
               Минимальная сумма заказа: 500 ₽
             </p>

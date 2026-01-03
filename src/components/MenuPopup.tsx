@@ -100,14 +100,14 @@ const MenuPopup = () => {
         <div 
           className={`
             lg:hidden
-            absolute bottom-4 left-3 right-3 bg-card rounded-3xl shadow-popup
-            max-h-[80vh] overflow-hidden transition-transform duration-300 ease-out
+            absolute bottom-0 left-0 right-0 bg-card rounded-t-3xl shadow-popup
+            max-h-[95vh] overflow-hidden transition-transform duration-300 ease-out
             ${isClosing ? 'translate-y-full' : 'animate-slide-in-up'}
           `}
           {...swipeHandlers}
         >
-          <div className="flex flex-col max-h-[80vh] relative product-popup-scroll">
-            <div className="flex justify-center pt-3 pb-1">
+          <div className="flex flex-col max-h-[95vh] relative product-popup-scroll">
+            <div className="flex justify-center pt-3 pb-1 absolute top-0 left-0 right-0 z-20">
               <div className="w-10 h-1 bg-muted-foreground/30 rounded-full" />
             </div>
             <div className="px-6 pb-3 pt-2 flex items-center justify-between">
