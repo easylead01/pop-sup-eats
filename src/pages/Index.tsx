@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import type { TouchEvent } from 'react';
 import Header from '@/components/Header';
 import ShortsCarousel from '@/components/ShortsCarousel';
 import CategoryNav from '@/components/CategoryNav';
@@ -16,7 +17,6 @@ import { ChevronUp } from 'lucide-react';
 import { useUIStore } from '@/store/uiStore';
 import { useCartStore } from '@/store/cartStore';
 import logo from '@/assets/logo (1).png';
-import { useSwipeClose } from '@/hooks/useSwipeClose';
 
 const Index = () => {
   const [showTop, setShowTop] = useState(false);
@@ -39,17 +39,36 @@ const Index = () => {
   const { isOpen: isCartOpen } = useCartStore();
   const isOverlayOpen =
     !!selectedProduct || isMenuOpen || isAuthOpen || isCheckoutOpen || isCartOpen || isFiltersOpen;
+  const swipeStartXRef = useRef<number | null>(null);
+  const swipeStartYRef = useRef<number | null>(null);
 
-  const swipeOpenMenuHandlers = useSwipeClose({
-    direction: 'right',
-    threshold: 80,
-    onClose: () => {
-      const isMobile = typeof window !== 'undefined' && window.innerWidth < 1024;
-      if (!isMobile) return;
-      if (isOverlayOpen) return;
+  const handleSwipeStart = (e: TouchEvent<HTMLDivElement>) => {
+    if (typeof window === 'undefined') return;
+    if (window.innerWidth >= 1024) return;
+    if (isOverlayOpen) return;
+    const touch = e.touches[0];
+    if (!touch) return;
+    if (touch.clientX > 40) return;
+    swipeStartXRef.current = touch.clientX;
+    swipeStartYRef.current = touch.clientY;
+  };
+
+  const handleSwipeEnd = (e: TouchEvent<HTMLDivElement>) => {
+    if (swipeStartXRef.current === null || swipeStartYRef.current === null) return;
+    const touch = e.changedTouches[0];
+    if (!touch) {
+      swipeStartXRef.current = null;
+      swipeStartYRef.current = null;
+      return;
+    }
+    const dx = touch.clientX - swipeStartXRef.current;
+    const dy = Math.abs(touch.clientY - swipeStartYRef.current);
+    swipeStartXRef.current = null;
+    swipeStartYRef.current = null;
+    if (dx > 60 && dx > dy) {
       setMenuOpen(true);
-    },
-  });
+    }
+  };
 
   useEffect(() => {
     if (isOverlayOpen) {
@@ -198,7 +217,11 @@ const Index = () => {
   };
   const hasGlobalFilters = filterTags.length > 0 || sortOption !== 'popular';
   return (
-    <div className="min-h-screen bg-background" {...swipeOpenMenuHandlers}>
+    <div
+      className="min-h-screen bg-background"
+      onTouchStart={handleSwipeStart}
+      onTouchEnd={handleSwipeEnd}
+    >
       <Header />
       <ShortsCarousel />
       <CategoryNav />
