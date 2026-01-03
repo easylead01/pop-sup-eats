@@ -36,11 +36,12 @@ const Index = () => {
     filterTags,
     sortOption,
   } = useUIStore();
-  const { isOpen: isCartOpen } = useCartStore();
+  const { isOpen: isCartOpen, setIsOpen: setCartOpen } = useCartStore();
   const isOverlayOpen =
     !!selectedProduct || isMenuOpen || isAuthOpen || isCheckoutOpen || isCartOpen || isFiltersOpen;
   const swipeStartXRef = useRef<number | null>(null);
   const swipeStartYRef = useRef<number | null>(null);
+  const swipeEdgeRef = useRef<'left' | 'right' | null>(null);
 
   const handleSwipeStart = (e: TouchEvent<HTMLDivElement>) => {
     if (typeof window === 'undefined') return;
@@ -48,25 +49,42 @@ const Index = () => {
     if (isOverlayOpen) return;
     const touch = e.touches[0];
     if (!touch) return;
-    if (touch.clientX > 40) return;
+    const width = window.innerWidth;
+    if (touch.clientX <= 40) {
+      swipeEdgeRef.current = 'left';
+    } else if (touch.clientX >= width - 40) {
+      swipeEdgeRef.current = 'right';
+    } else {
+      return;
+    }
     swipeStartXRef.current = touch.clientX;
     swipeStartYRef.current = touch.clientY;
   };
 
   const handleSwipeEnd = (e: TouchEvent<HTMLDivElement>) => {
-    if (swipeStartXRef.current === null || swipeStartYRef.current === null) return;
+    if (
+      swipeStartXRef.current === null ||
+      swipeStartYRef.current === null ||
+      swipeEdgeRef.current === null
+    )
+      return;
     const touch = e.changedTouches[0];
     if (!touch) {
       swipeStartXRef.current = null;
       swipeStartYRef.current = null;
+      swipeEdgeRef.current = null;
       return;
     }
     const dx = touch.clientX - swipeStartXRef.current;
     const dy = Math.abs(touch.clientY - swipeStartYRef.current);
+    const edge = swipeEdgeRef.current;
     swipeStartXRef.current = null;
     swipeStartYRef.current = null;
-    if (dx > 60 && dx > dy) {
+    swipeEdgeRef.current = null;
+    if (edge === 'left' && dx > 60 && dx > dy) {
       setMenuOpen(true);
+    } else if (edge === 'right' && dx < -60 && Math.abs(dx) > dy) {
+      setCartOpen(true);
     }
   };
 
