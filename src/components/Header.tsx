@@ -39,7 +39,7 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="items-center justify-between h-16 md:h-20 my-[23px] py-[42px] px-0 mx-0 flex flex-row gap-0 relative">
           {/* Mobile/Tablet header row */}
-          <div className="flex lg:hidden items-center justify-between w-full">
+          <div className="flex lg:hidden items-center justify-between w-full translate-y-[10px]">
             {/* Menu button - left on mobile/tablet */}
             <button
               onClick={() => setMenuOpen(true)}

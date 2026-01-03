@@ -16,6 +16,7 @@ import { ChevronUp } from 'lucide-react';
 import { useUIStore } from '@/store/uiStore';
 import { useCartStore } from '@/store/cartStore';
 import logo from '@/assets/logo (1).png';
+import { useSwipeClose } from '@/hooks/useSwipeClose';
 
 const Index = () => {
   const [showTop, setShowTop] = useState(false);
@@ -27,6 +28,7 @@ const Index = () => {
   }, []);
   const {
     selectedProduct,
+    setMenuOpen,
     isMenuOpen,
     isAuthOpen,
     isCheckoutOpen,
@@ -37,6 +39,18 @@ const Index = () => {
   const { isOpen: isCartOpen } = useCartStore();
   const isOverlayOpen =
     !!selectedProduct || isMenuOpen || isAuthOpen || isCheckoutOpen || isCartOpen || isFiltersOpen;
+
+  const swipeOpenMenuHandlers = useSwipeClose({
+    direction: 'right',
+    threshold: 80,
+    onClose: () => {
+      const isMobile = typeof window !== 'undefined' && window.innerWidth < 1024;
+      if (!isMobile) return;
+      if (isOverlayOpen) return;
+      setMenuOpen(true);
+    },
+  });
+
   useEffect(() => {
     if (isOverlayOpen) {
       const scrollY = window.scrollY || window.pageYOffset;
@@ -184,7 +198,7 @@ const Index = () => {
   };
   const hasGlobalFilters = filterTags.length > 0 || sortOption !== 'popular';
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background" {...swipeOpenMenuHandlers}>
       <Header />
       <ShortsCarousel />
       <CategoryNav />
