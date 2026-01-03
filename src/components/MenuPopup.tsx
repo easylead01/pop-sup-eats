@@ -96,53 +96,53 @@ const MenuPopup = () => {
         </button>
       </div>
 
-      <div className="w-full max-w-md mx-auto lg:ml-0 lg:mr-auto">
-        <div 
-          className={`
-            lg:hidden
-            absolute bottom-0 left-0 right-0 bg-card rounded-t-3xl shadow-popup
-            max-h-[95vh] overflow-hidden transition-transform duration-300 ease-out
-            ${isClosing ? 'translate-y-full' : 'animate-slide-in-up'}
-          `}
-          {...swipeHandlers}
-        >
-          <div className="flex flex-col max-h-[95vh] relative product-popup-scroll">
-            <div className="flex justify-center pt-3 pb-1 absolute top-0 left-0 right-0 z-20">
-              <div className="w-10 h-1 bg-muted-foreground/30 rounded-full" />
-            </div>
-            <div className="px-6 pb-3 pt-2 flex items-center justify-between">
-              <h2 className="text-xl font-bold">Меню</h2>
-              <button
-                onClick={handleClose}
-                className="p-2 hover:bg-muted rounded-full transition-all hover:scale-105 active:scale-95"
-              >
-                <X className="w-6 h-6" />
-              </button>
-            </div>
-            <div className="px-4 pb-6">
-              <div className="grid grid-cols-2 gap-3">
-                {categories.map((category, index) => (
-                  <button
-                    key={category.id}
-                    onClick={() => scrollToCategory(category.id)}
-                    className="category-card animate-fade-in hover:scale-[1.02] active:scale-[0.98] transition-transform"
-                    style={{ animationDelay: `${index * 30}ms` }}
-                  >
-                    <div className="w-20 h-20 rounded-2xl overflow-hidden bg-secondary/30">
-                      <img
-                        src={categoryImages[category.id]}
-                        alt={category.name}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <span className="text-sm font-medium text-center">{category.name}</span>
-                  </button>
-                ))}
-              </div>
+      <div 
+        className={`
+          lg:hidden
+          absolute bottom-0 left-0 right-0 bg-card rounded-t-3xl shadow-popup
+          h-[90vh] overflow-hidden transition-transform duration-300 ease-out
+          ${isClosing ? 'translate-y-full' : 'animate-slide-in-up'}
+        `}
+        {...swipeHandlers}
+      >
+        <div className="flex flex-col h-full relative product-popup-scroll">
+          <div className="flex justify-center pt-3 pb-1 absolute top-0 left-0 right-0 z-20">
+            <div className="w-10 h-1 bg-muted-foreground/30 rounded-full" />
+          </div>
+          <div className="px-6 pb-3 pt-2 flex items-center justify-between">
+            <h2 className="text-xl font-bold">Меню</h2>
+            <button
+              onClick={handleClose}
+              className="p-2 hover:bg-muted rounded-full transition-all hover:scale-105 active:scale-95"
+            >
+              <X className="w-6 h-6" />
+            </button>
+          </div>
+          <div className="px-4 pb-6 flex-1 overflow-y-auto">
+            <div className="grid grid-cols-2 gap-3">
+              {categories.map((category, index) => (
+                <button
+                  key={category.id}
+                  onClick={() => scrollToCategory(category.id)}
+                  className="category-card animate-fade-in hover:scale-[1.02] active:scale-[0.98] transition-transform"
+                  style={{ animationDelay: `${index * 30}ms` }}
+                >
+                  <div className="w-20 h-20 rounded-2xl overflow-hidden bg-secondary/30">
+                    <img
+                      src={categoryImages[category.id]}
+                      alt={category.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <span className="text-sm font-medium text-center">{category.name}</span>
+                </button>
+              ))}
             </div>
           </div>
         </div>
+      </div>
 
+      <div className="w-full max-w-md mx-auto lg:ml-0 lg:mr-auto">
         <div 
           className={`
             hidden lg:block
