@@ -15,7 +15,6 @@ import promoSetBig from '@/assets/promo-set-big.webp';
 import promoSet15 from '@/assets/promo-set-15.webp';
 import promoSetMini from '@/assets/promo-set-mini.webp';
 import promoFri from '@/assets/promo-fri.webp';
-import promoCezarCeramic from '@/assets/promo-cezar-ceramic.webp';
 import promoCezarNavy from '@/assets/promo-cezar-navy.webp';
 import promoPizza from '@/assets/promo-pizza.webp';
 import promoRollOvara from '@/assets/promo-roll-ovara.webp';
@@ -28,7 +27,6 @@ export const promos: Promo[] = [
   { id: 'set-15', title: 'Собери чеки на 12 000 ₽ и получи сет 15 в подарок', gradient: 'from-emerald-50 to-emerald-100', image: promoSet15, hideTitle: true },
   { id: 'set-mini', title: 'Собери чеки на 9 000 ₽ и получи сет мини в подарок', gradient: 'from-rose-950 to-stone-900', image: promoSetMini, hideTitle: true },
   { id: 'fri', title: 'Собери чеки на 3 000 ₽ и получи картофель фри в подарок', gradient: 'from-teal-950 to-slate-900', image: promoFri, hideTitle: true },
-  { id: 'cezar-ceramic', title: 'Собери чеки на 4 000 ₽ и получи салат цезарь в подарок', gradient: 'from-orange-50 to-amber-100', image: promoCezarCeramic, hideTitle: true },
   { id: 'cezar-navy', title: 'Собери чеки на 4 000 ₽ и получи салат цезарь в подарок', gradient: 'from-slate-900 to-blue-950', image: promoCezarNavy, hideTitle: true },
   { id: 'pizza', title: 'Собери чеки на 10 000 ₽ и получи пиццу мама-миа в подарок', gradient: 'from-green-950 to-stone-900', image: promoPizza, hideTitle: true },
   { id: 'roll-ovara', title: 'Закажи роллы на 2 000 ₽ и получи ролл овара в подарок', gradient: 'from-slate-100 to-slate-200', image: promoRollOvara, hideTitle: true },
