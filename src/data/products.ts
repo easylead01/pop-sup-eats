@@ -4,6 +4,7 @@ import pizzaCatalog from '@/data/pizza.catalog.json';
 import snacksCatalog from '@/data/snacks.catalog.json';
 import myboxCatalog from '@/data/mybox.catalog.json';
 type SetItem = {
+  setItems?: SetComponent[];
   id: string | number;
   name: string;
   description: string;
@@ -37,6 +38,16 @@ export interface Product {
   isHit?: boolean;
   oldPrice?: number;
   economy?: number;
+  /** Для сетов: из каких роллов состоит */
+  setItems?: SetComponent[];
+}
+
+export interface SetComponent {
+  name: string;
+  pieces?: string;
+  image?: string;
+  /** id товара в меню, если такой ролл можно открыть отдельно */
+  productId?: string;
 }
 
 export interface Category {
@@ -2365,6 +2376,7 @@ export const setsProducts: Product[] = setsRaw.map((item) => ({
   productUrl: String(item.productUrl || ''),
   oldPrice: typeof item.oldPrice === 'number' ? item.oldPrice : undefined,
   economy: typeof item.economy === 'number' ? item.economy : undefined,
+  setItems: item.setItems,
 }));
 
 type SushiItem = {
@@ -2488,6 +2500,7 @@ type MyboxItem = {
   calories: number;
   image: string;
   ingredients: string[];
+  setItems?: SetComponent[];
 };
 export const myboxProducts: Product[] = (myboxCatalog as MyboxItem[]).map((item) => ({
   id: item.id,
@@ -2502,6 +2515,7 @@ export const myboxProducts: Product[] = (myboxCatalog as MyboxItem[]).map((item)
   image: item.image,
   ingredients: item.ingredients,
   allergens: [],
+  setItems: item.setItems,
 }));
 
 const getMyboxProductsByCategory = (categoryId: string): Product[] | null => {

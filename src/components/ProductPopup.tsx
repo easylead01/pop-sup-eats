@@ -7,6 +7,7 @@ import { useSwipeClose } from '@/hooks/useSwipeClose';
 import { toast } from '@/hooks/use-toast';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useProductImageContext } from '@/components/ProductImageProvider';
+import SetComposition from '@/components/SetComposition';
 
 const ProductPopup = () => {
   const { selectedProduct, setSelectedProduct } = useUIStore();
@@ -48,9 +49,10 @@ const ProductPopup = () => {
     onClose: handleClose,
   });
 
-  // Reset quantity when product changes
+  // Reset quantity when product changes (и прокрутку — при переходе из сета к роллу)
   useEffect(() => {
     setQuantity(1);
+    document.querySelectorAll('.product-popup-scroll').forEach((el) => el.scrollTo({ top: 0 }));
   }, [selectedProduct?.id]);
 
   
@@ -126,7 +128,7 @@ const ProductPopup = () => {
         {...swipeHandlers}
       >
         {/* Image - takes 55% of screen height */}
-        <div className="relative h-[calc(65vh-10px)] bg-secondary/20 flex-shrink-0">
+        <div className={`relative ${selectedProduct.setItems?.length ? 'h-[42vh]' : 'h-[calc(65vh-10px)]'} bg-secondary/20 flex-shrink-0`}>
           <img
             src={imageUrl}
             alt={selectedProduct.name}
@@ -189,13 +191,17 @@ const ProductPopup = () => {
             </p>
           )}
 
-          {/* Ingredients */}
-          <div className="mb-3">
-            <h3 className="font-semibold mb-1">Состав</h3>
-            <p className="text-muted-foreground text-sm">
-              {compositionText}
-            </p>
-          </div>
+          {/* Ingredients / set rolls */}
+          {selectedProduct.setItems?.length ? (
+            <SetComposition items={selectedProduct.setItems} />
+          ) : (
+            <div className="mb-3">
+              <h3 className="font-semibold mb-1">Состав</h3>
+              <p className="text-muted-foreground text-sm">
+                {compositionText}
+              </p>
+            </div>
+          )}
 
           {/* Allergens */}
           {selectedProduct.allergens.length > 0 && (
@@ -320,13 +326,17 @@ const ProductPopup = () => {
               </p>
             )}
 
-            {/* Ingredients */}
-            <div className="mb-3">
-              <h3 className="font-semibold mb-1 text-sm">Состав</h3>
-              <p className="text-muted-foreground text-xs">
-                {compositionText}
-              </p>
-            </div>
+            {/* Ingredients / set rolls */}
+            {selectedProduct.setItems?.length ? (
+              <SetComposition items={selectedProduct.setItems} compact />
+            ) : (
+              <div className="mb-3">
+                <h3 className="font-semibold mb-1 text-sm">Состав</h3>
+                <p className="text-muted-foreground text-xs">
+                  {compositionText}
+                </p>
+              </div>
+            )}
 
             {/* Allergens */}
             {selectedProduct.allergens.length > 0 && (

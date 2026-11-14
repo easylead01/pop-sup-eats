@@ -496,6 +496,42 @@
       "Ролл Калифорнийская мечта",
       "Ролл Филадельфия классическая",
       "Ролл Лосось"
+    ],
+    "setItems": [
+      {
+        "name": "Ролл Темпура-ролл с курицей",
+        "pieces": ""
+      },
+      {
+        "name": "Ролл Киото",
+        "productId": "mb-roll_kioto_belyy_sous",
+        "image": "/images/mybox/roll_kioto_belyy_sous.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Вечное сияние Курицы-шиитаке",
+        "productId": "mb-vechnoe_siyanie_kuritsy_shiitake",
+        "image": "/images/mybox/vechnoe_siyanie_kuritsy_shiitake.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Калифорнийская мечта",
+        "productId": "mb-kaliforniyskaya_mechta",
+        "image": "/images/mybox/kaliforniyskaya_mechta.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Филадельфия классическая",
+        "productId": "mb-roll_filadelfiya_klassicheskaya",
+        "image": "/images/mybox/roll_filadelfiya_klassicheskaya.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Лосось",
+        "productId": "mb-roll_losos",
+        "image": "/images/mybox/roll_losos.webp",
+        "pieces": "8 шт"
+      }
     ]
   },
   {
@@ -514,6 +550,38 @@
       "Ролл Свежесть с соусом манго",
       "Ролл Цезарь с курицей",
       "Ролл Огурец"
+    ],
+    "setItems": [
+      {
+        "name": "Ролл Сансей",
+        "productId": "mb-roll_sansey_ostryy_sous",
+        "image": "/images/mybox/roll_sansey_ostryy_sous.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Калифорния классическая",
+        "productId": "mb-roll_kaliforniya_klassicheskaya",
+        "image": "/images/mybox/roll_kaliforniya_klassicheskaya.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Свежесть с соусом манго",
+        "productId": "mb-roll_svezhest_s_sousom_mango",
+        "image": "/images/mybox/roll_svezhest_s_sousom_mango.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Цезарь с курицей",
+        "productId": "mb-roll_tsezar_s_kuritsey",
+        "image": "/images/mybox/roll_tsezar_s_kuritsey.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Огурец",
+        "productId": "mb-roll_ogurets",
+        "image": "/images/mybox/roll_ogurets.webp",
+        "pieces": "8 шт"
+      }
     ]
   },
   {
@@ -534,6 +602,50 @@
       "Ролл Дракон",
       "Ролл Курица против краба",
       "Ролл Угорь"
+    ],
+    "setItems": [
+      {
+        "name": "Ролл Калифорния с лососем",
+        "productId": "mb-roll_kaliforniya_s_lososem",
+        "image": "/images/mybox/roll_kaliforniya_s_lososem.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Калифорния классическая",
+        "productId": "mb-roll_kaliforniya_klassicheskaya",
+        "image": "/images/mybox/roll_kaliforniya_klassicheskaya.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Филадельфия классическая",
+        "productId": "mb-roll_filadelfiya_klassicheskaya",
+        "image": "/images/mybox/roll_filadelfiya_klassicheskaya.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Вечное сияние Курицы-шиитаке",
+        "productId": "mb-vechnoe_siyanie_kuritsy_shiitake",
+        "image": "/images/mybox/vechnoe_siyanie_kuritsy_shiitake.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Дракон",
+        "productId": "mb-roll_drakon",
+        "image": "/images/mybox/roll_drakon.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Курица против краба",
+        "productId": "mb-kuritsa_protiv_kraba",
+        "image": "/images/mybox/kuritsa_protiv_kraba.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Угорь",
+        "productId": "mb-roll_ugor",
+        "image": "/images/mybox/roll_ugor.webp",
+        "pieces": "8 шт"
+      }
     ]
   },
   {
@@ -553,6 +665,44 @@
       "Ролл Цезарь с курицей",
       "Ролл Огурец",
       "Калифорния с креветкой"
+    ],
+    "setItems": [
+      {
+        "name": "Ролл Филадельфия: Миссия острота",
+        "productId": "mb-filadelfiya_missiya_ostrota",
+        "image": "/images/mybox/filadelfiya_missiya_ostrota.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Овощной форсаж",
+        "productId": "mb-ovoshchnoy_forsazh",
+        "image": "/images/mybox/ovoshchnoy_forsazh.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Калифорния классическая",
+        "productId": "mb-roll_kaliforniya_klassicheskaya",
+        "image": "/images/mybox/roll_kaliforniya_klassicheskaya.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Цезарь с курицей",
+        "productId": "mb-roll_tsezar_s_kuritsey",
+        "image": "/images/mybox/roll_tsezar_s_kuritsey.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Огурец",
+        "productId": "mb-roll_ogurets",
+        "image": "/images/mybox/roll_ogurets.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Калифорния с креветкой",
+        "productId": "mb-roll_kaliforniya_s_krevetkoy",
+        "image": "/images/mybox/roll_kaliforniya_s_krevetkoy.webp",
+        "pieces": "8 шт"
+      }
     ]
   },
   {
@@ -569,6 +719,26 @@
       "Ролл Филадельфия: Миссия острота",
       "Калифорнийская мечта",
       "Ролл Курица против краба"
+    ],
+    "setItems": [
+      {
+        "name": "Ролл Филадельфия: Миссия острота",
+        "productId": "mb-filadelfiya_missiya_ostrota",
+        "image": "/images/mybox/filadelfiya_missiya_ostrota.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Калифорнийская мечта",
+        "productId": "mb-kaliforniyskaya_mechta",
+        "image": "/images/mybox/kaliforniyskaya_mechta.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Курица против краба",
+        "productId": "mb-kuritsa_protiv_kraba",
+        "image": "/images/mybox/kuritsa_protiv_kraba.webp",
+        "pieces": "8 шт"
+      }
     ]
   },
   {
@@ -586,6 +756,32 @@
       "Хоккайдо",
       "Курица против краба",
       "Филадельфия: Миссия острота"
+    ],
+    "setItems": [
+      {
+        "name": "Ролл Филадельфия с лососем и крабом",
+        "productId": "mb-roll_filadelfiya_s_lososem_i_krabom_ostryy_sous",
+        "image": "/images/mybox/roll_filadelfiya_s_lososem_i_krabom_ostryy_sous.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Хоккайдо",
+        "productId": "mb-roll_khokkaydo_ostryy_sous",
+        "image": "/images/mybox/roll_khokkaydo_ostryy_sous.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Курица против краба",
+        "productId": "mb-kuritsa_protiv_kraba",
+        "image": "/images/mybox/kuritsa_protiv_kraba.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Филадельфия: Миссия острота",
+        "productId": "mb-filadelfiya_missiya_ostrota",
+        "image": "/images/mybox/filadelfiya_missiya_ostrota.webp",
+        "pieces": "8 шт"
+      }
     ]
   },
   {
@@ -604,6 +800,38 @@
       "Вечное сияние Курицы-шиитаке",
       "Курица против краба",
       "Нагато с лососем и икрой масаго"
+    ],
+    "setItems": [
+      {
+        "name": "Ролл Лосось в сладком васаби",
+        "productId": "mb-roll_s_lososem_v_sladkom_vasabi",
+        "image": "/images/mybox/roll_s_lososem_v_sladkom_vasabi.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Овощной форсаж",
+        "productId": "mb-ovoshchnoy_forsazh",
+        "image": "/images/mybox/ovoshchnoy_forsazh.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Вечное сияние Курицы-шиитаке",
+        "productId": "mb-vechnoe_siyanie_kuritsy_shiitake",
+        "image": "/images/mybox/vechnoe_siyanie_kuritsy_shiitake.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Курица против краба",
+        "productId": "mb-kuritsa_protiv_kraba",
+        "image": "/images/mybox/kuritsa_protiv_kraba.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Нагато",
+        "productId": "mb-roll_nagato_s_lososem_i_ikroy_masago_ostryy_sous",
+        "image": "/images/mybox/roll_nagato_s_lososem_i_ikroy_masago_ostryy_sous.webp",
+        "pieces": "8 шт"
+      }
     ]
   },
   {
@@ -624,6 +852,50 @@
       "Лосось с манго соусом острый",
       "Ролл Огурец",
       "Нежный"
+    ],
+    "setItems": [
+      {
+        "name": "Ролл Сырный лосось в соусе манго",
+        "productId": "mb-roll_syrnyy_losos_v_souse_mango",
+        "image": "/images/mybox/roll_syrnyy_losos_v_souse_mango.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Курица-бекон с васаби",
+        "productId": "mb-roll_kuritsa_bekon_s_vasabi",
+        "image": "/images/mybox/roll_kuritsa_bekon_s_vasabi.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Свежесть с соусом манго",
+        "productId": "mb-roll_svezhest_s_sousom_mango",
+        "image": "/images/mybox/roll_svezhest_s_sousom_mango.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Филадельфия «Ничего лишнего»",
+        "productId": "mb-roll_filadelfiya_nichego_lishnego",
+        "image": "/images/mybox/roll_filadelfiya_nichego_lishnego.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Лосось с манго соусом острый",
+        "productId": "mb-roll_losos_s_mango_sousom_ostryy",
+        "image": "/images/mybox/roll_losos_s_mango_sousom_ostryy.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Огурец",
+        "productId": "mb-roll_ogurets",
+        "image": "/images/mybox/roll_ogurets.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Нежный",
+        "productId": "mb-roll_nezhnyy",
+        "image": "/images/mybox/roll_nezhnyy.webp",
+        "pieces": "8 шт"
+      }
     ]
   },
   {
@@ -645,6 +917,56 @@
       "Филадельфия лосось и краб",
       "Хоккайдо",
       "Свежесть с соусом манго"
+    ],
+    "setItems": [
+      {
+        "name": "Ролл Филадельфия классическая",
+        "productId": "mb-roll_filadelfiya_klassicheskaya",
+        "image": "/images/mybox/roll_filadelfiya_klassicheskaya.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Калифорния классическая",
+        "productId": "mb-roll_kaliforniya_klassicheskaya",
+        "image": "/images/mybox/roll_kaliforniya_klassicheskaya.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Цезарь с курицей",
+        "productId": "mb-roll_tsezar_s_kuritsey",
+        "image": "/images/mybox/roll_tsezar_s_kuritsey.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Лосось с манго соусом острый",
+        "productId": "mb-roll_losos_s_mango_sousom_ostryy",
+        "image": "/images/mybox/roll_losos_s_mango_sousom_ostryy.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Сансей",
+        "productId": "mb-roll_sansey_ostryy_sous",
+        "image": "/images/mybox/roll_sansey_ostryy_sous.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Филадельфия с лососем и крабом",
+        "productId": "mb-roll_filadelfiya_s_lososem_i_krabom_ostryy_sous",
+        "image": "/images/mybox/roll_filadelfiya_s_lososem_i_krabom_ostryy_sous.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Хоккайдо",
+        "productId": "mb-roll_khokkaydo_ostryy_sous",
+        "image": "/images/mybox/roll_khokkaydo_ostryy_sous.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Свежесть с соусом манго",
+        "productId": "mb-roll_svezhest_s_sousom_mango",
+        "image": "/images/mybox/roll_svezhest_s_sousom_mango.webp",
+        "pieces": "8 шт"
+      }
     ]
   },
   {
@@ -667,6 +989,62 @@
       "Филадельфия лосось и краб",
       "Хоккайдо",
       "Ролл Сырный в соусе манго"
+    ],
+    "setItems": [
+      {
+        "name": "Ролл Калифорния классическая",
+        "productId": "mb-roll_kaliforniya_klassicheskaya",
+        "image": "/images/mybox/roll_kaliforniya_klassicheskaya.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Калифорния с креветкой",
+        "productId": "mb-roll_kaliforniya_s_krevetkoy",
+        "image": "/images/mybox/roll_kaliforniya_s_krevetkoy.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Нежный",
+        "productId": "mb-roll_nezhnyy",
+        "image": "/images/mybox/roll_nezhnyy.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Лосось",
+        "productId": "mb-roll_losos",
+        "image": "/images/mybox/roll_losos.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Огурец",
+        "productId": "mb-roll_ogurets",
+        "image": "/images/mybox/roll_ogurets.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Угорь",
+        "productId": "mb-roll_ugor",
+        "image": "/images/mybox/roll_ugor.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Филадельфия с лососем и крабом",
+        "productId": "mb-roll_filadelfiya_s_lososem_i_krabom_ostryy_sous",
+        "image": "/images/mybox/roll_filadelfiya_s_lososem_i_krabom_ostryy_sous.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Хоккайдо",
+        "productId": "mb-roll_khokkaydo_ostryy_sous",
+        "image": "/images/mybox/roll_khokkaydo_ostryy_sous.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Сырный лосось в соусе манго",
+        "productId": "mb-roll_syrnyy_losos_v_souse_mango",
+        "image": "/images/mybox/roll_syrnyy_losos_v_souse_mango.webp",
+        "pieces": "8 шт"
+      }
     ]
   },
   {
@@ -687,6 +1065,46 @@
       "Ролл Сансей",
       "Гункан с лососем",
       "Гункан с угрём"
+    ],
+    "setItems": [
+      {
+        "name": "Ролл Филадельфия «Ничего лишнего»",
+        "productId": "mb-roll_filadelfiya_nichego_lishnego",
+        "image": "/images/mybox/roll_filadelfiya_nichego_lishnego.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Свежесть с соусом манго",
+        "productId": "mb-roll_svezhest_s_sousom_mango",
+        "image": "/images/mybox/roll_svezhest_s_sousom_mango.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Калифорния с лососем",
+        "productId": "mb-roll_kaliforniya_s_lososem",
+        "image": "/images/mybox/roll_kaliforniya_s_lososem.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Цыпа",
+        "productId": "mb-roll_tsypa_belyy_sous",
+        "image": "/images/mybox/roll_tsypa_belyy_sous.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Сансей",
+        "productId": "mb-roll_sansey_ostryy_sous",
+        "image": "/images/mybox/roll_sansey_ostryy_sous.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Гункан с лососем",
+        "pieces": ""
+      },
+      {
+        "name": "Гункан с угрём",
+        "pieces": ""
+      }
     ]
   },
   {
@@ -705,6 +1123,38 @@
       "Ролл Сырный лосось",
       "Ролл Филадельфия с лососем и крабом",
       "Ролл Цезарь с курицей"
+    ],
+    "setItems": [
+      {
+        "name": "Ролл Калифорния с креветкой",
+        "productId": "mb-roll_kaliforniya_s_krevetkoy",
+        "image": "/images/mybox/roll_kaliforniya_s_krevetkoy.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Сансей",
+        "productId": "mb-roll_sansey_ostryy_sous",
+        "image": "/images/mybox/roll_sansey_ostryy_sous.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Сырный лосось",
+        "productId": "mb-roll_syrnyy_losos",
+        "image": "/images/mybox/roll_syrnyy_losos.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Филадельфия с лососем и крабом",
+        "productId": "mb-roll_filadelfiya_s_lososem_i_krabom_ostryy_sous",
+        "image": "/images/mybox/roll_filadelfiya_s_lososem_i_krabom_ostryy_sous.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Цезарь с курицей",
+        "productId": "mb-roll_tsezar_s_kuritsey",
+        "image": "/images/mybox/roll_tsezar_s_kuritsey.webp",
+        "pieces": "8 шт"
+      }
     ]
   },
   {
@@ -724,6 +1174,44 @@
       "Ролл Креветка (½)",
       "Ролл Лосось (½)",
       "Ролл Атлантический"
+    ],
+    "setItems": [
+      {
+        "name": "Ролл Нежный",
+        "productId": "mb-roll_nezhnyy",
+        "image": "/images/mybox/roll_nezhnyy.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Калифорния классическая",
+        "productId": "mb-roll_kaliforniya_klassicheskaya",
+        "image": "/images/mybox/roll_kaliforniya_klassicheskaya.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Цезарь с курицей",
+        "productId": "mb-roll_tsezar_s_kuritsey",
+        "image": "/images/mybox/roll_tsezar_s_kuritsey.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Креветка",
+        "productId": "mb-roll_krevetka",
+        "image": "/images/mybox/roll_krevetka.webp",
+        "pieces": "4 шт"
+      },
+      {
+        "name": "Ролл Лосось",
+        "productId": "mb-roll_losos",
+        "image": "/images/mybox/roll_losos.webp",
+        "pieces": "4 шт"
+      },
+      {
+        "name": "Ролл Атлантический",
+        "productId": "mb-roll_atlanticheskiy",
+        "image": "/images/mybox/roll_atlanticheskiy.webp",
+        "pieces": "8 шт"
+      }
     ]
   },
   {
@@ -741,6 +1229,32 @@
       "Ролл Нагато с лососем и икрой масаго",
       "Ролл Филадельфия с лососем и крабом",
       "Ролл Цыпа"
+    ],
+    "setItems": [
+      {
+        "name": "Ролл Киото",
+        "productId": "mb-roll_kioto_belyy_sous",
+        "image": "/images/mybox/roll_kioto_belyy_sous.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Нагато",
+        "productId": "mb-roll_nagato_s_lososem_i_ikroy_masago_ostryy_sous",
+        "image": "/images/mybox/roll_nagato_s_lososem_i_ikroy_masago_ostryy_sous.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Филадельфия с лососем и крабом",
+        "productId": "mb-roll_filadelfiya_s_lososem_i_krabom_ostryy_sous",
+        "image": "/images/mybox/roll_filadelfiya_s_lososem_i_krabom_ostryy_sous.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Цыпа",
+        "productId": "mb-roll_tsypa_belyy_sous",
+        "image": "/images/mybox/roll_tsypa_belyy_sous.webp",
+        "pieces": "8 шт"
+      }
     ]
   },
   {
@@ -767,6 +1281,86 @@
       "Огурец",
       "Угорь",
       "Нежный"
+    ],
+    "setItems": [
+      {
+        "name": "Ролл Калифорния классическая",
+        "productId": "mb-roll_kaliforniya_klassicheskaya",
+        "image": "/images/mybox/roll_kaliforniya_klassicheskaya.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Лосось в сладком васаби",
+        "productId": "mb-roll_s_lososem_v_sladkom_vasabi",
+        "image": "/images/mybox/roll_s_lososem_v_sladkom_vasabi.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Креветка",
+        "productId": "mb-roll_krevetka",
+        "image": "/images/mybox/roll_krevetka.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Филадельфия классическая",
+        "productId": "mb-roll_filadelfiya_klassicheskaya",
+        "image": "/images/mybox/roll_filadelfiya_klassicheskaya.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Филадельфия «Ничего лишнего»",
+        "productId": "mb-roll_filadelfiya_nichego_lishnego",
+        "image": "/images/mybox/roll_filadelfiya_nichego_lishnego.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Сырный лосось",
+        "productId": "mb-roll_syrnyy_losos",
+        "image": "/images/mybox/roll_syrnyy_losos.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Сансей",
+        "productId": "mb-roll_sansey_ostryy_sous",
+        "image": "/images/mybox/roll_sansey_ostryy_sous.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Хоккайдо",
+        "productId": "mb-roll_khokkaydo_ostryy_sous",
+        "image": "/images/mybox/roll_khokkaydo_ostryy_sous.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Тартар-ролл с лососем",
+        "productId": "mb-tartar_roll_s_lososem_ostryy",
+        "image": "/images/mybox/tartar_roll_s_lososem_ostryy.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Лосось",
+        "productId": "mb-roll_losos",
+        "image": "/images/mybox/roll_losos.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Огурец",
+        "productId": "mb-roll_ogurets",
+        "image": "/images/mybox/roll_ogurets.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Угорь",
+        "productId": "mb-roll_ugor",
+        "image": "/images/mybox/roll_ugor.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Нежный",
+        "productId": "mb-roll_nezhnyy",
+        "image": "/images/mybox/roll_nezhnyy.webp",
+        "pieces": "8 шт"
+      }
     ]
   },
   {
@@ -785,6 +1379,38 @@
       "Нагато",
       "Филадельфия с лососем и крабом",
       "Филадельфия «Ничего лишнего»"
+    ],
+    "setItems": [
+      {
+        "name": "Ролл Калифорния классическая",
+        "productId": "mb-roll_kaliforniya_klassicheskaya",
+        "image": "/images/mybox/roll_kaliforniya_klassicheskaya.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Лосось",
+        "productId": "mb-roll_losos",
+        "image": "/images/mybox/roll_losos.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Нагато",
+        "productId": "mb-roll_nagato_s_lososem_i_ikroy_masago_ostryy_sous",
+        "image": "/images/mybox/roll_nagato_s_lososem_i_ikroy_masago_ostryy_sous.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Филадельфия с лососем и крабом",
+        "productId": "mb-roll_filadelfiya_s_lososem_i_krabom_ostryy_sous",
+        "image": "/images/mybox/roll_filadelfiya_s_lososem_i_krabom_ostryy_sous.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Филадельфия «Ничего лишнего»",
+        "productId": "mb-roll_filadelfiya_nichego_lishnego",
+        "image": "/images/mybox/roll_filadelfiya_nichego_lishnego.webp",
+        "pieces": "8 шт"
+      }
     ]
   },
   {
@@ -802,6 +1428,32 @@
       "Сансей",
       "Филадельфия «Ничего лишнего»",
       "Хоккайдо"
+    ],
+    "setItems": [
+      {
+        "name": "Ролл Калифорния с лососем",
+        "productId": "mb-roll_kaliforniya_s_lososem",
+        "image": "/images/mybox/roll_kaliforniya_s_lososem.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Сансей",
+        "productId": "mb-roll_sansey_ostryy_sous",
+        "image": "/images/mybox/roll_sansey_ostryy_sous.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Филадельфия «Ничего лишнего»",
+        "productId": "mb-roll_filadelfiya_nichego_lishnego",
+        "image": "/images/mybox/roll_filadelfiya_nichego_lishnego.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Хоккайдо",
+        "productId": "mb-roll_khokkaydo_ostryy_sous",
+        "image": "/images/mybox/roll_khokkaydo_ostryy_sous.webp",
+        "pieces": "8 шт"
+      }
     ]
   },
   {
@@ -819,6 +1471,32 @@
       "Сытый самурай",
       "Филадельфия с лососем и крабом",
       "Цезарь с курицей"
+    ],
+    "setItems": [
+      {
+        "name": "Ролл Нежный",
+        "productId": "mb-roll_nezhnyy",
+        "image": "/images/mybox/roll_nezhnyy.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Сытый самурай",
+        "productId": "mb-roll_sytyy_samuray_belyy_sous",
+        "image": "/images/mybox/roll_sytyy_samuray_belyy_sous.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Филадельфия с лососем и крабом",
+        "productId": "mb-roll_filadelfiya_s_lososem_i_krabom_ostryy_sous",
+        "image": "/images/mybox/roll_filadelfiya_s_lososem_i_krabom_ostryy_sous.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Цезарь с курицей",
+        "productId": "mb-roll_tsezar_s_kuritsey",
+        "image": "/images/mybox/roll_tsezar_s_kuritsey.webp",
+        "pieces": "8 шт"
+      }
     ]
   },
   {
@@ -835,6 +1513,26 @@
       "Филадельфия классическая",
       "Филадельфия с лососем и крабом",
       "Ролл Свежесть с соусом манго"
+    ],
+    "setItems": [
+      {
+        "name": "Ролл Филадельфия классическая",
+        "productId": "mb-roll_filadelfiya_klassicheskaya",
+        "image": "/images/mybox/roll_filadelfiya_klassicheskaya.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Филадельфия с лососем и крабом",
+        "productId": "mb-roll_filadelfiya_s_lososem_i_krabom_ostryy_sous",
+        "image": "/images/mybox/roll_filadelfiya_s_lososem_i_krabom_ostryy_sous.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Свежесть с соусом манго",
+        "productId": "mb-roll_svezhest_s_sousom_mango",
+        "image": "/images/mybox/roll_svezhest_s_sousom_mango.webp",
+        "pieces": "8 шт"
+      }
     ]
   },
   {
@@ -851,6 +1549,26 @@
       "Филадельфия с лососем и крабом",
       "Нагато",
       "Сырный лосось в соусе манго"
+    ],
+    "setItems": [
+      {
+        "name": "Ролл Филадельфия с лососем и крабом",
+        "productId": "mb-roll_filadelfiya_s_lososem_i_krabom_ostryy_sous",
+        "image": "/images/mybox/roll_filadelfiya_s_lososem_i_krabom_ostryy_sous.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Нагато",
+        "productId": "mb-roll_nagato_s_lososem_i_ikroy_masago_ostryy_sous",
+        "image": "/images/mybox/roll_nagato_s_lososem_i_ikroy_masago_ostryy_sous.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Сырный лосось в соусе манго",
+        "productId": "mb-roll_syrnyy_losos_v_souse_mango",
+        "image": "/images/mybox/roll_syrnyy_losos_v_souse_mango.webp",
+        "pieces": "8 шт"
+      }
     ]
   },
   {
@@ -867,6 +1585,26 @@
       "Атлантический",
       "Калифорния классическая",
       "Цыпа"
+    ],
+    "setItems": [
+      {
+        "name": "Ролл Атлантический",
+        "productId": "mb-roll_atlanticheskiy",
+        "image": "/images/mybox/roll_atlanticheskiy.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Калифорния классическая",
+        "productId": "mb-roll_kaliforniya_klassicheskaya",
+        "image": "/images/mybox/roll_kaliforniya_klassicheskaya.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Цыпа",
+        "productId": "mb-roll_tsypa_belyy_sous",
+        "image": "/images/mybox/roll_tsypa_belyy_sous.webp",
+        "pieces": "8 шт"
+      }
     ]
   },
   {
@@ -883,6 +1621,26 @@
       "Темпура с креветкой",
       "Темпура с лососем",
       "Темпура с угрём"
+    ],
+    "setItems": [
+      {
+        "name": "Темпура-ролл с креветкой",
+        "productId": "mb-tempura_roll_s_krevetkoy_yap",
+        "image": "/images/mybox/tempura_roll_s_krevetkoy_yap.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Темпура-ролл с лососем",
+        "productId": "mb-tempura_roll_s_lososem_yap",
+        "image": "/images/mybox/tempura_roll_s_lososem_yap.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Темпура-ролл с угрём",
+        "productId": "mb-tempura_roll_s_ugryem_yap",
+        "image": "/images/mybox/tempura_roll_s_ugryem_yap.webp",
+        "pieces": "8 шт"
+      }
     ]
   },
   {
@@ -899,6 +1657,26 @@
       "Ролл Нежный",
       "Тартар-ролл с лососем острый (½)",
       "Ролл Сырный лосось в соусе манго"
+    ],
+    "setItems": [
+      {
+        "name": "Ролл Нежный",
+        "productId": "mb-roll_nezhnyy",
+        "image": "/images/mybox/roll_nezhnyy.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Тартар-ролл с лососем острый",
+        "productId": "mb-tartar_roll_s_lososem_ostryy",
+        "image": "/images/mybox/tartar_roll_s_lososem_ostryy.webp",
+        "pieces": "4 шт"
+      },
+      {
+        "name": "Ролл Сырный лосось в соусе манго",
+        "productId": "mb-roll_syrnyy_losos_v_souse_mango",
+        "image": "/images/mybox/roll_syrnyy_losos_v_souse_mango.webp",
+        "pieces": "8 шт"
+      }
     ]
   },
   {
@@ -916,6 +1694,32 @@
       "Ролл Лосось",
       "Ролл Огурец",
       "Ролл Угорь"
+    ],
+    "setItems": [
+      {
+        "name": "Ролл Креветка",
+        "productId": "mb-roll_krevetka",
+        "image": "/images/mybox/roll_krevetka.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Лосось",
+        "productId": "mb-roll_losos",
+        "image": "/images/mybox/roll_losos.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Огурец",
+        "productId": "mb-roll_ogurets",
+        "image": "/images/mybox/roll_ogurets.webp",
+        "pieces": "8 шт"
+      },
+      {
+        "name": "Ролл Угорь",
+        "productId": "mb-roll_ugor",
+        "image": "/images/mybox/roll_ugor.webp",
+        "pieces": "8 шт"
+      }
     ]
   },
   {
@@ -932,6 +1736,24 @@
       "Гункан с крабом (2 шт)",
       "Калифорния классическая (½)",
       "Нежный"
+    ],
+    "setItems": [
+      {
+        "name": "Гункан с крабом",
+        "pieces": "2 шт"
+      },
+      {
+        "name": "Ролл Калифорния классическая",
+        "productId": "mb-roll_kaliforniya_klassicheskaya",
+        "image": "/images/mybox/roll_kaliforniya_klassicheskaya.webp",
+        "pieces": "4 шт"
+      },
+      {
+        "name": "Ролл Нежный",
+        "productId": "mb-roll_nezhnyy",
+        "image": "/images/mybox/roll_nezhnyy.webp",
+        "pieces": "8 шт"
+      }
     ]
   },
   {
@@ -948,6 +1770,20 @@
       "Мини-кимпаб с тунцом",
       "Мини-кимпаб с крабом",
       "Мини-кимпаб с овощами"
+    ],
+    "setItems": [
+      {
+        "name": "Мини-кимпаб с тунцом",
+        "pieces": "1 шт"
+      },
+      {
+        "name": "Мини-кимпаб с крабом",
+        "pieces": "1 шт"
+      },
+      {
+        "name": "Мини-кимпаб с овощами",
+        "pieces": "1 шт"
+      }
     ]
   }
 ]
