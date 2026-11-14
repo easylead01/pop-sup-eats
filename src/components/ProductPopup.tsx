@@ -8,6 +8,7 @@ import { toast } from '@/hooks/use-toast';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useProductImageContext } from '@/components/ProductImageProvider';
 import SetComposition from '@/components/SetComposition';
+import MyboxProductPopup from '@/components/MyboxProductPopup';
 
 const ProductPopup = () => {
   const { selectedProduct, setSelectedProduct } = useUIStore();
@@ -58,6 +59,8 @@ const ProductPopup = () => {
   
 
   if (!selectedProduct) return null;
+  // Демо «Стиль MyBox»: своё окно товара в их оформлении
+  if (selectedProduct.id.startsWith('mb-')) return <MyboxProductPopup />;
   const desc = (selectedProduct.description || '').trim();
   const normalizeText = (t: string) =>
     t

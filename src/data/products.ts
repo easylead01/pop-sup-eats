@@ -40,6 +40,9 @@ export interface Product {
   economy?: number;
   /** Для сетов: из каких роллов состоит */
   setItems?: SetComponent[];
+  /** Демо MyBox: большое фото для окна товара и метки (new, spicy, veggie) */
+  detailImage?: string;
+  markers?: string[];
 }
 
 export interface SetComponent {
@@ -2500,6 +2503,9 @@ type MyboxItem = {
   calories: number;
   image: string;
   ingredients: string[];
+  allergens: string[];
+  markers: string[];
+  detailImage: string;
   setItems?: SetComponent[];
 };
 export const myboxProducts: Product[] = (myboxCatalog as MyboxItem[]).map((item) => ({
@@ -2514,7 +2520,9 @@ export const myboxProducts: Product[] = (myboxCatalog as MyboxItem[]).map((item)
   subcategory: item.group === 'set' ? undefined : item.group,
   image: item.image,
   ingredients: item.ingredients,
-  allergens: [],
+  allergens: item.allergens,
+  markers: item.markers,
+  detailImage: item.detailImage,
   setItems: item.setItems,
 }));
 

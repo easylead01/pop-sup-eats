@@ -7,9 +7,28 @@
     "price": 330,
     "weight": "212 гр",
     "pieces": "8 шт",
-    "calories": 134,
+    "calories": 134.3,
     "image": "/images/mybox/vechnoe_siyanie_kuritsy_shiitake.webp",
-    "ingredients": []
+    "ingredients": [
+      "куриное филе грудки су-вид",
+      "сыр сливочный",
+      "блин Тамаго",
+      "огурец",
+      "грибы Шиитаке маринованные",
+      "соус Ореховый",
+      "рис",
+      "нори"
+    ],
+    "detailImage": "/images/mybox/detail/vechnoe_siyanie_kuritsy_shiitake.jpg",
+    "allergens": [
+      "злаки, содержащие глютен",
+      "кунжут",
+      "молоко",
+      "рыба",
+      "соя",
+      "яйца"
+    ],
+    "markers": []
   },
   {
     "id": "mb-kaliforniyskaya_mechta",
@@ -19,9 +38,33 @@
     "price": 330,
     "weight": "178 гр",
     "pieces": "8 шт",
-    "calories": 156,
+    "calories": 156.4,
     "image": "/images/mybox/kaliforniyskaya_mechta.webp",
-    "ingredients": []
+    "ingredients": [
+      "краб микс",
+      "огурец",
+      "кунжут белый",
+      "рисовые шарики темпура",
+      "соус Унаги",
+      "соус спайси (острый)",
+      "рис",
+      "нори"
+    ],
+    "detailImage": "/images/mybox/detail/kaliforniyskaya_mechta.jpg",
+    "allergens": [
+      "горчица",
+      "злаки, содержащие глютен",
+      "кунжут",
+      "ракообразные",
+      "рыба",
+      "сельдерей",
+      "соя",
+      "яйца"
+    ],
+    "markers": [
+      "new",
+      "spicy"
+    ]
   },
   {
     "id": "mb-kuritsa_protiv_kraba",
@@ -33,7 +76,31 @@
     "pieces": "8 шт",
     "calories": 152,
     "image": "/images/mybox/kuritsa_protiv_kraba.webp",
-    "ingredients": []
+    "ingredients": [
+      "куриное филе грудки су-вид",
+      "краб микс",
+      "сливочный сыр",
+      "огурец",
+      "соус спайси (острый)",
+      "смесь перцев Шичими",
+      "рис",
+      "нори"
+    ],
+    "detailImage": "/images/mybox/detail/kuritsa_protiv_kraba.jpg",
+    "allergens": [
+      "горчица",
+      "кунжут",
+      "молоко",
+      "ракообразные",
+      "рыба",
+      "сельдерей",
+      "соя",
+      "цитрусовые",
+      "яйца"
+    ],
+    "markers": [
+      "spicy"
+    ]
   },
   {
     "id": "mb-ovoshchnoy_forsazh",
@@ -43,9 +110,27 @@
     "price": 330,
     "weight": "206 гр",
     "pieces": "8 шт",
-    "calories": 111,
+    "calories": 110.8,
     "image": "/images/mybox/ovoshchnoy_forsazh.webp",
-    "ingredients": []
+    "ingredients": [
+      "такуан",
+      "сыр сливочный",
+      "огурец",
+      "помидор",
+      "салат Чука",
+      "салат Айсберг",
+      "соус Ореховый",
+      "рис",
+      "нори"
+    ],
+    "detailImage": "/images/mybox/detail/ovoshchnoy_forsazh.jpg",
+    "allergens": [
+      "злаки, содержащие глютен",
+      "кунжут",
+      "молоко",
+      "соя"
+    ],
+    "markers": []
   },
   {
     "id": "mb-filadelfiya_missiya_ostrota",
@@ -55,9 +140,28 @@
     "price": 460,
     "weight": "203 гр",
     "pieces": "8 шт",
-    "calories": 170,
+    "calories": 169.9,
     "image": "/images/mybox/filadelfiya_missiya_ostrota.webp",
-    "ingredients": []
+    "ingredients": [
+      "Спайси(острый) лосось",
+      "сыр сливочный",
+      "огурец",
+      "смесь перцев Шичими",
+      "рис",
+      "нори"
+    ],
+    "detailImage": "/images/mybox/detail/filadelfiya_missiya_ostrota.jpg",
+    "allergens": [
+      "кунжут",
+      "молоко",
+      "рыба",
+      "сельдерей",
+      "цитрусовые",
+      "яйца"
+    ],
+    "markers": [
+      "spicy"
+    ]
   },
   {
     "id": "mb-roll_kaliforniya_s_krevetkoy",
@@ -69,7 +173,26 @@
     "pieces": "8 шт",
     "calories": 218,
     "image": "/images/mybox/roll_kaliforniya_s_krevetkoy.webp",
-    "ingredients": []
+    "ingredients": [
+      "нори",
+      "рис",
+      "майонез",
+      "креветки",
+      "огурец",
+      "масаго красная"
+    ],
+    "detailImage": "/images/mybox/detail/roll_kaliforniya_s_krevetkoy.jpg",
+    "allergens": [
+      "рыба",
+      "соя",
+      "злаки, содержащие глютен",
+      "яйца",
+      "горчица",
+      "молоко",
+      "ракообразные",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-roll_kaliforniya_klassicheskaya",
@@ -81,7 +204,24 @@
     "pieces": "8 шт",
     "calories": 212,
     "image": "/images/mybox/roll_kaliforniya_klassicheskaya.webp",
-    "ingredients": []
+    "ingredients": [
+      "краб микс",
+      "огурец",
+      "масаго оранжевая",
+      "рис",
+      "нори"
+    ],
+    "detailImage": "/images/mybox/detail/roll_kaliforniya_klassicheskaya.jpg",
+    "allergens": [
+      "рыба",
+      "соя",
+      "злаки, содержащие глютен",
+      "яйца",
+      "горчица",
+      "ракообразные",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-tartar_roll_s_lososem_ostryy",
@@ -91,9 +231,30 @@
     "price": 637,
     "weight": "240 гр",
     "pieces": "8 шт",
-    "calories": 255,
+    "calories": 254.8,
     "image": "/images/mybox/tartar_roll_s_lososem_ostryy.webp",
-    "ingredients": []
+    "ingredients": [
+      "нори",
+      "рис",
+      "блин Тамаго",
+      "огурец",
+      "масаго оранжевая",
+      "замес спайси-лосось",
+      "соус Шрирача"
+    ],
+    "detailImage": "/images/mybox/detail/tartar_roll_s_lososem_ostryy.jpg",
+    "allergens": [
+      "яйца",
+      "рыба",
+      "соя",
+      "злаки, содержащие глютен",
+      "горчица",
+      "кунжут",
+      "и продукты их переработки"
+    ],
+    "markers": [
+      "spicy"
+    ]
   },
   {
     "id": "mb-roll_s_lososem_v_sladkom_vasabi",
@@ -103,9 +264,28 @@
     "price": 585,
     "weight": "283 гр",
     "pieces": "8 шт",
-    "calories": 327,
+    "calories": 326.8,
     "image": "/images/mybox/roll_s_lososem_v_sladkom_vasabi.webp",
-    "ingredients": []
+    "ingredients": [
+      "нори",
+      "рис",
+      "сыр сливочный",
+      "огурец",
+      "лосось копчёный",
+      "блин Тамаго",
+      "соус Васаби",
+      "лук фри",
+      "соус Белый"
+    ],
+    "detailImage": "/images/mybox/detail/roll_s_lososem_v_sladkom_vasabi.jpg",
+    "allergens": [
+      "рыба",
+      "молоко",
+      "яйца",
+      "горчица",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-roll_filadelfiya_klassicheskaya",
@@ -117,7 +297,20 @@
     "pieces": "8 шт",
     "calories": 245,
     "image": "/images/mybox/roll_filadelfiya_klassicheskaya.webp",
-    "ingredients": []
+    "ingredients": [
+      "лосось",
+      "огурец",
+      "сыр сливочный",
+      "рис",
+      "нори"
+    ],
+    "detailImage": "/images/mybox/detail/roll_filadelfiya_klassicheskaya.jpg",
+    "allergens": [
+      "рыба",
+      "молоко",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-roll_svezhest_s_sousom_mango",
@@ -127,9 +320,26 @@
     "price": 518,
     "weight": "231 гр",
     "pieces": "8 шт",
-    "calories": 270,
+    "calories": 270.5,
     "image": "/images/mybox/roll_svezhest_s_sousom_mango.webp",
-    "ingredients": []
+    "ingredients": [
+      "рис",
+      "сыр сливочный",
+      "огурец",
+      "лосось",
+      "соус Манго",
+      "соус Васаби",
+      "кунжут чёрный"
+    ],
+    "detailImage": "/images/mybox/detail/roll_svezhest_s_sousom_mango.jpg",
+    "allergens": [
+      "молоко",
+      "рыба",
+      "яйца",
+      "горчица",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-roll_kaliforniya_s_lososem",
@@ -141,7 +351,25 @@
     "pieces": "8 шт",
     "calories": 238,
     "image": "/images/mybox/roll_kaliforniya_s_lososem.webp",
-    "ingredients": []
+    "ingredients": [
+      "нори",
+      "рис",
+      "майонез",
+      "лосось",
+      "огурец",
+      "масаго красная"
+    ],
+    "detailImage": "/images/mybox/detail/roll_kaliforniya_s_lososem.jpg",
+    "allergens": [
+      "рыба",
+      "соя",
+      "злаки, содержащие глютен",
+      "яйца",
+      "горчица",
+      "молоко",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-roll_tsezar_s_kuritsey",
@@ -151,9 +379,28 @@
     "price": 365,
     "weight": "220 гр",
     "pieces": "8 шт",
-    "calories": 189,
+    "calories": 189.4,
     "image": "/images/mybox/roll_tsezar_s_kuritsey.webp",
-    "ingredients": []
+    "ingredients": [
+      "копчёная курица",
+      "помидор",
+      "салат Айсберг",
+      "соус Белый",
+      "сыр Пармезан",
+      "соус Унаги",
+      "кунжут чёрный",
+      "нори",
+      "рис"
+    ],
+    "detailImage": "/images/mybox/detail/roll_tsezar_s_kuritsey.jpg",
+    "allergens": [
+      "молоко",
+      "яйца",
+      "горчица",
+      "кунжут",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-roll_tsezar_s_krevetkoy",
@@ -163,9 +410,29 @@
     "price": 415,
     "weight": "220 гр",
     "pieces": "8 шт",
-    "calories": 183,
+    "calories": 182.7,
     "image": "/images/mybox/roll_tsezar_s_krevetkoy.webp",
-    "ingredients": []
+    "ingredients": [
+      "нори",
+      "рис",
+      "кунжут чёрный",
+      "салат Айсберг",
+      "помидор",
+      "креветки",
+      "соус Белый",
+      "сыр Пармезан",
+      "соус Унаги"
+    ],
+    "detailImage": "/images/mybox/detail/roll_tsezar_s_krevetkoy.jpg",
+    "allergens": [
+      "яйца",
+      "горчица",
+      "кунжут",
+      "ракообразные",
+      "молоко",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-roll_filadelfiya_nichego_lishnego",
@@ -175,9 +442,25 @@
     "price": 443,
     "weight": "202 гр",
     "pieces": "8 шт",
-    "calories": 262,
+    "calories": 261.6,
     "image": "/images/mybox/roll_filadelfiya_nichego_lishnego.webp",
-    "ingredients": []
+    "ingredients": [
+      "нори",
+      "рис",
+      "сыр сливочный",
+      "лосось",
+      "огурец",
+      "кунжут белый",
+      "такуан"
+    ],
+    "detailImage": "/images/mybox/detail/roll_filadelfiya_nichego_lishnego.jpg",
+    "allergens": [
+      "рыба",
+      "молоко",
+      "кунжут",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-roll_drakon",
@@ -189,7 +472,26 @@
     "pieces": "8 шт",
     "calories": 237,
     "image": "/images/mybox/roll_drakon.webp",
-    "ingredients": []
+    "ingredients": [
+      "нори",
+      "рис",
+      "сыр сливочный",
+      "лосось",
+      "огурец",
+      "угорь",
+      "соус Унаги",
+      "кунжут белый"
+    ],
+    "detailImage": "/images/mybox/detail/roll_drakon.jpg",
+    "allergens": [
+      "рыба",
+      "соя",
+      "злаки, содержащие глютен",
+      "молоко",
+      "кунжут",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-roll_nezhnyy",
@@ -201,7 +503,20 @@
     "pieces": "8 шт",
     "calories": 235,
     "image": "/images/mybox/roll_nezhnyy.webp",
-    "ingredients": []
+    "ingredients": [
+      "нори",
+      "рис",
+      "сыр сливочный",
+      "лосось",
+      "огурец"
+    ],
+    "detailImage": "/images/mybox/detail/roll_nezhnyy.jpg",
+    "allergens": [
+      "рыба",
+      "молоко",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-roll_syrnyy_losos",
@@ -213,7 +528,19 @@
     "pieces": "8 шт",
     "calories": 263,
     "image": "/images/mybox/roll_syrnyy_losos.webp",
-    "ingredients": []
+    "ingredients": [
+      "нори",
+      "рис",
+      "сыр сливочный",
+      "лосось"
+    ],
+    "detailImage": "/images/mybox/detail/roll_syrnyy_losos.jpg",
+    "allergens": [
+      "рыба",
+      "молоко",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-roll_okinava",
@@ -223,9 +550,29 @@
     "price": 415,
     "weight": "190 гр",
     "pieces": "8 шт",
-    "calories": 245,
+    "calories": 245.3,
     "image": "/images/mybox/roll_okinava.webp",
-    "ingredients": []
+    "ingredients": [
+      "креветки",
+      "сыр сливочный",
+      "огурец",
+      "рис",
+      "нори",
+      "икра масаго оранжевая"
+    ],
+    "detailImage": "/images/mybox/detail/roll_okinava.jpg",
+    "allergens": [
+      "яйца",
+      "ракообразные",
+      "молоко",
+      "рыба",
+      "соя",
+      "горчица",
+      "цитрусовые",
+      "злаки, содержащие глютен",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-roll_atlanticheskiy",
@@ -235,9 +582,31 @@
     "price": 645,
     "weight": "218 гр",
     "pieces": "8 шт",
-    "calories": 194,
+    "calories": 193.7,
     "image": "/images/mybox/roll_atlanticheskiy.webp",
-    "ingredients": []
+    "ingredients": [
+      "лосось",
+      "угорь",
+      "сыр сливочный",
+      "масаго оранжевая",
+      "соус Унаги",
+      "кунжут белый",
+      "нори",
+      "рис"
+    ],
+    "detailImage": "/images/mybox/detail/roll_atlanticheskiy.jpg",
+    "allergens": [
+      "рыба",
+      "яйца",
+      "соя",
+      "злаки, содержащие глютен",
+      "горчица",
+      "цитрусовые",
+      "молоко",
+      "кунжут",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-kimpab_ovoshchnoy",
@@ -247,9 +616,34 @@
     "price": 460,
     "weight": "280 гр",
     "pieces": "8 шт",
-    "calories": 211,
+    "calories": 211.4,
     "image": "/images/mybox/kimpab_ovoshchnoy.webp",
-    "ingredients": []
+    "ingredients": [
+      "огурец",
+      "помидор",
+      "такуан",
+      "салат Чука",
+      "соус Белый",
+      "соус Унаги",
+      "кунжут белый",
+      "смесь перцев Шичими",
+      "нори",
+      "рис"
+    ],
+    "detailImage": "/images/mybox/detail/kimpab_ovoshchnoy.jpg",
+    "allergens": [
+      "горчица",
+      "злаки, содержащие глютен",
+      "кунжут",
+      "молоко",
+      "соя",
+      "цитрусовые",
+      "яйца",
+      "и продукты их переработки"
+    ],
+    "markers": [
+      "spicy"
+    ]
   },
   {
     "id": "mb-kimpab_s_kuritsey",
@@ -259,9 +653,35 @@
     "price": 460,
     "weight": "265 гр",
     "pieces": "8 шт",
-    "calories": 233,
+    "calories": 232.8,
     "image": "/images/mybox/kimpab_s_kuritsey.webp",
-    "ingredients": []
+    "ingredients": [
+      "курица Су-вид",
+      "огурец",
+      "помидор",
+      "лук зелёный",
+      "салат Айсберг",
+      "соус Белый",
+      "соус Унаги",
+      "смесь перцев Шичими",
+      "кунжут белый",
+      "нори",
+      "рис"
+    ],
+    "detailImage": "/images/mybox/detail/kimpab_s_kuritsey.jpg",
+    "allergens": [
+      "горчица",
+      "злаки, содержащие глютен",
+      "кунжут",
+      "молоко",
+      "соя",
+      "цитрусовые",
+      "яйца",
+      "и продукты их переработки"
+    ],
+    "markers": [
+      "spicy"
+    ]
   },
   {
     "id": "mb-tempura_roll_s_krevetkoy_yap",
@@ -271,9 +691,31 @@
     "price": 498,
     "weight": "210 гр",
     "pieces": "8 шт",
-    "calories": 273,
+    "calories": 272.8,
     "image": "/images/mybox/tempura_roll_s_krevetkoy_yap.webp",
-    "ingredients": []
+    "ingredients": [
+      "креветки",
+      "масаго красная",
+      "соус спайси",
+      "соус Унаги",
+      "такуан",
+      "темпура",
+      "рис",
+      "нори"
+    ],
+    "detailImage": "/images/mybox/detail/tempura_roll_s_krevetkoy_yap.jpg",
+    "allergens": [
+      "ракообразные",
+      "соя",
+      "рыба",
+      "злаки, содержащие глютен",
+      "сельдерей",
+      "горчица",
+      "яйца",
+      "кунжут",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-tempura_roll_s_ugryem_yap",
@@ -283,9 +725,30 @@
     "price": 535,
     "weight": "240 гр",
     "pieces": "8 шт",
-    "calories": 284,
+    "calories": 283.9,
     "image": "/images/mybox/tempura_roll_s_ugryem_yap.webp",
-    "ingredients": []
+    "ingredients": [
+      "угорь",
+      "креветки",
+      "огурец",
+      "темпура",
+      "соус Ореховый",
+      "сыр сливочный",
+      "рис",
+      "нори"
+    ],
+    "detailImage": "/images/mybox/detail/tempura_roll_s_ugryem_yap.jpg",
+    "allergens": [
+      "рыба",
+      "ракообразные",
+      "молоко",
+      "соя",
+      "яйца",
+      "кунжут",
+      "злаки, содержащие глютен",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-tempura_roll_s_lososem_yap",
@@ -295,9 +758,29 @@
     "price": 528,
     "weight": "228 гр",
     "pieces": "8 шт",
-    "calories": 290,
+    "calories": 290.3,
     "image": "/images/mybox/tempura_roll_s_lososem_yap.webp",
-    "ingredients": []
+    "ingredients": [
+      "нори",
+      "рис",
+      "сыр сливочный",
+      "майонез",
+      "масаго красная",
+      "лосось",
+      "огурец",
+      "темпура"
+    ],
+    "detailImage": "/images/mybox/detail/tempura_roll_s_lososem_yap.jpg",
+    "allergens": [
+      "рыба",
+      "молоко",
+      "соя",
+      "злаки, содержащие глютен",
+      "яйца",
+      "горчица",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-roll_kuritsa_bekon_s_vasabi",
@@ -307,9 +790,33 @@
     "price": 522,
     "weight": "294 гр",
     "pieces": "8 шт",
-    "calories": 326,
+    "calories": 325.9,
     "image": "/images/mybox/roll_kuritsa_bekon_s_vasabi.webp",
-    "ingredients": []
+    "ingredients": [
+      "копчёная курица",
+      "блин Тамаго",
+      "кунжут чёрный",
+      "нори",
+      "огурец",
+      "рис",
+      "сливочный сыр",
+      "соус Сладкий васаби",
+      "соус Унаги",
+      "Спайси (острый) бекон"
+    ],
+    "detailImage": "/images/mybox/detail/roll_kuritsa_bekon_s_vasabi.jpg",
+    "allergens": [
+      "молоко",
+      "рыба",
+      "яйца",
+      "горчица",
+      "кунжут",
+      "соя",
+      "злаки, содержащие глютен",
+      "и продукты их переработки",
+      "сельдерей"
+    ],
+    "markers": []
   },
   {
     "id": "mb-roll_syrnyy_losos_v_souse_mango",
@@ -319,9 +826,32 @@
     "price": 570,
     "weight": "280 гр",
     "pieces": "8 шт",
-    "calories": 254,
+    "calories": 254.2,
     "image": "/images/mybox/roll_syrnyy_losos_v_souse_mango.webp",
-    "ingredients": []
+    "ingredients": [
+      "лосось копчёный",
+      "краб микс",
+      "огурец",
+      "сыр сливочный",
+      "икра масаго оранжевая",
+      "соус Манго",
+      "нори",
+      "рис",
+      "кунжут чёрный"
+    ],
+    "detailImage": "/images/mybox/detail/roll_syrnyy_losos_v_souse_mango.jpg",
+    "allergens": [
+      "рыба",
+      "ракообразные",
+      "яйца",
+      "горчица",
+      "соя",
+      "злаки, содержащие глютен",
+      "молоко",
+      "кунжут",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-roll_tsypa_belyy_sous",
@@ -333,7 +863,30 @@
     "pieces": "8 шт",
     "calories": 226,
     "image": "/images/mybox/roll_tsypa_belyy_sous.webp",
-    "ingredients": []
+    "ingredients": [
+      "копчёная курица",
+      "бекон",
+      "помидор",
+      "сыр Пармезан",
+      "лук фри",
+      "такуан",
+      "соус Апельсиновый чили",
+      "соус Белый",
+      "рис",
+      "нори"
+    ],
+    "detailImage": "/images/mybox/detail/roll_tsypa_belyy_sous.jpg",
+    "allergens": [
+      "молоко",
+      "злаки, содержащие глютен",
+      "цитрусовые",
+      "сельдерей",
+      "яйца",
+      "горчица",
+      "кунжут",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-roll_kioto_belyy_sous",
@@ -343,9 +896,33 @@
     "price": 610,
     "weight": "283 гр",
     "pieces": "8 шт",
-    "calories": 233,
+    "calories": 233.3,
     "image": "/images/mybox/roll_kioto_belyy_sous.webp",
-    "ingredients": []
+    "ingredients": [
+      "нори",
+      "рис",
+      "сыр сливочный",
+      "угорь",
+      "огурец",
+      "масаго красная",
+      "креветки",
+      "соус Белый",
+      "сыр твёрдый"
+    ],
+    "detailImage": "/images/mybox/detail/roll_kioto_belyy_sous.jpg",
+    "allergens": [
+      "рыба",
+      "ракообразные",
+      "молоко",
+      "соя",
+      "злаки, содержащие глютен",
+      "сельдерей",
+      "горчица",
+      "кунжут",
+      "яйца",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-roll_sytyy_samuray_belyy_sous",
@@ -355,9 +932,29 @@
     "price": 485,
     "weight": "273 гр",
     "pieces": "8 шт",
-    "calories": 285,
+    "calories": 285.1,
     "image": "/images/mybox/roll_sytyy_samuray_belyy_sous.webp",
-    "ingredients": []
+    "ingredients": [
+      "бекон",
+      "нори",
+      "рис",
+      "Тамаго",
+      "сыр сливочный",
+      "салат Айсберг",
+      "соус Белый",
+      "сыр Пармезан"
+    ],
+    "detailImage": "/images/mybox/detail/roll_sytyy_samuray_belyy_sous.jpg",
+    "allergens": [
+      "молоко",
+      "яйца",
+      "злаки, содержащие глютен",
+      "сельдерей",
+      "горчица",
+      "кунжут",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-roll_losos_s_mango_sousom_ostryy",
@@ -367,9 +964,34 @@
     "price": 620,
     "weight": "283 гр",
     "pieces": "8 шт",
-    "calories": 253,
+    "calories": 252.8,
     "image": "/images/mybox/roll_losos_s_mango_sousom_ostryy.webp",
-    "ingredients": []
+    "ingredients": [
+      "лосось",
+      "краб микс",
+      "сыр сливочный",
+      "огурец",
+      "соус Манго",
+      "соус спайси",
+      "икра масаго оранжевая",
+      "кунжут чёрный",
+      "нори",
+      "рис"
+    ],
+    "detailImage": "/images/mybox/detail/roll_losos_s_mango_sousom_ostryy.jpg",
+    "allergens": [
+      "яйца",
+      "горчица",
+      "молоко",
+      "соя",
+      "злаки, содержащие глютен",
+      "рыба",
+      "кунжут",
+      "и продукты их переработки"
+    ],
+    "markers": [
+      "spicy"
+    ]
   },
   {
     "id": "mb-roll_goryachaya_filadelfiya",
@@ -379,9 +1001,31 @@
     "price": 630,
     "weight": "228 гр",
     "pieces": "8 шт",
-    "calories": 155,
+    "calories": 155.2,
     "image": "/images/mybox/roll_goryachaya_filadelfiya.webp",
-    "ingredients": []
+    "ingredients": [
+      "нори",
+      "рис",
+      "сыр сливочный",
+      "соус с икрой Масаго",
+      "огурец",
+      "лосось",
+      "соус Унаги",
+      "смесь перцев Шичими"
+    ],
+    "detailImage": "/images/mybox/detail/roll_goryachaya_filadelfiya.jpg",
+    "allergens": [
+      "молоко",
+      "кунжут",
+      "рыба",
+      "цитрусовые",
+      "злаки, содержащие глютен",
+      "соя",
+      "и продукты их переработки"
+    ],
+    "markers": [
+      "spicy"
+    ]
   },
   {
     "id": "mb-roll_filadelfiya_s_lososem_i_krabom_ostryy_sous",
@@ -391,9 +1035,31 @@
     "price": 505,
     "weight": "242 гр",
     "pieces": "8 шт",
-    "calories": 287,
+    "calories": 287.3,
     "image": "/images/mybox/roll_filadelfiya_s_lososem_i_krabom_ostryy_sous.webp",
-    "ingredients": []
+    "ingredients": [
+      "краб микс",
+      "сыр сливочный",
+      "сыр твёрдый",
+      "соус спайси",
+      "кунжут белый",
+      "рис",
+      "нори",
+      "лосось копчёный",
+      "такуан"
+    ],
+    "detailImage": "/images/mybox/detail/roll_filadelfiya_s_lososem_i_krabom_ostryy_sous.jpg",
+    "allergens": [
+      "рыба",
+      "яйца",
+      "ракообразные",
+      "молоко",
+      "кунжут",
+      "сельдерей",
+      "горчица",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-roll_nagato_s_lososem_i_ikroy_masago_ostryy_sous",
@@ -403,9 +1069,35 @@
     "price": 500,
     "weight": "234 гр",
     "pieces": "8 шт",
-    "calories": 306,
+    "calories": 306.5,
     "image": "/images/mybox/roll_nagato_s_lososem_i_ikroy_masago_ostryy_sous.webp",
-    "ingredients": []
+    "ingredients": [
+      "такуан",
+      "сыр сливочный",
+      "сыр Пармезан",
+      "лук фри",
+      "соус спайси",
+      "нори",
+      "рис",
+      "икра масаго оранжевая",
+      "лосось копчёный"
+    ],
+    "detailImage": "/images/mybox/detail/roll_nagato_s_lososem_i_ikroy_masago_ostryy_sous.jpg",
+    "allergens": [
+      "рыба",
+      "соя",
+      "цитрусовые",
+      "молоко",
+      "сельдерей",
+      "горчица",
+      "яйца",
+      "кунжут",
+      "злаки, содержащие глютен",
+      "и продукты их переработки"
+    ],
+    "markers": [
+      "spicy"
+    ]
   },
   {
     "id": "mb-roll_khokkaydo_ostryy_sous",
@@ -415,9 +1107,31 @@
     "price": 455,
     "weight": "235 гр",
     "pieces": "8 шт",
-    "calories": 238,
+    "calories": 237.6,
     "image": "/images/mybox/roll_khokkaydo_ostryy_sous.webp",
-    "ingredients": []
+    "ingredients": [
+      "копчёная курица",
+      "сыр сливочный",
+      "помидор",
+      "салат Айсберг",
+      "соус спайси",
+      "сыр Пармезан",
+      "кунжут белый",
+      "нори",
+      "рис"
+    ],
+    "detailImage": "/images/mybox/detail/roll_khokkaydo_ostryy_sous.jpg",
+    "allergens": [
+      "молоко",
+      "кунжут",
+      "сельдерей",
+      "горчица",
+      "яйца",
+      "и продукты их переработки"
+    ],
+    "markers": [
+      "spicy"
+    ]
   },
   {
     "id": "mb-roll_sansey_ostryy_sous",
@@ -427,9 +1141,29 @@
     "price": 370,
     "weight": "201 гр",
     "pieces": "8 шт",
-    "calories": 239,
+    "calories": 238.7,
     "image": "/images/mybox/roll_sansey_ostryy_sous.webp",
-    "ingredients": []
+    "ingredients": [
+      "краб микс",
+      "сыр Пармезан",
+      "кунжут чёрный",
+      "рис",
+      "нори",
+      "соус спайси (острый)"
+    ],
+    "detailImage": "/images/mybox/detail/roll_sansey_ostryy_sous.jpg",
+    "allergens": [
+      "ракообразные",
+      "рыба",
+      "яйца",
+      "горчица",
+      "кунжут",
+      "сельдерей",
+      "и продукты их переработки"
+    ],
+    "markers": [
+      "spicy"
+    ]
   },
   {
     "id": "mb-roll_losos",
@@ -439,9 +1173,19 @@
     "price": 320,
     "weight": "96 гр",
     "pieces": "8 шт",
-    "calories": 147,
+    "calories": 147.4,
     "image": "/images/mybox/roll_losos.webp",
-    "ingredients": []
+    "ingredients": [
+      "лосось",
+      "рис",
+      "нори"
+    ],
+    "detailImage": "/images/mybox/detail/roll_losos.jpg",
+    "allergens": [
+      "рыба",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-roll_ogurets",
@@ -451,9 +1195,22 @@
     "price": 200,
     "weight": "97 гр",
     "pieces": "8 шт",
-    "calories": 103,
+    "calories": 103.1,
     "image": "/images/mybox/roll_ogurets.webp",
-    "ingredients": []
+    "ingredients": [
+      "огурец",
+      "кунжут белый",
+      "рис",
+      "нори"
+    ],
+    "detailImage": "/images/mybox/detail/roll_ogurets.jpg",
+    "allergens": [
+      "кунжут",
+      "и продукты их переработки"
+    ],
+    "markers": [
+      "veggie"
+    ]
   },
   {
     "id": "mb-roll_ugor",
@@ -463,9 +1220,24 @@
     "price": 340,
     "weight": "101 гр",
     "pieces": "8 шт",
-    "calories": 168,
+    "calories": 167.8,
     "image": "/images/mybox/roll_ugor.webp",
-    "ingredients": []
+    "ingredients": [
+      "угорь",
+      "соус Унаги",
+      "кунжут белый",
+      "рис",
+      "нори"
+    ],
+    "detailImage": "/images/mybox/detail/roll_ugor.jpg",
+    "allergens": [
+      "рыба",
+      "кунжут",
+      "соя",
+      "злаки, содержащие глютен",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-roll_krevetka",
@@ -475,9 +1247,19 @@
     "price": 310,
     "weight": "96 гр",
     "pieces": "8 шт",
-    "calories": 120,
+    "calories": 120.4,
     "image": "/images/mybox/roll_krevetka.webp",
-    "ingredients": []
+    "ingredients": [
+      "креветки",
+      "рис",
+      "нори"
+    ],
+    "detailImage": "/images/mybox/detail/roll_krevetka.jpg",
+    "allergens": [
+      "ракообразные",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-set-chyornyj-poyas-belyj-sous-yap",
@@ -490,12 +1272,29 @@
     "calories": 195,
     "image": "/images/mybox/set-chyornyj-poyas-belyj-sous-yap.webp",
     "ingredients": [
-      "Ролл Темпура-ролл с курицей",
-      "Ролл Киото (белый соус)",
-      "Ролл Вечное сияние курицы шиитаке",
-      "Ролл Калифорнийская мечта",
-      "Ролл Филадельфия классическая",
-      "Ролл Лосось"
+      "лосось",
+      "краб микс",
+      "куриное филе грудки су-вид",
+      "сыр сливочный",
+      "огурец",
+      "сливочный сыр",
+      "блин Тамаго",
+      "кунжут белый",
+      "угорь",
+      "салат Чука",
+      "рисовые шарики темпура",
+      "грибы Шиитаке маринованные",
+      "соус Унаги",
+      "масаго красная",
+      "панировочные сухари",
+      "соус Ореховый",
+      "соус спайси (острый)",
+      "креветки",
+      "кляр",
+      "рис",
+      "нори",
+      "соус Белый",
+      "сыр твёрдый"
     ],
     "setItems": [
       {
@@ -532,7 +1331,21 @@
         "image": "/images/mybox/roll_losos.webp",
         "pieces": "8 шт"
       }
-    ]
+    ],
+    "detailImage": "/images/mybox/detail/set-chyornyj-poyas-belyj-sous-yap.jpg",
+    "allergens": [
+      "рыба",
+      "соя",
+      "злаки, содержащие глютен",
+      "кунжут",
+      "молоко",
+      "яйца",
+      "горчица",
+      "ракообразные",
+      "сельдерей",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-set-chyornaya-pyatyorka-belyj-sous",
@@ -542,14 +1355,26 @@
     "price": 1310,
     "weight": "959 гр",
     "pieces": "40 шт",
-    "calories": 239,
+    "calories": 238.7,
     "image": "/images/mybox/set-chyornaya-pyatyorka-belyj-sous.webp",
     "ingredients": [
-      "Ролл Сансей (белый соус)",
-      "Ролл Калифорния классическая",
-      "Ролл Свежесть с соусом манго",
-      "Ролл Цезарь с курицей",
-      "Ролл Огурец"
+      "копчёная курица",
+      "помидор",
+      "соус Белый",
+      "кунжут белый",
+      "краб микс",
+      "салат Айсберг",
+      "сыр сливочный",
+      "огурец",
+      "масаго оранжевая",
+      "сыр Пармезан",
+      "лосось",
+      "рис",
+      "кунжут чёрный",
+      "нори",
+      "соус Манго",
+      "соус Унаги",
+      "соус Васаби"
     ],
     "setItems": [
       {
@@ -582,7 +1407,20 @@
         "image": "/images/mybox/roll_ogurets.webp",
         "pieces": "8 шт"
       }
-    ]
+    ],
+    "detailImage": "/images/mybox/detail/set-chyornaya-pyatyorka-belyj-sous.jpg",
+    "allergens": [
+      "рыба",
+      "соя",
+      "злаки, содержащие глютен",
+      "молоко",
+      "ракообразные",
+      "яйца",
+      "горчица",
+      "сельдерей",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-set-chyornyj-drakon",
@@ -592,16 +1430,28 @@
     "price": 2495,
     "weight": "1357 гр",
     "pieces": "56 шт",
-    "calories": 201,
+    "calories": 201.2,
     "image": "/images/mybox/set-chyornyj-drakon.webp",
     "ingredients": [
-      "Ролл Калифорния с лососем",
-      "Ролл Калифорния классическая",
-      "Ролл Филадельфия классическая",
-      "Ролл Вечное сияние курицы шиитаке",
-      "Ролл Дракон",
-      "Ролл Курица против краба",
-      "Ролл Угорь"
+      "куриное филе грудки су-вид",
+      "сыр сливочный",
+      "краб микс",
+      "майонез",
+      "лосось",
+      "блин Тамаго",
+      "сливочный сыр",
+      "масаго оранжевая",
+      "огурец",
+      "угорь",
+      "масаго красная",
+      "грибы Шиитаке маринованные",
+      "соус спайси (острый)",
+      "смесь перцев Шичими",
+      "соус Ореховый",
+      "соус Унаги",
+      "рис",
+      "кунжут белый",
+      "нори"
     ],
     "setItems": [
       {
@@ -646,7 +1496,22 @@
         "image": "/images/mybox/roll_ugor.webp",
         "pieces": "8 шт"
       }
-    ]
+    ],
+    "detailImage": "/images/mybox/detail/set-chyornyj-drakon.jpg",
+    "allergens": [
+      "рыба",
+      "соя",
+      "злаки, содержащие глютен",
+      "яйца",
+      "горчица",
+      "молоко",
+      "ракообразные",
+      "кунжут",
+      "сельдерей",
+      "цитрусовые",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-set_na_vsekh",
@@ -656,15 +1521,31 @@
     "price": 1530,
     "weight": "1136 гр",
     "pieces": "48 шт",
-    "calories": 181,
+    "calories": 181.4,
     "image": "/images/mybox/set_na_vsekh.webp",
     "ingredients": [
-      "Филадельфия: Миссия острота",
-      "Овощной форсаж",
-      "Калифорния классическая",
-      "Ролл Цезарь с курицей",
-      "Ролл Огурец",
-      "Калифорния с креветкой"
+      "копчёная курица",
+      "такуан",
+      "кунжут белый",
+      "сыр сливочный",
+      "Спайси(острый) лосось",
+      "краб микс",
+      "майонез",
+      "креветки",
+      "огурец",
+      "масаго оранжевая",
+      "помидор",
+      "соус Белый",
+      "смесь перцев Шичими",
+      "сыр Пармезан",
+      "масаго красная",
+      "салат Чука",
+      "соус Унаги",
+      "салат Айсберг",
+      "соус Ореховый",
+      "кунжут чёрный",
+      "рис",
+      "нори"
     ],
     "setItems": [
       {
@@ -703,6 +1584,22 @@
         "image": "/images/mybox/roll_kaliforniya_s_krevetkoy.webp",
         "pieces": "8 шт"
       }
+    ],
+    "detailImage": "/images/mybox/detail/set_na_vsekh.jpg",
+    "allergens": [
+      "горчица",
+      "злаки, содержащие глютен",
+      "кунжут",
+      "молоко",
+      "рыба",
+      "сельдерей",
+      "соя",
+      "цитрусовые",
+      "яйца"
+    ],
+    "markers": [
+      "new",
+      "spicy"
     ]
   },
   {
@@ -713,12 +1610,22 @@
     "price": 965,
     "weight": "563 гр",
     "pieces": "24 шт",
-    "calories": 159,
+    "calories": 158.8,
     "image": "/images/mybox/set_na_vecher.webp",
     "ingredients": [
-      "Ролл Филадельфия: Миссия острота",
-      "Калифорнийская мечта",
-      "Ролл Курица против краба"
+      "краб микс",
+      "куриное филе грудки су-вид",
+      "огурец",
+      "Спайси(острый) лосось",
+      "сыр сливочный",
+      "сливочный сыр",
+      "кунжут белый",
+      "рисовые шарики темпура",
+      "соус Унаги",
+      "смесь перцев Шичими",
+      "соус спайси (острый)",
+      "рис",
+      "нори"
     ],
     "setItems": [
       {
@@ -739,6 +1646,21 @@
         "image": "/images/mybox/kuritsa_protiv_kraba.webp",
         "pieces": "8 шт"
       }
+    ],
+    "detailImage": "/images/mybox/detail/set_na_vecher.jpg",
+    "allergens": [
+      "молоко",
+      "яйца",
+      "рыба",
+      "морепродукты",
+      "соя",
+      "злаки, содержащие глютен",
+      "кунжут",
+      "и продукты их переработки"
+    ],
+    "markers": [
+      "new",
+      "spicy"
     ]
   },
   {
@@ -752,10 +1674,25 @@
     "calories": 224,
     "image": "/images/mybox/set_na_kompaniyu_belyy_sous.webp",
     "ingredients": [
-      "Филадельфия с лососем и крабом",
-      "Хоккайдо",
-      "Курица против краба",
-      "Филадельфия: Миссия острота"
+      "копчёная курица",
+      "куриное филе грудки су-вид",
+      "помидор",
+      "Спайси(острый) лосось",
+      "краб микс",
+      "сливочный сыр",
+      "салат Айсберг",
+      "огурец",
+      "сыр Пармезан",
+      "соус спайси (острый)",
+      "смесь перцев Шичими",
+      "сыр сливочный",
+      "рис",
+      "соус Белый",
+      "нори",
+      "кунжут белый",
+      "сыр твёрдый",
+      "лосось копчёный",
+      "такуан"
     ],
     "setItems": [
       {
@@ -782,6 +1719,21 @@
         "image": "/images/mybox/filadelfiya_missiya_ostrota.webp",
         "pieces": "8 шт"
       }
+    ],
+    "detailImage": "/images/mybox/detail/set_na_kompaniyu_belyy_sous.jpg",
+    "allergens": [
+      "горчица",
+      "кунжут",
+      "молоко",
+      "ракообразные",
+      "рыба",
+      "сельдерей",
+      "цитрусовые",
+      "яйца"
+    ],
+    "markers": [
+      "new",
+      "spicy"
     ]
   },
   {
@@ -795,11 +1747,28 @@
     "calories": 216,
     "image": "/images/mybox/set_ultra_belyy_sous.webp",
     "ingredients": [
-      "Лосось в сладком васаби",
-      "Овощной форсаж",
-      "Вечное сияние Курицы-шиитаке",
-      "Курица против краба",
-      "Нагато с лососем и икрой масаго"
+      "куриное филе грудки су-вид",
+      "сыр сливочный",
+      "краб микс",
+      "блин Тамаго",
+      "сливочный сыр",
+      "помидор",
+      "такуан",
+      "огурец",
+      "грибы Шиитаке маринованные",
+      "салат Чука",
+      "соус спайси (острый)",
+      "смесь перцев Шичими",
+      "сыр Пармезан",
+      "соус Ореховый",
+      "салат Айсберг",
+      "соус Васаби",
+      "рис",
+      "лук фри",
+      "нори",
+      "соус Белый",
+      "икра масаго оранжевая",
+      "лосось копчёный"
     ],
     "setItems": [
       {
@@ -832,6 +1801,21 @@
         "image": "/images/mybox/roll_nagato_s_lososem_i_ikroy_masago_ostryy_sous.webp",
         "pieces": "8 шт"
       }
+    ],
+    "detailImage": "/images/mybox/detail/set_ultra_belyy_sous.jpg",
+    "allergens": [
+      "молоко",
+      "яйца",
+      "рыба",
+      "морепродукты",
+      "злаки, содержащие глютен",
+      "соя",
+      "кунжут",
+      "и продукты их переработки"
+    ],
+    "markers": [
+      "new",
+      "spicy"
     ]
   },
   {
@@ -842,16 +1826,29 @@
     "price": 2675,
     "weight": "1589 гр",
     "pieces": "56 шт",
-    "calories": 271,
+    "calories": 271.2,
     "image": "/images/mybox/set_miks_vkusa.webp",
     "ingredients": [
-      "Сырный лосось в соусе манго",
-      "Курица-бекон с васаби",
-      "Свежесть с соусом манго",
-      "Филадельфия «Ничего лишнего»",
-      "Лосось с манго соусом острый",
-      "Ролл Огурец",
-      "Нежный"
+      "нори",
+      "кунжут белый",
+      "рис",
+      "сыр сливочный",
+      "огурец",
+      "лосось",
+      "такуан",
+      "соус Манго",
+      "соус Васаби",
+      "кунжут чёрный",
+      "лосось копчёный",
+      "краб микс",
+      "копчёная курица",
+      "блин Тамаго",
+      "соус спайси",
+      "сливочный сыр",
+      "икра масаго оранжевая",
+      "соус Сладкий васаби",
+      "соус Унаги",
+      "Спайси (острый) бекон"
     ],
     "setItems": [
       {
@@ -896,6 +1893,22 @@
         "image": "/images/mybox/roll_nezhnyy.webp",
         "pieces": "8 шт"
       }
+    ],
+    "detailImage": "/images/mybox/detail/set_miks_vkusa.jpg",
+    "allergens": [
+      "рыба",
+      "молоко",
+      "ракообразные",
+      "горчица",
+      "соя",
+      "злаки, содержащие глютен",
+      "сельдерей",
+      "кунжут",
+      "яйца",
+      "и продукты их переработки"
+    ],
+    "markers": [
+      "spicy"
     ]
   },
   {
@@ -906,17 +1919,31 @@
     "price": 3520,
     "weight": "1844 гр",
     "pieces": "64 шт",
-    "calories": 246,
+    "calories": 246.4,
     "image": "/images/mybox/set_galaktika_belyy_sous.webp",
     "ingredients": [
-      "Филадельфия классическая",
-      "Калифорния классическая",
-      "Цезарь с курицей",
-      "Лосось с манго соусом (острый)",
-      "Сансей",
-      "Филадельфия лосось и краб",
-      "Хоккайдо",
-      "Свежесть с соусом манго"
+      "лосось",
+      "копчёная курица",
+      "соус Белый",
+      "помидор",
+      "сыр сливочный",
+      "краб микс",
+      "огурец",
+      "салат Айсберг",
+      "масаго оранжевая",
+      "сыр Пармезан",
+      "рис",
+      "кунжут чёрный",
+      "нори",
+      "соус Манго",
+      "соус Унаги",
+      "соус Васаби",
+      "кунжут белый",
+      "сыр твёрдый",
+      "лосось копчёный",
+      "такуан",
+      "соус спайси",
+      "икра масаго оранжевая"
     ],
     "setItems": [
       {
@@ -967,6 +1994,23 @@
         "image": "/images/mybox/roll_svezhest_s_sousom_mango.webp",
         "pieces": "8 шт"
       }
+    ],
+    "detailImage": "/images/mybox/detail/set_galaktika_belyy_sous.jpg",
+    "allergens": [
+      "рыба",
+      "соя",
+      "цитрусовые",
+      "сельдерей",
+      "горчица",
+      "яйца",
+      "молоко",
+      "кунжут",
+      "ракообразные",
+      "злаки, содержащие глютен",
+      "и продукты их переработки"
+    ],
+    "markers": [
+      "spicy"
     ]
   },
   {
@@ -977,18 +2021,33 @@
     "price": 3585,
     "weight": "1669 гр",
     "pieces": "72 шт",
-    "calories": 242,
+    "calories": 242.1,
     "image": "/images/mybox/set_semeynyy_belyy_sous.webp",
     "ingredients": [
-      "Калифорния классическая",
-      "Калифорния с креветкой",
-      "Ролл Нежный",
-      "Ролл Лосось",
-      "Ролл Огурец",
-      "Ролл Угорь",
-      "Филадельфия лосось и краб",
-      "Хоккайдо",
-      "Ролл Сырный в соусе манго"
+      "угорь",
+      "копчёная курица",
+      "соус Унаги",
+      "кунжут белый",
+      "помидор",
+      "сыр сливочный",
+      "краб микс",
+      "майонез",
+      "лосось",
+      "креветки",
+      "огурец",
+      "салат Айсберг",
+      "масаго оранжевая",
+      "сыр Пармезан",
+      "масаго красная",
+      "рис",
+      "нори",
+      "соус Белый",
+      "сыр твёрдый",
+      "лосось копчёный",
+      "такуан",
+      "икра масаго оранжевая",
+      "соус Манго",
+      "кунжут чёрный"
     ],
     "setItems": [
       {
@@ -1045,7 +2104,22 @@
         "image": "/images/mybox/roll_syrnyy_losos_v_souse_mango.webp",
         "pieces": "8 шт"
       }
-    ]
+    ],
+    "detailImage": "/images/mybox/detail/set_semeynyy_belyy_sous.jpg",
+    "allergens": [
+      "рыба",
+      "соя",
+      "яйца",
+      "горчица",
+      "молоко",
+      "ракообразные",
+      "кунжут",
+      "сельдерей",
+      "злаки, содержащие глютен",
+      "и продукты их переработки",
+      "цитрусовые"
+    ],
+    "markers": []
   },
   {
     "id": "mb-set_dlya_svoikh_belyy_sous",
@@ -1055,16 +2129,31 @@
     "price": 2365,
     "weight": "1149 гр",
     "pieces": "42 шт",
-    "calories": 259,
+    "calories": 258.6,
     "image": "/images/mybox/set_dlya_svoikh_belyy_sous.webp",
     "ingredients": [
-      "Филадельфия «Ничего лишнего»",
-      "Свежесть с соусом манго",
-      "Калифорния с лососем",
-      "Цыпа",
-      "Ролл Сансей",
-      "Гункан с лососем",
-      "Гункан с угрём"
+      "нори",
+      "краб микс",
+      "рис",
+      "соус Белый",
+      "копчёная курица",
+      "сыр сливочный",
+      "майонез",
+      "бекон",
+      "помидор",
+      "лосось",
+      "замес спайси-угорь",
+      "замес спайси-лосось",
+      "сыр Пармезан",
+      "огурец",
+      "масаго красная",
+      "кунжут белый",
+      "кунжут чёрный",
+      "такуан",
+      "соус Манго",
+      "соус Васаби",
+      "лук фри",
+      "соус Апельсиновый чили"
     ],
     "setItems": [
       {
@@ -1105,7 +2194,20 @@
         "name": "Гункан с угрём",
         "pieces": ""
       }
-    ]
+    ],
+    "detailImage": "/images/mybox/detail/set_dlya_svoikh_belyy_sous.jpg",
+    "allergens": [
+      "ракообразные",
+      "рыба",
+      "молоко",
+      "сельдерей",
+      "яйца",
+      "горчица",
+      "кунжут",
+      "злаки, содержащие глютен",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-set_bolshoy_gorod_belyy_sous",
@@ -1115,14 +2217,29 @@
     "price": 2150,
     "weight": "1081 гр",
     "pieces": "40 шт",
-    "calories": 251,
+    "calories": 251.1,
     "image": "/images/mybox/set_bolshoy_gorod_belyy_sous.webp",
     "ingredients": [
-      "Ролл Калифорния с креветкой",
-      "Ролл Сансей",
-      "Ролл Сырный лосось",
-      "Ролл Филадельфия с лососем и крабом",
-      "Ролл Цезарь с курицей"
+      "нори",
+      "краб микс",
+      "копчёная курица",
+      "помидор",
+      "рис",
+      "соус Белый",
+      "салат Айсберг",
+      "майонез",
+      "лосось",
+      "креветки",
+      "сыр Пармезан",
+      "огурец",
+      "масаго красная",
+      "кунжут чёрный",
+      "сыр сливочный",
+      "соус Унаги",
+      "кунжут белый",
+      "сыр твёрдый",
+      "лосось копчёный",
+      "такуан"
     ],
     "setItems": [
       {
@@ -1155,7 +2272,21 @@
         "image": "/images/mybox/roll_tsezar_s_kuritsey.webp",
         "pieces": "8 шт"
       }
-    ]
+    ],
+    "detailImage": "/images/mybox/detail/set_bolshoy_gorod_belyy_sous.jpg",
+    "allergens": [
+      "рыба",
+      "соя",
+      "злаки, содержащие глютен",
+      "яйца",
+      "горчица",
+      "молоко",
+      "ракообразные",
+      "кунжут",
+      "сельдерей",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-set_tsaritsa",
@@ -1165,15 +2296,26 @@
     "price": 2020,
     "weight": "952 гр",
     "pieces": "40 шт",
-    "calories": 200,
+    "calories": 199.5,
     "image": "/images/mybox/set_tsaritsa.webp",
     "ingredients": [
-      "Ролл Нежный",
-      "Ролл Калифорния классическая",
-      "Ролл Цезарь с курицей",
-      "Ролл Креветка (½)",
-      "Ролл Лосось (½)",
-      "Ролл Атлантический"
+      "креветки",
+      "копчёная курица",
+      "помидор",
+      "краб микс",
+      "салат Айсберг",
+      "огурец",
+      "соус Белый",
+      "сыр Пармезан",
+      "лосось",
+      "кунжут чёрный",
+      "угорь",
+      "сыр сливочный",
+      "масаго оранжевая",
+      "соус Унаги",
+      "кунжут белый",
+      "нори",
+      "рис"
     ],
     "setItems": [
       {
@@ -1212,7 +2354,21 @@
         "image": "/images/mybox/roll_atlanticheskiy.webp",
         "pieces": "8 шт"
       }
-    ]
+    ],
+    "detailImage": "/images/mybox/detail/set_tsaritsa.jpg",
+    "allergens": [
+      "молоко",
+      "кунжут",
+      "яйца",
+      "горчица",
+      "цитрусовые",
+      "ракообразные",
+      "рыба",
+      "соя",
+      "злаки, содержащие глютен",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-set_khit_zapechyennyy_belyy_sous",
@@ -1225,10 +2381,26 @@
     "calories": 234,
     "image": "/images/mybox/set_khit_zapechyennyy_belyy_sous.webp",
     "ingredients": [
-      "Ролл Киото",
-      "Ролл Нагато с лососем и икрой масаго",
-      "Ролл Филадельфия с лососем и крабом",
-      "Ролл Цыпа"
+      "нори",
+      "рис",
+      "копчёная курица",
+      "бекон",
+      "помидор",
+      "сыр сливочный",
+      "угорь",
+      "огурец",
+      "краб микс",
+      "сыр Пармезан",
+      "масаго красная",
+      "креветки",
+      "лук фри",
+      "соус Белый",
+      "сыр твёрдый",
+      "кунжут белый",
+      "соус Апельсиновый чили",
+      "икра масаго оранжевая",
+      "лосось копчёный",
+      "такуан"
     ],
     "setItems": [
       {
@@ -1255,7 +2427,22 @@
         "image": "/images/mybox/roll_tsypa_belyy_sous.webp",
         "pieces": "8 шт"
       }
-    ]
+    ],
+    "detailImage": "/images/mybox/detail/set_khit_zapechyennyy_belyy_sous.jpg",
+    "allergens": [
+      "рыба",
+      "ракообразные",
+      "молоко",
+      "соя",
+      "злаки, содержащие глютен",
+      "сельдерей",
+      "горчица",
+      "кунжут",
+      "яйца",
+      "цитрусовые",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-set_sotnya_plyus_belyy_sous",
@@ -1265,22 +2452,33 @@
     "price": 5250,
     "weight": "2409 гр",
     "pieces": "104 шт",
-    "calories": 281,
+    "calories": 280.7,
     "image": "/images/mybox/set_sotnya_plyus_belyy_sous.webp",
     "ingredients": [
-      "Калифорния классическая",
-      "Лосось в сладком васаби",
-      "Креветка",
-      "Филадельфия классическая",
-      "Филадельфия «Ничего лишнего»",
-      "Сырный лосось",
-      "Сансей",
-      "Хоккайдо",
-      "Тартар-ролл с лососем",
-      "Лосось",
-      "Огурец",
-      "Угорь",
-      "Нежный"
+      "угорь",
+      "креветки",
+      "копчёная курица",
+      "соус Белый",
+      "соус Унаги",
+      "кунжут белый",
+      "помидор",
+      "сыр сливочный",
+      "краб микс",
+      "лосось",
+      "огурец",
+      "салат Айсберг",
+      "масаго оранжевая",
+      "сыр Пармезан",
+      "лосось копчёный",
+      "рис",
+      "кунжут чёрный",
+      "нори",
+      "такуан",
+      "блин Тамаго",
+      "соус Васаби",
+      "замес спайси-лосось",
+      "лук фри",
+      "соус Шрирача"
     ],
     "setItems": [
       {
@@ -1361,7 +2559,23 @@
         "image": "/images/mybox/roll_nezhnyy.webp",
         "pieces": "8 шт"
       }
-    ]
+    ],
+    "detailImage": "/images/mybox/detail/set_sotnya_plyus_belyy_sous.jpg",
+    "allergens": [
+      "горчица",
+      "злаки, содержащие глютен",
+      "кунжут",
+      "моллюски",
+      "молоко",
+      "ракообразные",
+      "рыба",
+      "сельдерей",
+      "соя",
+      "цитрусовые",
+      "яйца",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-set_garmoniya_belyy_sous",
@@ -1371,14 +2585,24 @@
     "price": 1870,
     "weight": "975 гр",
     "pieces": "40 шт",
-    "calories": 235,
+    "calories": 235.1,
     "image": "/images/mybox/set_garmoniya_belyy_sous.webp",
     "ingredients": [
-      "Калифорния классическая",
-      "Ролл Лосось",
-      "Нагато",
-      "Филадельфия с лососем и крабом",
-      "Филадельфия «Ничего лишнего»"
+      "лосось",
+      "краб микс",
+      "огурец",
+      "масаго оранжевая",
+      "рис",
+      "сыр Пармезан",
+      "нори",
+      "сыр сливочный",
+      "соус Белый",
+      "лук фри",
+      "кунжут белый",
+      "икра масаго оранжевая",
+      "сыр твёрдый",
+      "лосось копчёный",
+      "такуан"
     ],
     "setItems": [
       {
@@ -1411,7 +2635,21 @@
         "image": "/images/mybox/roll_filadelfiya_nichego_lishnego.webp",
         "pieces": "8 шт"
       }
-    ]
+    ],
+    "detailImage": "/images/mybox/detail/set_garmoniya_belyy_sous.jpg",
+    "allergens": [
+      "рыба",
+      "соя",
+      "злаки, содержащие глютен",
+      "молоко",
+      "кунжут",
+      "яйца",
+      "горчица",
+      "цитрусовые",
+      "ракообразные",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-set_afrika_belyy_sous",
@@ -1421,13 +2659,25 @@
     "price": 1750,
     "weight": "838 гр",
     "pieces": "32 шт",
-    "calories": 243,
+    "calories": 243.1,
     "image": "/images/mybox/set_afrika_belyy_sous.webp",
     "ingredients": [
-      "Калифорния с лососем",
-      "Сансей",
-      "Филадельфия «Ничего лишнего»",
-      "Хоккайдо"
+      "нори",
+      "краб микс",
+      "копчёная курица",
+      "рис",
+      "соус Белый",
+      "помидор",
+      "сыр сливочный",
+      "майонез",
+      "лосось",
+      "салат Айсберг",
+      "сыр Пармезан",
+      "огурец",
+      "масаго красная",
+      "кунжут белый",
+      "кунжут чёрный",
+      "такуан"
     ],
     "setItems": [
       {
@@ -1454,7 +2704,19 @@
         "image": "/images/mybox/roll_khokkaydo_ostryy_sous.webp",
         "pieces": "8 шт"
       }
-    ]
+    ],
+    "detailImage": "/images/mybox/detail/set_afrika_belyy_sous.jpg",
+    "allergens": [
+      "горчица",
+      "ракообразные",
+      "рыба",
+      "кунжут",
+      "молоко",
+      "яйца",
+      "сельдерей",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-set_interesnyy_belyy_sous",
@@ -1467,10 +2729,25 @@
     "calories": 264,
     "image": "/images/mybox/set_interesnyy_belyy_sous.webp",
     "ingredients": [
-      "Нежный",
-      "Сытый самурай",
-      "Филадельфия с лососем и крабом",
-      "Цезарь с курицей"
+      "нори",
+      "копчёная курица",
+      "помидор",
+      "рис",
+      "бекон",
+      "сыр сливочный",
+      "лосось",
+      "огурец",
+      "Тамаго",
+      "краб микс",
+      "соус Унаги",
+      "салат Айсберг",
+      "кунжут чёрный",
+      "соус Белый",
+      "сыр Пармезан",
+      "кунжут белый",
+      "сыр твёрдый",
+      "лосось копчёный",
+      "такуан"
     ],
     "setItems": [
       {
@@ -1497,7 +2774,20 @@
         "image": "/images/mybox/roll_tsezar_s_kuritsey.webp",
         "pieces": "8 шт"
       }
-    ]
+    ],
+    "detailImage": "/images/mybox/detail/set_interesnyy_belyy_sous.jpg",
+    "allergens": [
+      "рыба",
+      "ракообразные",
+      "молоко",
+      "яйца",
+      "сельдерей",
+      "горчица",
+      "кунжут",
+      "злаки, содержащие глютен",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-set_filadelfiya_belyy_sous",
@@ -1507,12 +2797,23 @@
     "price": 1540,
     "weight": "695 гр",
     "pieces": "24 шт",
-    "calories": 261,
+    "calories": 261.3,
     "image": "/images/mybox/set_filadelfiya_belyy_sous.webp",
     "ingredients": [
-      "Филадельфия классическая",
-      "Филадельфия с лососем и крабом",
-      "Ролл Свежесть с соусом манго"
+      "огурец",
+      "лосось",
+      "краб микс",
+      "сыр сливочный",
+      "соус Манго",
+      "соус Васаби",
+      "соус Белый",
+      "кунжут чёрный",
+      "кунжут белый",
+      "рис",
+      "нори",
+      "сыр твёрдый",
+      "лосось копчёный",
+      "такуан"
     ],
     "setItems": [
       {
@@ -1533,7 +2834,21 @@
         "image": "/images/mybox/roll_svezhest_s_sousom_mango.webp",
         "pieces": "8 шт"
       }
-    ]
+    ],
+    "detailImage": "/images/mybox/detail/set_filadelfiya_belyy_sous.jpg",
+    "allergens": [
+      "рыба",
+      "яйца",
+      "ракообразные",
+      "молоко",
+      "кунжут",
+      "сельдерей",
+      "горчица",
+      "соя",
+      "злаки, содержащие глютен",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-set_ogon_belyy_sous",
@@ -1543,12 +2858,24 @@
     "price": 1430,
     "weight": "757 гр",
     "pieces": "24 шт",
-    "calories": 253,
+    "calories": 252.6,
     "image": "/images/mybox/set_ogon_belyy_sous.webp",
     "ingredients": [
-      "Филадельфия с лососем и крабом",
-      "Нагато",
-      "Сырный лосось в соусе манго"
+      "такуан",
+      "сыр сливочный",
+      "краб микс",
+      "сыр Пармезан",
+      "лук фри",
+      "соус Белый",
+      "нори",
+      "кунжут белый",
+      "рис",
+      "икра масаго оранжевая",
+      "сыр твёрдый",
+      "лосось копчёный",
+      "огурец",
+      "соус Манго",
+      "кунжут чёрный"
     ],
     "setItems": [
       {
@@ -1569,7 +2896,22 @@
         "image": "/images/mybox/roll_syrnyy_losos_v_souse_mango.webp",
         "pieces": "8 шт"
       }
-    ]
+    ],
+    "detailImage": "/images/mybox/detail/set_ogon_belyy_sous.jpg",
+    "allergens": [
+      "горчица",
+      "злаки, содержащие глютен",
+      "кунжут",
+      "молоко",
+      "ракообразные",
+      "рыба",
+      "сельдерей",
+      "соя",
+      "цитрусовые",
+      "яйца",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-set_luchshaya_para_belyy_sous",
@@ -1579,12 +2921,27 @@
     "price": 1380,
     "weight": "686 гр",
     "pieces": "24 шт",
-    "calories": 211,
+    "calories": 211.2,
     "image": "/images/mybox/set_luchshaya_para_belyy_sous.webp",
     "ingredients": [
-      "Атлантический",
-      "Калифорния классическая",
-      "Цыпа"
+      "копчёная курица",
+      "краб микс",
+      "бекон",
+      "помидор",
+      "огурец",
+      "масаго оранжевая",
+      "сыр Пармезан",
+      "рис",
+      "нори",
+      "лосось",
+      "угорь",
+      "лук фри",
+      "такуан",
+      "сыр сливочный",
+      "соус Апельсиновый чили",
+      "соус Белый",
+      "соус Унаги",
+      "кунжут белый"
     ],
     "setItems": [
       {
@@ -1605,7 +2962,22 @@
         "image": "/images/mybox/roll_tsypa_belyy_sous.webp",
         "pieces": "8 шт"
       }
-    ]
+    ],
+    "detailImage": "/images/mybox/detail/set_luchshaya_para_belyy_sous.jpg",
+    "allergens": [
+      "горчица",
+      "злаки, содержащие глютен",
+      "и продукты их переработки",
+      "кунжут",
+      "молоко",
+      "ракообразные",
+      "рыба",
+      "сельдерей",
+      "соя",
+      "цитрусовые",
+      "яйца"
+    ],
+    "markers": []
   },
   {
     "id": "mb-tempura_set_yap",
@@ -1615,12 +2987,23 @@
     "price": 1357,
     "weight": "707 гр",
     "pieces": "24 шт",
-    "calories": 282,
+    "calories": 281.5,
     "image": "/images/mybox/tempura_set_yap.webp",
     "ingredients": [
-      "Темпура с креветкой",
-      "Темпура с лососем",
-      "Темпура с угрём"
+      "угорь",
+      "креветки",
+      "масаго красная",
+      "сыр сливочный",
+      "соус спайси",
+      "соус Унаги",
+      "майонез",
+      "такуан",
+      "соус Ореховый",
+      "темпура",
+      "лосось",
+      "рис",
+      "нори",
+      "огурец"
     ],
     "setItems": [
       {
@@ -1641,7 +3024,21 @@
         "image": "/images/mybox/tempura_roll_s_ugryem_yap.webp",
         "pieces": "8 шт"
       }
-    ]
+    ],
+    "detailImage": "/images/mybox/detail/tempura_set_yap.jpg",
+    "allergens": [
+      "горчица",
+      "злаки, содержащие глютен",
+      "кунжут",
+      "молоко",
+      "ракообразные",
+      "рыба",
+      "сельдерей",
+      "соя",
+      "яйца",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-set_vsye_moye_i_tochka",
@@ -1651,12 +3048,23 @@
     "price": 1160,
     "weight": "608 гр",
     "pieces": "20 шт",
-    "calories": 266,
+    "calories": 265.7,
     "image": "/images/mybox/set_vsye_moye_i_tochka.webp",
     "ingredients": [
-      "Ролл Нежный",
-      "Тартар-ролл с лососем острый (½)",
-      "Ролл Сырный лосось в соусе манго"
+      "нори",
+      "рис",
+      "сыр сливочный",
+      "лосось",
+      "блин Тамаго",
+      "огурец",
+      "масаго оранжевая",
+      "замес спайси-лосось",
+      "соус Шрирача",
+      "лосось копчёный",
+      "краб микс",
+      "икра масаго оранжевая",
+      "соус Манго",
+      "кунжут чёрный"
     ],
     "setItems": [
       {
@@ -1677,6 +3085,22 @@
         "image": "/images/mybox/roll_syrnyy_losos_v_souse_mango.webp",
         "pieces": "8 шт"
       }
+    ],
+    "detailImage": "/images/mybox/detail/set_vsye_moye_i_tochka.jpg",
+    "allergens": [
+      "горчица",
+      "злаки, содержащие глютен",
+      "кунжут",
+      "молоко",
+      "ракообразные",
+      "рыба",
+      "сельдерей",
+      "соя",
+      "яйца",
+      "и продукты их переработки"
+    ],
+    "markers": [
+      "spicy"
     ]
   },
   {
@@ -1687,13 +3111,17 @@
     "price": 1070,
     "weight": "390 гр",
     "pieces": "32 шт",
-    "calories": 120,
+    "calories": 119.8,
     "image": "/images/mybox/set_klassik.webp",
     "ingredients": [
-      "Ролл Креветка",
-      "Ролл Лосось",
-      "Ролл Огурец",
-      "Ролл Угорь"
+      "угорь",
+      "лосось",
+      "креветки",
+      "огурец",
+      "рис",
+      "соус Унаги",
+      "кунжут белый",
+      "нори"
     ],
     "setItems": [
       {
@@ -1720,7 +3148,17 @@
         "image": "/images/mybox/roll_ugor.webp",
         "pieces": "8 шт"
       }
-    ]
+    ],
+    "detailImage": "/images/mybox/detail/set_klassik.jpg",
+    "allergens": [
+      "рыба",
+      "ракообразные",
+      "кунжут",
+      "соя",
+      "злаки, содержащие глютен",
+      "и продукты их переработки"
+    ],
+    "markers": []
   },
   {
     "id": "mb-set_moya_eda_moi_pravila",
@@ -1730,12 +3168,17 @@
     "price": 810,
     "weight": "385 гр",
     "pieces": "14 шт",
-    "calories": 221,
+    "calories": 221.1,
     "image": "/images/mybox/set_moya_eda_moi_pravila.webp",
     "ingredients": [
-      "Гункан с крабом (2 шт)",
-      "Калифорния классическая (½)",
-      "Нежный"
+      "нори",
+      "рис",
+      "соус спайси",
+      "сыр сливочный",
+      "краб микс",
+      "лосось",
+      "масаго оранжевая",
+      "огурец"
     ],
     "setItems": [
       {
@@ -1754,6 +3197,22 @@
         "image": "/images/mybox/roll_nezhnyy.webp",
         "pieces": "8 шт"
       }
+    ],
+    "detailImage": "/images/mybox/detail/set_moya_eda_moi_pravila.jpg",
+    "allergens": [
+      "рыба",
+      "соя",
+      "злаки, содержащие глютен",
+      "яйца",
+      "горчица",
+      "ракообразные",
+      "молоко",
+      "кунжут",
+      "сельдерей",
+      "и продукты их переработки"
+    ],
+    "markers": [
+      "spicy"
     ]
   },
   {
@@ -1764,12 +3223,22 @@
     "price": 250,
     "weight": "172 гр",
     "pieces": "3 шт",
-    "calories": 151,
+    "calories": 150.6,
     "image": "/images/mybox/set_seul.webp",
     "ingredients": [
-      "Мини-кимпаб с тунцом",
-      "Мини-кимпаб с крабом",
-      "Мини-кимпаб с овощами"
+      "краб микс",
+      "огурец маринованный",
+      "маринованный дайкон",
+      "салат Айсберг",
+      "такуан",
+      "кунжут белый",
+      "тунец консервированный",
+      "кукуруза",
+      "соус кимчи",
+      "соус Унаги",
+      "майонез",
+      "рис",
+      "нори"
     ],
     "setItems": [
       {
@@ -1784,6 +3253,19 @@
         "name": "Мини-кимпаб с овощами",
         "pieces": "1 шт"
       }
+    ],
+    "detailImage": "/images/mybox/detail/set_seul.jpg",
+    "allergens": [
+      "рыба",
+      "соя",
+      "злаки, содержащие глютен",
+      "ракообразные",
+      "яйца",
+      "кунжут",
+      "и продукты их переработки"
+    ],
+    "markers": [
+      "spicy"
     ]
   }
 ]
