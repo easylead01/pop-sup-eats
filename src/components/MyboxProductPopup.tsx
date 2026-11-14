@@ -221,14 +221,14 @@ const MyboxProductPopup = () => {
 
   const imageOverlays = (
     <>
-      <div className="absolute left-4 top-1 lg:left-14 flex gap-2">
+      <div className="absolute left-4 top-4 lg:left-6 flex gap-2">
         {badges.map((m) => (
           <Marker key={m} id={m} />
         ))}
       </div>
       <button
         type="button"
-        className="absolute right-4 top-1 lg:right-14 w-14 h-14 flex items-center justify-center text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.35)] hover:scale-105 transition"
+        className="absolute right-4 top-4 lg:right-6 w-14 h-14 flex items-center justify-center text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.35)] hover:scale-105 transition"
         aria-label="В избранное"
       >
         <Heart className="w-10 h-10" strokeWidth={1.6} />
@@ -244,29 +244,31 @@ const MyboxProductPopup = () => {
         onClick={handleClose}
       />
 
-      {/* Компьютер: панель справа почти на весь экран */}
-      <div
-        className={`hidden lg:flex absolute top-0 right-0 bottom-0 left-10 xl:left-[120px] bg-white transition-transform duration-300 ease-out
-          ${isClosing ? 'translate-x-full' : 'animate-slide-in-right'}`}
-      >
-        <div className="relative flex-shrink-0 self-start mt-[52px] w-[min(796px,calc(100vh-104px),55vw)] aspect-square">
-          <img src={image} alt={p.name} className="w-full h-full object-cover" />
-          {imageOverlays}
-          <button
-            type="button"
-            onClick={handleClose}
-            className="absolute top-[3px] left-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-black text-white flex items-center justify-center hover:scale-105 active:scale-95 transition"
-            aria-label="Закрыть"
-          >
-            <X className="w-5 h-5" strokeWidth={2} />
-          </button>
-        </div>
+      {/* Компьютер: карточка по центру со скруглениями, фото на всю высоту — без белых полос */}
+      <div className="hidden lg:flex absolute inset-0 items-center justify-center p-8 pointer-events-none">
+        <div
+          className={`pointer-events-auto flex bg-white rounded-[28px] overflow-hidden shadow-2xl h-[min(796px,calc(100vh-64px),55vw)] transition-all duration-300 ease-out
+            ${isClosing ? 'opacity-0 scale-95' : 'animate-fade-in'}`}
+        >
+          <div className="relative h-full aspect-square flex-shrink-0">
+            <img src={image} alt={p.name} className="w-full h-full object-cover" />
+            {imageOverlays}
+            <button
+              type="button"
+              onClick={handleClose}
+              className="absolute top-4 left-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-black text-white flex items-center justify-center hover:scale-105 active:scale-95 transition"
+              aria-label="Закрыть"
+            >
+              <X className="w-5 h-5" strokeWidth={2} />
+            </button>
+          </div>
 
-        <div className="flex-1 min-w-0 flex flex-col pl-[53px] pr-10 pt-[52px] pb-8">
-          <div className="mybox-popup-scroll flex-1 overflow-y-auto overscroll-contain max-w-[440px] pr-2">{details}</div>
-          <div className="flex items-center gap-3 pt-6 max-w-[440px]">
-            {counter}
-            <div className="flex-1 [&>button]:w-full">{addButton}</div>
+          <div className="w-[min(480px,calc(100vw-64px-min(796px,calc(100vh-64px),55vw)))] flex flex-col pl-[53px] pr-8 pt-[44px] pb-7">
+            <div className="mybox-popup-scroll flex-1 overflow-y-auto overscroll-contain pr-2">{details}</div>
+            <div className="flex items-center gap-3 pt-6">
+              {counter}
+              <div className="flex-1 [&>button]:w-full [&>button]:px-5">{addButton}</div>
+            </div>
           </div>
         </div>
       </div>
