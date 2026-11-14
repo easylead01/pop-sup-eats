@@ -2,6 +2,7 @@ import setsCatalog from '@/data/sets.catalog.json';
 import sushiCatalog from '@/data/sushi.catalog.json';
 import pizzaCatalog from '@/data/pizza.catalog.json';
 import snacksCatalog from '@/data/snacks.catalog.json';
+import myboxCatalog from '@/data/mybox.catalog.json';
 type SetItem = {
   id: string | number;
   name: string;
@@ -2475,7 +2476,50 @@ const isTempuraProduct = (p: Product) => {
   return /темпур|жарен|горяч/i.test(lower);
 };
 
-export const getProductsByCategory = (categoryId: string) => {
+// Демо «в стиле MyBox»: роллы и сеты, которые подставляются вместо текущих по кнопке
+type MyboxItem = {
+  id: string;
+  group: 'classic' | 'baked' | 'tempura' | 'set';
+  name: string;
+  description: string;
+  price: number;
+  weight: string;
+  pieces: string;
+  calories: number;
+  image: string;
+  ingredients: string[];
+};
+export const myboxProducts: Product[] = (myboxCatalog as MyboxItem[]).map((item) => ({
+  id: item.id,
+  name: item.name,
+  description: item.description,
+  price: item.price,
+  weight: item.weight,
+  pieces: item.pieces,
+  calories: item.calories,
+  category: item.group === 'set' ? 'sets' : 'rolls',
+  subcategory: item.group === 'set' ? undefined : item.group,
+  image: item.image,
+  ingredients: item.ingredients,
+  allergens: [],
+}));
+
+const getMyboxProductsByCategory = (categoryId: string): Product[] | null => {
+  if (categoryId === 'sets') return myboxProducts.filter((p) => p.category === 'sets');
+  const sub =
+    categoryId === 'rolls' ? 'classic'
+    : categoryId === 'rolls-baked' ? 'baked'
+    : categoryId === 'rolls-tempura' ? 'tempura'
+    : null;
+  if (!sub) return null;
+  return myboxProducts.filter((p) => p.category === 'rolls' && p.subcategory === sub);
+};
+
+export const getProductsByCategory = (categoryId: string, menuDemo: 'default' | 'mybox' = 'default') => {
+  if (menuDemo === 'mybox') {
+    const demo = getMyboxProductsByCategory(categoryId);
+    if (demo) return demo;
+  }
   if (categoryId === 'sets') return setsProducts.filter((p) => p.category === 'sets');
   if (categoryId === 'sushi') return sushiProducts;
   if (categoryId === 'pizza') return pizzaProducts;
@@ -2492,6 +2536,7 @@ export const getProduct = (id: string) => {
     setsProducts.find((p) => p.id === id) ||
     sushiProducts.find((p) => p.id === id) ||
     pizzaProducts.find((p) => p.id === id) ||
-    snacksProducts.find((p) => p.id === id)
+    snacksProducts.find((p) => p.id === id) ||
+    myboxProducts.find((p) => p.id === id)
   );
 };

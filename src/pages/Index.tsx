@@ -12,10 +12,12 @@ import AuthPopup from '@/components/AuthPopup';
 import CheckoutSheet from '@/components/CheckoutSheet';
 import FloatingCartButton from '@/components/FloatingCartButton';
 import FiltersPopup from '@/components/FiltersPopup';
+import DemoMenuToggle from '@/components/DemoMenuToggle';
 import { categories, getProductsByCategory, Product } from '@/data/products';
 import { ChevronUp } from 'lucide-react';
 import { useUIStore } from '@/store/uiStore';
 import { useCartStore } from '@/store/cartStore';
+import { useDemoStore } from '@/store/demoStore';
 import logo from '@/assets/logo (1).png';
 
 const Index = () => {
@@ -37,6 +39,7 @@ const Index = () => {
     sortOption,
   } = useUIStore();
   const { isOpen: isCartOpen, setIsOpen: setCartOpen } = useCartStore();
+  const menuDemo = useDemoStore((s) => s.menuDemo);
   const isOverlayOpen =
     !!selectedProduct || isMenuOpen || isAuthOpen || isCheckoutOpen || isCartOpen || isFiltersOpen;
   const swipeStartXRef = useRef<number | null>(null);
@@ -251,7 +254,7 @@ const Index = () => {
                 id="filtered"
                 name="Результаты фильтрации"
                 products={applyFiltersAndSort(
-                  categories.flatMap((category) => getProductsByCategory(category.id))
+                  categories.flatMap((category) => getProductsByCategory(category.id, menuDemo))
                 )}
               />
             ) : (
@@ -260,7 +263,7 @@ const Index = () => {
                   key={category.id}
                   id={category.id}
                   name={category.name}
-                  products={getProductsByCategory(category.id)}
+                  products={getProductsByCategory(category.id, menuDemo)}
                 />
               ))
             )}
@@ -347,6 +350,7 @@ const Index = () => {
       <AuthPopup />
       <CheckoutSheet />
       <FiltersPopup />
+      <DemoMenuToggle hidden={isOverlayOpen} />
       
       {/* Scroll To Top */}
       <button

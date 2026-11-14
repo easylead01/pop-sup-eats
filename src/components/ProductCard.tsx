@@ -58,6 +58,8 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
   // Новые фото роллов (крупный план на белом фоне) — на всю карточку, без отступов
   const isCloseUpPhoto = product.image.startsWith('/images/rolls/');
+  // Фото MyBox — кусочек на цветном фоне, заполняем карточку целиком
+  const isFullBleedPhoto = product.image.startsWith('/images/mybox/');
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -75,7 +77,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
           src={imageUrl}
           alt={product.name}
           className={`w-full h-full transition-transform duration-300 group-hover:scale-105 ${
-            isCloseUpPhoto
+            isFullBleedPhoto
+              ? 'object-cover'
+              : isCloseUpPhoto
               ? 'object-contain bg-white'
               : isContainCategory ? `object-contain ${finalPadding}` : 'object-cover'
           } ${scaleClass}`}
