@@ -50,6 +50,15 @@ const ProductPopup = () => {
     onClose: handleClose,
   });
 
+  // Esc закрывает окно товара
+  useEffect(() => {
+    if (!selectedProduct) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') handleClose(); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedProduct?.id]);
+
   // Reset quantity when product changes (и прокрутку — при переходе из сета к роллу)
   useEffect(() => {
     setQuantity(1);
@@ -120,134 +129,122 @@ const ProductPopup = () => {
         </button>
       </div>
 
-      {/* Desktop: Right drawer */}
-      <div 
-        className={`
-          hidden lg:flex
-          absolute right-0 top-0 h-screen w-1/2 bg-card shadow-popup
-          flex-col transition-transform duration-300 ease-out
-          ${isClosing ? 'translate-x-full' : 'animate-slide-in-right'}
-        `}
-        {...swipeHandlers}
-      >
-        {/* Image - takes 55% of screen height */}
-        <div className={`relative ${selectedProduct.setItems?.length ? 'h-[42vh]' : 'h-[calc(65vh-10px)]'} bg-secondary/20 flex-shrink-0`}>
-          <img
-            src={imageUrl}
-            alt={selectedProduct.name}
-            className="w-full h-full object-contain p-2 md:p-4"
-          />
-          
-          
-          {/* Close & Favorite */}
-          
-          <button className="absolute top-4 right-4 w-10 h-10 bg-card rounded-full flex items-center justify-center hover:bg-muted transition-all border border-border hover:scale-105 active:scale-95">
-            <Heart className="w-5 h-5" />
-          </button>
-
-          {/* Badges */}
-          <div className="absolute bottom-4 left-4 flex gap-2">
-            {selectedProduct.isNew && (
-              <span className="px-3 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-full">
-                NEW
-              </span>
-            )}
-            {selectedProduct.isHit && (
-              <span className="px-3 py-1 bg-foreground text-background text-xs font-semibold rounded-full">
-                HIT
-              </span>
-            )}
-          </div>
-        </div>
-
-        {/* Content - fills remaining 45% */}
-          <div className="pt-2 px-6 pb-2 flex flex-col overflow-y-auto overscroll-contain product-popup-scroll">
-          <h2 className="text-2xl font-bold mb-2">
-            {selectedProduct.name}
-          </h2>
-          
-          <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
-            {selectedProduct.size && (
-              <span className="flex items-center gap-1">
-                <Ruler className="w-3.5 h-3.5" />
-                {selectedProduct.size}
-              </span>
-            )}
-            {selectedProduct.pieces && <span>{selectedProduct.pieces}</span>}
-            <span>{selectedProduct.weight}</span>
-            {selectedProduct.calories && (
-              <span className="flex items-center gap-1">
-                {selectedProduct.calories} ккал
-                <AlertCircle className="w-3.5 h-3.5" />
-              </span>
-            )}
-            {typeof singleEconomy === 'number' && (
-              <span className="flex items-center gap-1 text-green-600">
-                Экономия: {singleEconomy} ₽
-              </span>
-            )}
-          </div>
-
-          {shouldShowDescription && (
-            <p className="text-muted-foreground mb-4 text-sm">
-              {selectedProduct.description}
-            </p>
-          )}
-
-          {/* Ingredients / set rolls */}
-          {selectedProduct.setItems?.length ? (
-            <SetComposition items={selectedProduct.setItems} />
-          ) : (
-            <div className="mb-3">
-              <h3 className="font-semibold mb-1">Состав</h3>
-              <p className="text-muted-foreground text-sm">
-                {compositionText}
-              </p>
-            </div>
-          )}
-
-          {/* Allergens */}
-          {selectedProduct.allergens.length > 0 && (
-            <div className="mb-4">
-              <h3 className="font-semibold mb-1 flex items-center gap-2">
-                Аллергены
-                <AlertCircle className="w-4 h-4 text-primary" />
-              </h3>
-              <p className="text-muted-foreground text-sm">
-                {selectedProduct.allergens.join(', ')}
-              </p>
-            </div>
-          )}
-
-          <div className="sticky-btn-wrapper flex items-center justify-center gap-4 border-t border-border">
-            <div className="flex items-center gap-3">
-              <button
-                onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                className="qty-button hover:scale-105 active:scale-95 transition-transform"
-              >
-                <Minus className="w-4 h-4" />
-              </button>
-              <span className="w-8 text-center font-semibold text-lg">{quantity}</span>
-              <button
-                onClick={() => setQuantity(quantity + 1)}
-                className="qty-button hover:scale-105 active:scale-95 transition-transform"
-              >
-                <Plus className="w-4 h-4" />
-              </button>
-            </div>
-
+      {/* Desktop: окно по центру со скруглениями (как в версии MyBox), фото слева во всю высоту */}
+      <div className="hidden lg:flex absolute inset-0 items-center justify-center p-8 pointer-events-none">
+        <div
+          className={`pointer-events-auto flex bg-card rounded-[28px] overflow-hidden shadow-2xl h-[min(760px,calc(100vh-64px),52vw)] transition-all duration-300 ease-out
+            ${isClosing ? 'opacity-0 scale-95' : 'animate-fade-in'}`}
+        >
+          <div className="relative h-full aspect-square flex-shrink-0 bg-white">
+            <img
+              src={imageUrl}
+              alt={selectedProduct.name}
+              className="w-full h-full object-contain p-6"
+            />
             <button
-              onClick={handleAddToCart}
-              className="bg-foreground text-background py-4 px-8 rounded-full font-semibold text-lg hover:bg-foreground/90 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              type="button"
+              onClick={handleClose}
+              className="absolute top-4 left-1/2 -translate-x-1/2 w-11 h-11 rounded-full bg-foreground text-background flex items-center justify-center hover:scale-105 active:scale-95 transition"
+              aria-label="Закрыть"
             >
-              {typeof totalOldPrice === 'number' && totalOldPrice > totalPrice ? (
-                <span className="mr-2 line-through opacity-70">{totalOldPrice} ₽</span>
-              ) : null}
-              {totalPrice} ₽
-              {typeof totalEconomy === 'number' && totalEconomy > 0 ? (
-                <span className="ml-2 text-green-200">−{totalEconomy} ₽</span>
-              ) : null}
+              <X className="w-5 h-5" />
             </button>
+            <button
+              type="button"
+              className="absolute top-4 right-4 w-11 h-11 bg-card rounded-full flex items-center justify-center hover:bg-muted transition-all border border-border hover:scale-105 active:scale-95"
+              aria-label="В избранное"
+            >
+              <Heart className="w-5 h-5" />
+            </button>
+            <div className="absolute bottom-4 left-4 flex gap-2">
+              {selectedProduct.isNew && (
+                <span className="px-3 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-full">NEW</span>
+              )}
+              {selectedProduct.isHit && (
+                <span className="px-3 py-1 bg-foreground text-background text-xs font-semibold rounded-full">HIT</span>
+              )}
+            </div>
+          </div>
+
+          <div className="w-[min(480px,calc(100vw-64px-min(760px,calc(100vh-64px),52vw)))] flex flex-col pl-10 pr-8 pt-10 pb-7">
+            <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain pr-2 product-popup-scroll">
+              <h2 className="text-[28px] leading-[34px] font-bold mb-3">{selectedProduct.name}</h2>
+
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted-foreground mb-5">
+                {selectedProduct.size && (
+                  <span className="flex items-center gap-1">
+                    <Ruler className="w-3.5 h-3.5" />
+                    {selectedProduct.size}
+                  </span>
+                )}
+                {selectedProduct.pieces && <span>{selectedProduct.pieces}</span>}
+                <span>{selectedProduct.weight}</span>
+                {selectedProduct.calories && (
+                  <span className="flex items-center gap-1">
+                    {selectedProduct.calories} ккал
+                    <AlertCircle className="w-3.5 h-3.5" />
+                  </span>
+                )}
+                {typeof singleEconomy === 'number' && (
+                  <span className="flex items-center gap-1 text-green-600">Экономия: {singleEconomy} ₽</span>
+                )}
+              </div>
+
+              {shouldShowDescription && (
+                <p className="text-muted-foreground mb-5 text-[15px] leading-relaxed">{selectedProduct.description}</p>
+              )}
+
+              {selectedProduct.setItems?.length ? (
+                <SetComposition items={selectedProduct.setItems} compact />
+              ) : (
+                <div className="mb-5">
+                  <h3 className="font-semibold text-lg mb-1.5">Состав</h3>
+                  <p className="text-muted-foreground text-[15px] leading-relaxed">{compositionText}</p>
+                </div>
+              )}
+
+              {selectedProduct.allergens.length > 0 && (
+                <div className="mb-4">
+                  <h3 className="font-semibold text-lg mb-1.5 flex items-center gap-2">
+                    Аллергены
+                    <AlertCircle className="w-4 h-4 text-primary" />
+                  </h3>
+                  <p className="text-muted-foreground text-[15px]">{selectedProduct.allergens.join(', ')}</p>
+                </div>
+              )}
+            </div>
+
+            <div className="flex items-center gap-3 pt-5">
+              <div className="flex items-center h-14 rounded-full border border-border px-1 flex-shrink-0">
+                <button
+                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                  className="w-12 h-12 rounded-full flex items-center justify-center hover:bg-muted active:scale-95 transition"
+                  aria-label="Меньше"
+                >
+                  <Minus className="w-4 h-4" />
+                </button>
+                <span className="w-7 text-center font-semibold text-lg">{quantity}</span>
+                <button
+                  onClick={() => setQuantity(quantity + 1)}
+                  className="w-12 h-12 rounded-full flex items-center justify-center hover:bg-muted active:scale-95 transition"
+                  aria-label="Больше"
+                >
+                  <Plus className="w-4 h-4" />
+                </button>
+              </div>
+              <button
+                onClick={handleAddToCart}
+                className="flex-1 h-14 bg-foreground text-background rounded-full font-semibold text-lg hover:bg-foreground/90 transition-all active:scale-[0.98]"
+              >
+                {typeof totalOldPrice === 'number' && totalOldPrice > totalPrice ? (
+                  <span className="mr-2 line-through opacity-70">{totalOldPrice} ₽</span>
+                ) : null}
+                В корзину за {totalPrice} ₽
+                {typeof totalEconomy === 'number' && totalEconomy > 0 ? (
+                  <span className="ml-2 text-green-200">−{totalEconomy} ₽</span>
+                ) : null}
+              </button>
+            </div>
           </div>
         </div>
       </div>
