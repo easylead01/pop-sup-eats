@@ -8,63 +8,30 @@ export interface Promo {
   hideTitle?: boolean;
 }
 
-import promo1 from '@/assets/promo-1.png';
-import promo2 from '@/assets/promo-2.png';
-import promo3 from '@/assets/promo-3.png';
-import promo4 from '@/assets/promo-4.png';
-import promo5 from '@/assets/promo-5.png';
-import promo6 from '@/assets/promo-6.png';
-import promo7 from '@/assets/promo-7.png';
+// Сторис 1440×1920 (3:4), сделаны по макетам Claude Design: текст акции уже на картинке.
+// Старые сторис-заглушки promo-1…7.png лежат в src/assets, если понадобится вернуть.
 import promoDeshevo from '@/assets/promo-deshevo.webp';
+import promoSetBig from '@/assets/promo-set-big.webp';
+import promoSet15 from '@/assets/promo-set-15.webp';
+import promoSetMini from '@/assets/promo-set-mini.webp';
+import promoFri from '@/assets/promo-fri.webp';
+import promoCezarCeramic from '@/assets/promo-cezar-ceramic.webp';
+import promoCezarNavy from '@/assets/promo-cezar-navy.webp';
+import promoPizza from '@/assets/promo-pizza.webp';
+import promoRollOvara from '@/assets/promo-roll-ovara.webp';
+import promoBday15 from '@/assets/promo-bday15.webp';
+import promoWedding15 from '@/assets/promo-wedding15.webp';
 
 export const promos: Promo[] = [
-  {
-    id: 'deshevo',
-    title: 'Сет «Дёшево и Сердито» — 1 800 ₽',
-    gradient: 'from-zinc-800 to-zinc-900',
-    image: promoDeshevo,
-    hideTitle: true,
-  },
-  {
-    id: '1',
-    title: 'Скидка 20% на первый заказ',
-    gradient: 'from-orange-500 to-red-500',
-    image: promo1,
-  },
-  {
-    id: '2',
-    title: 'Бесплатная доставка от 1500₽',
-    gradient: 'from-blue-500 to-purple-500',
-    image: promo2,
-  },
-  {
-    id: '3',
-    title: 'Двойные роллы по вторникам',
-    gradient: 'from-pink-500 to-orange-400',
-    image: promo3,
-  },
-  {
-    id: '4',
-    title: 'Сет дня -30%',
-    gradient: 'from-emerald-500 to-teal-500',
-    image: promo4,
-  },
-  {
-    id: '5',
-    title: 'Подарок к заказу',
-    gradient: 'from-violet-500 to-pink-500',
-    image: promo5,
-  },
-  {
-    id: '6',
-    title: 'Попробуй новинки',
-    gradient: 'from-amber-500 to-orange-600',
-    image: promo6,
-  },
-  {
-    id: '7',
-    title: 'Happy Hour 18:00–21:00',
-    gradient: 'from-teal-500 to-emerald-500',
-    image: promo7,
-  },
+  { id: 'deshevo', title: 'Сет «Дёшево и Сердито» — 1 800 ₽', gradient: 'from-zinc-800 to-zinc-900', image: promoDeshevo, hideTitle: true },
+  { id: 'set-big', title: 'Собери чеки на 17 000 ₽ и получи сет Биг в подарок', gradient: 'from-indigo-900 to-slate-900', image: promoSetBig, hideTitle: true },
+  { id: 'set-15', title: 'Собери чеки на 12 000 ₽ и получи сет 15 в подарок', gradient: 'from-emerald-50 to-emerald-100', image: promoSet15, hideTitle: true },
+  { id: 'set-mini', title: 'Собери чеки на 9 000 ₽ и получи сет мини в подарок', gradient: 'from-rose-950 to-stone-900', image: promoSetMini, hideTitle: true },
+  { id: 'fri', title: 'Собери чеки на 3 000 ₽ и получи картофель фри в подарок', gradient: 'from-teal-950 to-slate-900', image: promoFri, hideTitle: true },
+  { id: 'cezar-ceramic', title: 'Собери чеки на 4 000 ₽ и получи салат цезарь в подарок', gradient: 'from-orange-50 to-amber-100', image: promoCezarCeramic, hideTitle: true },
+  { id: 'cezar-navy', title: 'Собери чеки на 4 000 ₽ и получи салат цезарь в подарок', gradient: 'from-slate-900 to-blue-950', image: promoCezarNavy, hideTitle: true },
+  { id: 'pizza', title: 'Собери чеки на 10 000 ₽ и получи пиццу мама-миа в подарок', gradient: 'from-green-950 to-stone-900', image: promoPizza, hideTitle: true },
+  { id: 'roll-ovara', title: 'Закажи роллы на 2 000 ₽ и получи ролл овара в подарок', gradient: 'from-slate-100 to-slate-200', image: promoRollOvara, hideTitle: true },
+  { id: 'bday15', title: 'Скидка 15% в день рождения', gradient: 'from-violet-950 to-indigo-950', image: promoBday15, hideTitle: true },
+  { id: 'wedding15', title: 'Скидка 15% на годовщину свадьбы', gradient: 'from-amber-50 to-orange-100', image: promoWedding15, hideTitle: true },
 ];
