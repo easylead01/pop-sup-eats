@@ -5,10 +5,52 @@ import { toast } from '@/hooks/use-toast';
 import { Input } from '@/components/ui/input';
 import { useSwipeClose } from '@/hooks/useSwipeClose';
 
+type SocialProvider = 'yandex' | 'vk' | 'google';
+
+const SOCIAL: { id: SocialProvider; label: string; name: string; className: string; icon: JSX.Element }[] = [
+  {
+    id: 'yandex',
+    label: 'Войти с Яндекс ID',
+    name: 'Яндекс ID',
+    className: 'bg-black text-white hover:bg-black/85',
+    icon: (
+      <span className="w-6 h-6 rounded-full bg-[#FC3F1D] flex items-center justify-center text-white text-[15px] font-bold leading-none" aria-hidden>
+        Я
+      </span>
+    ),
+  },
+  {
+    id: 'vk',
+    label: 'Войти с VK ID',
+    name: 'VK ID',
+    className: 'bg-[#0077FF] text-white hover:bg-[#0069e0]',
+    icon: (
+      <span className="w-6 h-6 rounded-md bg-white text-[#0077FF] flex items-center justify-center text-[10px] font-extrabold leading-none tracking-tight" aria-hidden>
+        VK
+      </span>
+    ),
+  },
+  {
+    id: 'google',
+    label: 'Войти через Google',
+    name: 'Google',
+    className: 'bg-white text-foreground border border-border hover:bg-muted',
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-6 h-6" aria-hidden>
+        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.28-4.74 3.28-8.09z" />
+        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.98.66-2.24 1.06-3.72 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z" />
+        <path fill="#FBBC05" d="M5.84 14.11a6.6 6.6 0 0 1 0-4.22V7.05H2.18a11 11 0 0 0 0 9.9l3.66-2.84z" />
+        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15A10.96 10.96 0 0 0 12 1 11 11 0 0 0 2.18 7.05l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z" />
+      </svg>
+    ),
+  },
+];
+
 const AuthPopup = () => {
   const { isAuthOpen, setAuthOpen, authStep, setAuthStep, setIsLoggedIn, phoneNumber, setPhoneNumber, setCheckoutOpen } = useUIStore();
   const [code, setCode] = useState('');
   const [loading, setLoading] = useState(false);
+  const [socialLoading, setSocialLoading] = useState<SocialProvider | null>(null);
   const [isClosing, setIsClosing] = useState(false);
   const [cursorPos, setCursorPos] = useState<{ x: number; y: number } | null>(null);
   const [isBackdropHover, setIsBackdropHover] = useState(false);
@@ -71,6 +113,23 @@ const AuthPopup = () => {
     setCode('');
     
     // Open checkout after successful auth
+    setTimeout(() => {
+      setCheckoutOpen(true);
+    }, 300);
+  };
+
+  // Заглушка входа через соцсети: имитируем успешную авторизацию
+  const handleSocialLogin = async (provider: (typeof SOCIAL)[number]) => {
+    if (socialLoading) return;
+    setSocialLoading(provider.id);
+    await new Promise(resolve => setTimeout(resolve, 900));
+    setSocialLoading(null);
+    setIsLoggedIn(true);
+    setAuthOpen(false);
+    toast({
+      title: 'Добро пожаловать!',
+      description: `Вы вошли через ${provider.name} (демо)`,
+    });
     setTimeout(() => {
       setCheckoutOpen(true);
     }, 300);
@@ -178,6 +237,27 @@ const AuthPopup = () => {
             >
               {loading ? 'Отправка...' : 'Получить код'}
             </button>
+
+            <div className="flex items-center gap-3 pt-2">
+              <div className="h-px flex-1 bg-border" />
+              <span className="text-sm text-muted-foreground">или войти через</span>
+              <div className="h-px flex-1 bg-border" />
+            </div>
+
+            <div className="space-y-2.5">
+              {SOCIAL.map((p) => (
+                <button
+                  key={p.id}
+                  type="button"
+                  onClick={() => handleSocialLogin(p)}
+                  disabled={!!socialLoading}
+                  className={`w-full h-12 rounded-full flex items-center justify-center gap-3 font-semibold text-[15px] transition-all active:scale-[0.99] disabled:opacity-60 ${p.className}`}
+                >
+                  {p.icon}
+                  {socialLoading === p.id ? 'Входим…' : p.label}
+                </button>
+              ))}
+            </div>
           </div>
         ) : (
           <div className="space-y-4">
