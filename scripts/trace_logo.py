@@ -6,7 +6,11 @@
 (медиана её пикселей), прозрачные места остаются прозрачными, как в PNG.
 
 Запуск (нужны numpy, scikit-image, Pillow):
-  python scripts/trace_logo.py "src/assets/logo (1).png" src/assets/logo.svg
+  python scripts/trace_logo.py "src/assets/logo (1).png" src/assets/logo.svg [--unify]
+
+--unify: формы те же, но каждый слой одним цветом (среднее по площади исходных
+оттенков): весь графит одним тоном, весь оранжевый одним, прожилки одним,
+рисинки одним; мелкие блики-сглаживания по краям оранжевого убираются.
 """
 import sys
 import numpy as np
@@ -14,6 +18,7 @@ from PIL import Image
 from skimage import measure, transform, morphology
 
 SRC, DST = sys.argv[1], sys.argv[2]
+UNIFY = '--unify' in sys.argv[3:]
 UP = 6            # во сколько раз увеличиваем перед обводкой (гладкие края)
 TOL = 0.35        # допуск упрощения контура, в увеличенных пикселях
 
@@ -75,7 +80,7 @@ def add_layer(name, cov_map, sub_layer=True, grow=0.0):
         color = [np.median(ch[core if core.sum() else body_px]) for ch in (R, G, B)]
         d = trace(local, level=0.5 - grow)
         if d:
-            layers.append((name, hexc(color), d))
+            layers.append((name, color, d, int(m.sum())))
         if sub_layer:
             # прожилки/блики: заметно светлее основного цвета детали
             hl = np.clip((LUM - body_lum - 8) / 12.0, 0, 1) * local
@@ -84,7 +89,7 @@ def add_layer(name, cov_map, sub_layer=True, grow=0.0):
                 hcol = [np.median(ch[hl_px]) for ch in (R, G, B)]
                 dh = trace(hl * region)
                 if dh:
-                    subs.append((name + '-hl', hexc(hcol), dh))
+                    subs.append((name + '-hl', hcol, dh, int(hl_px.sum())))
     return subs
 
 # оранжевый снизу и чуть «с запасом», чтобы на стыке с тёмным не было щели
@@ -97,17 +102,29 @@ for m in components(cov['light'], min_px=1):
     color = [np.median(ch[m]) for ch in (R, G, B)]
     d = trace(cov['light'] * region)
     if d:
-        layers.append(('light', hexc(color), d))
+        layers.append(('light', color, d, int(m.sum())))
 
 # прожилки на тёмном рисуем поверх тёмного, блики оранжевого — поверх оранжевого,
 # поэтому порядок: оранжевый, блики оранжевого, тёмный, прожилки, светлое
 order = {'orange': 0, 'orange-hl': 1, 'dark': 2, 'dark-hl': 3, 'light': 4}
 layers.sort(key=lambda l: order[l[0]])
 
+if UNIFY:
+    MIN_HL = {'orange-hl': 15, 'dark-hl': 4}  # меньше — это следы сглаживания, не рисунок
+    layers = [l for l in layers if l[3] >= MIN_HL.get(l[0], 0)]
+    unified = {}
+    for name in order:
+        group = [l for l in layers if l[0] == name]
+        if group:
+            total = sum(l[3] for l in group)
+            unified[name] = [sum(l[1][i] * l[3] for l in group) / total for i in range(3)]
+    layers = [(n, unified[n], d, a) for n, c, d, a in layers]
+    print('единые цвета:', {n: hexc(c) for n, c in unified.items()})
+
 svg = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" role="img" aria-label="ОКИАНАВА">',
        '<title>ОКИАНАВА</title>']
-for name, color, d in layers:
-    svg.append(f'<path fill="{color}" fill-rule="evenodd" d="{d}"/>')
+for name, color, d, _ in layers:
+    svg.append(f'<path fill="{hexc(color)}" fill-rule="evenodd" d="{d}"/>')
 svg.append('</svg>')
 open(DST, 'w').write('\n'.join(svg))
 from collections import Counter
