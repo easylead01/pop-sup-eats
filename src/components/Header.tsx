@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useCartStore } from '@/store/cartStore';
 import { useUIStore } from '@/store/uiStore';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
-import logo from '@/assets/logo (1).png';
+import logo from '@/assets/logo.svg';
 const Header = () => {
   const addresses = [
     'ул. Федора Тютчева, д. 97',

@@ -18,7 +18,7 @@ import { ChevronUp } from 'lucide-react';
 import { useUIStore } from '@/store/uiStore';
 import { useCartStore } from '@/store/cartStore';
 import { useDemoStore } from '@/store/demoStore';
-import logo from '@/assets/logo (1).png';
+import logo from '@/assets/logo.svg';
 
 const Index = () => {
   const [showTop, setShowTop] = useState(false);
