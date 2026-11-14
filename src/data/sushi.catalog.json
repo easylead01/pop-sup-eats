@@ -4,7 +4,7 @@
     "name": "Суши Чука",
     "description": "Рис, Нори, Чука салат",
     "price": 90,
-    "imageUrl": "/files/images/cache/Goods/Good40/e4bd574ca5-1_328.jpg",
+    "imageUrl": "/images/goods/Good40-3d159731df-1.jpg",
     "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/susi-cuka",
     "weight": "35 гр",
     "ingredients": [
@@ -18,7 +18,7 @@
     "name": "Суши Креветка",
     "description": "Рис, Нори, Креветка",
     "price": 130,
-    "imageUrl": "/files/images/cache/Goods/Good36/715e987640-1_328.jpg",
+    "imageUrl": "/images/goods/Good36-8b9b05ef34-1.jpg",
     "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/susi-krevetka",
     "weight": "32 гр",
     "ingredients": [
@@ -32,7 +32,7 @@
     "name": "Суши Лосось",
     "description": "Рис, Нори, Лосось",
     "price": 130,
-    "imageUrl": "/files/images/cache/Goods/Good37/0607bd4141-1_328.jpg",
+    "imageUrl": "/images/goods/Good37-d2d2fb1093-1.jpg",
     "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/susi-losos",
     "weight": "32 гр",
     "ingredients": [
@@ -46,7 +46,7 @@
     "name": "Суши Спайси Лосось",
     "description": "Рис, Нори, Лосось спайси",
     "price": 150,
-    "imageUrl": "/files/images/cache/Goods/Good38/998b823cd0-1_328.jpg",
+    "imageUrl": "/images/goods/Good38-e0cad213b9-1.png",
     "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/susi-spajsi-losos",
     "weight": "35 гр",
     "ingredients": [
@@ -60,7 +60,7 @@
     "name": "Суши Сырный лосось",
     "description": "Рис, Нори, Сыр Буко, Лосось",
     "price": 150,
-    "imageUrl": "/files/images/cache/Goods/Good190/618ba58278-1_328.jpg",
+    "imageUrl": "/images/goods/Good190-db2a9754c9-1.jpg",
     "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/susi-syrnyj-losos",
     "weight": "35 гр",
     "ingredients": [
@@ -75,7 +75,7 @@
     "name": "Суши Спайси Краб",
     "description": "Рис, Нори, Спайси соус, Имитация краба",
     "price": 150,
-    "imageUrl": "/files/images/cache/Goods/Good191/3f6cd07bcb-1_328.jpg",
+    "imageUrl": "/images/goods/Good191-cfd11f492f-1.png",
     "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/susi-spajsi-krab",
     "weight": "35 гр",
     "ingredients": [
@@ -90,7 +90,7 @@
     "name": "Суши Спайси Креветка",
     "description": "Рис, Нори, Креветка, Спайси соус",
     "price": 150,
-    "imageUrl": "/files/images/cache/Goods/Good192/52a393cd85-1_328.jpg",
+    "imageUrl": "/images/goods/Good192-22faaaa507-1.png",
     "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/susi-spajsi-krevetka",
     "weight": "35 гр",
     "ingredients": [
@@ -105,7 +105,7 @@
     "name": "Суши Сырная креветка",
     "description": "Рис, Нори, Креветка, Сыр Буко",
     "price": 150,
-    "imageUrl": "/files/images/cache/Goods/Good193/cd2b592e5b-1_328.jpg",
+    "imageUrl": "/images/goods/Good193-cc8adfa287-1.jpg",
     "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/susi-syrnaa-krevetka",
     "weight": "35 гр",
     "ingredients": [
@@ -120,7 +120,7 @@
     "name": "Суши Сырный краб",
     "description": "Рис, Нори, Сыр Буко, Имитация краба",
     "price": 150,
-    "imageUrl": "/files/images/cache/Goods/Good199/a1e2355992-1_328.jpg",
+    "imageUrl": "/images/goods/Good199-fd0fc25e6a-1.jpg",
     "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/susi-syrnyj-krab",
     "weight": "35 гр",
     "ingredients": [
@@ -135,7 +135,7 @@
     "name": "Суши Сырный угорь",
     "description": "Рис, Нори, Угорь, Сыр Буко",
     "price": 150,
-    "imageUrl": "/files/images/cache/Goods/Good200/429b17e4a2-1_328.jpg",
+    "imageUrl": "/images/goods/Good200-ccb5f3b807-1.jpg",
     "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/susi-syrnyj-ugor",
     "weight": "35 гр",
     "ingredients": [
@@ -150,7 +150,7 @@
     "name": "Суши Спайси Угорь",
     "description": "Рис, Нори, Угорь, Спайси соус",
     "price": 150,
-    "imageUrl": "/files/images/cache/Goods/Good201/15fc0adb61-1_328.jpg",
+    "imageUrl": "/images/goods/Good201-2aa3f3baf6-1.png",
     "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/susi-spajsi-ugor",
     "weight": "35 гр",
     "ingredients": [
@@ -165,7 +165,7 @@
     "name": "Суши Угорь",
     "description": "Рис, Нори, Угорь",
     "price": 200,
-    "imageUrl": "/files/images/cache/Goods/Good39/ec3ae85496-1_328.jpg",
+    "imageUrl": "/images/goods/Good39-946adf387a-1.jpg",
     "productUrl": "https://xn--36-6kcaj8anzg.xn--p1ai/good/susi-ugor",
     "weight": "32 гр",
     "ingredients": [

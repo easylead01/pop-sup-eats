@@ -2112,7 +2112,7 @@ export const products: Product[] = [
     "price": 430,
     "weight": "",
     "category": "sets",
-    "image": "/files/images/cache/Goods/Good46/f02fb686c0-1_328.png",
+    "image": "/images/goods/Good46-f02fb686c0-1.png",
     "ingredients": [],
     "allergens": [],
     "productUrl": "/good/sety-no1"
@@ -2124,7 +2124,7 @@ export const products: Product[] = [
     "price": 500,
     "weight": "",
     "category": "sets",
-    "image": "/files/images/cache/Goods/Good66/7ef71cd66f-1_328.png",
+    "image": "/images/goods/Good66-6753a69892-1.jpg",
     "ingredients": [],
     "allergens": [],
     "productUrl": "/good/sety-no6"
@@ -2136,7 +2136,7 @@ export const products: Product[] = [
     "price": 540,
     "weight": "",
     "category": "sets",
-    "image": "/files/images/cache/Goods/Good63/e683c40a05-1_328.jpg",
+    "image": "/images/goods/Good63-ae48bde4b8-1.jpg",
     "ingredients": [],
     "allergens": [],
     "productUrl": "/good/sety-no3"
@@ -2148,7 +2148,7 @@ export const products: Product[] = [
     "price": 540,
     "weight": "",
     "category": "sets",
-    "image": "/files/images/cache/Goods/Good64/f7dcecdbb4-1_328.png",
+    "image": "/images/goods/Good64-7554361877-1.jpg",
     "ingredients": [],
     "allergens": [],
     "productUrl": "/good/sety-no4"
@@ -2160,7 +2160,7 @@ export const products: Product[] = [
     "price": 540,
     "weight": "",
     "category": "sets",
-    "image": "/files/images/cache/Goods/Good68/cadb0b3800-1_328.png",
+    "image": "/images/goods/Good68-385b7ee018-1.jpg",
     "ingredients": [],
     "allergens": [],
     "productUrl": "/good/sety-no8"
@@ -2172,7 +2172,7 @@ export const products: Product[] = [
     "price": 550,
     "weight": "",
     "category": "sets",
-    "image": "/files/images/cache/Goods/Good297/426d7c815f-1_328.jpg",
+    "image": "/images/goods/Good297-09e658e4a9-1.jpg",
     "ingredients": [],
     "allergens": [],
     "productUrl": "/good/sety-set-11"
@@ -2184,7 +2184,7 @@ export const products: Product[] = [
     "price": 550,
     "weight": "",
     "category": "sets",
-    "image": "/files/images/cache/Goods/Good67/34270dc573-1_328.png",
+    "image": "/images/goods/Good67-d53cc1deb6-1.jpg",
     "ingredients": [],
     "allergens": [],
     "productUrl": "/good/sety-no7"
@@ -2196,7 +2196,7 @@ export const products: Product[] = [
     "price": 550,
     "weight": "",
     "category": "sets",
-    "image": "/files/images/cache/Goods/Good294/9e07903376-1_328.jpg",
+    "image": "/images/goods/Good294-a137905fa3-1.jpg",
     "ingredients": [],
     "allergens": [],
     "productUrl": "/good/sety-set-lubimka-lajt"
@@ -2208,7 +2208,7 @@ export const products: Product[] = [
     "price": 670,
     "weight": "",
     "category": "sets",
-    "image": "/files/images/cache/Goods/Good57/b2df1bff3a-1_328.jpg",
+    "image": "/images/goods/Good57-5e6aa196ab-1.jpg",
     "ingredients": [],
     "allergens": [],
     "productUrl": "/good/sety-no2"
@@ -2220,7 +2220,7 @@ export const products: Product[] = [
     "price": 700,
     "weight": "",
     "category": "sets",
-    "image": "/files/images/cache/Goods/Good288/d140624fd3-1_328.jpg",
+    "image": "/images/goods/Good288-831a207659-1.jpg",
     "ingredients": [],
     "allergens": [],
     "productUrl": "/good/sety-set-kras"
@@ -2232,7 +2232,7 @@ export const products: Product[] = [
     "price": 770,
     "weight": "",
     "category": "sets",
-    "image": "/files/images/cache/Goods/Good47/08ab387e89-1_328.png",
+    "image": "/images/goods/Good47-0a957cdd48-1.jpg",
     "ingredients": [],
     "allergens": [],
     "productUrl": "/good/sety-no10"
@@ -2244,7 +2244,7 @@ export const products: Product[] = [
     "price": 770,
     "weight": "",
     "category": "sets",
-    "image": "/files/images/cache/Goods/Good69/59d7830a4a-1_328.png",
+    "image": "/images/goods/Good69-5117f00d39-1.jpg",
     "ingredients": [],
     "allergens": [],
     "productUrl": "/good/sety-no9"
@@ -2382,7 +2382,7 @@ export const products: Product[] = [
     "price": 440,
     "weight": "450 гр",
     "category": "wok",
-    "image": "/files/images/cache/Goods/Good333/0f0e28f891-1_328.jpg",
+    "image": "/images/goods/Good333-0f0e28f891-1.jpg",
     "ingredients": [
       "Курица",
       "Кунжут",
@@ -2402,7 +2402,7 @@ export const products: Product[] = [
     "price": 440,
     "weight": "450 гр",
     "category": "wok",
-    "image": "/files/images/cache/Goods/Good334/ba48c20a44-1_328.jpg",
+    "image": "/images/goods/Good334-ba48c20a44-1.jpg",
     "ingredients": [
       "Курица",
       "Кунжут",
@@ -2420,7 +2420,7 @@ export const products: Product[] = [
     "price": 440,
     "weight": "450 гр",
     "category": "wok",
-    "image": "/files/images/cache/Goods/Good335/37b28ccb3f-1_328.jpg",
+    "image": "/images/goods/Good335-37b28ccb3f-1.jpg",
     "ingredients": [
       "Кунжут",
       "Лапша рисовая",
@@ -2440,7 +2440,7 @@ export const products: Product[] = [
     "price": 440,
     "weight": "450 гр",
     "category": "wok",
-    "image": "/files/images/cache/Goods/Good336/472b99a551-1_328.jpg",
+    "image": "/images/goods/Good336-472b99a551-1.jpg",
     "ingredients": [
       "Кунжут",
       "Лапша рисовая",
@@ -2460,7 +2460,7 @@ export const products: Product[] = [
     "price": 440,
     "weight": "450 гр",
     "category": "wok",
-    "image": "/files/images/cache/Goods/Good337/08012bc9ce-1_328.jpg",
+    "image": "/images/goods/Good337-08012bc9ce-1_328.jpg",
     "ingredients": [
       "Кунжут",
       "Овощной микс",
@@ -2480,7 +2480,7 @@ export const products: Product[] = [
     "price": 440,
     "weight": "450 гр",
     "category": "wok",
-    "image": "/files/images/cache/Goods/Good338/67d560ebfc-1_328.jpg",
+    "image": "/images/goods/Good338-67d560ebfc-1.jpg",
     "ingredients": [
       "Курица",
       "Кунжут",
@@ -2500,7 +2500,7 @@ export const products: Product[] = [
     "price": 440,
     "weight": "450 гр",
     "category": "wok",
-    "image": "/files/images/cache/Goods/Good339/a14af5d85a-1_328.jpg",
+    "image": "/images/goods/Good339-a14af5d85a-1.jpg",
     "ingredients": [
       "Кунжут",
       "Овощной микс",
@@ -2520,7 +2520,7 @@ export const products: Product[] = [
     "price": 440,
     "weight": "450 гр",
     "category": "wok",
-    "image": "/files/images/cache/Goods/Good340/4cd5fa4a70-1_328.jpg",
+    "image": "/images/goods/Good340-4cd5fa4a70-1.jpg",
     "ingredients": [
       "Курица",
       "Кунжут",
@@ -2540,7 +2540,7 @@ export const products: Product[] = [
     "price": 440,
     "weight": "450 гр",
     "category": "wok",
-    "image": "/files/images/cache/Goods/Good341/af041b42e5-1_328.jpg",
+    "image": "/images/goods/Good341-af041b42e5-1_328.jpg",
     "ingredients": [
       "Кунжут",
       "Овощной микс",
@@ -2560,7 +2560,7 @@ export const products: Product[] = [
     "price": 440,
     "weight": "450 гр",
     "category": "wok",
-    "image": "/files/images/cache/Goods/Good342/206630114b-1_328.jpg",
+    "image": "/images/goods/Good342-206630114b-1.jpg",
     "ingredients": [
       "Рис",
       "Курица",
@@ -2580,7 +2580,7 @@ export const products: Product[] = [
     "price": 440,
     "weight": "450 гр",
     "category": "wok",
-    "image": "/files/images/cache/Goods/Good343/5c5de6f6a0-1_328.jpg",
+    "image": "/images/goods/Good343-5c5de6f6a0-1.jpg",
     "ingredients": [
       "Рис",
       "Кунжут",
@@ -2600,7 +2600,7 @@ export const products: Product[] = [
     "price": 440,
     "weight": "450 гр",
     "category": "wok",
-    "image": "/files/images/cache/Goods/Good344/d5d50e8580-1_328.jpg",
+    "image": "/images/goods/Good344-d5d50e8580-1.jpg",
     "ingredients": [
       "Рис",
       "Кунжут",
@@ -2832,7 +2832,7 @@ export const products: Product[] = [
     "price": 250,
     "weight": "100 гр",
     "category": "salads",
-    "image": "/files/images/cache/Goods/Good10/c954796bde-1_328.jpg",
+    "image": "/images/goods/Good10-eae2c28e67-1.png",
     "ingredients": [
       "Кунжут",
       "Чука салат",
@@ -2849,7 +2849,7 @@ export const products: Product[] = [
     "price": 400,
     "weight": "",
     "category": "salads",
-    "image": "/files/images/cache/Goods/Good248/5eca6cca94-1_328.png",
+    "image": "/images/goods/Good248-11688459f2-1.jpg",
     "ingredients": [
       "Курица",
       "Помидор",
@@ -2867,7 +2867,7 @@ export const products: Product[] = [
     "price": 440,
     "weight": "",
     "category": "salads",
-    "image": "/files/images/cache/Goods/Good249/349411a3c0-1_328.png",
+    "image": "/images/goods/Good249-914b3c1729-1.jpg",
     "ingredients": [
       "Лосось",
       "Помидор",
@@ -2885,7 +2885,7 @@ export const products: Product[] = [
     "price": 500,
     "weight": "",
     "category": "salads",
-    "image": "/files/images/cache/Goods/Good263/62cca5940c-1_328.jpg",
+    "image": "/images/goods/Good263-2c90a35b0c-1.jpg",
     "ingredients": [
       "Креветка",
       "Помидор",
