@@ -1,163 +1,294 @@
-import { useRef, useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, X } from 'lucide-react';
-import { promos } from '@/data/promos';
+import { useRef, useState, useEffect, useCallback } from 'react';
+import type { CSSProperties } from 'react';
+import { ChevronLeft, ChevronRight, X, Heart, Share2, Volume2, VolumeX, Pause, Play } from 'lucide-react';
+import { promos, type Promo } from '@/data/promos';
+import logo from '@/assets/logo.svg';
+
+const STORY_MS = 12000;
+const BRAND = 'Окинава';
+const BRAND_SUB = 'Роллы · Пицца · Воронеж';
+
+/** Круглая аватарка: кусочек логотипа с роллом (кольцо 82×82 в координатах logo.svg 600×210) */
+const Avatar = ({ size }: { size: number }) => {
+  const s = size / 84;
+  const style: CSSProperties = {
+    width: size,
+    height: size,
+    backgroundImage: `url(${logo})`,
+    backgroundSize: `${600 * s}px ${210 * s}px`,
+    backgroundPosition: `${-19 * s}px ${-80 * s}px`,
+    backgroundRepeat: 'no-repeat',
+  };
+  return <div className="rounded-full bg-white flex-shrink-0 ring-2 ring-white/80" style={style} aria-hidden />;
+};
+
+const StoryMedia = ({ promo, onLoaded, videoRef, muted }: {
+  promo: Promo;
+  onLoaded?: () => void;
+  videoRef?: React.Ref<HTMLVideoElement>;
+  muted?: boolean;
+}) =>
+  promo.video ? (
+    <video ref={videoRef} src={promo.video} className="absolute inset-0 w-full h-full object-cover" autoPlay muted={muted ?? true} playsInline />
+  ) : promo.image ? (
+    // креатив 3:4 целиком по центру, сверху и снизу — его же размытая копия (как ВК для не-9:16)
+    <>
+      <img src={promo.image} alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover scale-125 blur-2xl brightness-75 saturate-125" draggable={false} />
+      <img src={promo.image} alt={promo.title} onLoad={onLoaded} className="absolute inset-0 w-full h-full object-contain" draggable={false} />
+    </>
+  ) : (
+    <div className={`absolute inset-0 bg-gradient-to-br ${promo.gradient}`} />
+  );
 
 const ShortsCarousel = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [progress, setProgress] = useState(0);
-  const progressIntervalRef = useRef<number | null>(null);
-  const nextTimeoutRef = useRef<number | null>(null);
+  const [paused, setPaused] = useState(false);
+  const [muted, setMuted] = useState(true);
+  const [liked, setLiked] = useState<Record<string, boolean>>({});
+  const [copied, setCopied] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [cursorPos, setCursorPos] = useState<{ x: number; y: number } | null>(null);
-  const [isBackdropHover, setIsBackdropHover] = useState(false);
+  const elapsedRef = useRef(0);
+  const pausedRef = useRef(false);
+  const holdStartRef = useRef(0);
+  const holdingRef = useRef(false);
+  const touchStartRef = useRef<{ x: number; y: number; t: number } | null>(null);
+  const touchLastRef = useRef<{ x: number; y: number } | null>(null);
+  const [vh, setVh] = useState(() => window.innerHeight);
+  const [vw, setVw] = useState(() => window.innerWidth);
+
+  useEffect(() => {
+    const onResize = () => { setVh(window.innerHeight); setVw(window.innerWidth); };
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+  const isMobile = vw < 768;
 
   const scroll = (direction: 'left' | 'right') => {
-    if (scrollRef.current) {
-      const scrollAmount = 400;
-      scrollRef.current.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth',
-      });
+    scrollRef.current?.scrollBy({ left: direction === 'left' ? -400 : 400, behavior: 'smooth' });
+  };
+
+  const close = useCallback(() => setActiveIndex(null), []);
+  const prev = useCallback(() => setActiveIndex((i) => (i === null ? null : Math.max(0, i - 1))), []);
+  const next = useCallback(
+    () => setActiveIndex((i) => (i === null ? null : i + 1 >= promos.length ? null : i + 1)),
+    [],
+  );
+
+  const setPause = (v: boolean) => {
+    pausedRef.current = v;
+    setPaused(v);
+    const vid = videoRef.current;
+    if (vid) {
+      if (v) vid.pause();
+      else vid.play().catch(() => {});
     }
   };
-  
-  const close = () => setActiveIndex(null);
-  const prev = () => setActiveIndex((i) => (i === null ? null : (i + promos.length - 1) % promos.length));
-  const next = () => setActiveIndex((i) => (i === null ? null : (i + 1) % promos.length));
-  const [isSmallScreen, setIsSmallScreen] = useState(() => window.innerWidth < 1024);
-  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
-  const touchLastRef = useRef<{ x: number; y: number } | null>(null);
-  const touchThreshold = 60;
-  const [bgLoaded, setBgLoaded] = useState(false);
-  const [cardLoaded, setCardLoaded] = useState(false);
-  const [vvTop, setVvTop] = useState(0);
-  useEffect(() => {
-    const mq = window.matchMedia('(max-width: 1023px)');
-    const onChange = (e: MediaQueryListEvent) => setIsSmallScreen(e.matches);
-    setIsSmallScreen(mq.matches);
-    mq.addEventListener('change', onChange);
-    return () => mq.removeEventListener('change', onChange);
-  }, []);
 
+  // клавиатура
   useEffect(() => {
+    if (activeIndex === null) return;
     const onKey = (e: KeyboardEvent) => {
-      if (activeIndex === null) return;
       if (e.key === 'Escape') close();
       if (e.key === 'ArrowLeft') prev();
       if (e.key === 'ArrowRight') next();
+      if (e.key === ' ') { e.preventDefault(); setPause(!pausedRef.current); }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [activeIndex]);
-  
-  useEffect(() => {
-    if (activeIndex === null) {
-      setProgress(0);
-      if (progressIntervalRef.current) {
-        window.clearInterval(progressIntervalRef.current);
-        progressIntervalRef.current = null;
-      }
-      if (nextTimeoutRef.current) {
-        window.clearTimeout(nextTimeoutRef.current);
-        nextTimeoutRef.current = null;
-      }
-      return;
-    }
-    const prevOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    const cleanupOverflow = () => {
-      document.body.style.overflow = prevOverflow;
-    };
-    setBgLoaded(false);
-    setCardLoaded(false);
-    setProgress(0);
-    if (progressIntervalRef.current) {
-      window.clearInterval(progressIntervalRef.current);
-      progressIntervalRef.current = null;
-    }
-    if (nextTimeoutRef.current) {
-      window.clearTimeout(nextTimeoutRef.current);
-      nextTimeoutRef.current = null;
-    }
-    const promo = promos[activeIndex];
-    const hasVideo = promo.video;
-    if (hasVideo && videoRef.current) {
-      const v = videoRef.current;
-      const handleLoaded = () => {
-        setProgress(0);
-        v.play().catch(() => {});
-        setCardLoaded(true);
-      };
-      const handleTimeUpdate = () => {
-        if (v.duration && v.currentTime >= 0) {
-          setProgress(Math.min(v.currentTime / v.duration, 1));
-        }
-      };
-      const handleEnded = () => {
-        next();
-      };
-      v.addEventListener('loadedmetadata', handleLoaded);
-      v.addEventListener('timeupdate', handleTimeUpdate);
-      v.addEventListener('ended', handleEnded);
-      return () => {
-        v.removeEventListener('loadedmetadata', handleLoaded);
-        v.removeEventListener('timeupdate', handleTimeUpdate);
-        v.removeEventListener('ended', handleEnded);
-        cleanupOverflow();
-      };
-    } else {
-      const durationMs = 12000;
-      const startedAt = Date.now();
-      progressIntervalRef.current = window.setInterval(() => {
-        const elapsed = Date.now() - startedAt;
-        const p = Math.min(elapsed / durationMs, 1);
-        setProgress(p);
-      }, 100);
-      nextTimeoutRef.current = window.setTimeout(() => {
-        next();
-      }, durationMs);
-      return () => {
-        if (progressIntervalRef.current) {
-          window.clearInterval(progressIntervalRef.current);
-          progressIntervalRef.current = null;
-        }
-        if (nextTimeoutRef.current) {
-          window.clearTimeout(nextTimeoutRef.current);
-          nextTimeoutRef.current = null;
-        }
-        cleanupOverflow();
-      };
-    }
-  }, [activeIndex]);
+  }, [activeIndex, close, prev, next]);
+
+  // блокировка прокрутки страницы, пока открыт просмотр
   useEffect(() => {
     if (activeIndex === null) return;
-    const update = () => setVvTop(window.visualViewport ? Math.round(window.visualViewport.offsetTop) : 0);
-    update();
-    window.visualViewport?.addEventListener('resize', update);
-    window.visualViewport?.addEventListener('scroll', update);
-    return () => {
-      window.visualViewport?.removeEventListener('resize', update);
-      window.visualViewport?.removeEventListener('scroll', update);
-    };
-  }, [activeIndex]);
-  
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = prevOverflow; };
+  }, [activeIndex === null]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // таймер сторис (с паузой); для видео прогресс берётся из самого видео
   useEffect(() => {
-    if (activeIndex !== null) {
-      const ids = [
-        activeIndex,
-        (activeIndex + 1) % promos.length,
-        (activeIndex + promos.length - 1) % promos.length,
-      ];
-      ids.forEach((i) => {
-        const p = promos[i];
-        if (p.image) {
-          const img = new Image();
-          img.src = p.image;
-        }
-      });
+    if (activeIndex === null) return;
+    elapsedRef.current = 0;
+    setProgress(0);
+    pausedRef.current = false;
+    setPaused(false);
+    const promo = promos[activeIndex];
+    if (promo.video) {
+      const v = videoRef.current;
+      if (!v) return;
+      const onTime = () => v.duration && setProgress(Math.min(v.currentTime / v.duration, 1));
+      v.addEventListener('timeupdate', onTime);
+      v.addEventListener('ended', next);
+      return () => { v.removeEventListener('timeupdate', onTime); v.removeEventListener('ended', next); };
     }
+    const tick = 50;
+    const id = window.setInterval(() => {
+      if (pausedRef.current) return;
+      elapsedRef.current += tick;
+      const p = Math.min(elapsedRef.current / STORY_MS, 1);
+      setProgress(p);
+      if (p >= 1) { window.clearInterval(id); next(); }
+    }, tick);
+    return () => window.clearInterval(id);
+  }, [activeIndex, next]);
+
+  // предзагрузка соседних картинок
+  useEffect(() => {
+    if (activeIndex === null) return;
+    [activeIndex - 2, activeIndex - 1, activeIndex + 1, activeIndex + 2].forEach((i) => {
+      const p = promos[i];
+      if (p?.image) { const img = new Image(); img.src = p.image; }
+    });
   }, [activeIndex]);
+
+  const share = async (promo: Promo) => {
+    const url = window.location.href.split('#')[0];
+    try {
+      if (navigator.share) { await navigator.share({ title: promo.title, url }); return; }
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1600);
+    } catch { /* пользователь отменил */ }
+  };
+
+  const goToMenu = () => {
+    close();
+    window.setTimeout(() => {
+      const el = document.getElementById('rolls');
+      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 100, behavior: 'smooth' });
+    }, 50);
+  };
+
+  // клик по сторис: левая треть — назад, остальное — вперёд (как в ВК)
+  const onStoryClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (Date.now() - holdStartRef.current > 300) return; // долгое нажатие — это пауза, а не перелистывание
+    const r = e.currentTarget.getBoundingClientRect();
+    if (e.clientX - r.left < r.width / 3) prev(); else next();
+  };
+
+  const active = activeIndex !== null ? promos[activeIndex] : null;
+
+  // размеры карточек на компьютере
+  const storyH = Math.min(vh - 140, 780);
+  const storyW = Math.round((storyH * 9) / 16);
+  const sideH = Math.round(storyH * 0.62);
+  const sideW = Math.round((sideH * 9) / 16);
+
+  const progressBars = (
+    <div className="flex gap-1">
+      {promos.map((p, i) => (
+        <div key={p.id} className="h-[3px] rounded-full bg-white/35 overflow-hidden flex-1">
+          <div
+            className="h-full bg-white rounded-full"
+            style={{ width: `${activeIndex === null ? 0 : i < activeIndex ? 100 : i === activeIndex ? progress * 100 : 0}%` }}
+          />
+        </div>
+      ))}
+    </div>
+  );
+
+  const header = (promo: Promo, compact = false) => (
+    <div className="flex items-center gap-3 min-w-0">
+      <Avatar size={compact ? 28 : 40} />
+      <div className="min-w-0 leading-tight">
+        <div className={`text-white font-semibold truncate ${compact ? 'text-[12px]' : 'text-[15px]'}`}>
+          {BRAND}
+          {!compact && <span className="ml-2 font-normal text-white/60">акция</span>}
+        </div>
+        {!compact && <div className="text-white/60 text-[12px] truncate">{BRAND_SUB}</div>}
+      </div>
+      {!compact && promo.video && (
+        <button
+          type="button"
+          onClick={(e) => { e.stopPropagation(); setMuted(!muted); }}
+          className="ml-auto p-1.5 text-white/90 hover:text-white"
+          aria-label={muted ? 'Включить звук' : 'Выключить звук'}
+        >
+          {muted ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
+        </button>
+      )}
+    </div>
+  );
+
+  const storyOverlay = (promo: Promo, withClose = false) => (
+    <>
+      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/55 to-transparent pointer-events-none" />
+      <div className="absolute inset-x-0 top-0 px-3 pt-3 pointer-events-auto" onClick={(e) => e.stopPropagation()}>
+        {progressBars}
+        <div className="flex items-center mt-3">
+          <div className="flex-1 min-w-0">{header(promo)}</div>
+          <button
+            type="button"
+            onClick={() => setPause(!paused)}
+            className="p-1.5 text-white/90 hover:text-white"
+            aria-label={paused ? 'Продолжить' : 'Пауза'}
+          >
+            {paused ? <Play className="w-6 h-6" /> : <Pause className="w-6 h-6" />}
+          </button>
+          {withClose && (
+            <button type="button" onClick={close} className="p-1.5 text-white/90 hover:text-white" aria-label="Закрыть">
+              <X className="w-7 h-7" />
+            </button>
+          )}
+        </div>
+      </div>
+      <button
+        type="button"
+        onClick={(e) => { e.stopPropagation(); setLiked((l) => ({ ...l, [promo.id]: !l[promo.id] })); }}
+        className="absolute right-4 bottom-4 w-14 h-14 rounded-full bg-black/35 backdrop-blur-md flex items-center justify-center text-white hover:bg-black/50 active:scale-95 transition"
+        aria-label="Нравится"
+      >
+        <Heart className={`w-7 h-7 ${liked[promo.id] ? 'fill-[#ff3347] text-[#ff3347]' : ''}`} strokeWidth={1.8} />
+      </button>
+      {!promo.hideTitle && (
+        <div className="absolute inset-x-0 bottom-0 p-5 pr-20 bg-gradient-to-t from-black/70 to-transparent pointer-events-none">
+          <p className="text-white font-bold text-lg leading-tight drop-shadow-lg">{promo.title}</p>
+        </div>
+      )}
+    </>
+  );
+
+  const bottomBar = (promo: Promo) => (
+    <div className="flex items-center gap-3">
+      <button
+        type="button"
+        onClick={goToMenu}
+        className="flex-1 h-11 rounded-full bg-[#2b2b2d] text-left px-5 text-[15px] text-white/55 hover:text-white/80 transition"
+      >
+        Смотреть меню
+      </button>
+      <button
+        type="button"
+        onClick={() => share(promo)}
+        className="w-11 h-11 flex items-center justify-center text-white/80 hover:text-white relative"
+        aria-label="Поделиться"
+      >
+        <Share2 className="w-6 h-6" />
+        {copied && <span className="absolute -top-8 right-0 whitespace-nowrap text-xs bg-white text-black rounded-md px-2 py-1">Ссылка скопирована</span>}
+      </button>
+    </div>
+  );
+
+  const sideCard = (i: number) => {
+    const p = promos[i];
+    if (!p) return <div style={{ width: sideW, height: sideH }} className="flex-shrink-0" aria-hidden />;
+    return (
+      <button
+        type="button"
+        key={p.id}
+        onClick={(e) => { e.stopPropagation(); setActiveIndex(i); }}
+        className="relative flex-shrink-0 rounded-[14px] overflow-hidden opacity-45 hover:opacity-75 transition-opacity"
+        style={{ width: sideW, height: sideH }}
+        aria-label={`Открыть сторис: ${p.title}`}
+      >
+        <StoryMedia promo={p} />
+        <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/50 to-transparent" />
+        <div className="absolute left-3 top-3 right-3">{header(p, true)}</div>
+      </button>
+    );
+  };
 
   return (
     <section className="relative py-6 md:py-8">
@@ -170,7 +301,6 @@ const ShortsCarousel = () => {
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
-          
           <button
             onClick={() => scroll('right')}
             className="absolute right-0 top-1/2 -translate-y-1/2 z-50 w-10 h-10 bg-card rounded-full shadow-lg flex items-center justify-center hover:bg-muted transition-colors translate-x-4 hidden md:flex"
@@ -179,37 +309,19 @@ const ShortsCarousel = () => {
           </button>
 
           {/* Carousel */}
-          <div
-            ref={scrollRef}
-            className="flex gap-4 overflow-x-auto scrollbar-hide pb-2 -mx-4 px-4 md:mx-0 md:px-0"
-          >
+          <div ref={scrollRef} className="flex gap-4 overflow-x-auto scrollbar-hide pb-2 -mx-4 px-4 md:mx-0 md:px-0">
             {promos.map((promo, index) => (
-              <div
-                key={promo.id}
-                className="shorts-card"
-                onClick={() => setActiveIndex(index)}
-              >
-                {/* Background */}
+              <div key={promo.id} className="shorts-card" onClick={() => setActiveIndex(index)}>
                 {promo.image ? (
-                  <img 
-                    src={promo.image} 
-                    alt={promo.title}
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
+                  <img src={promo.image} alt={promo.title} className="absolute inset-0 w-full h-full object-cover" />
                 ) : (
                   <div className={`absolute inset-0 bg-gradient-to-br ${promo.gradient}`} />
                 )}
-                
                 {!promo.hideTitle && (
                   <>
-                    {/* Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-
-                    {/* Text */}
                     <div className="absolute bottom-0 left-0 right-0 p-4">
-                      <p className="text-white font-bold text-base leading-tight drop-shadow-lg">
-                        {promo.title}
-                      </p>
+                      <p className="text-white font-bold text-base leading-tight drop-shadow-lg">{promo.title}</p>
                     </div>
                   </>
                 )}
@@ -217,142 +329,85 @@ const ShortsCarousel = () => {
             ))}
           </div>
 
-          {/* Popup */}
-          {activeIndex !== null && (
-            <div
-              className="fixed inset-0 z-[100] flex items-center justify-center"
-              onClick={isSmallScreen ? undefined : close}
-              onTouchStart={(e) => {
-                const t = e.touches[0];
-                touchStartRef.current = { x: t.clientX, y: t.clientY };
-                touchLastRef.current = { x: t.clientX, y: t.clientY };
-              }}
-              onTouchMove={(e) => {
-                const t = e.touches[0];
-                touchLastRef.current = { x: t.clientX, y: t.clientY };
-              }}
-              onTouchEnd={() => {
-                if (!touchStartRef.current || !touchLastRef.current) return;
-                const dx = touchLastRef.current.x - touchStartRef.current.x;
-                const dy = touchLastRef.current.y - touchStartRef.current.y;
-                const absX = Math.abs(dx);
-                const absY = Math.abs(dy);
-                touchStartRef.current = null;
-                touchLastRef.current = null;
-                if (absX > absY && absX > touchThreshold) {
-                  if (dx < 0) next();
-                  else prev();
-                } else if (absY > touchThreshold) {
-                  close();
-                }
-              }}
-            >
-              {/* Blurred tinted backdrop */}
-              <div
-                className="absolute inset-0"
-                onMouseEnter={() => setIsBackdropHover(true)}
-                onMouseLeave={() => { setIsBackdropHover(false); setCursorPos(null); }}
-                onMouseMove={(e) => setCursorPos({ x: e.clientX, y: e.clientY })}
-              >
-                {isSmallScreen ? (
-                  <div className={`absolute inset-0 bg-gradient-to-br ${promos[activeIndex]?.gradient ?? 'from-gray-700 to-gray-900'}`} />
-                ) : promos[activeIndex]?.image ? (
-                  <img
-                    src={promos[activeIndex].image as string}
-                    alt=""
-                    aria-hidden
-                    onLoad={() => setBgLoaded(true)}
-                    className={`absolute inset-0 w-full h-full object-cover scale-110 saturate-110 brightness-85 blur-sm md:blur-2xl md:brightness-75 md:saturate-125 transition-opacity duration-300 ${bgLoaded ? 'opacity-100' : 'opacity-0'}`}
-                  />
-                ) : (
-                  <div className={`absolute inset-0 bg-gradient-to-br ${promos[activeIndex]?.gradient ?? 'from-gray-700 to-gray-900'}`} />
-                )}
-                <div className="absolute inset-0 bg-black/30 md:bg-black/40 lg:bg-black/50 backdrop-blur-sm md:backdrop-blur-md" />
-                <button
-                  onClick={(e) => { e.stopPropagation(); close(); }}
-                  className={`hidden lg:flex absolute -translate-x-1/2 -translate-y-1/2 z-[110] w-10 h-10 bg-foreground text-background rounded-full items-center justify-center shadow-lg transition-opacity duration-100 ${isBackdropHover ? 'opacity-100' : 'opacity-0'} hover:scale-105 active:scale-95`}
-                  style={cursorPos ? { left: cursorPos.x, top: cursorPos.y } : undefined}
-                  title="Закрыть"
-                  aria-label="Закрыть"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-              <div className="fixed left-3 right-3 z-[140] pointer-events-none" style={{ top: vvTop + 8 }}>
-                <div className="flex gap-1">
-                  {promos.map((_, i) => (
-                    <div key={i} className="h-1 rounded-full bg-white/30 overflow-hidden flex-1">
-                      <div
-                        className="h-full bg-white"
-                        style={{ width: `${i < activeIndex! ? 100 : i === activeIndex ? Math.round(progress * 100) : 0}%` }}
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Navigation arrows + center card */}
-              <div className="relative z-[120] flex items-center gap-4">
-                <button
-                  onClick={(e) => { e.stopPropagation(); prev(); }}
-                  className="hidden lg:flex w-10 h-10 bg-card/80 backdrop-blur rounded-full shadow-lg items-center justify-center hover:bg-muted transition-all"
-                  title="Предыдущий"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
-
-                {/* Center card */}
+          {/* Просмотр сторис — как в ВК */}
+          {active && activeIndex !== null && (
+            <div className="fixed inset-0 z-[100] bg-[#141414] select-none" onClick={isMobile ? undefined : close}>
+              {isMobile ? (
                 <div
-                  className={`relative ${isSmallScreen ? 'w-screen h-screen rounded-none shadow-none' : 'w-[min(92vw,380px)] aspect-[3/4] rounded-2xl shadow-popup'} overflow-hidden bg-card transition-opacity duration-300 ease-out ${cardLoaded ? 'opacity-100' : 'opacity-0'}`}
-                  onClick={(e) => e.stopPropagation()}
+                  className="absolute inset-0 flex flex-col"
+                  onTouchStart={(e) => {
+                    const t = e.touches[0];
+                    touchStartRef.current = { x: t.clientX, y: t.clientY, t: Date.now() };
+                    holdStartRef.current = Date.now();
+                    touchLastRef.current = { x: t.clientX, y: t.clientY };
+                    setPause(true);
+                  }}
+                  onTouchMove={(e) => {
+                    const t = e.touches[0];
+                    touchLastRef.current = { x: t.clientX, y: t.clientY };
+                  }}
+                  onTouchEnd={() => {
+                    setPause(false);
+                    const s = touchStartRef.current, l = touchLastRef.current;
+                    touchStartRef.current = null;
+                    if (!s || !l) return;
+                    const dx = l.x - s.x, dy = l.y - s.y;
+                    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) {
+                      if (dx < 0) next();
+                      else prev();
+                    }
+                    else if (dy > 80 && Math.abs(dy) > Math.abs(dx)) close();
+                  }}
                 >
-                  {promos[activeIndex]?.video ? (
-                    <video
-                      ref={videoRef}
-                      src={promos[activeIndex].video as string}
-                      className="w-full h-full object-cover"
-                      autoPlay
-                      muted
-                      playsInline
-                    />
-                  ) : (
-                    promos[activeIndex]?.image && (
-                      <img
-                        src={promos[activeIndex].image as string}
-                        alt={promos[activeIndex].title}
-                        onLoad={() => setCardLoaded(true)}
-                        className="w-full h-full object-cover"
-                      />
-                    )
-                  )}
-                  {!promos[activeIndex]?.hideTitle && (
-                    <>
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                      <div className="absolute bottom-0 left-0 right-0 p-4 flex justify-center">
-                        <p className="text-white font-bold text-base md:text-lg leading-tight drop-shadow-lg text-center">
-                          {promos[activeIndex]?.title}
-                        </p>
-                      </div>
-                    </>
-                  )}
-                  {/* Close button */}
-                  <button
-                    onClick={close}
-                    className="hidden absolute top-3 right-3 z-[130] p-2 bg-card rounded-full shadow-md hover:bg-muted transition-all hover:scale-105 active:scale-95"
-                    title="Закрыть"
-                  >
-                    <X className="w-5 h-5" />
-                  </button>
+                  <div className="relative flex-1 overflow-hidden rounded-b-[16px]" onClick={onStoryClick}>
+                    <StoryMedia promo={active} videoRef={videoRef} muted={muted} />
+                    <div className="absolute inset-x-0 bottom-0" style={{ top: 'env(safe-area-inset-top)' }}>
+                      {storyOverlay(active, true)}
+                    </div>
+                  </div>
+                  <div className="px-3 py-3" style={{ paddingBottom: 'calc(env(safe-area-inset-bottom) + 12px)' }}>
+                    {bottomBar(active)}
+                  </div>
                 </div>
+              ) : (
+                <>
+                  <button
+                    type="button"
+                    onClick={(e) => { e.stopPropagation(); close(); }}
+                    className="absolute top-5 right-6 z-10 w-11 h-11 rounded-full flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 transition"
+                    aria-label="Закрыть"
+                  >
+                    <X className="w-7 h-7" />
+                  </button>
 
-                <button
-                  onClick={(e) => { e.stopPropagation(); next(); }}
-                  className="hidden lg:flex w-10 h-10 bg-card/80 backdrop-blur rounded-full shadow-lg items-center justify-center hover:bg-muted transition-all"
-                  title="Следующий"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </button>
-              </div>
+                  <div className="absolute inset-0 flex items-center justify-center gap-12">
+                    {sideCard(activeIndex - 2)}
+                    {sideCard(activeIndex - 1)}
+
+                    <div
+                      className="relative flex-shrink-0 rounded-[18px] bg-[#222224] overflow-hidden shadow-2xl"
+                      style={{ width: storyW }}
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <div
+                        className="relative rounded-[18px] overflow-hidden cursor-pointer"
+                        style={{ height: storyH }}
+                        onClick={onStoryClick}
+                        onMouseDown={() => { holdStartRef.current = Date.now(); holdingRef.current = true; setPause(true); }}
+                        onMouseUp={() => { if (holdingRef.current) { holdingRef.current = false; setPause(false); } }}
+                        onMouseLeave={() => { if (holdingRef.current) { holdingRef.current = false; setPause(false); } }}
+                      >
+                        <StoryMedia promo={active} videoRef={videoRef} muted={muted} />
+                        {storyOverlay(active)}
+                      </div>
+                      <div className="px-3 py-3">{bottomBar(active)}</div>
+                    </div>
+
+                    {sideCard(activeIndex + 1)}
+                    {sideCard(activeIndex + 2)}
+                  </div>
+                </>
+              )}
             </div>
           )}
         </div>
