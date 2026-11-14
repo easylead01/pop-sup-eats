@@ -149,31 +149,33 @@ const CartPopup = () => {
         </div>
       </div>
 
+      {/* Компьютер: окно по центру со скруглениями, как окно товара (на мобильных — шторка выше) */}
+      <div className="hidden lg:flex absolute inset-0 items-center justify-center p-8 pointer-events-none">
       <div
         className={`
-          hidden lg:flex
-          absolute right-0 top-0 h-screen w-full max-w-md bg-card flex-col shadow-popup
-          transition-transform duration-200
-          ${isClosing ? 'translate-x-full' : 'animate-slide-in-right'}
+          pointer-events-auto flex flex-col w-[min(640px,calc(100vw-64px))] max-h-[min(796px,calc(100vh-64px))]
+          bg-card rounded-[28px] overflow-hidden shadow-2xl
+          transition-all duration-200 ease-out
+          ${isClosing ? 'opacity-0 scale-95' : 'animate-fade-in'}
         `}
       >
-        <div className="p-4 border-b border-border flex items-center justify-between">
+        <div className="px-6 py-5 border-b border-border flex items-center justify-between">
           <div className="flex items-center gap-2">
             <ShoppingBag className="w-5 h-5" />
             <h2 className="text-xl font-bold">Корзина</h2>
           </div>
-          <button onClick={handleClose} className="p-2 hover:bg-muted rounded-full transition-all hover:scale-105 active:scale-95">
+          <button onClick={handleClose} className="p-2 hover:bg-muted rounded-full transition-all hover:scale-105 active:scale-95" aria-label="Закрыть">
             <X className="w-6 h-6" />
           </button>
         </div>
-        <div className="flex-1 overflow-y-auto overscroll-contain">
-          {items.length === 0 ? <div className="flex flex-col items-center justify-center h-full text-center p-8">
+        <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain">
+          {items.length === 0 ? <div className="flex flex-col items-center justify-center text-center px-8 py-16">
               <ShoppingBag className="w-16 h-16 text-muted-foreground mb-4" />
               <h3 className="text-lg font-semibold mb-2">Корзина пуста</h3>
               <p className="text-muted-foreground text-sm">
                 Добавьте что-нибудь вкусное из меню
               </p>
-            </div> : <div className="p-4 space-y-4">
+            </div> : <div className="px-6 py-4 space-y-3">
               {items.map((item, index) => <div key={item.product.id} className="flex gap-4 p-3 bg-muted/50 rounded-2xl animate-fade-in" style={{
             animationDelay: `${index * 50}ms`
           }}>
@@ -210,7 +212,7 @@ const CartPopup = () => {
                 </div>)}
             </div>}
         </div>
-        {items.length > 0 && <div className="p-4 border-t border-border space-y-4">
+        {items.length > 0 && <div className="px-6 py-5 border-t border-border space-y-4">
             <button onClick={clearCart} className="text-sm text-muted-foreground hover:text-destructive transition-colors">
               Очистить корзину
             </button>
@@ -225,6 +227,7 @@ const CartPopup = () => {
               Минимальная сумма заказа: 500 ₽
             </p>
           </div>}
+      </div>
       </div>
     </div>;
 };
