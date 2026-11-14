@@ -4,6 +4,8 @@ export interface Promo {
   gradient: string;
   image?: string;
   video?: string;
+  /** Заголовок уже есть на самой картинке — не затемнять низ и не писать поверх */
+  hideTitle?: boolean;
 }
 
 import promo1 from '@/assets/promo-1.png';
@@ -13,8 +15,16 @@ import promo4 from '@/assets/promo-4.png';
 import promo5 from '@/assets/promo-5.png';
 import promo6 from '@/assets/promo-6.png';
 import promo7 from '@/assets/promo-7.png';
+import promoDeshevo from '@/assets/promo-deshevo.webp';
 
 export const promos: Promo[] = [
+  {
+    id: 'deshevo',
+    title: 'Сет «Дёшево и Сердито» — 1 800 ₽',
+    gradient: 'from-zinc-800 to-zinc-900',
+    image: promoDeshevo,
+    hideTitle: true,
+  },
   {
     id: '1',
     title: 'Скидка 20% на первый заказ',

@@ -200,15 +200,19 @@ const ShortsCarousel = () => {
                   <div className={`absolute inset-0 bg-gradient-to-br ${promo.gradient}`} />
                 )}
                 
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                
-                {/* Text */}
-                <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <p className="text-white font-bold text-base leading-tight drop-shadow-lg">
-                    {promo.title}
-                  </p>
-                </div>
+                {!promo.hideTitle && (
+                  <>
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+
+                    {/* Text */}
+                    <div className="absolute bottom-0 left-0 right-0 p-4">
+                      <p className="text-white font-bold text-base leading-tight drop-shadow-lg">
+                        {promo.title}
+                      </p>
+                    </div>
+                  </>
+                )}
               </div>
             ))}
           </div>
@@ -321,12 +325,16 @@ const ShortsCarousel = () => {
                       />
                     )
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4 flex justify-center">
-                    <p className="text-white font-bold text-base md:text-lg leading-tight drop-shadow-lg text-center">
-                      {promos[activeIndex]?.title}
-                    </p>
-                  </div>
+                  {!promos[activeIndex]?.hideTitle && (
+                    <>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                      <div className="absolute bottom-0 left-0 right-0 p-4 flex justify-center">
+                        <p className="text-white font-bold text-base md:text-lg leading-tight drop-shadow-lg text-center">
+                          {promos[activeIndex]?.title}
+                        </p>
+                      </div>
+                    </>
+                  )}
                   {/* Close button */}
                   <button
                     onClick={close}
