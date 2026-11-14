@@ -18,8 +18,12 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
   const lower = `${product.name} ${product.description} ${product.ingredients.join(' ')}`.toLowerCase();
   const isSpicy = /остр|спайси|чили|паприк/i.test(lower);
-  const isBaked = /запеч|печен/i.test(lower);
-  const isTempura = /темпур|жарен|горяч/i.test(lower) && product.id !== '104' && !isBaked;
+  const isBaked = product.subcategory
+    ? product.subcategory === 'baked'
+    : /запеч|печен/i.test(lower);
+  const isTempura = product.subcategory
+    ? product.subcategory === 'tempura'
+    : /темпур|жарен|горяч/i.test(lower) && product.id !== '104' && !isBaked;
   const showSpicy = isSpicy && product.category !== 'sets';
   const showBaked =
     (isBaked && product.category !== 'sets') ||
@@ -52,6 +56,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
       ? 'scale-[0.7]'
       : '';
 
+  // Новые фото роллов (крупный план на белом фоне) — на всю карточку, без отступов
+  const isCloseUpPhoto = product.image.startsWith('/images/rolls/');
+
   const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation();
     addItem(product);
@@ -68,7 +75,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
           src={imageUrl}
           alt={product.name}
           className={`w-full h-full transition-transform duration-300 group-hover:scale-105 ${
-            isContainCategory ? `object-contain ${finalPadding}` : 'object-cover'
+            isCloseUpPhoto
+              ? 'object-contain bg-white'
+              : isContainCategory ? `object-contain ${finalPadding}` : 'object-cover'
           } ${scaleClass}`}
         />
         
