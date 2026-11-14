@@ -135,11 +135,13 @@ const ProductPopup = () => {
           className={`pointer-events-auto flex bg-card rounded-[28px] overflow-hidden shadow-2xl h-[min(760px,calc(100vh-64px),52vw)] transition-all duration-300 ease-out
             ${isClosing ? 'opacity-0 scale-95' : 'animate-fade-in'}`}
         >
-          <div className="relative h-full aspect-square flex-shrink-0 bg-white">
+          {/* Фото на отдельной мягкой панели: тёплый светлый фон, скругления, тонкий контур */}
+          <div className="h-full aspect-square flex-shrink-0 p-3">
+          <div className="relative h-full w-full rounded-[22px] overflow-hidden ring-1 ring-black/[0.05] bg-[radial-gradient(120%_90%_at_50%_35%,#fbfaf8_0%,#f3f1ed_55%,#ebe8e3_100%)]">
             <img
               src={imageUrl}
               alt={selectedProduct.name}
-              className="w-full h-full object-contain p-6"
+              className="w-full h-full object-contain p-8 mix-blend-multiply"
             />
             <button
               type="button"
@@ -151,7 +153,7 @@ const ProductPopup = () => {
             </button>
             <button
               type="button"
-              className="absolute top-4 right-4 w-11 h-11 bg-card rounded-full flex items-center justify-center hover:bg-muted transition-all border border-border hover:scale-105 active:scale-95"
+              className="absolute top-4 right-4 w-11 h-11 bg-white/90 backdrop-blur rounded-full flex items-center justify-center hover:bg-white transition-all shadow-[0_2px_10px_rgba(0,0,0,0.08)] hover:scale-105 active:scale-95"
               aria-label="В избранное"
             >
               <Heart className="w-5 h-5" />
@@ -165,8 +167,9 @@ const ProductPopup = () => {
               )}
             </div>
           </div>
+          </div>
 
-          <div className="w-[min(480px,calc(100vw-64px-min(760px,calc(100vh-64px),52vw)))] flex flex-col pl-10 pr-8 pt-10 pb-7">
+          <div className="w-[min(480px,calc(100vw-64px-min(760px,calc(100vh-64px),52vw)))] flex flex-col pl-8 pr-8 pt-10 pb-7">
             <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain pr-2 product-popup-scroll">
               <h2 className="text-[28px] leading-[34px] font-bold mb-3">{selectedProduct.name}</h2>
 
