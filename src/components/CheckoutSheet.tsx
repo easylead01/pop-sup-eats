@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { X, MapPin, User, Phone, MessageSquare, CreditCard, Truck } from 'lucide-react';
 import { useUIStore } from '@/store/uiStore';
-import { useCartStore } from '@/store/cartStore';
+import { useCartStore, computeSummary, formatRub, FREE_DELIVERY_FROM } from '@/store/cartStore';
 import { useSwipeClose } from '@/hooks/useSwipeClose';
 import { toast } from '@/hooks/use-toast';
 import { Input } from '@/components/ui/input';
 
 const CheckoutSheet = () => {
   const { isCheckoutOpen, setCheckoutOpen } = useUIStore();
-  const { getTotalPrice, clearCart, items } = useCartStore();
+  const { clearCart, items, promo } = useCartStore();
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -27,9 +27,9 @@ const CheckoutSheet = () => {
 
   if (!isCheckoutOpen) return null;
 
-  const totalPrice = getTotalPrice();
-  const deliveryFee = totalPrice >= 1500 ? 0 : 199;
-  const finalTotal = totalPrice + deliveryFee;
+  const summary = computeSummary(items, promo);
+  const deliveryFee = summary.delivery;
+  const finalTotal = summary.total;
 
   const handleSubmit = async () => {
     if (!formData.name || !formData.phone || !formData.address) {
@@ -47,7 +47,7 @@ const CheckoutSheet = () => {
     
     toast({
       title: 'Заказ оформлен!',
-      description: `Сумма: ${finalTotal} ₽. Ожидайте курьера.`,
+      description: `Сумма: ${formatRub(finalTotal)}. Ожидайте курьера.`,
     });
     
     clearCart();
@@ -153,14 +153,14 @@ const CheckoutSheet = () => {
                 <div>
                   <p className="font-medium">Доставка</p>
                   <p className="text-sm text-muted-foreground">
-                    {deliveryFee === 0 ? 'Бесплатно' : `${deliveryFee} ₽`}
+                    {deliveryFee === 0 ? 'Бесплатно' : formatRub(deliveryFee)}
                   </p>
                 </div>
               </div>
               
               {deliveryFee > 0 && (
                 <p className="text-xs text-muted-foreground">
-                  Бесплатная доставка от 1500 ₽. До бесплатной доставки: {1500 - totalPrice} ₽
+                  Бесплатная доставка от {formatRub(FREE_DELIVERY_FROM)}. До бесплатной доставки: {formatRub(summary.toFreeDelivery)}
                 </p>
               )}
             </div>
@@ -181,12 +181,18 @@ const CheckoutSheet = () => {
             {/* Order summary */}
             <div className="space-y-2 pt-2">
               <div className="flex justify-between text-sm">
-                <span className="text-muted-foreground">Товары ({items.length})</span>
-                <span>{totalPrice} ₽</span>
+                <span className="text-muted-foreground">Товары, {summary.count} шт</span>
+                <span>{formatRub(summary.subtotal)}</span>
               </div>
+              {summary.discount > 0 && (
+                <div className="flex justify-between text-sm text-emerald-600">
+                  <span>Скидка по промокоду {promo?.code}</span>
+                  <span>−{formatRub(summary.discount)}</span>
+                </div>
+              )}
               <div className="flex justify-between text-sm">
                 <span className="text-muted-foreground">Доставка</span>
-                <span>{deliveryFee === 0 ? 'Бесплатно' : `${deliveryFee} ₽`}</span>
+                <span>{deliveryFee === 0 ? 'Бесплатно' : formatRub(deliveryFee)}</span>
               </div>
             </div>
           </div>
@@ -196,7 +202,7 @@ const CheckoutSheet = () => {
         <div className="sticky bottom-0 bg-card border-t border-border p-4 space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-lg font-semibold">Итого</span>
-            <span className="text-2xl font-bold">{finalTotal} ₽</span>
+            <span className="text-2xl font-bold">{formatRub(finalTotal)}</span>
           </div>
 
           <button

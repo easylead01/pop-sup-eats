@@ -1,11 +1,170 @@
 import { useState } from 'react';
-import { X, Minus, Plus, Trash2, ShoppingBag } from 'lucide-react';
-import { useCartStore } from '@/store/cartStore';
+import { X, Minus, Plus, Trash2, ShoppingBag, TicketPercent, Check } from 'lucide-react';
+import { useCartStore, formatRub, computeSummary, MIN_ORDER, FREE_DELIVERY_FROM } from '@/store/cartStore';
 import { useUIStore } from '@/store/uiStore';
 import { getProductImageForProduct } from '@/lib/images';
 import { Product } from '@/data/products';
 import { useSwipeClose } from '@/hooks/useSwipeClose';
 import { useProductImageContext } from '@/components/ProductImageProvider';
+
+
+const pluralItems = (n: number) => {
+  const mod10 = n % 10;
+  const mod100 = n % 100;
+  if (mod10 === 1 && mod100 !== 11) return 'товар';
+  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return 'товара';
+  return 'товаров';
+};
+
+/** Строка над списком: «3 товара на 2 105 ₽ · Очистить» */
+const ClearCartRow = ({ onClear }: { onClear: () => void }) => {
+  const items = useCartStore((s) => s.items);
+  const { subtotal, count: pieces } = computeSummary(items, null);
+  return (
+    <div className="flex items-center justify-between text-sm">
+      <span className="text-muted-foreground">
+        {pieces} {pluralItems(pieces)} на {formatRub(subtotal)}
+      </span>
+      <button onClick={onClear} className="text-muted-foreground hover:text-destructive transition-colors">
+        Очистить
+      </button>
+    </div>
+  );
+};
+
+/** Низ корзины: промокод, разбивка суммы и кнопка оформления */
+const CartSummaryBlock = ({ onCheckout }: { onCheckout: () => void }) => {
+  const promo = useCartStore((s) => s.promo);
+  const applyPromo = useCartStore((s) => s.applyPromo);
+  const removePromo = useCartStore((s) => s.removePromo);
+  const items = useCartStore((s) => s.items);
+  const summary = computeSummary(items, promo);
+  const [code, setCode] = useState('');
+  const [error, setError] = useState<string | null>(null);
+
+  const handleApply = () => {
+    const res = applyPromo(code);
+    if ('error' in res) {
+      setError(res.error);
+    } else {
+      setCode('');
+      setError(null);
+    }
+  };
+
+  const belowMin = summary.subtotal < MIN_ORDER;
+
+  return (
+    <div className="space-y-4">
+      {/* Промокод */}
+      {promo ? (
+        <div className="flex items-center gap-3 rounded-2xl bg-emerald-50 border border-emerald-200 px-4 py-3">
+          <span className="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center flex-shrink-0">
+            <Check className="w-4 h-4" strokeWidth={3} />
+          </span>
+          <div className="flex-1 min-w-0">
+            <div className="font-semibold text-sm">{promo.code}</div>
+            <div className="text-xs text-emerald-700">
+              {summary.promoBelowMin && promo.minTotal
+                ? `Сработает от ${formatRub(promo.minTotal)} — добавьте ещё на ${formatRub(promo.minTotal - summary.subtotal)}`
+                : promo.title}
+            </div>
+          </div>
+          <button
+            onClick={removePromo}
+            className="p-1.5 text-muted-foreground hover:text-foreground rounded-full hover:bg-black/5 transition"
+            aria-label="Убрать промокод"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+      ) : (
+        <div>
+          <form
+            className="flex gap-2"
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleApply();
+            }}
+          >
+            <div className="relative flex-1">
+              <TicketPercent className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground pointer-events-none" />
+              <input
+                value={code}
+                onChange={(e) => {
+                  setCode(e.target.value);
+                  if (error) setError(null);
+                }}
+                placeholder="Промокод"
+                autoCapitalize="characters"
+                autoComplete="off"
+                spellCheck={false}
+                className={`w-full h-12 pl-11 pr-3 rounded-full border bg-background text-base uppercase placeholder:normal-case placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring ${error ? 'border-destructive' : 'border-input'}`}
+              />
+            </div>
+            <button
+              type="submit"
+              disabled={!code.trim()}
+              className="h-12 px-5 rounded-full bg-foreground text-background font-semibold text-sm transition hover:bg-foreground/85 active:scale-[0.98] disabled:opacity-40 disabled:pointer-events-none"
+            >
+              Применить
+            </button>
+          </form>
+          {error && <p className="mt-1.5 pl-4 text-xs text-destructive">{error}</p>}
+        </div>
+      )}
+
+      {/* Разбивка суммы */}
+      <div className="space-y-2 text-sm">
+        <div className="flex justify-between">
+          <span className="text-muted-foreground">Товары, {summary.count} шт</span>
+          <span>{formatRub(summary.subtotal)}</span>
+        </div>
+        {summary.discount > 0 && (
+          <div className="flex justify-between text-emerald-600">
+            <span>Скидка по промокоду</span>
+            <span>−{formatRub(summary.discount)}</span>
+          </div>
+        )}
+        <div className="flex justify-between">
+          <span className="text-muted-foreground">Доставка</span>
+          <span>{summary.delivery === 0 ? 'Бесплатно' : formatRub(summary.delivery)}</span>
+        </div>
+        {summary.toFreeDelivery > 0 && (
+          <div className="pt-0.5">
+            <div className="h-1.5 rounded-full bg-muted overflow-hidden">
+              <div
+                className="h-full rounded-full bg-orange-500 transition-[width] duration-300"
+                style={{ width: `${Math.min(100, (summary.subtotal / FREE_DELIVERY_FROM) * 100)}%` }}
+              />
+            </div>
+            <p className="mt-1.5 text-xs text-muted-foreground">
+              До бесплатной доставки ещё {formatRub(summary.toFreeDelivery)}
+            </p>
+          </div>
+        )}
+      </div>
+
+      <div className="flex items-center justify-between border-t border-border pt-3">
+        <span className="text-lg font-semibold">Итого</span>
+        <span className="text-2xl font-bold">{formatRub(summary.total)}</span>
+      </div>
+
+      <button
+        onClick={onCheckout}
+        disabled={belowMin}
+        className="w-full text-background py-4 rounded-full font-semibold text-lg transition-all hover:scale-[1.01] active:scale-[0.99] bg-orange-500 hover:bg-orange-400 disabled:opacity-50 disabled:pointer-events-none"
+      >
+        Перейти к оформлению
+      </button>
+      <p className="text-xs text-center text-muted-foreground">
+        {belowMin
+          ? `Минимальная сумма заказа ${formatRub(MIN_ORDER)} — добавьте ещё на ${formatRub(MIN_ORDER - summary.subtotal)}`
+          : `Минимальная сумма заказа: ${formatRub(MIN_ORDER)}`}
+      </p>
+    </div>
+  );
+};
 
 const CartPopup = () => {
   const {
@@ -14,7 +173,6 @@ const CartPopup = () => {
     setIsOpen,
     updateQuantity,
     removeItem,
-    getTotalPrice,
     clearCart
   } = useCartStore();
   const {
@@ -24,7 +182,6 @@ const CartPopup = () => {
   const [isClosing, setIsClosing] = useState(false);
   const [cursorPos, setCursorPos] = useState<{ x: number; y: number } | null>(null);
   const [isBackdropHover, setIsBackdropHover] = useState(false);
-  const totalPrice = getTotalPrice();
   
   const getImageUrl = (product: Product) => {
     return customImages[product.image] || getProductImageForProduct(product);
@@ -95,6 +252,7 @@ const CartPopup = () => {
                 Добавьте что-нибудь вкусное из меню
               </p>
             </div> : <div className="p-4 space-y-4">
+              <ClearCartRow onClear={clearCart} />
               {items.map((item, index) => <div key={item.product.id} className="flex gap-4 p-3 bg-muted/50 rounded-2xl animate-fade-in" style={{
             animationDelay: `${index * 50}ms`
           }}>
@@ -121,7 +279,7 @@ const CartPopup = () => {
                         </button>
                       </div>
                       <span className="font-semibold text-sm">
-                        {item.product.price * item.quantity} ₽
+                        {formatRub(item.product.price * item.quantity)}
                       </span>
                     </div>
                   </div>
@@ -131,20 +289,8 @@ const CartPopup = () => {
                 </div>)}
             </div>}
         </div>
-        {items.length > 0 && <div className="p-4 border-t border-border space-y-4">
-            <button onClick={clearCart} className="text-sm text-muted-foreground hover:text-destructive transition-colors">
-              Очистить корзину
-            </button>
-            <div className="flex items-center justify-between">
-              <span className="text-lg font-semibold">Итого</span>
-              <span className="text-2xl font-bold">{totalPrice} ₽</span>
-            </div>
-            <button onClick={handleCheckout} className="w-full text-background py-4 rounded-full font-semibold text-lg transition-all hover:scale-[1.01] active:scale-[0.99] bg-orange-500 hover:bg-orange-400">
-              Перейти к оформлению
-            </button>
-            <p className="text-xs text-center text-muted-foreground">
-              Минимальная сумма заказа: 500 ₽
-            </p>
+        {items.length > 0 && <div className="p-4 border-t border-border">
+            <CartSummaryBlock onCheckout={handleCheckout} />
           </div>}
         </div>
       </div>
@@ -176,6 +322,7 @@ const CartPopup = () => {
                 Добавьте что-нибудь вкусное из меню
               </p>
             </div> : <div className="px-6 py-4 space-y-3">
+              <ClearCartRow onClear={clearCart} />
               {items.map((item, index) => <div key={item.product.id} className="flex gap-4 p-3 bg-muted/50 rounded-2xl animate-fade-in" style={{
             animationDelay: `${index * 50}ms`
           }}>
@@ -202,7 +349,7 @@ const CartPopup = () => {
                         </button>
                       </div>
                       <span className="font-semibold text-sm">
-                        {item.product.price * item.quantity} ₽
+                        {formatRub(item.product.price * item.quantity)}
                       </span>
                     </div>
                   </div>
@@ -212,20 +359,8 @@ const CartPopup = () => {
                 </div>)}
             </div>}
         </div>
-        {items.length > 0 && <div className="px-6 py-5 border-t border-border space-y-4">
-            <button onClick={clearCart} className="text-sm text-muted-foreground hover:text-destructive transition-colors">
-              Очистить корзину
-            </button>
-            <div className="flex items-center justify-between">
-              <span className="text-lg font-semibold">Итого</span>
-              <span className="text-2xl font-bold">{totalPrice} ₽</span>
-            </div>
-            <button onClick={handleCheckout} className="w-full text-background py-4 rounded-full font-semibold text-lg transition-all hover:scale-[1.01] active:scale-[0.99] bg-orange-500 hover:bg-orange-400">
-              Перейти к оформлению
-            </button>
-            <p className="text-xs text-center text-muted-foreground">
-              Минимальная сумма заказа: 500 ₽
-            </p>
+        {items.length > 0 && <div className="px-6 py-5 border-t border-border">
+            <CartSummaryBlock onCheckout={handleCheckout} />
           </div>}
       </div>
       </div>

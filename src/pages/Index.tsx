@@ -18,9 +18,11 @@ import { ChevronUp } from 'lucide-react';
 import { useUIStore } from '@/store/uiStore';
 import { useCartStore } from '@/store/cartStore';
 import { useDemoStore } from '@/store/demoStore';
+import { useProductRoute } from '@/hooks/useProductRoute';
 import logo from '@/assets/logo.svg';
 
 const Index = () => {
+  useProductRoute();
   const [showTop, setShowTop] = useState(false);
   useEffect(() => {
     const onScroll = () => setShowTop(window.scrollY > 300);

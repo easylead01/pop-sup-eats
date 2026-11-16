@@ -1,4 +1,4 @@
-import { Plus, Flame, ChefHat } from 'lucide-react';
+import { Plus, Minus, Flame, ChefHat } from 'lucide-react';
 import { Product } from '@/data/products';
 import { getProductImageForProduct } from '@/lib/images';
 import { useUIStore } from '@/store/uiStore';
@@ -11,7 +11,9 @@ interface ProductCardProps {
 
 const ProductCard = ({ product }: ProductCardProps) => {
   const { setSelectedProduct } = useUIStore();
-  const { addItem } = useCartStore();
+  const addItem = useCartStore((s) => s.addItem);
+  const updateQuantity = useCartStore((s) => s.updateQuantity);
+  const quantity = useCartStore((s) => s.items.find((i) => i.product.id === product.id)?.quantity ?? 0);
   const { customImages } = useProductImageContext();
 
   const imageUrl = customImages[product.image] || getProductImageForProduct(product);
@@ -85,12 +87,13 @@ const ProductCard = ({ product }: ProductCardProps) => {
           } ${scaleClass}`}
         />
         
-        <button
+        {quantity === 0 && <button
           onClick={handleAddToCart}
+          aria-label="В корзину"
           className="hidden lg:flex absolute bottom-3 right-3 w-10 h-10 bg-black text-white rounded-full items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 hover:scale-110 active:scale-95 shadow-lg border border-transparent"
         >
           <Plus className="w-5 h-5" />
-        </button>
+        </button>}
         <div className="absolute top-3 left-3 flex flex-col gap-2">
           {product.isNew && (
             <span className="px-2.5 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-full">
@@ -152,9 +155,33 @@ const ProductCard = ({ product }: ProductCardProps) => {
             </span>
           </span>
           
-          <button className="price-badge group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all">
-            {product.price} ₽
-          </button>
+          {quantity > 0 ? (
+            /* Товар уже в корзине — вместо цены счётчик −/+ */
+            <div
+              className="cart-stepper"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                type="button"
+                onClick={() => updateQuantity(product.id, quantity - 1)}
+                aria-label={quantity === 1 ? 'Убрать из корзины' : 'Меньше'}
+              >
+                <Minus className="w-4 h-4" strokeWidth={2.5} />
+              </button>
+              <span aria-live="polite">{quantity}</span>
+              <button
+                type="button"
+                onClick={() => addItem(product)}
+                aria-label="Больше"
+              >
+                <Plus className="w-4 h-4" strokeWidth={2.5} />
+              </button>
+            </div>
+          ) : (
+            <button className="price-badge group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all">
+              {product.price} ₽
+            </button>
+          )}
         </div>
       </div>
     </div>

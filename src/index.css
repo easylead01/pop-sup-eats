@@ -150,6 +150,24 @@
   .price-badge:hover {
     @apply bg-primary text-primary-foreground border-primary;
   }
+
+  /* Счётчик −/+ на карточке, когда товар уже в корзине (той же высоты, что и цена) */
+  .cart-stepper {
+    @apply inline-flex items-center rounded-full bg-primary text-primary-foreground text-sm font-semibold select-none;
+    height: 38px;
+  }
+  .cart-stepper > button {
+    @apply flex items-center justify-center w-[38px] h-[38px] rounded-full transition-colors;
+  }
+  .cart-stepper > button:hover {
+    background: rgb(0 0 0 / 0.12);
+  }
+  .cart-stepper > button:active {
+    background: rgb(0 0 0 / 0.2);
+  }
+  .cart-stepper > span {
+    @apply min-w-[18px] text-center tabular-nums;
+  }
   
   .category-card {
     @apply flex flex-col items-center gap-3 p-4 rounded-2xl bg-card transition-all duration-200 cursor-pointer;
