@@ -67,7 +67,7 @@ const ShortsCarousel = () => {
 
   // Анимация ленты сторис:
   //  • телефон — перспектива от центра экрана + параллакс креатива;
-  //  • компьютер — без анимаций при листании.
+  //  • компьютер — карточки стоят, креатив внутри смещается с параллаксом.
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
@@ -81,11 +81,18 @@ const ShortsCarousel = () => {
       cards.forEach((card) => {
         const img = card.querySelector<HTMLElement>('img');
         if (!mobile) {
+          // компьютер: карточка стоит, креатив внутри чуть смещается (параллакс)
           card.style.transform = '';
           card.style.filter = '';
-          if (img) img.style.transform = '';
+          if (img) {
+            img.style.transform = '';
+            const r = card.getBoundingClientRect();
+            const rel = Math.max(-0.65, Math.min(0.65, (r.left + r.width / 2 - anchor) / box.width)); // сдвиг ≤ 3,9% при запасе 4%
+            img.style.setProperty('--px', `${(-rel * 6).toFixed(2)}%`);
+          }
           return;
         }
+        if (img) img.style.removeProperty('--px');
         const r = card.getBoundingClientRect();
         const step = r.width + 12;
         const p = Math.max(-1.6, Math.min(1.6, (r.left + r.width / 2 - anchor) / step));

@@ -166,8 +166,8 @@
     width: 180px;
   }
 
-  /* Компьютер: крупные сторис 280×373, без тени и без анимаций при листании.
-     При наведении карточка стоит на месте — только лёгкое приближение картинки. */
+  /* Компьютер: крупные сторис 280×373, без тени, карточки не двигаются.
+     При листании — параллакс креатива внутри рамки, при наведении — лёгкое приближение. */
   @media (min-width: 768px) {
     .shorts-card {
       width: 280px;
@@ -180,8 +180,15 @@
       transform: none;
       box-shadow: none;
     }
-    .shorts-card img { transition: transform .5s ease; }
-    .shorts-track .shorts-card:hover img { transform: scale(1.04); }
+    /* параллакс: смещение (--px) задаётся из JS по положению карточки, без задержки;
+       плавно меняется только приближение при наведении */
+    .shorts-card img {
+      transform: none;
+      translate: var(--px, 0) 0;
+      scale: 1.08;
+      transition: scale .5s ease;
+    }
+    .shorts-track .shorts-card:hover img { scale: 1.12; }
   }
 
 
