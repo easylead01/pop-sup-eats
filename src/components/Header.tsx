@@ -85,7 +85,7 @@ const Header = () => {
           </div>
           
           {/* Logo - desktop (без кнопки меню) */}
-          <div className="hidden lg:flex items-center gap-2 relative -top-[5px]">
+          <div className="hidden lg:flex items-center gap-2 relative top-0 -ml-[10px]">
             <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
               <span className="h-16 md:h-20 lg:h-[104px] cursor-pointer flex items-center">
                 <img src={logo} alt="OKIAHABA" className="h-16 md:h-20 lg:h-[104px] w-auto" />
@@ -94,7 +94,7 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-6" style={{ position: 'relative', top: 5 }}>
+          <div className="hidden lg:flex items-center gap-6" style={{ position: 'relative', top: 10 }}>
             
             
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -135,7 +135,7 @@ const Header = () => {
           </div>
 
           {/* Right Section */}
-          <div className="flex items-center gap-2 md:gap-3 lg:translate-y-[5px] lg:transform">
+          <div className="flex items-center gap-2 md:gap-3 lg:translate-y-[10px] lg:transform">
             <Link to="/admin" className="hidden lg:flex p-2.5 hover:bg-muted rounded-full transition-colors" title="Управление изображениями">
               <Settings className="w-5 h-5" />
             </Link>
