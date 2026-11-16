@@ -7,7 +7,7 @@ import { useSwipeClose } from '@/hooks/useSwipeClose';
 import { toast } from '@/hooks/use-toast';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useProductImageContext } from '@/components/ProductImageProvider';
-import SetComposition from '@/components/SetComposition';
+import SetCompositionRow from '@/components/SetCompositionRow';
 import MyboxProductPopup from '@/components/MyboxProductPopup';
 
 const ProductPopup = () => {
@@ -107,6 +107,7 @@ const ProductPopup = () => {
   };
 
   const totalPrice = selectedProduct.price * quantity;
+  const hasSet = !!selectedProduct.setItems?.length;
 
   return (
     <div className="fixed inset-0 z-50">
@@ -132,9 +133,10 @@ const ProductPopup = () => {
       {/* Desktop: окно по центру со скруглениями (как в версии MyBox), фото слева во всю высоту */}
       <div className="hidden lg:flex absolute inset-0 items-center justify-center p-8 pointer-events-none">
         <div
-          className={`pointer-events-auto flex bg-card rounded-[28px] overflow-hidden shadow-2xl h-[min(760px,calc(100vh-64px),52vw)] transition-all duration-300 ease-out
+          className={`pointer-events-auto flex flex-col bg-card rounded-[28px] overflow-hidden shadow-2xl transition-all duration-300 ease-out
             ${isClosing ? 'opacity-0 scale-95' : 'animate-fade-in'}`}
         >
+          <div className={`flex ${hasSet ? 'h-[min(520px,calc(100vh-64px-280px),40vw)]' : 'h-[min(760px,calc(100vh-64px),52vw)]'}`}>
           {/* Фото на отдельной мягкой панели: тёплый светлый фон, скругления, тонкий контур */}
           <div className="h-full aspect-square flex-shrink-0 p-3">
           <div className="relative h-full w-full rounded-[22px] overflow-hidden ring-1 ring-black/[0.05] bg-[radial-gradient(120%_90%_at_50%_35%,#fbfaf8_0%,#f3f1ed_55%,#ebe8e3_100%)]">
@@ -169,7 +171,7 @@ const ProductPopup = () => {
           </div>
           </div>
 
-          <div className="w-[min(480px,calc(100vw-64px-min(760px,calc(100vh-64px),52vw)))] flex flex-col pl-8 pr-8 pt-10 pb-7">
+          <div className={`${hasSet ? 'w-[480px]' : 'w-[min(480px,calc(100vw-64px-min(760px,calc(100vh-64px),52vw)))]'} flex flex-col pl-8 pr-8 pt-10 pb-7`}>
             <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain pr-2 product-popup-scroll">
               <h2 className="text-[28px] leading-[34px] font-bold mb-3">{selectedProduct.name}</h2>
 
@@ -197,14 +199,10 @@ const ProductPopup = () => {
                 <p className="text-muted-foreground mb-5 text-[15px] leading-relaxed">{selectedProduct.description}</p>
               )}
 
-              {selectedProduct.setItems?.length ? (
-                <SetComposition items={selectedProduct.setItems} compact />
-              ) : (
-                <div className="mb-5">
-                  <h3 className="font-semibold text-lg mb-1.5">Состав</h3>
-                  <p className="text-muted-foreground text-[15px] leading-relaxed">{compositionText}</p>
-                </div>
-              )}
+              <div className="mb-5">
+                <h3 className="font-semibold text-lg mb-1.5">Состав</h3>
+                <p className={`text-muted-foreground text-[15px] leading-relaxed ${hasSet ? 'line-clamp-4' : ''}`}>{compositionText}</p>
+              </div>
 
             </div>
 
@@ -240,6 +238,14 @@ const ProductPopup = () => {
               </button>
             </div>
           </div>
+          </div>
+
+          {/* Состав сета — на всю ширину окна, ряд с прокруткой вбок (w-0 min-w-full: не расширяет окно) */}
+          {hasSet && (
+            <div className="w-0 min-w-full border-t border-border px-8 pt-5 pb-7">
+              <SetCompositionRow items={selectedProduct.setItems!} onOpen={(p) => setSelectedProduct(p)} />
+            </div>
+          )}
         </div>
       </div>
 
@@ -321,8 +327,10 @@ const ProductPopup = () => {
             )}
 
             {/* Ingredients / set rolls */}
-            {selectedProduct.setItems?.length ? (
-              <SetComposition items={selectedProduct.setItems} compact />
+            {hasSet ? (
+              <div className="mb-4">
+                <SetCompositionRow items={selectedProduct.setItems!} onOpen={(p) => setSelectedProduct(p)} compact />
+              </div>
             ) : (
               <div className="mb-3">
                 <h3 className="font-semibold mb-1 text-sm">Состав</h3>

@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Minus, Plus, Heart, X } from 'lucide-react';
-import type { Product, SetComponent } from '@/data/products';
-import { getProduct } from '@/data/products';
 import { getProductImage } from '@/lib/images';
 import { useUIStore } from '@/store/uiStore';
 import { useCartStore } from '@/store/cartStore';
 import { toast } from '@/hooks/use-toast';
+import SetCompositionRow from '@/components/SetCompositionRow';
 
 /**
  * Демо-окно товара в стиле MyBox: большое фото слева, справа название с перчиком,
- * «шт / г · ккал», описание, мини-карточки роллов (для сетов), «Состав»
+ * «шт / г · ккал», описание, «Состав»; у сетов внизу — «Состав сета» рядом с прокруткой вбок
  * и внизу счётчик + чёрная кнопка «В корзину за …».
  */
 
@@ -56,56 +55,6 @@ const Marker = ({ id }: { id: string }) => {
   }
   return null;
 };
-
-const halfLabel = (item: SetComponent, linked?: Product) => {
-  if (item.pieces && linked?.pieces && item.pieces !== linked.pieces) {
-    const a = parseInt(item.pieces, 10);
-    const b = parseInt(linked.pieces, 10);
-    if (a && b && a * 2 === b) return 'x½';
-  }
-  if (!linked && item.pieces && /^\d+ шт$/.test(item.pieces)) return `x${parseInt(item.pieces, 10)}`;
-  return 'x1';
-};
-
-const SetMiniCards = ({ items, onOpen }: { items: SetComponent[]; onOpen: (p: Product) => void }) => (
-  <div className="flex flex-col gap-3 mt-[30px]">
-    {items.map((item, index) => {
-      const linked = item.productId ? getProduct(item.productId) : undefined;
-      const img = linked?.detailImage || item.image;
-      const meta = linked ? `${linked.pieces} / ${linked.weight.replace(' гр', ' г')}` : item.pieces;
-      const Wrapper = linked ? 'button' : 'div';
-      return (
-        <Wrapper
-          key={`${item.name}-${index}`}
-          {...(linked ? { type: 'button' as const, onClick: () => onOpen(linked) } : {})}
-          className="flex items-start gap-3 text-left group"
-        >
-          <div className="relative w-[74px] h-[74px] flex-shrink-0">
-            <div className="w-full h-full rounded-[13px] overflow-hidden bg-[#E7EEEE] flex items-center justify-center">
-              {img ? (
-                <img src={getProductImage(img)} alt={item.name} loading="lazy" className="w-full h-full object-cover" />
-              ) : (
-                <span className="text-3xl" aria-hidden>🍣</span>
-              )}
-            </div>
-            <span className="absolute -right-1.5 bottom-0 bg-white border border-black rounded-full px-1.5 pt-[3px] pb-[4px] text-[10px] leading-[12px]">
-              {halfLabel(item, linked)}
-            </span>
-          </div>
-          <div className="min-w-0 flex-1">
-            <div className={`text-[16px] leading-[20px] ${linked ? 'group-hover:underline' : ''}`}>{item.name}</div>
-            {linked && (
-              <div className="text-[13px] leading-[16px] text-black/55 mt-1 line-clamp-2">
-                {linked.ingredients.join(', ')}
-              </div>
-            )}
-            {meta && <div className="text-[14px] leading-[18px] mt-1.5">{meta}</div>}
-          </div>
-        </Wrapper>
-      );
-    })}
-  </div>
-);
 
 const MyboxProductPopup = () => {
   const { selectedProduct, setSelectedProduct } = useUIStore();
@@ -179,7 +128,13 @@ const MyboxProductPopup = () => {
     </button>
   );
 
-  const details = (
+  const hasSet = !!p.setItems?.length;
+  const setRow = (compact: boolean) =>
+    hasSet ? (
+      <SetCompositionRow items={p.setItems!} variant="mybox" onOpen={(next) => setSelectedProduct(next)} compact={compact} />
+    ) : null;
+
+  const details = (inlineSet: boolean) => (
     <>
       <h1 className="text-[26px] leading-[32px] lg:text-[32px] lg:leading-[38px] font-normal">
         {p.name}
@@ -198,7 +153,7 @@ const MyboxProductPopup = () => {
 
       {p.description && <p className="mt-[30px] text-[16px] leading-[20px]">{p.description}</p>}
 
-      {p.setItems?.length ? <SetMiniCards items={p.setItems} onOpen={(next) => setSelectedProduct(next)} /> : null}
+      {inlineSet && hasSet ? <div className="mt-[30px]">{setRow(true)}</div> : null}
 
       {p.ingredients.length > 0 && (
         <section className="mt-[30px]">
@@ -238,9 +193,10 @@ const MyboxProductPopup = () => {
       {/* Компьютер: карточка по центру со скруглениями, фото на всю высоту — без белых полос */}
       <div className="hidden lg:flex absolute inset-0 items-center justify-center p-8 pointer-events-none">
         <div
-          className={`pointer-events-auto flex bg-white rounded-[28px] overflow-hidden shadow-2xl h-[min(796px,calc(100vh-64px),55vw)] transition-all duration-300 ease-out
+          className={`pointer-events-auto flex flex-col bg-white rounded-[28px] overflow-hidden shadow-2xl transition-all duration-300 ease-out
             ${isClosing ? 'opacity-0 scale-95' : 'animate-fade-in'}`}
         >
+          <div className={`flex ${hasSet ? 'h-[min(560px,calc(100vh-64px-300px),42vw)]' : 'h-[min(796px,calc(100vh-64px),55vw)]'}`}>
           <div className="relative h-full aspect-square flex-shrink-0">
             <img src={image} alt={p.name} className="w-full h-full object-cover" />
             {imageOverlays}
@@ -254,13 +210,17 @@ const MyboxProductPopup = () => {
             </button>
           </div>
 
-          <div className="w-[min(480px,calc(100vw-64px-min(796px,calc(100vh-64px),55vw)))] flex flex-col pl-[53px] pr-8 pt-[44px] pb-7">
-            <div className="mybox-popup-scroll flex-1 overflow-y-auto overscroll-contain pr-2">{details}</div>
+          <div className={`${hasSet ? 'w-[480px]' : 'w-[min(480px,calc(100vw-64px-min(796px,calc(100vh-64px),55vw)))]'} flex flex-col pl-[53px] pr-8 pt-[44px] pb-7`}>
+            <div className="mybox-popup-scroll flex-1 overflow-y-auto overscroll-contain pr-2">{details(false)}</div>
             <div className="flex items-center gap-3 pt-6">
               {counter}
               <div className="flex-1 [&>button]:w-full [&>button]:px-5">{addButton}</div>
             </div>
           </div>
+          </div>
+
+          {/* Состав сета — на всю ширину окна, ряд с прокруткой вбок */}
+          {hasSet && <div className="w-0 min-w-full border-t border-black/10 px-8 pt-5 pb-7">{setRow(false)}</div>}
         </div>
       </div>
 
@@ -282,7 +242,7 @@ const MyboxProductPopup = () => {
               <X className="w-5 h-5" strokeWidth={2} />
             </button>
           </div>
-          <div className="px-4 pt-5 pb-6">{details}</div>
+          <div className="px-4 pt-5 pb-6">{details(true)}</div>
         </div>
         <div className="flex items-center gap-3 px-4 py-3 border-t border-black/5 bg-white">
           {counter}
