@@ -67,13 +67,11 @@ const ShortsCarousel = () => {
 
   // Анимация ленты сторис:
   //  • телефон — перспектива от центра экрана + параллакс креатива;
-  //  • компьютер — пока лента листается, карточки ведут себя как при наведении
-  //    (класс is-scrolling на ленте, сами эффекты — в CSS).
+  //  • компьютер — без анимаций при листании.
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
     let raf = 0;
-    let idle = 0;
 
     const applyMobile = () => {
       const cards = Array.from(el.querySelectorAll<HTMLElement>('.shorts-card'));
@@ -99,11 +97,6 @@ const ShortsCarousel = () => {
     };
 
     const onScroll = () => {
-      if (window.innerWidth >= 768) {
-        el.classList.add('is-scrolling');
-        window.clearTimeout(idle);
-        idle = window.setTimeout(() => el.classList.remove('is-scrolling'), 180);
-      }
       if (!raf) raf = requestAnimationFrame(() => { raf = 0; applyMobile(); });
     };
 
@@ -113,7 +106,6 @@ const ShortsCarousel = () => {
     return () => {
       el.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
-      window.clearTimeout(idle);
       if (raf) cancelAnimationFrame(raf);
     };
   }, []);
@@ -364,7 +356,7 @@ const ShortsCarousel = () => {
           </button>
 
           {/* Carousel */}
-          <div ref={scrollRef} className="shorts-track flex gap-3 md:gap-4 overflow-x-auto scrollbar-hide pb-3 pt-1 md:pt-3 md:pb-6 -mx-4 px-4 md:mx-0 md:px-1 snap-x snap-mandatory">
+          <div ref={scrollRef} className="shorts-track flex gap-3 md:gap-4 overflow-x-auto scrollbar-hide pb-3 pt-1 md:pt-0 md:pb-2 -mx-4 px-4 md:mx-0 md:px-0 snap-x snap-mandatory">
             {promos.map((promo, index) => (
               <div key={promo.id} className="shorts-card" onClick={() => setActiveIndex(index)}>
                 {promo.image ? (

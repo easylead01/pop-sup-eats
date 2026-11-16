@@ -166,28 +166,24 @@
     width: 180px;
   }
 
-  /* Компьютер: крупные сторис; при наведении и пока лента листается — «ховер»:
-     карточка приподнимается и чуть увеличивается, тень глубже, креатив мягко приближается */
+  /* Компьютер: крупные сторис 280×373, без тени и без анимаций при листании.
+     При наведении карточка стоит на месте — только лёгкое приближение картинки. */
   @media (min-width: 768px) {
     .shorts-card {
       width: 280px;
       border-radius: 22px;
       scroll-snap-align: start;
-      transform-origin: center center;
-      box-shadow: 0 6px 20px -10px rgba(0, 0, 0, 0.35);
-      transition: transform .4s cubic-bezier(.2, .8, .2, 1), box-shadow .4s cubic-bezier(.2, .8, .2, 1);
     }
-    .shorts-card img { transition: transform .6s cubic-bezier(.2, .8, .2, 1); }
+    .shorts-track .shorts-card,
     .shorts-track .shorts-card:hover,
-    .shorts-track.is-scrolling .shorts-card {
-      transform: translateY(-6px) scale(1.03);
-      box-shadow: 0 20px 38px -16px rgba(0, 0, 0, 0.45);
+    .shorts-track .shorts-card:active {
+      transform: none;
+      box-shadow: none;
     }
-    .shorts-track .shorts-card:hover img,
-    .shorts-track.is-scrolling .shorts-card img {
-      transform: scale(1.07);
-    }
+    .shorts-card img { transition: transform .5s ease; }
+    .shorts-track .shorts-card:hover img { transform: scale(1.04); }
   }
+
 
   /* Телефоны: сторис крупным планом — одна целиком, следующая выглядывает */
   @media (max-width: 767px) {
