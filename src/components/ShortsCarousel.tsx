@@ -40,6 +40,12 @@ const StoryMedia = ({ promo, onLoaded, videoRef, muted }: {
     <div className={`absolute inset-0 bg-gradient-to-br ${promo.gradient}`} />
   );
 
+// Бесконечная лента: три копии акций, работаем в средней, у краёв незаметно перескакиваем
+const LOOP_COPIES = 3;
+const loopItems = Array.from({ length: LOOP_COPIES }, (_, copy) =>
+  promos.map((promo, index) => ({ promo, index, copy })),
+).flat();
+
 const ShortsCarousel = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -114,6 +120,40 @@ const ShortsCarousel = () => {
       el.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
       if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  // Бесконечная прокрутка: старт со средней копии; когда лента остановилась
+  // ближе к краю, переносим её на ту же позицию в средней копии (картинка та же — скачка не видно)
+  useEffect(() => {
+    const el = scrollRef.current;
+    const n = promos.length;
+    if (!el || n < 2) return;
+    const period = () => {
+      const cards = el.querySelectorAll<HTMLElement>('.shorts-card');
+      return cards.length > n ? cards[n].offsetLeft - cards[0].offsetLeft : 0;
+    };
+    const recenter = () => {
+      const p = period();
+      if (!p) return;
+      if (el.scrollLeft < p * 0.5) el.scrollLeft += p;
+      else if (el.scrollLeft > p * 1.5) el.scrollLeft -= p;
+    };
+    // старт — на средней копии, с тем же выравниванием, что у первой
+    const start = () => { const p = period(); if (p) el.scrollLeft = p; };
+    start();
+    let idle = 0;
+    const onScroll = () => {
+      window.clearTimeout(idle);
+      idle = window.setTimeout(recenter, 140);
+    };
+    const onResize = () => { window.clearTimeout(idle); idle = window.setTimeout(() => { start(); }, 140); };
+    el.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize);
+    return () => {
+      el.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onResize);
+      window.clearTimeout(idle);
     };
   }, []);
 
@@ -364,10 +404,15 @@ const ShortsCarousel = () => {
 
           {/* Carousel */}
           <div ref={scrollRef} className="shorts-track flex gap-3 md:gap-4 overflow-x-auto scrollbar-hide pb-3 pt-1 md:pt-0 md:pb-2 -mx-4 px-4 md:mx-0 md:px-0 snap-x snap-mandatory">
-            {promos.map((promo, index) => (
-              <div key={promo.id} className="shorts-card" onClick={() => setActiveIndex(index)}>
+            {loopItems.map(({ promo, index, copy }) => (
+              <div
+                key={`${copy}-${promo.id}`}
+                className="shorts-card"
+                onClick={() => setActiveIndex(index)}
+                aria-hidden={copy !== 1 ? true : undefined}
+              >
                 {promo.image ? (
-                  <img src={promo.image} alt={promo.title} className="absolute inset-0 w-full h-full object-cover" />
+                  <img src={promo.image} alt={copy === 1 ? promo.title : ''} className="absolute inset-0 w-full h-full object-cover" draggable={false} />
                 ) : (
                   <div className={`absolute inset-0 bg-gradient-to-br ${promo.gradient}`} />
                 )}
