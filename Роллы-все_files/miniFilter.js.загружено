@@ -1,0 +1,76 @@
+const miniFilter = document.getElementById('miniFilter');
+const mainFilter = document.getElementById('mainFilter');
+
+
+const filterElems = document.querySelector('.assembly__right-stuffing');
+
+
+if (filterElems) {
+
+
+    const inputs = filterElems.querySelectorAll('input');
+
+    inputs.forEach(el => {
+        el.addEventListener('click', event => {
+            if (el.checked) {
+                let templateForSearch = 'GoodSearch%5Bactions%5D%5B%5D=';
+
+                let searchString = window.location.search;
+
+                if (searchString.includes("action")) {
+
+                    // window.location.search +=  "&GoodSearch%5Bsort%5D="+event.target.value;
+                    searchString = searchString.replace('?', '');
+
+                    let exploded = searchString.split('&');
+
+                    for (let item in exploded) {
+
+                        if (exploded[item].includes("action")) {
+                            exploded[item] = templateForSearch + event.target.value;
+                            window.location.search = "?" + exploded.join('&');
+                            break;
+                        }
+                    }
+
+                } else {
+                    window.location.search += "&" + templateForSearch + event.target.value;
+                }
+            } else {
+                window.location.search = '';
+            }
+            // mainFilter.submit();
+            // document.getElementById(miniFilter.getAttribute('form')).submit()
+        });
+    });
+
+
+    //Божественная сортировка
+    miniFilter.addEventListener('change', event => {
+
+        // document.getElementById(miniFilter.getAttribute('form')).submit()
+        let templateForSearch = 'GoodSearch%5Bsort%5D=';
+
+        let searchString = window.location.search;
+
+        if (searchString.includes("sort")) {
+
+            // window.location.search +=  "&GoodSearch%5Bsort%5D="+event.target.value;
+            searchString = searchString.replace('?', '');
+
+            let exploded = searchString.split('&');
+
+            for (let item in exploded) {
+
+                if (exploded[item].includes("sort")) {
+                    exploded[item] = templateForSearch + event.target.value;
+                    window.location.search = "?" + exploded.join('&');
+                    break;
+                }
+            }
+
+        } else {
+            window.location.search += "&" + templateForSearch + event.target.value;
+        }
+    });
+}
