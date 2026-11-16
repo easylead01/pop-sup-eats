@@ -84,24 +84,11 @@ const Header = () => {
             </div>
           </div>
           
-          {/* Logo - desktop */}
+          {/* Logo - desktop (без кнопки меню) */}
           <div className="hidden lg:flex items-center gap-2 relative -top-[5px]">
-            <button onClick={() => setMenuOpen(true)} className="hidden lg:flex mt-[14.5px] w-10 h-10 bg-primary text-primary-foreground rounded-full items-center justify-center shadow-md hover:bg-primary/90 transition-all">
-              <div className="grid grid-cols-3 grid-rows-3 lg:w-[70%] lg:h-[70%] place-items-center gap-[4%]">
-                <span className="block w-1 h-1 bg-primary-foreground rounded-full" />
-                <span className="block w-1 h-1 bg-primary-foreground rounded-full" />
-                <span className="block w-1 h-1 bg-primary-foreground rounded-full" />
-                <span className="block w-1 h-1 bg-primary-foreground rounded-full" />
-                <span className="block w-1 h-1 bg-primary-foreground rounded-full" />
-                <span className="block w-1 h-1 bg-primary-foreground rounded-full" />
-                <span className="block w-1 h-1 bg-primary-foreground rounded-full" />
-                <span className="block w-1 h-1 bg-primary-foreground rounded-full" />
-                <span className="block w-1 h-1 bg-primary-foreground rounded-full" />
-              </div>
-            </button>
             <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-              <span className="h-16 md:h-20 cursor-pointer lg:ml-5 flex items-center">
-                <img src={logo} alt="OKIAHABA" className="h-16 md:h-20 w-auto" />
+              <span className="h-16 md:h-20 lg:h-[104px] cursor-pointer flex items-center">
+                <img src={logo} alt="OKIAHABA" className="h-16 md:h-20 lg:h-[104px] w-auto" />
               </span>
             </Link>
           </div>
