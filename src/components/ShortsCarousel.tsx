@@ -309,7 +309,7 @@ const ShortsCarousel = () => {
           </button>
 
           {/* Carousel */}
-          <div ref={scrollRef} className="flex gap-4 overflow-x-auto scrollbar-hide pb-2 -mx-4 px-4 md:mx-0 md:px-0">
+          <div ref={scrollRef} className="flex gap-3 md:gap-4 overflow-x-auto scrollbar-hide pb-2 -mx-4 px-4 md:mx-0 md:px-0 snap-x snap-mandatory scroll-pl-4 md:snap-none">
             {promos.map((promo, index) => (
               <div key={promo.id} className="shorts-card" onClick={() => setActiveIndex(index)}>
                 {promo.image ? (

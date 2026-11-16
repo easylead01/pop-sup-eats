@@ -165,6 +165,15 @@
     @apply relative overflow-hidden rounded-2xl aspect-[3/4] flex-shrink-0 cursor-pointer transition-transform duration-300 origin-top;
     width: 180px;
   }
+
+  /* Телефоны: сторис крупным планом — одна целиком, следующая выглядывает */
+  @media (max-width: 767px) {
+    .shorts-card {
+      width: min(70vw, 300px);
+      scroll-snap-align: start;
+      border-radius: 20px;
+    }
+  }
   
   .shorts-card:hover {
     @apply scale-[1.03] z-30;
