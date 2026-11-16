@@ -206,15 +206,6 @@ const ProductPopup = () => {
                 </div>
               )}
 
-              {selectedProduct.allergens.length > 0 && (
-                <div className="mb-4">
-                  <h3 className="font-semibold text-lg mb-1.5 flex items-center gap-2">
-                    Аллергены
-                    <AlertCircle className="w-4 h-4 text-primary" />
-                  </h3>
-                  <p className="text-muted-foreground text-[15px]">{selectedProduct.allergens.join(', ')}</p>
-                </div>
-              )}
             </div>
 
             <div className="flex items-center gap-3 pt-5">
@@ -341,18 +332,6 @@ const ProductPopup = () => {
               </div>
             )}
 
-            {/* Allergens */}
-            {selectedProduct.allergens.length > 0 && (
-              <div className="mb-4">
-                <h3 className="font-semibold mb-1 text-sm flex items-center gap-2">
-                  Аллергены
-                  <AlertCircle className="w-3.5 h-3.5 text-primary" />
-                </h3>
-                <p className="text-muted-foreground text-xs">
-                  {selectedProduct.allergens.join(', ')}
-                </p>
-              </div>
-            )}
 
           </div>
           <div className="sticky-btn-wrapper">

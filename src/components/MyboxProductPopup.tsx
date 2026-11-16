@@ -9,7 +9,7 @@ import { toast } from '@/hooks/use-toast';
 
 /**
  * Демо-окно товара в стиле MyBox: большое фото слева, справа название с перчиком,
- * «шт / г · ккал», описание, мини-карточки роллов (для сетов), «Состав», «Аллергены»
+ * «шт / г · ккал», описание, мини-карточки роллов (для сетов), «Состав»
  * и внизу счётчик + чёрная кнопка «В корзину за …».
  */
 
@@ -207,15 +207,6 @@ const MyboxProductPopup = () => {
         </section>
       )}
 
-      {p.allergens.length > 0 && (
-        <section className="mt-[30px]">
-          <h2 className="text-[20px] leading-[24px] font-normal flex items-center gap-2.5">
-            Аллергены
-            <InfoIcon color={ACCENT} size={24} />
-          </h2>
-          <p className="mt-5 text-[18px] leading-[24px]">{p.allergens.join(', ')}</p>
-        </section>
-      )}
     </>
   );
 
