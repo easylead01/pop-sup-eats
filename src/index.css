@@ -170,7 +170,7 @@
   @media (max-width: 767px) {
     .shorts-card {
       width: min(70vw, 300px);
-      scroll-snap-align: start;
+      scroll-snap-align: center;
       border-radius: 20px;
       /* трансформации задаются из JS по ходу свайпа — без анимационной задержки */
       transition: none;
@@ -178,6 +178,11 @@
       will-change: transform, filter;
     }
     .shorts-card img { will-change: transform; }
+    /* поля по бокам, чтобы и первая, и последняя сторис вставали по центру */
+    .shorts-track {
+      padding-left: calc((100vw - min(70vw, 300px)) / 2) !important;
+      padding-right: calc((100vw - min(70vw, 300px)) / 2) !important;
+    }
     .shorts-card:active { transform: none; }
   }
   

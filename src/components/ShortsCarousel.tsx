@@ -74,7 +74,8 @@ const ShortsCarousel = () => {
       raf = 0;
       const cards = Array.from(el.querySelectorAll<HTMLElement>('.shorts-card'));
       const mobile = window.innerWidth < 768;
-      const anchor = el.getBoundingClientRect().left + 16; // точка примагничивания (левый отступ)
+      const box = el.getBoundingClientRect();
+      const anchor = box.left + box.width / 2; // главная карточка — по центру экрана
       cards.forEach((card) => {
         const img = card.querySelector<HTMLElement>('img');
         if (!mobile) {
@@ -85,7 +86,7 @@ const ShortsCarousel = () => {
         }
         const r = card.getBoundingClientRect();
         const step = r.width + 12;
-        const p = Math.max(-1.6, Math.min(1.6, (r.left - anchor) / step)); // 0 — карточка на месте
+        const p = Math.max(-1.6, Math.min(1.6, (r.left + r.width / 2 - anchor) / step)); // 0 — карточка по центру
         const a = Math.min(Math.abs(p), 1);
         card.style.transform = `perspective(900px) rotateY(${(-p * 16).toFixed(2)}deg) scale(${(1 - a * 0.1).toFixed(3)})`;
         card.style.filter = `brightness(${(1 - a * 0.28).toFixed(3)})`;
@@ -347,7 +348,7 @@ const ShortsCarousel = () => {
           </button>
 
           {/* Carousel */}
-          <div ref={scrollRef} className="flex gap-3 md:gap-4 overflow-x-auto scrollbar-hide pb-2 -mx-4 px-4 md:mx-0 md:px-0 snap-x snap-mandatory scroll-pl-4 md:snap-none">
+          <div ref={scrollRef} className="shorts-track flex gap-3 md:gap-4 overflow-x-auto scrollbar-hide pb-2 -mx-4 px-4 md:mx-0 md:px-0 snap-x snap-mandatory md:snap-none">
             {promos.map((promo, index) => (
               <div key={promo.id} className="shorts-card" onClick={() => setActiveIndex(index)}>
                 {promo.image ? (
