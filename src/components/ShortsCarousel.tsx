@@ -67,22 +67,27 @@ const ShortsCarousel = () => {
 
   // Анимация ленты сторис:
   //  • телефон — перспектива от центра экрана + параллакс креатива;
-  //  • компьютер — карточки «наклоняются» по ходу листания (сильнее при быстрой прокрутке),
-  //    креатив смещается с параллаксом, после остановки всё плавно выпрямляется.
+  //  • компьютер — пока лента листается, карточки ведут себя как при наведении
+  //    (класс is-scrolling на ленте, сами эффекты — в CSS).
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
     let raf = 0;
-    let lastX = el.scrollLeft;
-    let lean = 0; // текущий наклон, градусы (компьютер)
-    let target = 0;
-    let lastScrollAt = 0;
+    let idle = 0;
 
-    const applyMobile = (cards: HTMLElement[]) => {
+    const applyMobile = () => {
+      const cards = Array.from(el.querySelectorAll<HTMLElement>('.shorts-card'));
+      const mobile = window.innerWidth < 768;
       const box = el.getBoundingClientRect();
       const anchor = box.left + box.width / 2;
       cards.forEach((card) => {
         const img = card.querySelector<HTMLElement>('img');
+        if (!mobile) {
+          card.style.transform = '';
+          card.style.filter = '';
+          if (img) img.style.transform = '';
+          return;
+        }
         const r = card.getBoundingClientRect();
         const step = r.width + 12;
         const p = Math.max(-1.6, Math.min(1.6, (r.left + r.width / 2 - anchor) / step));
@@ -93,54 +98,22 @@ const ShortsCarousel = () => {
       });
     };
 
-    const applyDesktop = (cards: HTMLElement[]) => {
-      const box = el.getBoundingClientRect();
-      const mid = box.left + box.width / 2;
-      const still = Math.abs(lean) < 0.05;
-      cards.forEach((card) => {
-        const img = card.querySelector<HTMLElement>('img');
-        card.style.filter = '';
-        if (still) {
-          // в покое — без инлайн-трансформаций, чтобы работал hover
-          card.style.transform = '';
-          if (img) img.style.transform = '';
-          return;
-        }
-        const r = card.getBoundingClientRect();
-        const rel = (r.left + r.width / 2 - mid) / box.width; // −0.5…0.5 по ширине ленты
-        card.style.transform = `perspective(1100px) rotateY(${(-lean).toFixed(2)}deg) scale(${(1 - Math.abs(lean) / 160).toFixed(3)})`;
-        if (img) img.style.transform = `translateX(${(-rel * 8 - lean * 0.35).toFixed(2)}%) scale(1.14)`;
-      });
+    const onScroll = () => {
+      if (window.innerWidth >= 768) {
+        el.classList.add('is-scrolling');
+        window.clearTimeout(idle);
+        idle = window.setTimeout(() => el.classList.remove('is-scrolling'), 180);
+      }
+      if (!raf) raf = requestAnimationFrame(() => { raf = 0; applyMobile(); });
     };
 
-    const frame = () => {
-      raf = 0;
-      const cards = Array.from(el.querySelectorAll<HTMLElement>('.shorts-card'));
-      if (window.innerWidth < 768) {
-        applyMobile(cards);
-        return;
-      }
-      const x = el.scrollLeft;
-      const v = x - lastX; // px за кадр
-      lastX = x;
-      if (v !== 0) {
-        target = Math.max(-18, Math.min(18, v * 0.55));
-        lastScrollAt = performance.now();
-      } else if (performance.now() - lastScrollAt > 60) {
-        target = 0;
-      }
-      lean += (target - lean) * 0.18; // пружинка
-      applyDesktop(cards);
-      if (Math.abs(lean) > 0.05 || target !== 0) raf = requestAnimationFrame(frame);
-    };
-
-    const kick = () => { if (!raf) raf = requestAnimationFrame(frame); };
-    kick();
-    el.addEventListener('scroll', kick, { passive: true });
-    window.addEventListener('resize', kick);
+    applyMobile();
+    el.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
     return () => {
-      el.removeEventListener('scroll', kick);
-      window.removeEventListener('resize', kick);
+      el.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      window.clearTimeout(idle);
       if (raf) cancelAnimationFrame(raf);
     };
   }, []);
@@ -391,7 +364,7 @@ const ShortsCarousel = () => {
           </button>
 
           {/* Carousel */}
-          <div ref={scrollRef} className="shorts-track flex gap-3 md:gap-4 overflow-x-auto scrollbar-hide pb-3 pt-1 -mx-4 px-4 md:mx-0 md:px-0 snap-x snap-mandatory">
+          <div ref={scrollRef} className="shorts-track flex gap-3 md:gap-4 overflow-x-auto scrollbar-hide pb-3 pt-1 md:pt-3 md:pb-6 -mx-4 px-4 md:mx-0 md:px-1 snap-x snap-mandatory">
             {promos.map((promo, index) => (
               <div key={promo.id} className="shorts-card" onClick={() => setActiveIndex(index)}>
                 {promo.image ? (
