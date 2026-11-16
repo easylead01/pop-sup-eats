@@ -40,8 +40,9 @@ const StoryMedia = ({ promo, onLoaded, videoRef, muted }: {
     <div className={`absolute inset-0 bg-gradient-to-br ${promo.gradient}`} />
   );
 
-// Бесконечная лента: три копии акций, работаем в средней, у краёв незаметно перескакиваем
-const LOOP_COPIES = 3;
+// Бесконечная лента: несколько копий акций, работаем в средней, после остановки незаметно перескакиваем
+const LOOP_COPIES = 5;
+const MID_COPY = Math.floor(LOOP_COPIES / 2);
 const loopItems = Array.from({ length: LOOP_COPIES }, (_, copy) =>
   promos.map((promo, index) => ({ promo, index, copy })),
 ).flat();
@@ -71,89 +72,114 @@ const ShortsCarousel = () => {
   }, []);
   const isMobile = vw < 768;
 
-  // Анимация ленты сторис:
+  // Лента сторис: эффекты при прокрутке + бесконечность.
   //  • телефон — перспектива от центра экрана + параллакс креатива;
   //  • компьютер — карточки стоят, креатив внутри смещается с параллаксом.
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    let raf = 0;
-
-    const applyMobile = () => {
-      const cards = Array.from(el.querySelectorAll<HTMLElement>('.shorts-card'));
-      const mobile = window.innerWidth < 768;
-      const box = el.getBoundingClientRect();
-      const anchor = box.left + box.width / 2;
-      cards.forEach((card) => {
-        const img = card.querySelector<HTMLElement>('img');
-        if (!mobile) {
-          // компьютер: карточка стоит, креатив внутри чуть смещается (параллакс)
-          card.style.transform = '';
-          card.style.filter = '';
-          if (img) {
-            img.style.transform = '';
-            const r = card.getBoundingClientRect();
-            const rel = Math.max(-0.65, Math.min(0.65, (r.left + r.width / 2 - anchor) / box.width)); // сдвиг ≤ 3,9% при запасе 4%
-            img.style.setProperty('--px', `${(-rel * 6).toFixed(2)}%`);
-          }
-          return;
-        }
-        if (img) img.style.removeProperty('--px');
-        const r = card.getBoundingClientRect();
-        const step = r.width + 12;
-        const p = Math.max(-1.6, Math.min(1.6, (r.left + r.width / 2 - anchor) / step));
-        const a = Math.min(Math.abs(p), 1);
-        card.style.transform = `perspective(900px) rotateY(${(-p * 16).toFixed(2)}deg) scale(${(1 - a * 0.1).toFixed(3)})`;
-        card.style.filter = `brightness(${(1 - a * 0.28).toFixed(3)})`;
-        if (img) img.style.transform = `translateX(${(-p * 9).toFixed(2)}%) scale(1.16)`;
-      });
-    };
-
-    const onScroll = () => {
-      if (!raf) raf = requestAnimationFrame(() => { raf = 0; applyMobile(); });
-    };
-
-    applyMobile();
-    el.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    return () => {
-      el.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
-      if (raf) cancelAnimationFrame(raf);
-    };
-  }, []);
-
-  // Бесконечная прокрутка: старт со средней копии; когда лента остановилась
-  // ближе к краю, переносим её на ту же позицию в средней копии (картинка та же — скачка не видно)
+  // Положения карточек кешируются (offsetLeft не зависит от прокрутки и трансформаций),
+  // поэтому на кадре нет замеров — только расчёт и запись стилей.
   useEffect(() => {
     const el = scrollRef.current;
     const n = promos.length;
     if (!el || n < 2) return;
-    const period = () => {
-      const cards = el.querySelectorAll<HTMLElement>('.shorts-card');
-      return cards.length > n ? cards[n].offsetLeft - cards[0].offsetLeft : 0;
+
+    type Item = { card: HTMLElement; img: HTMLElement | null; center: number; last: string };
+    let items: Item[] = [];
+    let period = 0;
+    let mobile = window.innerWidth < 768;
+    let raf = 0;
+
+    const measure = () => {
+      mobile = window.innerWidth < 768;
+      const cards = Array.from(el.querySelectorAll<HTMLElement>('.shorts-card'));
+      items = cards.map((card) => ({
+        card,
+        img: card.querySelector<HTMLElement>('img'),
+        center: card.offsetLeft + card.offsetWidth / 2,
+        last: '',
+      }));
+      period = cards.length > n ? cards[n].offsetLeft - cards[0].offsetLeft : 0;
     };
-    const recenter = () => {
-      const p = period();
-      if (!p) return;
-      if (el.scrollLeft < p * 0.5) el.scrollLeft += p;
-      else if (el.scrollLeft > p * 1.5) el.scrollLeft -= p;
+
+    const apply = () => {
+      raf = 0;
+      const sl = el.scrollLeft;
+      const w = el.clientWidth;
+      const mid = sl + w / 2;
+      const cardW = items[0]?.card.offsetWidth || 1;
+      for (const it of items) {
+        const d = it.center - mid;
+        // у дальних карточек значения упираются в предел → ключ не меняется → запись пропускается
+        if (mobile) {
+          const p = Math.max(-1.6, Math.min(1.6, d / (cardW + 12)));
+          const key = p.toFixed(3);
+          if (it.last === key) continue;
+          it.last = key;
+          const a = Math.min(Math.abs(p), 1);
+          it.card.style.transform = `perspective(900px) rotateY(${(-p * 16).toFixed(2)}deg) scale(${(1 - a * 0.1).toFixed(3)})`;
+          it.card.style.filter = `brightness(${(1 - a * 0.28).toFixed(3)})`;
+          if (it.img) it.img.style.transform = `translateX(${(-p * 9).toFixed(2)}%) scale(1.16)`;
+        } else {
+          const rel = Math.max(-0.65, Math.min(0.65, d / w)); // сдвиг ≤ 3,9% при запасе 4%
+          const key = rel.toFixed(3);
+          if (it.last === key) continue;
+          it.last = key;
+          if (it.card.style.transform) { it.card.style.transform = ''; it.card.style.filter = ''; }
+          if (it.img) {
+            if (it.img.style.transform) it.img.style.transform = '';
+            it.img.style.setProperty('--px', `${(-rel * 6).toFixed(2)}%`);
+          }
+        }
+      }
     };
-    // старт — на средней копии, с тем же выравниванием, что у первой
-    const start = () => { const p = period(); if (p) el.scrollLeft = p; };
-    start();
+    const schedule = () => { if (!raf) raf = requestAnimationFrame(apply); };
+
+    // перенос на ту же позицию в средней копии — только когда лента стоит и палец убран
+    let touching = false;
     let idle = 0;
-    const onScroll = () => {
-      window.clearTimeout(idle);
-      idle = window.setTimeout(recenter, 140);
+    const recenter = () => {
+      if (touching || !period) return;
+      const target = period * MID_COPY;
+      const k = Math.round((el.scrollLeft - target) / period);
+      if (k === 0) return;
+      const prevSnap = el.style.scrollSnapType;
+      el.style.scrollSnapType = 'none'; // чтобы браузер не «доводил» ленту после переноса
+      el.scrollLeft -= k * period;
+      void el.offsetWidth;
+      el.style.scrollSnapType = prevSnap;
+      for (const it of items) it.last = '';
+      apply();
     };
-    const onResize = () => { window.clearTimeout(idle); idle = window.setTimeout(() => { start(); }, 140); };
+    const armRecenter = (ms: number) => { window.clearTimeout(idle); idle = window.setTimeout(recenter, ms); };
+
+    const onScroll = () => { schedule(); armRecenter(220); };
+    const onScrollEnd = () => armRecenter(30);
+    const onTouchStart = () => { touching = true; window.clearTimeout(idle); };
+    const onTouchEnd = () => { touching = false; armRecenter(260); };
+    const onResize = () => {
+      measure();
+      if (period) el.scrollLeft = period * MID_COPY + (el.scrollLeft % period);
+      for (const it of items) it.last = '';
+      schedule();
+    };
+
+    measure();
+    if (period) el.scrollLeft = period * MID_COPY; // старт — первая акция средней копии
+    apply();
     el.addEventListener('scroll', onScroll, { passive: true });
+    el.addEventListener('scrollend', onScrollEnd);
+    el.addEventListener('touchstart', onTouchStart, { passive: true });
+    el.addEventListener('touchend', onTouchEnd, { passive: true });
+    el.addEventListener('touchcancel', onTouchEnd, { passive: true });
     window.addEventListener('resize', onResize);
     return () => {
       el.removeEventListener('scroll', onScroll);
+      el.removeEventListener('scrollend', onScrollEnd);
+      el.removeEventListener('touchstart', onTouchStart);
+      el.removeEventListener('touchend', onTouchEnd);
+      el.removeEventListener('touchcancel', onTouchEnd);
       window.removeEventListener('resize', onResize);
       window.clearTimeout(idle);
+      if (raf) cancelAnimationFrame(raf);
     };
   }, []);
 
@@ -403,16 +429,16 @@ const ShortsCarousel = () => {
           </button>
 
           {/* Carousel */}
-          <div ref={scrollRef} className="shorts-track flex gap-3 md:gap-4 overflow-x-auto scrollbar-hide pb-3 pt-1 md:pt-0 md:pb-2 -mx-4 px-4 md:mx-0 md:px-0 snap-x snap-mandatory">
+          <div ref={scrollRef} className="shorts-track relative flex gap-3 md:gap-4 overflow-x-auto scrollbar-hide pb-3 pt-1 md:pt-0 md:pb-2 -mx-4 px-4 md:mx-0 md:px-0 snap-x snap-mandatory">
             {loopItems.map(({ promo, index, copy }) => (
               <div
                 key={`${copy}-${promo.id}`}
                 className="shorts-card"
                 onClick={() => setActiveIndex(index)}
-                aria-hidden={copy !== 1 ? true : undefined}
+                aria-hidden={copy !== MID_COPY ? true : undefined}
               >
                 {promo.image ? (
-                  <img src={promo.image} alt={copy === 1 ? promo.title : ''} className="absolute inset-0 w-full h-full object-cover" draggable={false} />
+                  <img src={promo.image} alt={copy === MID_COPY ? promo.title : ''} className="absolute inset-0 w-full h-full object-cover" draggable={false} />
                 ) : (
                   <div className={`absolute inset-0 bg-gradient-to-br ${promo.gradient}`} />
                 )}
