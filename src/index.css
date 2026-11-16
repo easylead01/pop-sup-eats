@@ -166,6 +166,18 @@
     width: 180px;
   }
 
+  /* Компьютер: крупные сторис, примагничивание по левому краю карточки */
+  @media (min-width: 768px) {
+    .shorts-card {
+      width: 240px;
+      border-radius: 20px;
+      scroll-snap-align: start;
+      transform-origin: center center;
+      box-shadow: 0 6px 20px -10px rgba(0, 0, 0, 0.35);
+    }
+    .shorts-card img { transition: transform .25s ease-out; }
+  }
+
   /* Телефоны: сторис крупным планом — одна целиком, следующая выглядывает */
   @media (max-width: 767px) {
     .shorts-card {
