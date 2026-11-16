@@ -172,7 +172,13 @@
       width: min(70vw, 300px);
       scroll-snap-align: start;
       border-radius: 20px;
+      /* трансформации задаются из JS по ходу свайпа — без анимационной задержки */
+      transition: none;
+      transform-origin: center center;
+      will-change: transform, filter;
     }
+    .shorts-card img { will-change: transform; }
+    .shorts-card:active { transform: none; }
   }
   
   .shorts-card:hover {

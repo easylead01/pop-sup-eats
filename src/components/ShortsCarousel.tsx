@@ -65,6 +65,44 @@ const ShortsCarousel = () => {
   }, []);
   const isMobile = vw < 768;
 
+  // Телефоны: перспектива + параллакс при свайпе ленты сторис
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    let raf = 0;
+    const apply = () => {
+      raf = 0;
+      const cards = Array.from(el.querySelectorAll<HTMLElement>('.shorts-card'));
+      const mobile = window.innerWidth < 768;
+      const anchor = el.getBoundingClientRect().left + 16; // точка примагничивания (левый отступ)
+      cards.forEach((card) => {
+        const img = card.querySelector<HTMLElement>('img');
+        if (!mobile) {
+          card.style.transform = '';
+          card.style.filter = '';
+          if (img) img.style.transform = '';
+          return;
+        }
+        const r = card.getBoundingClientRect();
+        const step = r.width + 12;
+        const p = Math.max(-1.6, Math.min(1.6, (r.left - anchor) / step)); // 0 — карточка на месте
+        const a = Math.min(Math.abs(p), 1);
+        card.style.transform = `perspective(900px) rotateY(${(-p * 16).toFixed(2)}deg) scale(${(1 - a * 0.1).toFixed(3)})`;
+        card.style.filter = `brightness(${(1 - a * 0.28).toFixed(3)})`;
+        if (img) img.style.transform = `translateX(${(-p * 9).toFixed(2)}%) scale(1.16)`;
+      });
+    };
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(apply); };
+    apply();
+    el.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      el.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
   const scroll = (direction: 'left' | 'right') => {
     scrollRef.current?.scrollBy({ left: direction === 'left' ? -400 : 400, behavior: 'smooth' });
   };
